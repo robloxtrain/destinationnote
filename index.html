@@ -17,7 +17,8 @@
   -webkit-tap-highlight-color:transparent;
 }
 
-html,body{
+html,
+body{
   margin:0;
   width:100%;
   height:100%;
@@ -26,19 +27,26 @@ html,body{
     -apple-system,
     BlinkMacSystemFont,
     "SF Pro Display",
-    "SF Pro Text",
     "Helvetica Neue",
     Arial,
     sans-serif;
   color:#111;
+  background:
+    radial-gradient(circle at 10% 10%,rgba(130,190,255,.45),transparent 35%),
+    radial-gradient(circle at 90% 10%,rgba(255,170,245,.40),transparent 35%),
+    radial-gradient(circle at 50% 100%,rgba(170,220,255,.35),transparent 40%),
+    #edf2f8;
 }
 
-body{
-  background:
-    radial-gradient(circle at 10% 10%,rgba(150,210,255,.45),transparent 30%),
-    radial-gradient(circle at 90% 20%,rgba(255,180,245,.45),transparent 35%),
-    radial-gradient(circle at 40% 100%,rgba(170,220,255,.4),transparent 40%),
-    linear-gradient(135deg,#eaf5ff,#fff,#f9edff);
+button,
+input,
+textarea{
+  font:inherit;
+}
+
+button{
+  border:0;
+  cursor:pointer;
 }
 
 /* =========================
@@ -50,36 +58,27 @@ body{
     linear-gradient(
       135deg,
       rgba(255,255,255,.72),
-      rgba(255,255,255,.43)
+      rgba(255,255,255,.42)
     );
-  border:1px solid rgba(255,255,255,.75);
+  border:1px solid rgba(255,255,255,.78);
   box-shadow:
-    0 20px 50px rgba(50,70,100,.10),
-    inset 0 1px 0 rgba(255,255,255,.9),
-    inset 0 -1px 0 rgba(255,255,255,.25);
-  backdrop-filter:blur(35px) saturate(180%);
-  -webkit-backdrop-filter:blur(35px) saturate(180%);
+    0 20px 60px rgba(50,70,100,.14),
+    inset 0 1px 0 rgba(255,255,255,.95),
+    inset 0 -1px 0 rgba(255,255,255,.28);
+  backdrop-filter:blur(30px) saturate(180%);
+  -webkit-backdrop-filter:blur(30px) saturate(180%);
 }
 
-button,
-input{
-  font:inherit;
-}
-
-/* =========================
-   APP
-========================= */
-
-#app{
+.app{
   width:100%;
   height:100%;
   display:flex;
   padding:
-    max(12px,env(safe-area-inset-top))
-    max(12px,env(safe-area-inset-right))
-    max(12px,env(safe-area-inset-bottom))
-    max(12px,env(safe-area-inset-left));
-  gap:14px;
+    calc(12px + env(safe-area-inset-top))
+    12px
+    calc(12px + env(safe-area-inset-bottom))
+    12px;
+  gap:12px;
 }
 
 /* =========================
@@ -91,7 +90,6 @@ input{
   min-width:300px;
   height:100%;
   border-radius:28px;
-  padding:18px 14px 14px;
   display:flex;
   flex-direction:column;
   overflow:hidden;
@@ -100,29 +98,24 @@ input{
 }
 
 .brand{
+  padding:24px 20px 15px;
   display:flex;
   align-items:center;
-  gap:12px;
-  padding:4px 8px 18px;
+  gap:13px;
 }
 
 .brandIcon{
-  width:44px;
-  height:44px;
+  width:46px;
+  height:46px;
   border-radius:15px;
   display:flex;
-  align-items:center;
   justify-content:center;
-  font-size:24px;
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.95),
-      rgba(240,245,255,.55)
-    );
+  align-items:center;
+  font-size:25px;
+  background:rgba(255,255,255,.62);
   box-shadow:
-    0 8px 20px rgba(80,100,130,.12),
-    inset 0 1px 0 white;
+    0 8px 20px rgba(0,0,0,.08),
+    inset 0 1px 0 rgba(255,255,255,.9);
 }
 
 .brandTitle{
@@ -130,112 +123,116 @@ input{
   font-weight:750;
 }
 
-.brandSub{
+.brandUser{
   font-size:12px;
-  opacity:.55;
+  color:#777;
   margin-top:3px;
 }
 
 .tree{
   flex:1;
   overflow:auto;
-  padding:4px 2px 12px;
-  scrollbar-width:none;
+  padding:5px 10px 100px;
+  overscroll-behavior:contain;
 }
 
 .tree::-webkit-scrollbar{
-  display:none;
+  width:5px;
+}
+
+.tree::-webkit-scrollbar-thumb{
+  background:rgba(0,0,0,.12);
+  border-radius:20px;
 }
 
 .treeRow{
   width:100%;
-  min-height:42px;
+  min-height:43px;
+  border-radius:15px;
   display:flex;
   align-items:center;
-  border-radius:15px;
+  gap:5px;
+  padding:5px 8px;
   margin:2px 0;
-  padding-right:8px;
-  cursor:pointer;
-  user-select:none;
-  transition:.18s ease;
+  text-align:left;
+  color:#111;
+  background:transparent;
+  transition:.18s;
 }
 
 .treeRow:hover{
-  background:rgba(255,255,255,.38);
+  background:rgba(255,255,255,.45);
 }
 
 .treeRow.selected{
   background:
     linear-gradient(
       135deg,
-      rgba(255,255,255,.72),
-      rgba(235,244,255,.50)
+      rgba(255,255,255,.80),
+      rgba(255,255,255,.42)
     );
   box-shadow:
-    0 7px 18px rgba(80,100,130,.09),
+    0 8px 25px rgba(60,80,120,.12),
     inset 0 1px 0 rgba(255,255,255,.9);
 }
 
 .treeArrow{
-  width:25px;
-  min-width:25px;
-  text-align:center;
-  opacity:.7;
-  font-size:13px;
+  width:22px;
+  min-width:22px;
+  height:30px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:11px;
+  color:#777;
 }
 
 .treeIcon{
-  width:28px;
-  min-width:28px;
+  width:27px;
+  min-width:27px;
   text-align:center;
-  font-size:20px;
+  font-size:19px;
 }
 
 .treeName{
+  flex:1;
+  min-width:0;
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
-  font-size:15px;
+  font-size:14px;
+  font-weight:560;
 }
 
 .treeNote{
-  padding-left:4px;
-}
-
-.treeNote .treeIcon{
-  font-size:18px;
+  color:#444;
 }
 
 .sidebarBottom{
-  display:flex;
+  position:absolute;
+  left:12px;
+  right:12px;
+  bottom:
+    calc(12px + env(safe-area-inset-bottom));
+  display:grid;
+  grid-template-columns:1fr 1fr 48px;
   gap:8px;
-  padding-top:8px;
 }
 
-.sideButton{
-  flex:1;
-  height:46px;
-  border:0;
+.bottomButton{
+  height:48px;
   border-radius:17px;
+  color:#111;
   background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.82),
-      rgba(255,255,255,.45)
-    );
+    rgba(255,255,255,.66);
+  border:1px solid rgba(255,255,255,.75);
   box-shadow:
-    0 8px 20px rgba(70,90,120,.08),
-    inset 0 1px 0 white;
-  cursor:pointer;
+    0 10px 25px rgba(40,60,90,.10),
+    inset 0 1px 0 rgba(255,255,255,.9);
 }
 
-.sideButton:active{
-  transform:scale(.97);
-}
-
-.settingsButton{
-  width:52px;
-  min-width:52px;
+.bottomButton:active{
+  transform:scale(.96);
 }
 
 /* =========================
@@ -245,95 +242,97 @@ input{
 .main{
   flex:1;
   min-width:0;
-  height:100%;
+  min-height:0;
   border-radius:30px;
   overflow:hidden;
   position:relative;
 }
 
-.screen{
+.page{
   width:100%;
   height:100%;
   overflow:auto;
+  position:relative;
 }
 
-.content{
-  padding:34px;
+.page::-webkit-scrollbar{
+  width:6px;
+}
+
+.page::-webkit-scrollbar-thumb{
+  background:rgba(0,0,0,.10);
+  border-radius:20px;
+}
+
+.pageInner{
   min-height:100%;
+  padding:32px;
 }
 
 .header{
   display:flex;
   align-items:center;
-  gap:14px;
+  gap:16px;
   margin-bottom:28px;
 }
 
 .backButton{
-  width:46px;
-  height:46px;
-  border:0;
-  border-radius:16px;
-  background:rgba(255,255,255,.72);
+  width:48px;
+  height:48px;
+  border-radius:17px;
+  background:rgba(255,255,255,.68);
   box-shadow:
-    0 8px 20px rgba(60,80,110,.08),
-    inset 0 1px 0 white;
-  font-size:22px;
-  cursor:pointer;
+    0 10px 30px rgba(40,60,100,.10),
+    inset 0 1px 0 rgba(255,255,255,.9);
+  font-size:23px;
 }
 
 .headerIcon{
-  font-size:30px;
+  font-size:31px;
 }
 
 .headerTitle{
-  font-size:32px;
+  font-size:31px;
   font-weight:780;
 }
 
 .headerSub{
-  margin-top:3px;
+  color:#888;
   font-size:13px;
-  opacity:.48;
+  margin-top:2px;
 }
 
 .sectionTitle{
-  font-size:21px;
+  font-size:20px;
   font-weight:750;
-  margin:24px 0 14px;
+  margin:25px 0 14px;
 }
-
-/* =========================
-   CARDS
-========================= */
 
 .cardGrid{
   display:grid;
   grid-template-columns:
-    repeat(auto-fill,minmax(220px,1fr));
+    repeat(auto-fill,minmax(230px,1fr));
   gap:16px;
 }
 
 .card{
   min-height:135px;
-  padding:24px;
-  border-radius:25px;
-  cursor:pointer;
+  border-radius:26px;
+  padding:25px;
   background:
     linear-gradient(
       135deg,
       rgba(255,255,255,.82),
-      rgba(255,255,255,.48)
+      rgba(255,255,255,.47)
     );
-  border:1px solid rgba(255,255,255,.8);
+  border:1px solid rgba(255,255,255,.78);
   box-shadow:
-    0 18px 35px rgba(60,80,110,.08),
-    inset 0 1px 0 white;
-  transition:.2s ease;
-}
-
-.card:hover{
-  transform:translateY(-2px);
+    0 16px 38px rgba(45,65,100,.11),
+    inset 0 1px 0 rgba(255,255,255,.95);
+  backdrop-filter:blur(25px) saturate(170%);
+  -webkit-backdrop-filter:blur(25px) saturate(170%);
+  transition:.18s;
+  text-align:left;
 }
 
 .card:active{
@@ -341,18 +340,18 @@ input{
 }
 
 .cardIcon{
-  font-size:34px;
-  margin-bottom:18px;
+  font-size:30px;
+  margin-bottom:22px;
 }
 
 .cardTitle{
+  font-weight:750;
   font-size:17px;
-  font-weight:700;
 }
 
 .cardSub{
+  color:#888;
   font-size:12px;
-  opacity:.5;
   margin-top:7px;
 }
 
@@ -360,7 +359,7 @@ input{
    NOTE EDITOR
 ========================= */
 
-.noteScreen{
+.notePage{
   width:100%;
   height:100%;
   display:flex;
@@ -368,269 +367,319 @@ input{
   overflow:hidden;
 }
 
-.noteTop{
+.noteTopbar{
   height:72px;
   min-height:72px;
+  padding:10px 14px;
   display:flex;
   align-items:center;
   gap:8px;
-  padding:10px 14px;
-  border-bottom:1px solid rgba(255,255,255,.65);
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,.7),
-      rgba(255,255,255,.38)
-    );
-  backdrop-filter:blur(25px);
-  -webkit-backdrop-filter:blur(25px);
   z-index:50;
 }
 
-.toolButton{
-  width:42px;
-  height:42px;
-  border:0;
-  border-radius:14px;
-  background:rgba(255,255,255,.55);
-  box-shadow:
-    0 5px 14px rgba(50,70,100,.08),
-    inset 0 1px 0 white;
-  cursor:pointer;
-  font-size:19px;
-  flex:none;
-}
-
-.toolButton.active{
-  background:
-    linear-gradient(
-      135deg,
-      rgba(110,170,255,.35),
-      rgba(190,130,255,.25)
-    );
-  box-shadow:
-    0 6px 18px rgba(80,130,220,.18),
-    inset 0 1px 0 white;
-}
-
-.toolButton:active{
-  transform:scale(.94);
-}
-
-.toolSeparator{
-  width:1px;
-  height:32px;
-  background:rgba(0,0,0,.08);
-  margin:0 3px;
-}
-
-.toolSlider{
-  width:90px;
-}
-
-.pageInfo{
-  font-size:13px;
-  opacity:.55;
-  margin-left:auto;
-  white-space:nowrap;
+.noteTitleBox{
+  flex:1;
+  min-width:0;
 }
 
 .noteTitle{
-  font-weight:700;
-  max-width:180px;
+  font-size:18px;
+  font-weight:760;
+  white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
-  white-space:nowrap;
 }
 
-/* =========================
-   CANVAS AREA
-========================= */
+.notePageInfo{
+  color:#888;
+  font-size:11px;
+  margin-top:2px;
+}
 
-.canvasViewport{
-  position:relative;
-  flex:1;
-  overflow:hidden;
+.toolBar{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  padding:7px;
+  border-radius:20px;
   background:
-    radial-gradient(circle at 30% 20%,rgba(255,255,255,.9),transparent 35%),
-    radial-gradient(circle at 80% 70%,rgba(230,220,255,.65),transparent 40%),
-    #f9fbff;
-  touch-action:none;
-  user-select:none;
-  -webkit-user-select:none;
+    rgba(255,255,255,.58);
+  border:1px solid rgba(255,255,255,.78);
+  box-shadow:
+    0 8px 30px rgba(40,60,90,.10),
+    inset 0 1px 0 rgba(255,255,255,.9);
+  backdrop-filter:blur(25px);
+  -webkit-backdrop-filter:blur(25px);
 }
 
-.canvasViewport.grid{
-  background-color:#fbfcff;
-  background-image:
+.tool{
+  width:40px;
+  height:40px;
+  border-radius:13px;
+  background:rgba(255,255,255,.40);
+  font-size:18px;
+  transition:.15s;
+}
+
+.tool.active{
+  background:
     linear-gradient(
-      rgba(100,130,170,.08) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(100,130,170,.08) 1px,
-      transparent 1px
+      135deg,
+      rgba(255,255,255,.95),
+      rgba(210,225,255,.70)
     );
-  background-size:40px 40px;
+  box-shadow:
+    0 5px 18px rgba(50,80,150,.18),
+    inset 0 1px 0 white;
 }
 
-.world{
-  position:absolute;
-  left:0;
-  top:0;
-  width:10000px;
-  height:7000px;
-  transform-origin:0 0;
+.tool:active{
+  transform:scale(.91);
 }
 
+.colorInput{
+  width:38px;
+  height:38px;
+  border:0;
+  padding:0;
+  border-radius:12px;
+  overflow:hidden;
+  background:none;
+}
+
+.sizeBox{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  padding:0 6px;
+}
+
+.sizeBox input{
+  width:70px;
+}
+
+.editor{
+  flex:1;
+  min-height:0;
+  position:relative;
+  overflow:hidden;
+
+  /* iPad入力をブラウザに奪わせない */
+  touch-action:none;
+  -webkit-user-select:none;
+  user-select:none;
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(255,255,255,.92),
+      rgba(246,248,252,.92)
+    );
+}
+
+/*
+  キャンバスは画面全体。
+  カメラ位置・ズームはJSで変える。
+*/
 #drawCanvas{
   position:absolute;
-  left:0;
-  top:0;
-  width:10000px;
-  height:7000px;
-  pointer-events:none;
+  inset:0;
+  width:100%;
+  height:100%;
+
+  touch-action:none;
+  -ms-touch-action:none;
+
+  cursor:crosshair;
 }
 
-#objectLayer{
+.objectLayer{
   position:absolute;
-  left:0;
-  top:0;
-  width:10000px;
-  height:7000px;
+  inset:0;
   pointer-events:none;
 }
-
-/* =========================
-   OBJECTS
-========================= */
 
 .noteObject{
   position:absolute;
   pointer-events:auto;
-  user-select:none;
-  -webkit-user-select:none;
-  cursor:move;
+  transform-origin:top left;
+  touch-action:none;
 }
 
 .textObject{
-  white-space:pre-wrap;
   min-width:80px;
-  min-height:30px;
-  padding:5px;
-  font-weight:500;
+  min-height:35px;
+  padding:6px 9px;
+  font-weight:600;
+  white-space:pre-wrap;
+  outline:none;
+  background:transparent;
 }
 
 .stickyObject{
-  min-width:150px;
+  min-width:160px;
   min-height:110px;
-  padding:15px;
+  padding:18px;
   border-radius:7px;
-  background:#fff49a;
+  background:#fff39a;
   box-shadow:
-    0 10px 25px rgba(80,70,30,.16);
+    0 10px 25px rgba(50,50,0,.18);
   white-space:pre-wrap;
+  outline:none;
+}
+
+.imageObject{
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,.18);
+}
+
+.imageObject img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
 }
 
 .objectSelected{
-  outline:2px solid rgba(50,130,255,.6);
-  outline-offset:4px;
+  outline:2px solid #4b8cff;
 }
 
 .resizeHandle{
   position:absolute;
-  right:-8px;
-  bottom:-8px;
-  width:17px;
-  height:17px;
+  width:18px;
+  height:18px;
+  right:-9px;
+  bottom:-9px;
   border-radius:50%;
   background:#fff;
-  border:2px solid #4994ff;
-  cursor:nwse-resize;
+  border:2px solid #4b8cff;
 }
 
-.editText{
-  width:100%;
-  height:100%;
-  min-height:40px;
-  border:0;
-  outline:0;
-  background:transparent;
-  resize:none;
-  font:inherit;
-}
-
-/* =========================
-   BOTTOM ZOOM
-========================= */
-
-.zoomControl{
-  position:absolute;
-  right:18px;
-  bottom:18px;
-  display:flex;
-  align-items:center;
-  gap:5px;
-  padding:6px;
-  border-radius:18px;
-  background:
-    rgba(255,255,255,.68);
-  border:1px solid rgba(255,255,255,.8);
-  box-shadow:
-    0 12px 30px rgba(60,80,110,.12),
-    inset 0 1px 0 white;
-  backdrop-filter:blur(25px);
-  -webkit-backdrop-filter:blur(25px);
-  z-index:30;
-}
-
-.zoomButton{
-  width:38px;
-  height:38px;
-  border:0;
-  border-radius:13px;
-  background:rgba(255,255,255,.5);
-  cursor:pointer;
-  font-size:20px;
-}
-
-.zoomValue{
-  min-width:52px;
-  text-align:center;
-  font-size:12px;
-  opacity:.6;
-}
-
-/* =========================
-   PAGE CONTROL
-========================= */
-
-.pageControl{
+/* ページ操作 */
+.pageBar{
   position:absolute;
   left:50%;
-  bottom:18px;
+  bottom:16px;
   transform:translateX(-50%);
+  z-index:60;
   display:flex;
   align-items:center;
-  gap:5px;
-  padding:6px;
+  gap:7px;
+  padding:7px;
   border-radius:18px;
-  background:rgba(255,255,255,.68);
-  border:1px solid rgba(255,255,255,.8);
+  background:rgba(255,255,255,.66);
+  border:1px solid rgba(255,255,255,.82);
   box-shadow:
-    0 12px 30px rgba(60,80,110,.12),
-    inset 0 1px 0 white;
+    0 10px 30px rgba(40,60,90,.13),
+    inset 0 1px 0 rgba(255,255,255,.95);
   backdrop-filter:blur(25px);
-  z-index:30;
+  -webkit-backdrop-filter:blur(25px);
 }
 
-.pageButton{
+.pageBtn{
   width:38px;
   height:38px;
-  border:0;
-  border-radius:13px;
-  background:rgba(255,255,255,.5);
+  border-radius:12px;
+  background:rgba(255,255,255,.55);
+}
+
+.pageNumber{
+  min-width:70px;
+  text-align:center;
+  font-size:12px;
+  color:#666;
+}
+
+.zoomBox{
+  position:absolute;
+  right:16px;
+  bottom:16px;
+  z-index:60;
+  display:flex;
+  gap:5px;
+  padding:6px;
+  border-radius:16px;
+  background:rgba(255,255,255,.65);
+  border:1px solid rgba(255,255,255,.8);
+  backdrop-filter:blur(20px);
+}
+
+.zoomBtn{
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  background:rgba(255,255,255,.55);
+}
+
+/* =========================
+   LOGIN
+========================= */
+
+.login{
+  position:fixed;
+  inset:0;
+  z-index:999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:
+    radial-gradient(circle at 20% 20%,#b9ddff,transparent 40%),
+    radial-gradient(circle at 80% 20%,#f3c8ff,transparent 40%),
+    radial-gradient(circle at 50% 100%,#d5eaff,transparent 45%),
+    #edf2f8;
+}
+
+.loginCard{
+  width:min(430px,100%);
+  padding:35px;
+  border-radius:32px;
+  text-align:center;
+}
+
+.loginIcon{
+  font-size:55px;
+  margin-bottom:12px;
+}
+
+.loginTitle{
+  font-size:30px;
+  font-weight:800;
+}
+
+.loginSub{
+  color:#888;
+  font-size:13px;
+  margin:8px 0 25px;
+}
+
+.loginInput{
+  width:100%;
+  height:50px;
+  margin:6px 0;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.85);
+  outline:none;
+  padding:0 16px;
+  background:rgba(255,255,255,.62);
+}
+
+.loginButton{
+  width:100%;
+  height:52px;
+  margin-top:10px;
+  border-radius:17px;
+  color:white;
+  font-weight:700;
+  background:
+    linear-gradient(
+      135deg,
+      #3d86ff,
+      #7568ff
+    );
+  box-shadow:
+    0 12px 30px rgba(70,100,230,.28);
 }
 
 /* =========================
@@ -639,119 +688,191 @@ input{
 
 .mobileMenu{
   display:none;
-  position:absolute;
-  left:12px;
-  top:12px;
-  width:44px;
-  height:44px;
-  border:0;
-  border-radius:15px;
-  background:rgba(255,255,255,.72);
-  z-index:100;
 }
 
 @media(max-width:800px){
 
-  #app{
+  .app{
     padding:8px;
   }
 
   .sidebar{
-    position:absolute;
+    position:fixed;
     left:8px;
     top:8px;
     bottom:8px;
     height:auto;
-    transform:translateX(-120%);
-    transition:.25s ease;
-    z-index:100;
+    transform:translateX(-110%);
+    transition:.25s;
+    box-shadow:0 20px 70px rgba(20,40,70,.25);
   }
 
   .sidebar.open{
     transform:translateX(0);
   }
 
-  .main{
-    width:100%;
-  }
-
   .mobileMenu{
-    display:block;
+    display:flex;
+    position:absolute;
+    left:14px;
+    top:14px;
+    z-index:100;
+    width:46px;
+    height:46px;
+    border-radius:15px;
+    background:rgba(255,255,255,.72);
+    box-shadow:0 8px 25px rgba(0,0,0,.10);
   }
 
-  .content{
+  .pageInner{
     padding:25px 20px;
   }
 
+  .noteTopbar{
+    padding-left:62px;
+  }
+
+  .toolBar{
+    max-width:55vw;
+    overflow:auto;
+  }
+
+  .tool{
+    min-width:40px;
+  }
+
+  .sizeBox{
+    display:none;
+  }
+
+  .cardGrid{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:520px){
+
+  .cardGrid{
+    grid-template-columns:1fr;
+  }
+
   .headerTitle{
-    font-size:26px;
+    font-size:24px;
   }
-
-  .noteTop{
-    padding-left:58px;
-    overflow-x:auto;
-  }
-
-  .pageInfo{
-    margin-left:4px;
-  }
-}
-
-/* =========================
-   SETTINGS
-========================= */
-
-.settingBox{
-  padding:22px;
-  border-radius:22px;
-  background:rgba(255,255,255,.55);
-  margin-bottom:15px;
-}
-
-.settingButton{
-  padding:13px 18px;
-  border:0;
-  border-radius:15px;
-  background:rgba(255,255,255,.7);
-  margin:4px;
-  cursor:pointer;
 }
 </style>
 </head>
 
 <body>
 
-<div id="app">
+<!-- =========================
+     LOGIN
+========================= -->
+
+<div id="loginScreen" class="login">
+  <div class="loginCard glass">
+
+    <div class="loginIcon">📚</div>
+
+    <div class="loginTitle">
+      Destination Note
+    </div>
+
+    <div class="loginSub">
+      自分だけの勉強ノート
+    </div>
+
+    <input
+      id="loginName"
+      class="loginInput"
+      placeholder="名前"
+      autocomplete="username">
+
+    <input
+      id="loginPassword"
+      class="loginInput"
+      type="password"
+      placeholder="パスワード"
+      autocomplete="current-password">
+
+    <button
+      id="loginButton"
+      class="loginButton">
+      はじめる
+    </button>
+
+  </div>
+</div>
+
+
+<!-- =========================
+     APP
+========================= -->
+
+<div id="app" class="app" style="display:none">
 
   <!-- SIDEBAR -->
-  <aside class="sidebar glass" id="sidebar">
+
+  <aside id="sidebar" class="sidebar glass">
 
     <div class="brand">
       <div class="brandIcon">📚</div>
+
       <div>
-        <div class="brandTitle">Destination Note</div>
-        <div class="brandSub" id="userName">大神</div>
+        <div class="brandTitle">
+          Destination Note
+        </div>
+
+        <div
+          id="brandUser"
+          class="brandUser">
+        </div>
       </div>
     </div>
 
-    <div class="tree" id="tree"></div>
+    <div
+      id="tree"
+      class="tree">
+    </div>
 
     <div class="sidebarBottom">
-      <button class="sideButton" id="addFolderBtn">＋ タブ</button>
-      <button class="sideButton" id="addNoteBtn">＋ ノート</button>
-      <button class="sideButton settingsButton" id="settingsBtn">⚙️</button>
+
+      <button
+        id="addFolderButton"
+        class="bottomButton">
+        ＋ タブ
+      </button>
+
+      <button
+        id="addNoteButton"
+        class="bottomButton">
+        ＋ ノート
+      </button>
+
+      <button
+        id="settingsButton"
+        class="bottomButton">
+        ⚙️
+      </button>
+
     </div>
 
   </aside>
 
+
   <!-- MAIN -->
-  <main class="main glass" id="main"></main>
+
+  <main
+    id="main"
+    class="main glass">
+  </main>
 
 </div>
 
-<button class="mobileMenu" id="mobileMenu">☰</button>
 
 <script>
+"use strict";
+
 /* =========================================================
    STORAGE
 ========================================================= */
@@ -759,9 +880,10 @@ input{
 const STORAGE_KEY = "destinationNote_v1";
 
 let data = {
-  name:"大神",
+  name:"",
   password:"",
   totalSeconds:0,
+
   folders:[
     {
       id:"root",
@@ -771,11 +893,58 @@ let data = {
       created:Date.now()
     }
   ],
+
   notes:[],
+
   settings:{
     dark:false
   }
 };
+
+let selectedFolderId = "root";
+let currentFolderId = "root";
+let selectedNoteId = null;
+
+let expandedFolders =
+  new Set(["root"]);
+
+let currentPage = 0;
+
+let currentTool = "pen";
+
+let currentColor = "#111111";
+
+let currentSize = 3;
+
+let camera = {
+  x:0,
+  y:0,
+  zoom:1
+};
+
+let pointers = new Map();
+
+let drawing = false;
+let moving = false;
+
+let activePointerId = null;
+
+let lastWorldPoint = null;
+
+let panStart = null;
+
+let pinchStart = null;
+
+let selectedObjectId = null;
+
+let animationFrame = null;
+
+let studyStart = null;
+
+
+/* =========================================================
+   SAVE / LOAD
+========================================================= */
 
 function uid(prefix="id"){
   return prefix + "_" +
@@ -784,47 +953,86 @@ function uid(prefix="id"){
     Math.random().toString(36).slice(2,8);
 }
 
-function save(){
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify(data)
-  );
+function safeText(value,fallback=""){
+  if(
+    value === undefined ||
+    value === null ||
+    value === "undefined" ||
+    value === "null"
+  ){
+    return fallback;
+  }
+
+  return String(value);
 }
 
-function load(){
+function normalizeData(){
 
-  try{
-
-    const raw =
-      localStorage.getItem(STORAGE_KEY);
-
-    if(raw){
-
-      const old =
-        JSON.parse(raw);
-
-      data = {
-        ...data,
-        ...old
-      };
-
-    }
-
-  }catch(e){
-
-    console.error(e);
-
+  if(!data || typeof data !== "object"){
+    data = {};
   }
 
   if(!Array.isArray(data.folders)){
-    data.folders=[];
+    data.folders = [];
   }
 
   if(!Array.isArray(data.notes)){
-    data.notes=[];
+    data.notes = [];
   }
 
-  if(!data.folders.find(x=>x.id==="root")){
+  if(!data.settings){
+    data.settings = {};
+  }
+
+  if(!data.totalSeconds){
+    data.totalSeconds = 0;
+  }
+
+  /*
+    フォルダを修正
+  */
+
+  data.folders =
+    data.folders.map((folder,index)=>{
+
+      return {
+        id:safeText(
+          folder.id,
+          uid("folder")
+        ),
+
+        name:safeText(
+          folder.name,
+          index === 0
+            ? "マイノート"
+            : "新しいタブ"
+        ),
+
+        icon:safeText(
+          folder.icon,
+          "📁"
+        ),
+
+        parent:
+          folder.parent === undefined
+            ? (index === 0 ? null : "root")
+            : folder.parent,
+
+        created:
+          folder.created || Date.now()
+      };
+
+    });
+
+  /*
+    rootがなければ作る
+  */
+
+  if(
+    !data.folders.some(
+      f=>f.id==="root"
+    )
+  ){
 
     data.folders.unshift({
       id:"root",
@@ -836,135 +1044,409 @@ function load(){
 
   }
 
-  /* 古いノートをなるべく維持 */
+  /*
+    ノートを修正
+  */
 
-  data.notes.forEach(note=>{
+  data.notes =
+    data.notes.map((note,index)=>{
 
-    if(!note.id){
-      note.id=uid("note");
-    }
+      let folderId =
+        note.folderId ||
+        note.parent ||
+        "root";
 
-    if(!note.folderId){
-      note.folderId="root";
-    }
+      if(
+        !data.folders.some(
+          f=>f.id===folderId
+        )
+      ){
+        folderId = "root";
+      }
 
-    if(!note.pages){
+      let pages =
+        Array.isArray(note.pages)
+          ? note.pages
+          : [];
 
-      note.pages=[
-        {
+      if(pages.length===0){
+
+        pages = [{
           strokes:[],
           elements:[]
-        }
-      ];
+        }];
 
-    }
-
-    note.pages.forEach(page=>{
-
-      if(!Array.isArray(page.strokes)){
-        page.strokes=[];
       }
 
-      if(!Array.isArray(page.elements)){
-        page.elements=[];
-      }
+      pages =
+        pages.map(page=>({
+
+          strokes:
+            Array.isArray(page.strokes)
+              ? page.strokes
+              : [],
+
+          elements:
+            Array.isArray(page.elements)
+              ? page.elements
+              : []
+
+        }));
+
+      return {
+
+        id:safeText(
+          note.id,
+          uid("note")
+        ),
+
+        name:safeText(
+          note.name ||
+          note.title,
+          "新しいノート"
+        ),
+
+        folderId,
+
+        created:
+          note.created || Date.now(),
+
+        pages
+
+      };
 
     });
 
-  });
+}
+
+function save(){
+
+  try{
+
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify(data)
+    );
+
+  }catch(error){
+
+    console.error(
+      "保存エラー",
+      error
+    );
+
+    alert(
+      "保存できませんでした。\n"+
+      "写真を大量に入れている場合は容量不足の可能性があります。"
+    );
+
+  }
+
+}
+
+function load(){
+
+  try{
+
+    const raw =
+      localStorage.getItem(
+        STORAGE_KEY
+      );
+
+    if(raw){
+
+      const parsed =
+        JSON.parse(raw);
+
+      if(parsed){
+
+        data = parsed;
+
+      }
+
+    }
+
+  }catch(error){
+
+    console.error(
+      "読み込みエラー",
+      error
+    );
+
+  }
+
+  normalizeData();
 
   save();
+
 }
 
-load();
 
 /* =========================================================
-   STATE
+   LOGIN
 ========================================================= */
 
-let currentFolderId="root";
-let selectedFolderId="root";
-let currentNoteId=null;
+function login(){
 
-let expandedFolders =
-  new Set(["root"]);
+  const name =
+    document
+      .getElementById("loginName")
+      .value
+      .trim();
 
-let currentPage=0;
+  const password =
+    document
+      .getElementById("loginPassword")
+      .value;
 
-let tool="pencil";
+  if(!name){
 
-let color="#111111";
-let brushSize=4;
+    alert("名前を入力してね");
 
-let zoom=1;
+    return;
 
-let cameraX=0;
-let cameraY=0;
+  }
 
-let drawing=false;
-let currentStroke=null;
+  /*
+    初回
+  */
 
-let pointers=new Map();
+  if(!data.name){
 
-let pinchStartDistance=null;
-let pinchStartZoom=1;
-let pinchStartCenter=null;
-let pinchStartCamera=null;
+    data.name = name;
+    data.password = password;
 
-let autosaveTimer=null;
+    save();
 
-/* =========================================================
-   ELEMENTS
-========================================================= */
+  }else{
 
-const sidebar =
-  document.getElementById("sidebar");
+    if(
+      data.name !== name ||
+      data.password !== password
+    ){
 
-const tree =
-  document.getElementById("tree");
+      alert(
+        "名前またはパスワードが違います"
+      );
 
-const main =
-  document.getElementById("main");
+      return;
 
-document
-  .getElementById("userName")
-  .textContent =
-  data.name || "ユーザー";
+    }
 
-/* =========================================================
-   TREE
-========================================================= */
+  }
 
-function getFolder(id){
-  return data.folders.find(x=>x.id===id);
-}
+  document
+    .getElementById("loginScreen")
+    .style.display="none";
 
-function getNote(id){
-  return data.notes.find(x=>x.id===id);
-}
+  document
+    .getElementById("app")
+    .style.display="flex";
 
-function childrenOf(folderId){
+  document
+    .getElementById("brandUser")
+    .textContent=data.name;
 
-  return data.folders.filter(
-    x=>x.parent===folderId
+  startStudyTimer();
+
+  renderTree();
+
+  openFolder(
+    selectedFolderId
   );
 
 }
 
-function notesOf(folderId){
+document
+  .getElementById("loginButton")
+  .addEventListener(
+    "click",
+    login
+  );
+
+
+/* =========================================================
+   STUDY TIME
+========================================================= */
+
+function startStudyTimer(){
+
+  studyStart = Date.now();
+
+  document.addEventListener(
+    "visibilitychange",
+    ()=>{
+
+      if(document.hidden){
+
+        flushStudyTime();
+
+      }else{
+
+        studyStart = Date.now();
+
+      }
+
+    }
+  );
+
+  setInterval(
+    updateStudyDisplay,
+    1000
+  );
+
+}
+
+function flushStudyTime(){
+
+  if(!studyStart){
+    return;
+  }
+
+  const elapsed =
+    Math.floor(
+      (Date.now()-studyStart)/1000
+    );
+
+  if(elapsed>0){
+
+    data.totalSeconds += elapsed;
+
+    studyStart = Date.now();
+
+    save();
+
+  }
+
+}
+
+function updateStudyDisplay(){
+
+  if(
+    document.hidden ||
+    !studyStart
+  ){
+    return;
+  }
+
+  const live =
+    Math.floor(
+      (Date.now()-studyStart)/1000
+    );
+
+  const total =
+    data.totalSeconds + live;
+
+  const el =
+    document.getElementById(
+      "studyTime"
+    );
+
+  if(el){
+
+    el.textContent =
+      formatTime(total);
+
+  }
+
+}
+
+function formatTime(seconds){
+
+  const hours =
+    Math.floor(seconds/3600);
+
+  const minutes =
+    Math.floor(
+      (seconds%3600)/60
+    );
+
+  return hours+"時間 "+
+         minutes+"分";
+
+}
+
+function getRank(seconds){
+
+  const h =
+    seconds/3600;
+
+  if(h<10)
+    return ["ブロンズ","🥉"];
+
+  if(h<30)
+    return ["シルバー","🥈"];
+
+  if(h<60)
+    return ["ゴールド","🥇"];
+
+  if(h<100)
+    return ["プラチナ","💎"];
+
+  if(h<200)
+    return ["ビジネス","💼"];
+
+  if(h<500)
+    return ["ファースト","🚄"];
+
+  return ["グランクラス","🚅"];
+
+}
+
+
+/* =========================================================
+   SIDEBAR TREE
+========================================================= */
+
+function getFolder(id){
+
+  return data.folders.find(
+    f=>f.id===id
+  );
+
+}
+
+function getNote(id){
+
+  return data.notes.find(
+    n=>n.id===id
+  );
+
+}
+
+function getChildren(parentId){
+
+  return data.folders.filter(
+    f=>
+      (f.parent || null) === parentId
+  );
+
+}
+
+function getFolderNotes(folderId){
 
   return data.notes.filter(
-    x=>x.folderId===folderId
+    n=>n.folderId===folderId
   );
 
 }
 
 function renderTree(){
 
+  const tree =
+    document.getElementById("tree");
+
   tree.innerHTML="";
 
+  const root =
+    getFolder("root");
+
+  if(!root){
+    return;
+  }
+
   renderFolderTree(
-    getFolder("root"),
+    root,
     0,
     tree
   );
@@ -974,40 +1456,57 @@ function renderTree(){
 function renderFolderTree(
   folder,
   depth,
-  parent
+  parentEl
 ){
 
-  if(!folder) return;
+  const children =
+    getChildren(folder.id);
 
-  const hasChildren =
-    childrenOf(folder.id).length>0 ||
-    notesOf(folder.id).length>0;
+  const notes =
+    getFolderNotes(folder.id);
 
   const row =
     document.createElement("div");
 
   row.className="treeRow";
 
-  if(selectedFolderId===folder.id){
-    row.classList.add("selected");
+  if(
+    selectedFolderId===folder.id
+  ){
+
+    row.classList.add(
+      "selected"
+    );
+
   }
 
   row.style.paddingLeft =
-    (depth*20)+"px";
+    (8 + depth*18)+"px";
+
+  /*
+    三角
+  */
 
   const arrow =
     document.createElement("div");
 
   arrow.className="treeArrow";
 
-  arrow.textContent =
-    hasChildren
-      ? (
-          expandedFolders.has(folder.id)
-            ? "⌄"
-            : "›"
-        )
-      : "";
+  if(
+    children.length ||
+    notes.length
+  ){
+
+    arrow.textContent =
+      expandedFolders.has(folder.id)
+        ? "⌄"
+        : "›";
+
+  }
+
+  /*
+    アイコン
+  */
 
   const icon =
     document.createElement("div");
@@ -1017,29 +1516,37 @@ function renderFolderTree(
   icon.textContent =
     folder.icon || "📁";
 
+  /*
+    名前
+  */
+
   const name =
     document.createElement("div");
 
   name.className="treeName";
 
   name.textContent =
-    folder.name;
-
-  row.appendChild(arrow);
-  row.appendChild(icon);
-  row.appendChild(name);
+    safeText(
+      folder.name,
+      "新しいタブ"
+    );
 
   /*
-    ★重要
-    三角だけではなく
-    アイコン・文字・行全体をクリック可能
+    ★ここ重要
+    行全体をクリック可能にする
   */
+
+  row.append(
+    arrow,
+    icon,
+    name
+  );
 
   row.addEventListener(
     "click",
-    e=>{
+    event=>{
 
-      e.stopPropagation();
+      event.stopPropagation();
 
       selectedFolderId =
         folder.id;
@@ -1047,7 +1554,17 @@ function renderFolderTree(
       currentFolderId =
         folder.id;
 
-      if(hasChildren){
+      selectedNoteId = null;
+
+      /*
+        文字・アイコン・三角
+        どこを押しても開く
+      */
+
+      if(
+        children.length ||
+        notes.length
+      ){
 
         if(
           expandedFolders.has(
@@ -1078,66 +1595,58 @@ function renderFolderTree(
     }
   );
 
+  /*
+    長押し / 右クリックで名前変更
+  */
+
   row.addEventListener(
-    "dblclick",
-    e=>{
+    "contextmenu",
+    event=>{
 
-      e.stopPropagation();
+      event.preventDefault();
 
-      const n =
-        prompt(
-          "タブ名を変更",
-          folder.name
-        );
-
-      if(
-        n &&
-        n.trim()
-      ){
-
-        folder.name=n.trim();
-
-        save();
-        renderTree();
-
-        if(
-          currentFolderId===folder.id
-        ){
-          openFolder(folder.id);
-        }
-
-      }
+      renameFolder(
+        folder.id
+      );
 
     }
   );
 
-  parent.appendChild(row);
+  parentEl.appendChild(row);
+
+  /*
+    子階層
+  */
 
   if(
-    expandedFolders.has(folder.id)
+    expandedFolders.has(
+      folder.id
+    )
   ){
 
-    childrenOf(folder.id)
-      .forEach(child=>{
+    children.forEach(
+      child=>{
 
         renderFolderTree(
           child,
           depth+1,
-          parent
+          parentEl
         );
 
-      });
+      }
+    );
 
-    notesOf(folder.id)
-      .forEach(note=>{
+    notes.forEach(
+      note=>{
 
         renderNoteTree(
           note,
           depth+1,
-          parent
+          parentEl
         );
 
-      });
+      }
+    );
 
   }
 
@@ -1146,26 +1655,32 @@ function renderFolderTree(
 function renderNoteTree(
   note,
   depth,
-  parent
+  parentEl
 ){
 
   const row =
     document.createElement("div");
 
-  row.className=
+  row.className =
     "treeRow treeNote";
 
-  if(currentNoteId===note.id){
-    row.classList.add("selected");
+  row.style.paddingLeft =
+    (8 + depth*18)+"px";
+
+  if(
+    selectedNoteId===note.id
+  ){
+
+    row.classList.add(
+      "selected"
+    );
+
   }
 
-  row.style.paddingLeft =
-    (depth*20)+"px";
-
-  const blank =
+  const arrow =
     document.createElement("div");
 
-  blank.className="treeArrow";
+  arrow.className="treeArrow";
 
   const icon =
     document.createElement("div");
@@ -1180,22 +1695,32 @@ function renderNoteTree(
   name.className="treeName";
 
   name.textContent =
-    note.name || "新しいノート";
+    safeText(
+      note.name,
+      "新しいノート"
+    );
 
-  row.appendChild(blank);
-  row.appendChild(icon);
-  row.appendChild(name);
+  row.append(
+    arrow,
+    icon,
+    name
+  );
+
+  /*
+    ノートは文字部分も含めて
+    行全体をクリック
+  */
 
   row.addEventListener(
     "click",
-    e=>{
+    event=>{
 
-      e.stopPropagation();
+      event.stopPropagation();
 
-      currentNoteId =
+      selectedNoteId =
         note.id;
 
-      currentFolderId =
+      selectedFolderId =
         note.folderId;
 
       renderTree();
@@ -1207,8 +1732,23 @@ function renderNoteTree(
     }
   );
 
-  parent.appendChild(row);
+  row.addEventListener(
+    "contextmenu",
+    event=>{
+
+      event.preventDefault();
+
+      renameNote(
+        note.id
+      );
+
+    }
+  );
+
+  parentEl.appendChild(row);
+
 }
+
 
 /* =========================================================
    FOLDER SCREEN
@@ -1219,325 +1759,515 @@ function openFolder(id){
   const folder =
     getFolder(id);
 
-  if(!folder) return;
+  if(!folder){
+    return;
+  }
 
   currentFolderId=id;
   selectedFolderId=id;
-  currentNoteId=null;
+  selectedNoteId=null;
 
-  renderTree();
-
-  const folders =
-    childrenOf(id);
+  const children =
+    getChildren(id);
 
   const notes =
-    notesOf(id);
+    getFolderNotes(id);
 
-  main.innerHTML=`
-    <div class="screen">
-      <div class="content">
+  const main =
+    document.getElementById("main");
 
-        <div class="header">
+  main.innerHTML="";
 
-          ${
-            id!=="root"
-            ? `
-              <button
-                class="backButton"
-                id="backFolder"
-              >←</button>
-            `
-            : ""
+  const page =
+    document.createElement("div");
+
+  page.className="page";
+
+  const inner =
+    document.createElement("div");
+
+  inner.className="pageInner";
+
+  const header =
+    document.createElement("div");
+
+  header.className="header";
+
+  /*
+    root以外なら戻る
+  */
+
+  if(folder.parent){
+
+    const back =
+      document.createElement("button");
+
+    back.className="backButton";
+
+    back.textContent="←";
+
+    back.addEventListener(
+      "click",
+      ()=>{
+        openFolder(
+          folder.parent
+        );
+      }
+    );
+
+    header.appendChild(back);
+
+  }
+
+  const icon =
+    document.createElement("div");
+
+  icon.className="headerIcon";
+
+  icon.textContent =
+    folder.icon || "📁";
+
+  const titleWrap =
+    document.createElement("div");
+
+  const title =
+    document.createElement("div");
+
+  title.className="headerTitle";
+
+  title.textContent =
+    safeText(
+      folder.name,
+      "新しいタブ"
+    );
+
+  const sub =
+    document.createElement("div");
+
+  sub.className="headerSub";
+
+  sub.textContent =
+    children.length+
+    " タブ / "+
+    notes.length+
+    " ノート";
+
+  titleWrap.append(
+    title,
+    sub
+  );
+
+  header.append(
+    icon,
+    titleWrap
+  );
+
+  inner.appendChild(header);
+
+
+  /* タブ */
+
+  if(children.length){
+
+    const section =
+      document.createElement("div");
+
+    section.className="sectionTitle";
+
+    section.textContent="タブ";
+
+    inner.appendChild(section);
+
+    const grid =
+      document.createElement("div");
+
+    grid.className="cardGrid";
+
+    children.forEach(
+      child=>{
+
+        const card =
+          document.createElement("button");
+
+        card.className="card";
+
+        const count =
+          getFolderNotes(
+            child.id
+          ).length;
+
+        const childCount =
+          getChildren(
+            child.id
+          ).length;
+
+        card.innerHTML =
+          `
+          <div class="cardIcon">
+            ${child.icon || "📁"}
+          </div>
+
+          <div class="cardTitle">
+            ${escapeHtml(
+              safeText(
+                child.name,
+                "新しいタブ"
+              )
+            )}
+          </div>
+
+          <div class="cardSub">
+            ${childCount} タブ /
+            ${count} ノート
+          </div>
+          `;
+
+        card.addEventListener(
+          "click",
+          ()=>{
+            selectedFolderId=
+              child.id;
+
+            expandedFolders.add(
+              child.id
+            );
+
+            renderTree();
+
+            openFolder(
+              child.id
+            );
+
           }
+        );
 
-          <div class="headerIcon">
-            ${folder.icon || "📁"}
-          </div>
+        grid.appendChild(card);
 
-          <div>
-            <div class="headerTitle">
-              ${escapeHTML(folder.name)}
-            </div>
-
-            <div class="headerSub">
-              ${folders.length} タブ / ${notes.length} ノート
-            </div>
-          </div>
-
-        </div>
-
-        ${
-          folders.length
-          ? `
-            <div class="sectionTitle">
-              タブ
-            </div>
-
-            <div
-              class="cardGrid"
-              id="folderCards"
-            ></div>
-          `
-          : ""
-        }
-
-        ${
-          notes.length
-          ? `
-            <div class="sectionTitle">
-              ノート
-            </div>
-
-            <div
-              class="cardGrid"
-              id="noteCards"
-            ></div>
-          `
-          : ""
-        }
-
-        ${
-          !folders.length && !notes.length
-          ? `
-            <div
-              style="
-                opacity:.45;
-                padding:30px 5px;
-              "
-            >
-              ＋ タブ または ＋ ノート
-              から作成できます
-            </div>
-          `
-          : ""
-        }
-
-      </div>
-    </div>
-  `;
-
-  if(id!=="root"){
-
-    document
-      .getElementById("backFolder")
-      ?.addEventListener(
-        "click",
-        ()=>{
-
-          const parent =
-            folder.parent || "root";
-
-          openFolder(parent);
-
-        }
-      );
-
-  }
-
-  const folderCards =
-    document.getElementById(
-      "folderCards"
+      }
     );
 
-  if(folderCards){
-
-    folders.forEach(child=>{
-
-      const card =
-        createFolderCard(child);
-
-      folderCards.appendChild(card);
-
-    });
+    inner.appendChild(grid);
 
   }
 
-  const noteCards =
-    document.getElementById(
-      "noteCards"
+
+  /* ノート */
+
+  const noteSection =
+    document.createElement("div");
+
+  noteSection.className="sectionTitle";
+
+  noteSection.textContent="ノート";
+
+  inner.appendChild(
+    noteSection
+  );
+
+  if(notes.length){
+
+    const grid =
+      document.createElement("div");
+
+    grid.className="cardGrid";
+
+    notes.forEach(
+      note=>{
+
+        const card =
+          document.createElement("button");
+
+        card.className="card";
+
+        const pages =
+          Array.isArray(note.pages)
+            ? note.pages.length
+            : 1;
+
+        card.innerHTML =
+          `
+          <div class="cardIcon">
+            📝
+          </div>
+
+          <div class="cardTitle">
+            ${escapeHtml(
+              safeText(
+                note.name,
+                "新しいノート"
+              )
+            )}
+          </div>
+
+          <div class="cardSub">
+            ${pages} ページ
+          </div>
+          `;
+
+        card.addEventListener(
+          "click",
+          ()=>{
+            openNote(
+              note.id
+            );
+          }
+        );
+
+        grid.appendChild(card);
+
+      }
     );
 
-  if(noteCards){
+    inner.appendChild(grid);
 
-    notes.forEach(note=>{
+  }else{
 
-      const card =
-        createNoteCard(note);
+    const empty =
+      document.createElement("div");
 
-      noteCards.appendChild(card);
+    empty.style.color="#888";
+    empty.style.padding="20px 0";
 
-    });
+    empty.textContent =
+      "このタブにはまだノートがありません。";
+
+    inner.appendChild(
+      empty
+    );
 
   }
 
+  page.appendChild(inner);
+
+  main.appendChild(page);
+
 }
 
-function createFolderCard(folder){
-
-  const card =
-    document.createElement("div");
-
-  card.className="card";
-
-  const childCount =
-    childrenOf(folder.id).length;
-
-  const noteCount =
-    notesOf(folder.id).length;
-
-  card.innerHTML=`
-    <div class="cardIcon">
-      ${folder.icon || "📁"}
-    </div>
-
-    <div class="cardTitle">
-      ${escapeHTML(folder.name)}
-    </div>
-
-    <div class="cardSub">
-      ${childCount} タブ / ${noteCount} ノート
-    </div>
-  `;
-
-  card.addEventListener(
-    "click",
-    ()=>{
-      openFolder(folder.id);
-    }
-  );
-
-  return card;
-}
-
-function createNoteCard(note){
-
-  const card =
-    document.createElement("div");
-
-  card.className="card";
-
-  card.innerHTML=`
-    <div class="cardIcon">📝</div>
-
-    <div class="cardTitle">
-      ${escapeHTML(note.name || "新しいノート")}
-    </div>
-
-    <div class="cardSub">
-      ${(note.pages?.length || 1)} ページ
-    </div>
-  `;
-
-  card.addEventListener(
-    "click",
-    ()=>{
-      openNote(note.id);
-    }
-  );
-
-  return card;
-}
 
 /* =========================================================
-   CREATE FOLDER
+   CREATE FOLDER / NOTE
 ========================================================= */
 
 function createFolder(){
 
-  const name =
+  const parent =
+    selectedFolderId ||
+    currentFolderId ||
+    "root";
+
+  let name =
     prompt(
-      "タブ名を入力",
-      "新しいタブ"
+      "タブの名前を入力"
     );
 
-  if(
-    !name ||
-    !name.trim()
-  ){
+  if(name===null){
     return;
   }
 
-  const parent =
-    currentFolderId || "root";
+  name =
+    name.trim();
 
-  const folder={
+  if(!name){
+    name="新しいタブ";
+  }
+
+  const folder = {
+
     id:uid("folder"),
-    name:name.trim(),
+
+    name,
+
     icon:"📁",
-    parent:parent,
+
+    parent,
+
     created:Date.now()
+
   };
 
-  data.folders.push(folder);
+  data.folders.push(
+    folder
+  );
 
-  expandedFolders.add(parent);
-  expandedFolders.add(folder.id);
+  expandedFolders.add(
+    parent
+  );
 
-  selectedFolderId=folder.id;
-  currentFolderId=folder.id;
+  expandedFolders.add(
+    folder.id
+  );
+
+  selectedFolderId =
+    folder.id;
+
+  currentFolderId =
+    folder.id;
 
   save();
 
   renderTree();
-  openFolder(folder.id);
+
+  openFolder(
+    folder.id
+  );
 
 }
-
-/* =========================================================
-   CREATE NOTE
-========================================================= */
 
 function createNote(){
 
   /*
-    ★現在開いているタブの中に作る
-    内側のタブでも同じ
+    ★重要
+    現在選択しているフォルダに作る。
+    内側のフォルダでもOK。
   */
 
   const folderId =
-    currentFolderId || "root";
-
-  const name =
-    prompt(
-      "ノート名を入力",
-      "新しいノート"
-    );
+    selectedFolderId ||
+    currentFolderId ||
+    "root";
 
   if(
-    !name ||
-    !name.trim()
+    !data.folders.some(
+      f=>f.id===folderId
+    )
   ){
+
+    selectedFolderId="root";
+
+  }
+
+  let name =
+    prompt(
+      "ノートの名前を入力"
+    );
+
+  if(name===null){
     return;
   }
 
-  const note={
+  name =
+    name.trim();
+
+  if(!name){
+    name="新しいノート";
+  }
+
+  const note = {
+
     id:uid("note"),
-    name:name.trim(),
-    folderId:folderId,
+
+    name,
+
+    folderId,
+
+    created:Date.now(),
+
     pages:[
       {
         strokes:[],
         elements:[]
       }
-    ],
-    created:Date.now()
+    ]
+
   };
 
-  data.notes.push(note);
+  data.notes.push(
+    note
+  );
 
-  expandedFolders.add(folderId);
+  selectedNoteId =
+    note.id;
 
-  currentNoteId=note.id;
+  selectedFolderId =
+    folderId;
+
+  currentFolderId =
+    folderId;
+
+  expandedFolders.add(
+    folderId
+  );
 
   save();
 
   renderTree();
-  openNote(note.id);
+
+  openNote(
+    note.id
+  );
 
 }
 
+
 /* =========================================================
-   NOTE OPEN
+   RENAME
+========================================================= */
+
+function renameFolder(id){
+
+  const folder =
+    getFolder(id);
+
+  if(!folder){
+    return;
+  }
+
+  const name =
+    prompt(
+      "タブ名を変更",
+      folder.name
+    );
+
+  if(name===null){
+    return;
+  }
+
+  folder.name =
+    name.trim() ||
+    "新しいタブ";
+
+  save();
+
+  renderTree();
+
+  openFolder(id);
+
+}
+
+function renameNote(id){
+
+  const note =
+    getNote(id);
+
+  if(!note){
+    return;
+  }
+
+  const name =
+    prompt(
+      "ノート名を変更",
+      note.name
+    );
+
+  if(name===null){
+    return;
+  }
+
+  note.name =
+    name.trim() ||
+    "新しいノート";
+
+  save();
+
+  renderTree();
+
+  openNote(id);
+
+}
+
+
+/* =========================================================
+   NOTE EDITOR
 ========================================================= */
 
 function openNote(id){
@@ -1545,1415 +2275,2434 @@ function openNote(id){
   const note =
     getNote(id);
 
-  if(!note) return;
+  if(!note){
+    return;
+  }
 
-  currentNoteId=id;
-  currentFolderId=note.folderId;
-  selectedFolderId=note.folderId;
+  selectedNoteId=id;
+  selectedFolderId=
+    note.folderId;
 
-  currentPage=0;
+  currentFolderId=
+    note.folderId;
 
-  zoom=1;
-  cameraX=0;
-  cameraY=0;
+  if(!Array.isArray(note.pages)){
+    note.pages=[];
+  }
+
+  if(note.pages.length===0){
+
+    note.pages.push({
+      strokes:[],
+      elements:[]
+    });
+
+  }
+
+  currentPage =
+    Math.min(
+      currentPage,
+      note.pages.length-1
+    );
+
+  save();
 
   renderTree();
 
-  main.innerHTML=`
-    <div class="noteScreen">
-
-      <div class="noteTop">
-
-        <button
-          class="toolButton"
-          id="noteBack"
-        >←</button>
-
-        <div class="noteTitle">
-          📝 ${escapeHTML(note.name)}
-        </div>
-
-        <div class="toolSeparator"></div>
-
-        <button
-          class="toolButton"
-          data-tool="pencil"
-          title="ペン"
-        >✏️</button>
-
-        <button
-          class="toolButton"
-          data-tool="highlighter"
-          title="蛍光ペン"
-        >🖍️</button>
-
-        <button
-          class="toolButton"
-          data-tool="pixel"
-          title="ピクセル消しゴム"
-        >🧽</button>
-
-        <button
-          class="toolButton"
-          data-tool="object"
-          title="オブジェクト消しゴム"
-        >🗑️</button>
-
-        <button
-          class="toolButton"
-          data-tool="hand"
-          title="移動"
-        >✋</button>
-
-        <button
-          class="toolButton"
-          data-tool="text"
-          title="テキスト"
-        >T</button>
-
-        <button
-          class="toolButton"
-          data-tool="sticky"
-          title="付箋"
-        >📌</button>
-
-        <input
-          type="color"
-          id="colorPicker"
-          value="${color}"
-          style="
-            width:38px;
-            height:38px;
-            border:0;
-            background:transparent;
-          "
-        >
-
-        <input
-          class="toolSlider"
-          id="sizeSlider"
-          type="range"
-          min="1"
-          max="30"
-          value="${brushSize}"
-        >
-
-        <button
-          class="toolButton"
-          id="clearBtn"
-          title="ページ消去"
-        >⌫</button>
-
-        <div class="pageInfo">
-          ${note.pages.length}ページ
-        </div>
-
-      </div>
-
-      <div
-        class="canvasViewport"
-        id="canvasViewport"
-      >
-
-        <div
-          class="world"
-          id="world"
-        >
-
-          <canvas
-            id="drawCanvas"
-            width="1000"
-            height="700"
-          ></canvas>
-
-          <div
-            id="objectLayer"
-          ></div>
-
-        </div>
-
-        <div class="zoomControl">
-
-          <button
-            class="zoomButton"
-            id="zoomOut"
-          >−</button>
-
-          <div
-            class="zoomValue"
-            id="zoomValue"
-          >100%</div>
-
-          <button
-            class="zoomButton"
-            id="zoomIn"
-          >＋</button>
-
-          <button
-            class="zoomButton"
-            id="zoomReset"
-          >⌂</button>
-
-        </div>
-
-        <div class="pageControl">
-
-          <button
-            class="pageButton"
-            id="prevPage"
-          >‹</button>
-
-          <div
-            id="pageLabel"
-            style="
-              min-width:55px;
-              text-align:center;
-              font-size:12px;
-              opacity:.6;
-            "
-          >
-            1 / ${note.pages.length}
-          </div>
-
-          <button
-            class="pageButton"
-            id="nextPage"
-          >›</button>
-
-          <button
-            class="pageButton"
-            id="newPage"
-          >＋</button>
-
-        </div>
-
-      </div>
-
-    </div>
-  `;
-
-  setupNoteEditor(note);
+  renderNoteEditor();
 
 }
 
-/* =========================================================
-   NOTE EDITOR
-========================================================= */
+function getCurrentPage(){
 
-function setupNoteEditor(note){
+  const note =
+    getNote(selectedNoteId);
 
-  const viewport =
-    document.getElementById(
-      "canvasViewport"
+  if(!note){
+    return null;
+  }
+
+  if(!note.pages[currentPage]){
+
+    note.pages[currentPage]={
+      strokes:[],
+      elements:[]
+    };
+
+  }
+
+  return note.pages[currentPage];
+
+}
+
+function renderNoteEditor(){
+
+  const note =
+    getNote(selectedNoteId);
+
+  if(!note){
+    return;
+  }
+
+  const main =
+    document.getElementById("main");
+
+  main.innerHTML="";
+
+  const page =
+    document.createElement("div");
+
+  page.className="notePage";
+
+  /* ======================
+     TOPBAR
+  ====================== */
+
+  const top =
+    document.createElement("div");
+
+  top.className="noteTopbar glass";
+
+  const back =
+    document.createElement("button");
+
+  back.className="backButton";
+
+  back.textContent="←";
+
+  back.addEventListener(
+    "click",
+    ()=>{
+      openFolder(
+        note.folderId
+      );
+    }
+  );
+
+  top.appendChild(back);
+
+
+  const titleBox =
+    document.createElement("div");
+
+  titleBox.className="noteTitleBox";
+
+  const title =
+    document.createElement("div");
+
+  title.className="noteTitle";
+
+  title.textContent =
+    safeText(
+      note.name,
+      "新しいノート"
     );
 
-  const world =
-    document.getElementById("world");
+  const pageInfo =
+    document.createElement("div");
+
+  pageInfo.className="notePageInfo";
+
+  pageInfo.textContent =
+    "ページ "+
+    (currentPage+1)+
+    " / "+
+    note.pages.length;
+
+  titleBox.append(
+    title,
+    pageInfo
+  );
+
+  top.appendChild(
+    titleBox
+  );
+
+
+  /* ======================
+     TOOLS
+  ====================== */
+
+  const toolbar =
+    document.createElement("div");
+
+  toolbar.className="toolBar";
+
+
+  const tools = [
+
+    ["pen","✏️","ペン"],
+
+    ["highlighter","🖍️","蛍光ペン"],
+
+    ["pixel","🧽","ピクセル消しゴム"],
+
+    ["object","🗑️","オブジェクト消しゴム"],
+
+    ["hand","✋","移動"],
+
+    ["text","T","テキスト"],
+
+    ["sticky","📌","付箋"],
+
+    ["image","🖼️","写真"]
+
+  ];
+
+
+  tools.forEach(
+    item=>{
+
+      const button =
+        document.createElement("button");
+
+      button.className="tool";
+
+      button.dataset.tool=
+        item[0];
+
+      button.textContent=
+        item[1];
+
+      button.title=
+        item[2];
+
+      if(
+        currentTool===item[0]
+      ){
+
+        button.classList.add(
+          "active"
+        );
+
+      }
+
+      button.addEventListener(
+        "click",
+        ()=>{
+          setTool(
+            item[0]
+          );
+        }
+      );
+
+      toolbar.appendChild(
+        button
+      );
+
+    }
+  );
+
+
+  /* 色 */
+
+  const color =
+    document.createElement("input");
+
+  color.type="color";
+
+  color.className="colorInput";
+
+  color.value=
+    currentColor;
+
+  color.addEventListener(
+    "input",
+    ()=>{
+      currentColor=
+        color.value;
+
+      if(selectedObjectId){
+        updateSelectedObjectStyle();
+      }
+    }
+  );
+
+  toolbar.appendChild(
+    color
+  );
+
+
+  /* 太さ */
+
+  const sizeBox =
+    document.createElement("div");
+
+  sizeBox.className="sizeBox";
+
+  const size =
+    document.createElement("input");
+
+  size.type="range";
+
+  size.min="1";
+
+  size.max="40";
+
+  size.value=
+    currentSize;
+
+  size.addEventListener(
+    "input",
+    ()=>{
+      currentSize=
+        Number(size.value);
+
+      updateSelectedObjectStyle();
+    }
+  );
+
+  sizeBox.appendChild(size);
+
+  toolbar.appendChild(
+    sizeBox
+  );
+
+
+  /* 消去 */
+
+  const clear =
+    document.createElement("button");
+
+  clear.className="tool";
+
+  clear.textContent="🗑";
+
+  clear.title="ページを全部消す";
+
+  clear.addEventListener(
+    "click",
+    ()=>{
+      if(
+        confirm(
+          "このページを全部消しますか？"
+        )
+      ){
+
+        const p =
+          getCurrentPage();
+
+        p.strokes=[];
+        p.elements=[];
+
+        save();
+
+        renderCanvas();
+
+      }
+    }
+  );
+
+  toolbar.appendChild(clear);
+
+  top.appendChild(toolbar);
+
+  page.appendChild(top);
+
+
+  /* ======================
+     EDITOR
+  ====================== */
+
+  const editor =
+    document.createElement("div");
+
+  editor.className="editor";
+
+  editor.id="editor";
+
 
   const canvas =
-    document.getElementById("drawCanvas");
+    document.createElement("canvas");
 
-  const ctx =
-    canvas.getContext("2d");
+  canvas.id="drawCanvas";
+
+  editor.appendChild(
+    canvas
+  );
+
 
   const objectLayer =
-    document.getElementById(
-      "objectLayer"
+    document.createElement("div");
+
+  objectLayer.className=
+    "objectLayer";
+
+  objectLayer.id=
+    "objectLayer";
+
+  editor.appendChild(
+    objectLayer
+  );
+
+
+  /* ページバー */
+
+  const pageBar =
+    document.createElement("div");
+
+  pageBar.className="pageBar";
+
+
+  const prev =
+    document.createElement("button");
+
+  prev.className="pageBtn";
+
+  prev.textContent="‹";
+
+  prev.addEventListener(
+    "click",
+    previousPage
+  );
+
+
+  const pageNumber =
+    document.createElement("div");
+
+  pageNumber.className=
+    "pageNumber";
+
+  pageNumber.textContent=
+    `${currentPage+1} / ${note.pages.length}`;
+
+
+  const next =
+    document.createElement("button");
+
+  next.className="pageBtn";
+
+  next.textContent="›";
+
+  next.addEventListener(
+    "click",
+    nextPage
+  );
+
+
+  const addPage =
+    document.createElement("button");
+
+  addPage.className="pageBtn";
+
+  addPage.textContent="+";
+
+  addPage.addEventListener(
+    "click",
+    addNewPage
+  );
+
+
+  pageBar.append(
+    prev,
+    pageNumber,
+    next,
+    addPage
+  );
+
+  editor.appendChild(
+    pageBar
+  );
+
+
+  /* ズーム */
+
+  const zoomBox =
+    document.createElement("div");
+
+  zoomBox.className="zoomBox";
+
+  const zoomOut =
+    document.createElement("button");
+
+  zoomOut.className="zoomBtn";
+
+  zoomOut.textContent="−";
+
+  zoomOut.addEventListener(
+    "click",
+    ()=>{
+      zoomAt(
+        editor.clientWidth/2,
+        editor.clientHeight/2,
+        .85
+      );
+    }
+  );
+
+
+  const zoomIn =
+    document.createElement("button");
+
+  zoomIn.className="zoomBtn";
+
+  zoomIn.textContent="+";
+
+  zoomIn.addEventListener(
+    "click",
+    ()=>{
+      zoomAt(
+        editor.clientWidth/2,
+        editor.clientHeight/2,
+        1.18
+      );
+    }
+  );
+
+
+  zoomBox.append(
+    zoomOut,
+    zoomIn
+  );
+
+  editor.appendChild(
+    zoomBox
+  );
+
+
+  page.appendChild(
+    editor
+  );
+
+  main.appendChild(
+    page
+  );
+
+
+  /*
+    canvasサイズを設定
+  */
+
+  resizeCanvas();
+
+  /*
+    イベントを登録
+  */
+
+  setupCanvasEvents();
+
+  renderCanvas();
+
+  renderObjects();
+
+}
+
+
+/* =========================================================
+   TOOL
+========================================================= */
+
+function setTool(tool){
+
+  currentTool=tool;
+
+  selectedObjectId=null;
+
+  document
+    .querySelectorAll(
+      ".tool"
+    )
+    .forEach(
+      button=>{
+
+        button.classList.toggle(
+          "active",
+          button.dataset.tool===tool
+        );
+
+      }
     );
 
-  const sizeSlider =
+  const canvas =
     document.getElementById(
-      "sizeSlider"
+      "drawCanvas"
     );
 
-  const colorPicker =
+  if(canvas){
+
+    if(tool==="pen" ||
+       tool==="highlighter" ||
+       tool==="pixel" ||
+       tool==="object"){
+
+      canvas.style.cursor=
+        "crosshair";
+
+    }else if(tool==="hand"){
+
+      canvas.style.cursor=
+        "grab";
+
+    }else{
+
+      canvas.style.cursor=
+        "default";
+
+    }
+
+  }
+
+}
+
+
+/* =========================================================
+   CANVAS
+========================================================= */
+
+function resizeCanvas(){
+
+  const canvas =
     document.getElementById(
-      "colorPicker"
+      "drawCanvas"
     );
 
-  /* Canvas実サイズ */
+  const editor =
+    document.getElementById(
+      "editor"
+    );
 
-  function resizeCanvas(){
+  if(!canvas || !editor){
+    return;
+  }
+
+  const rect =
+    editor.getBoundingClientRect();
+
+  const dpr =
+    Math.min(
+      window.devicePixelRatio || 1,
+      2
+    );
+
+  canvas.width =
+    Math.floor(
+      rect.width*dpr
+    );
+
+  canvas.height =
+    Math.floor(
+      rect.height*dpr
+    );
+
+  canvas.style.width =
+    rect.width+"px";
+
+  canvas.style.height =
+    rect.height+"px";
+
+  renderCanvas();
+
+}
+
+window.addEventListener(
+  "resize",
+  ()=>{
+    if(
+      document.getElementById(
+        "drawCanvas"
+      )
+    ){
+      resizeCanvas();
+    }
+  }
+);
+
+
+/* =========================================================
+   WORLD / CAMERA
+========================================================= */
+
+function screenToWorld(x,y){
+
+  return {
+
+    x:
+      (x-camera.x)/
+      camera.zoom,
+
+    y:
+      (y-camera.y)/
+      camera.zoom
+
+  };
+
+}
+
+function worldToScreen(x,y){
+
+  return {
+
+    x:
+      x*camera.zoom+
+      camera.x,
+
+    y:
+      y*camera.zoom+
+      camera.y
+
+  };
+
+}
+
+function distance(a,b){
+
+  return Math.hypot(
+    a.x-b.x,
+    a.y-b.y
+  );
+
+}
+
+
+/* =========================================================
+   DRAW
+========================================================= */
+
+function drawBackground(ctx,w,h){
+
+  ctx.fillStyle="#ffffff";
+
+  ctx.fillRect(
+    0,
+    0,
+    w,
+    h
+  );
+
+  /*
+    薄いノートの方眼
+  */
+
+  const grid =
+    40*camera.zoom;
+
+  if(grid>10){
+
+    ctx.save();
+
+    ctx.strokeStyle=
+      "rgba(100,130,170,.075)";
+
+    ctx.lineWidth=1;
+
+    const ox =
+      camera.x %
+      grid;
+
+    const oy =
+      camera.y %
+      grid;
+
+    for(
+      let x=ox;
+      x<w;
+      x+=grid
+    ){
+
+      ctx.beginPath();
+
+      ctx.moveTo(
+        x,
+        0
+      );
+
+      ctx.lineTo(
+        x,
+        h
+      );
+
+      ctx.stroke();
+
+    }
+
+    for(
+      let y=oy;
+      y<h;
+      y+=grid
+    ){
+
+      ctx.beginPath();
+
+      ctx.moveTo(
+        0,
+        y
+      );
+
+      ctx.lineTo(
+        w,
+        y
+      );
+
+      ctx.stroke();
+
+    }
+
+    ctx.restore();
+
+  }
+
+}
+
+function drawStroke(
+  ctx,
+  stroke,
+  current=false
+){
+
+  if(
+    !stroke ||
+    !Array.isArray(
+      stroke.points
+    ) ||
+    stroke.points.length<1
+  ){
+    return;
+  }
+
+  const pts =
+    stroke.points;
+
+  ctx.save();
+
+  ctx.lineCap="round";
+  ctx.lineJoin="round";
+
+  if(stroke.tool==="highlighter"){
+
+    ctx.globalAlpha=.28;
+
+    ctx.strokeStyle=
+      stroke.color;
+
+    ctx.lineWidth=
+      stroke.size*4;
+
+  }else{
+
+    ctx.globalAlpha=1;
+
+    ctx.strokeStyle=
+      stroke.color;
+
+    ctx.lineWidth=
+      stroke.size;
+
+  }
+
+  ctx.beginPath();
+
+  const first =
+    worldToScreen(
+      pts[0].x,
+      pts[0].y
+    );
+
+  ctx.moveTo(
+    first.x,
+    first.y
+  );
+
+  if(pts.length===1){
+
+    ctx.lineTo(
+      first.x+.01,
+      first.y+.01
+    );
+
+  }else{
+
+    for(
+      let i=1;
+      i<pts.length;
+      i++
+    ){
+
+      const p =
+        worldToScreen(
+          pts[i].x,
+          pts[i].y
+        );
+
+      /*
+        指に追従するように
+        毎ポイント描画
+      */
+
+      ctx.lineTo(
+        p.x,
+        p.y
+      );
+
+    }
+
+  }
+
+  ctx.stroke();
+
+  ctx.restore();
+
+}
+
+function renderCanvas(){
+
+  const canvas =
+    document.getElementById(
+      "drawCanvas"
+    );
+
+  if(!canvas){
+    return;
+  }
+
+  const ctx =
+    canvas.getContext(
+      "2d"
+    );
+
+  const dpr =
+    Math.min(
+      window.devicePixelRatio || 1,
+      2
+    );
+
+  const w =
+    canvas.width/dpr;
+
+  const h =
+    canvas.height/dpr;
+
+  ctx.setTransform(
+    dpr,
+    0,
+    0,
+    dpr,
+    0,
+    0
+  );
+
+  ctx.clearRect(
+    0,
+    0,
+    w,
+    h
+  );
+
+  drawBackground(
+    ctx,
+    w,
+    h
+  );
+
+  const page =
+    getCurrentPage();
+
+  if(!page){
+    return;
+  }
+
+  page.strokes.forEach(
+    stroke=>{
+      drawStroke(
+        ctx,
+        stroke
+      );
+    }
+  );
+
+}
+
+
+/* =========================================================
+   iPAD POINTER EVENTS
+========================================================= */
+
+function setupCanvasEvents(){
+
+  const canvas =
+    document.getElementById(
+      "drawCanvas"
+    );
+
+  const editor =
+    document.getElementById(
+      "editor"
+    );
+
+  if(!canvas || !editor){
+    return;
+  }
+
+  /*
+    念のためイベントを直接キャンバスに付ける
+  */
+
+  canvas.addEventListener(
+    "contextmenu",
+    e=>e.preventDefault()
+  );
+
+  canvas.addEventListener(
+    "pointerdown",
+    pointerDown,
+    {
+      passive:false
+    }
+  );
+
+  canvas.addEventListener(
+    "pointermove",
+    pointerMove,
+    {
+      passive:false
+    }
+  );
+
+  canvas.addEventListener(
+    "pointerup",
+    pointerUp,
+    {
+      passive:false
+    }
+  );
+
+  canvas.addEventListener(
+    "pointercancel",
+    pointerUp,
+    {
+      passive:false
+    }
+  );
+
+  canvas.addEventListener(
+    "pointerleave",
+    e=>{
+      /*
+        描画中はleaveしても
+        pointermoveを止めない
+      */
+    }
+  );
+
+}
+
+function pointerDown(e){
+
+  e.preventDefault();
+  e.stopPropagation();
+
+  const canvas=e.currentTarget;
+
+  pointers.set(
+    e.pointerId,
+    {
+      x:e.clientX,
+      y:e.clientY
+    }
+  );
+
+  /*
+    2本指になったら
+    ピンチ・パンモード
+  */
+
+  if(pointers.size===2){
+
+    drawing=false;
+
+    activePointerId=null;
+
+    const arr=[
+      ...pointers.values()
+    ];
+
+    const center={
+      x:(arr[0].x+arr[1].x)/2,
+      y:(arr[0].y+arr[1].y)/2
+    };
+
+    const dist=
+      Math.hypot(
+        arr[0].x-arr[1].x,
+        arr[0].y-arr[1].y
+      );
+
+    pinchStart={
+      center,
+      distance:dist,
+      zoom:camera.zoom,
+      x:camera.x,
+      y:camera.y
+    };
+
+    return;
+  }
+
+  /*
+    2本指中
+  */
+
+  if(pointers.size>1){
+    return;
+  }
+
+  /*
+    テキスト・付箋・写真
+  */
+
+  if(
+    currentTool==="text" ||
+    currentTool==="sticky" ||
+    currentTool==="image"
+  ){
 
     const rect =
-      viewport.getBoundingClientRect();
+      canvas.getBoundingClientRect();
 
-    const dpr =
-      Math.max(
-        1,
-        window.devicePixelRatio || 1
+    const world =
+      screenToWorld(
+        e.clientX-rect.left,
+        e.clientY-rect.top
       );
 
-    canvas.width =
-      Math.floor(
-        10000*dpr
+    if(
+      currentTool==="text"
+    ){
+
+      createTextObject(
+        world.x,
+        world.y
       );
 
-    canvas.height =
-      Math.floor(
-        7000*dpr
+    }else if(
+      currentTool==="sticky"
+    ){
+
+      createStickyObject(
+        world.x,
+        world.y
       );
 
-    canvas.style.width="10000px";
-    canvas.style.height="7000px";
+    }else{
 
-    ctx.setTransform(
-      dpr,0,0,dpr,0,0
-    );
+      chooseImage(
+        world.x,
+        world.y
+      );
 
-    redraw();
+    }
+
+    return;
 
   }
 
   /*
-    画面に巨大canvasを置くと重くなるので
-    実際の描画は必要範囲だけ再描画する
-    方式ではなく、
-    ここでは軽いストローク数を前提に
-    シンプルに描く。
+    手のひら
   */
 
-  function screenToWorld(e){
+  if(currentTool==="hand"){
 
-    const rect =
-      viewport.getBoundingClientRect();
+    moving=true;
 
-    return {
-      x:
-        (e.clientX-rect.left-cameraX)
-        /zoom,
+    activePointerId=
+      e.pointerId;
 
-      y:
-        (e.clientY-rect.top-cameraY)
-        /zoom
-    };
-
-  }
-
-  function applyTransform(){
-
-    world.style.transform=
-      `translate(${cameraX}px,${cameraY}px) scale(${zoom})`;
-
-    document
-      .getElementById("zoomValue")
-      .textContent=
-      Math.round(zoom*100)+"%";
-
-  }
-
-  function redraw(){
-
-    ctx.clearRect(
-      0,
-      0,
-      10000,
-      7000
-    );
-
-    const page =
-      note.pages[currentPage];
-
-    if(!page) return;
-
-    page.strokes.forEach(
-      stroke=>{
-
-        if(
-          !stroke.points ||
-          stroke.points.length<2
-        ){
-          return;
-        }
-
-        ctx.save();
-
-        ctx.lineCap="round";
-        ctx.lineJoin="round";
-
-        ctx.beginPath();
-
-        stroke.points.forEach(
-          (p,i)=>{
-
-            if(i===0){
-
-              ctx.moveTo(
-                p.x,
-                p.y
-              );
-
-            }else{
-
-              ctx.lineTo(
-                p.x,
-                p.y
-              );
-
-            }
-
-          }
-        );
-
-        if(
-          stroke.tool==="highlighter"
-        ){
-
-          ctx.globalAlpha=.25;
-
-          ctx.strokeStyle =
-            stroke.color;
-
-          ctx.lineWidth =
-            stroke.size*4;
-
-        }else{
-
-          ctx.globalAlpha=1;
-
-          ctx.strokeStyle =
-            stroke.color;
-
-          ctx.lineWidth =
-            stroke.size;
-
-        }
-
-        ctx.stroke();
-
-        ctx.restore();
-
-      }
-    );
-
-    if(currentStroke){
-
-      const s =
-        currentStroke;
-
-      ctx.save();
-
-      ctx.beginPath();
-
-      s.points.forEach(
-        (p,i)=>{
-
-          if(i===0){
-            ctx.moveTo(p.x,p.y);
-          }else{
-            ctx.lineTo(p.x,p.y);
-          }
-
-        }
-      );
-
-      ctx.lineCap="round";
-      ctx.lineJoin="round";
-
-      if(s.tool==="highlighter"){
-
-        ctx.globalAlpha=.25;
-        ctx.strokeStyle=s.color;
-        ctx.lineWidth=s.size*4;
-
-      }else{
-
-        ctx.strokeStyle=s.color;
-        ctx.lineWidth=s.size;
-
-      }
-
-      ctx.stroke();
-      ctx.restore();
-
-    }
-
-  }
-
-  function renderObjects(){
-
-    objectLayer.innerHTML="";
-
-    const page =
-      note.pages[currentPage];
-
-    if(!page) return;
-
-    page.elements.forEach(
-      obj=>{
-
-        const el =
-          document.createElement("div");
-
-        el.className=
-          "noteObject "+
-          (
-            obj.type==="sticky"
-              ? "stickyObject"
-              : "textObject"
-          );
-
-        el.dataset.id=obj.id;
-
-        el.style.left=
-          obj.x+"px";
-
-        el.style.top=
-          obj.y+"px";
-
-        el.style.width=
-          (obj.width || 180)+"px";
-
-        el.style.height=
-          (obj.height || 60)+"px";
-
-        el.style.fontSize=
-          (obj.fontSize || 24)+"px";
-
-        el.style.color=
-          obj.color || "#111";
-
-        if(obj.type==="sticky"){
-
-          el.textContent =
-            obj.text || "";
-
-        }else{
-
-          el.textContent =
-            obj.text || "";
-
-        }
-
-        el.addEventListener(
-          "pointerdown",
-          e=>{
-
-            e.stopPropagation();
-
-            if(tool==="object"){
-
-              page.elements =
-                page.elements.filter(
-                  x=>x.id!==obj.id
-                );
-
-              saveSoon();
-              renderObjects();
-
-              return;
-            }
-
-            if(tool==="hand"){
-
-              startObjectMove(
-                e,
-                obj,
-                el
-              );
-
-            }
-
-          }
-        );
-
-        objectLayer.appendChild(el);
-
-      }
-    );
-
-  }
-
-  /* =========================
-     DRAW
-  ========================= */
-
-  function startDrawing(e){
-
-    if(
-      tool!=="pencil" &&
-      tool!=="highlighter"
-    ){
-      return;
-    }
-
-    const p =
-      screenToWorld(e);
-
-    drawing=true;
-
-    currentStroke={
-      id:uid("stroke"),
-      tool:tool,
-      color:color,
-      size:brushSize,
-      points:[
-        p
-      ]
+    panStart={
+      x:e.clientX,
+      y:e.clientY,
+      cameraX:camera.x,
+      cameraY:camera.y
     };
 
     try{
-      viewport.setPointerCapture(
+      canvas.setPointerCapture(
         e.pointerId
       );
     }catch(_){}
 
-    redraw();
+    return;
 
   }
 
-  function moveDrawing(e){
+  /*
+    描画
+  */
 
-    if(!drawing || !currentStroke){
-      return;
-    }
+  if(
+    currentTool==="pen" ||
+    currentTool==="highlighter"
+  ){
 
-    const p =
-      screenToWorld(e);
+    drawing=true;
 
-    const pts =
-      currentStroke.points;
+    activePointerId=
+      e.pointerId;
 
-    const last =
-      pts[pts.length-1];
+    const rect =
+      canvas.getBoundingClientRect();
 
-    /*
-      指の動きをそのまま拾う
-      不要な間引きをしない
-    */
+    const world =
+      screenToWorld(
+        e.clientX-rect.left,
+        e.clientY-rect.top
+      );
 
-    pts.push({
-      x:p.x,
-      y:p.y
+    lastWorldPoint=world;
+
+    const page =
+      getCurrentPage();
+
+    page.strokes.push({
+
+      id:uid("stroke"),
+
+      tool:currentTool,
+
+      color:currentColor,
+
+      size:currentSize,
+
+      points:[
+        world
+      ]
+
     });
 
-    redraw();
+    /*
+      iPadで指を離さなくても
+      このキャンバスが追跡する
+    */
+
+    try{
+      canvas.setPointerCapture(
+        e.pointerId
+      );
+    }catch(_){}
+
+    renderCanvas();
+
+    return;
 
   }
 
-  function endDrawing(e){
+  /*
+    ピクセル消しゴム
+  */
 
-    if(
-      !drawing ||
-      !currentStroke
-    ){
-      return;
-    }
+  if(currentTool==="pixel"){
 
-    drawing=false;
+    activePointerId=
+      e.pointerId;
 
-    const page =
-      note.pages[currentPage];
+    try{
+      canvas.setPointerCapture(
+        e.pointerId
+      );
+    }catch(_){}
 
-    if(
-      currentStroke.points.length===1
-    ){
-
-      currentStroke.points.push({
-        ...currentStroke.points[0]
-      });
-
-    }
-
-    page.strokes.push(
-      currentStroke
+    erasePixelAt(
+      e
     );
 
-    currentStroke=null;
-
-    redraw();
-    saveSoon();
+    return;
 
   }
 
-  /* =========================
-     ERASE
-  ========================= */
+  /*
+    オブジェクト消しゴム
+  */
 
-  function eraseAt(e){
+  if(currentTool==="object"){
 
-    const p =
-      screenToWorld(e);
-
-    const page =
-      note.pages[currentPage];
-
-    const radius =
-      brushSize*3;
-
-    page.strokes =
-      page.strokes.filter(
-        stroke=>{
-
-          if(!stroke.points){
-            return true;
-          }
-
-          return !stroke.points.some(
-            pt=>{
-
-              const dx =
-                pt.x-p.x;
-
-              const dy =
-                pt.y-p.y;
-
-              return Math.sqrt(
-                dx*dx+dy*dy
-              )<radius;
-
-            }
-          );
-
-        }
-      );
-
-    redraw();
-    saveSoon();
-
-  }
-
-  /* =========================
-     PAN
-  ========================= */
-
-  let panning=false;
-
-  let panStartX=0;
-  let panStartY=0;
-  let panCameraX=0;
-  let panCameraY=0;
-
-  function startPan(e){
-
-    panning=true;
-
-    panStartX=e.clientX;
-    panStartY=e.clientY;
-
-    panCameraX=cameraX;
-    panCameraY=cameraY;
-
-  }
-
-  function movePan(e){
-
-    if(!panning) return;
-
-    cameraX =
-      panCameraX +
-      (e.clientX-panStartX);
-
-    cameraY =
-      panCameraY +
-      (e.clientY-panStartY);
-
-    applyTransform();
-
-  }
-
-  function endPan(){
-
-    panning=false;
-
-  }
-
-  /* =========================
-     PINCH ZOOM
-  ========================= */
-
-  function distance(a,b){
-
-    return Math.hypot(
-      a.clientX-b.clientX,
-      a.clientY-b.clientY
+    eraseObjectAt(
+      e
     );
 
   }
 
-  function center(a,b){
+}
 
-    return {
-      x:(a.clientX+b.clientX)/2,
-      y:(a.clientY+b.clientY)/2
-    };
+function pointerMove(e){
 
-  }
+  e.preventDefault();
+  e.stopPropagation();
 
-  function beginPinch(){
+  if(
+    pointers.has(
+      e.pointerId
+    )
+  ){
 
-    if(pointers.size!==2){
-      return;
-    }
-
-    const arr =
-      [...pointers.values()];
-
-    pinchStartDistance =
-      distance(
-        arr[0],
-        arr[1]
-      );
-
-    pinchStartZoom=zoom;
-
-    pinchStartCenter =
-      center(
-        arr[0],
-        arr[1]
-      );
-
-    pinchStartCamera={
-      x:cameraX,
-      y:cameraY
-    };
+    pointers.set(
+      e.pointerId,
+      {
+        x:e.clientX,
+        y:e.clientY
+      }
+    );
 
   }
 
-  function updatePinch(){
+  /*
+    2本指
+  */
 
-    if(
-      pointers.size!==2 ||
-      pinchStartDistance===null
-    ){
+  if(
+    pointers.size===2 &&
+    pinchStart
+  ){
+
+    const arr=[
+      ...pointers.values()
+    ];
+
+    const center={
+      x:(arr[0].x+arr[1].x)/2,
+      y:(arr[0].y+arr[1].y)/2
+    };
+
+    const dist=
+      Math.hypot(
+        arr[0].x-arr[1].x,
+        arr[0].y-arr[1].y
+      );
+
+    let newZoom=
+      pinchStart.zoom *
+      (
+        dist/
+        pinchStart.distance
+      );
+
+    newZoom=
+      Math.max(
+        .35,
+        Math.min(
+          4,
+          newZoom
+        )
+      );
+
+    /*
+      指の中心を固定してズーム
+    */
+
+    const editor =
+      document.getElementById(
+        "editor"
+      );
+
+    const rect =
+      editor.getBoundingClientRect();
+
+    const cx =
+      center.x-rect.left;
+
+    const cy =
+      center.y-rect.top;
+
+    const worldBefore =
+      screenToWorld(
+        cx,
+        cy
+      );
+
+    camera.zoom=newZoom;
+
+    camera.x =
+      cx -
+      worldBefore.x*camera.zoom;
+
+    camera.y =
+      cy -
+      worldBefore.y*camera.zoom;
+
+    /*
+      2本指移動
+    */
+
+    const dx =
+      center.x -
+      pinchStart.center.x;
+
+    const dy =
+      center.y -
+      pinchStart.center.y;
+
+    camera.x =
+      pinchStart.x +
+      dx;
+
+    camera.y =
+      pinchStart.y +
+      dy;
+
+    renderCanvas();
+
+    renderObjects();
+
+    return;
+
+  }
+
+  /*
+    手のひら
+  */
+
+  if(
+    moving &&
+    activePointerId===
+      e.pointerId
+  ){
+
+    camera.x =
+      panStart.cameraX +
+      (
+        e.clientX-
+        panStart.x
+      );
+
+    camera.y =
+      panStart.cameraY +
+      (
+        e.clientY-
+        panStart.y
+      );
+
+    renderCanvas();
+
+    renderObjects();
+
+    return;
+
+  }
+
+  /*
+    ペン
+  */
+
+  if(
+    drawing &&
+    activePointerId===
+      e.pointerId
+  ){
+
+    const canvas =
+      e.currentTarget;
+
+    const rect =
+      canvas.getBoundingClientRect();
+
+    const world =
+      screenToWorld(
+        e.clientX-rect.left,
+        e.clientY-rect.top
+      );
+
+    const page =
+      getCurrentPage();
+
+    const stroke =
+      page.strokes[
+        page.strokes.length-1
+      ];
+
+    if(!stroke){
       return;
     }
 
-    const arr =
-      [...pointers.values()];
+    /*
+      かなり細かい間隔で
+      ポイントを追加
+    */
+
+    const last =
+      stroke.points[
+        stroke.points.length-1
+      ];
 
     const d =
       distance(
-        arr[0],
-        arr[1]
+        last,
+        world
       );
 
-    let newZoom =
-      pinchStartZoom *
-      (d/pinchStartDistance);
-
-    newZoom =
-      Math.max(
-        .25,
-        Math.min(4,newZoom)
-      );
-
-    const c =
-      center(
-        arr[0],
-        arr[1]
-      );
-
-    const worldX =
-      (
-        pinchStartCenter.x-
-        pinchStartCamera.x
-      )/pinchStartZoom;
-
-    const worldY =
-      (
-        pinchStartCenter.y-
-        pinchStartCamera.y
-      )/pinchStartZoom;
-
-    zoom=newZoom;
-
-    cameraX =
-      c.x-worldX*zoom;
-
-    cameraY =
-      c.y-worldY*zoom;
-
-    applyTransform();
-
-  }
-
-  /* =========================
-     POINTER EVENTS
-  ========================= */
-
-  viewport.addEventListener(
-    "pointerdown",
-    e=>{
-
-      pointers.set(
-        e.pointerId,
-        e
-      );
-
-      if(pointers.size===2){
-
-        drawing=false;
-        currentStroke=null;
-        panning=false;
-
-        beginPinch();
-
-        return;
-
-      }
-
-      if(tool==="pencil" ||
-         tool==="highlighter"){
-
-        startDrawing(e);
-
-      }else if(tool==="pixel"){
-
-        eraseAt(e);
-
-        try{
-          viewport.setPointerCapture(
-            e.pointerId
-          );
-        }catch(_){}
-
-      }else if(tool==="hand"){
-
-        startPan(e);
-
-      }else if(tool==="text"){
-
-        const p =
-          screenToWorld(e);
-
-        createText(p);
-
-      }else if(tool==="sticky"){
-
-        const p =
-          screenToWorld(e);
-
-        createSticky(p);
-
-      }
-
-    }
-  );
-
-  viewport.addEventListener(
-    "pointermove",
-    e=>{
-
-      pointers.set(
-        e.pointerId,
-        e
-      );
-
-      if(pointers.size===2){
-
-        updatePinch();
-
-        return;
-
-      }
-
-      if(tool==="pencil" ||
-         tool==="highlighter"){
-
-        moveDrawing(e);
-
-      }else if(tool==="pixel"){
-
-        if(
-          e.buttons
-        ){
-
-          eraseAt(e);
-
-        }
-
-      }else if(tool==="hand"){
-
-        movePan(e);
-
-      }
-
-    }
-  );
-
-  function pointerEnd(e){
-
-    pointers.delete(
-      e.pointerId
-    );
+    /*
+      ズームしても
+      指の軌跡が滑らかになる
+    */
 
     if(
-      pointers.size<2
+      d >=
+      Math.max(
+        .5,
+        1.2/currentToolZoom()
+      )
     ){
 
-      pinchStartDistance=null;
+      stroke.points.push(
+        world
+      );
 
     }
 
-    if(tool==="pencil" ||
-       tool==="highlighter"){
+    renderCanvas();
 
-      endDrawing(e);
-
-    }
-
-    if(tool==="hand"){
-
-      endPan();
-
-    }
+    return;
 
   }
 
-  viewport.addEventListener(
-    "pointerup",
-    pointerEnd
-  );
+  /*
+    ピクセル消しゴム
+  */
 
-  viewport.addEventListener(
-    "pointercancel",
-    pointerEnd
-  );
-
-  /* =========================
-     OBJECT MOVE
-  ========================= */
-
-  function startObjectMove(
-    e,
-    obj,
-    el
+  if(
+    currentTool==="pixel" &&
+    activePointerId===
+      e.pointerId
   ){
 
-    const start =
-      screenToWorld(e);
-
-    const ox=obj.x;
-    const oy=obj.y;
-
-    function move(ev){
-
-      const p =
-        screenToWorld(ev);
-
-      obj.x =
-        ox+(p.x-start.x);
-
-      obj.y =
-        oy+(p.y-start.y);
-
-      el.style.left=
-        obj.x+"px";
-
-      el.style.top=
-        obj.y+"px";
-
-    }
-
-    function up(){
-
-      document.removeEventListener(
-        "pointermove",
-        move
-      );
-
-      document.removeEventListener(
-        "pointerup",
-        up
-      );
-
-      saveSoon();
-
-    }
-
-    document.addEventListener(
-      "pointermove",
-      move
-    );
-
-    document.addEventListener(
-      "pointerup",
-      up
+    erasePixelAt(
+      e
     );
 
   }
 
-  /* =========================
-     TEXT
-  ========================= */
+}
 
-  function createText(p){
+function pointerUp(e){
 
-    const text =
-      prompt(
-        "テキストを入力"
-      );
+  e.preventDefault();
+  e.stopPropagation();
 
-    if(
-      text===null ||
-      text===""
-    ){
-      return;
-    }
-
-    const page =
-      note.pages[currentPage];
-
-    page.elements.push({
-
-      id:uid("obj"),
-
-      type:"text",
-
-      x:p.x,
-      y:p.y,
-
-      width:260,
-      height:70,
-
-      text:text,
-
-      color:color,
-
-      fontSize:
-        Math.max(
-          12,
-          brushSize*5
-        )
-
-    });
-
-    renderObjects();
-    saveSoon();
-
-  }
-
-  /* =========================
-     STICKY
-  ========================= */
-
-  function createSticky(p){
-
-    const text =
-      prompt(
-        "付箋の内容"
-      );
-
-    if(
-      text===null
-    ){
-      return;
-    }
-
-    const page =
-      note.pages[currentPage];
-
-    page.elements.push({
-
-      id:uid("obj"),
-
-      type:"sticky",
-
-      x:p.x,
-      y:p.y,
-
-      width:220,
-      height:150,
-
-      text:text,
-
-      color:"#222",
-
-      fontSize:
-        Math.max(
-          14,
-          brushSize*4
-        )
-
-    });
-
-    renderObjects();
-    saveSoon();
-
-  }
-
-  /* =========================
-     TOOL BUTTONS
-  ========================= */
-
-  document
-    .querySelectorAll(
-      "[data-tool]"
-    )
-    .forEach(btn=>{
-
-      btn.addEventListener(
-        "click",
-        ()=>{
-
-          tool =
-            btn.dataset.tool;
-
-          document
-            .querySelectorAll(
-              "[data-tool]"
-            )
-            .forEach(
-              b=>b.classList.remove(
-                "active"
-              )
-            );
-
-          btn.classList.add(
-            "active"
-          );
-
-        }
-      );
-
-    });
-
-  /* 最初はペン */
-
-  document
-    .querySelector(
-      '[data-tool="pencil"]'
-    )
-    ?.classList.add("active");
-
-  colorPicker.addEventListener(
-    "input",
-    ()=>{
-      color=
-        colorPicker.value;
-    }
+  pointers.delete(
+    e.pointerId
   );
 
-  sizeSlider.addEventListener(
-    "input",
-    ()=>{
-      brushSize=
-        Number(sizeSlider.value);
-    }
-  );
+  if(
+    pointers.size<2
+  ){
 
-  /* =========================
-     CLEAR
-  ========================= */
-
-  document
-    .getElementById("clearBtn")
-    .addEventListener(
-      "click",
-      ()=>{
-
-        if(
-          !confirm(
-            "このページを全部消しますか？"
-          )
-        ){
-          return;
-        }
-
-        note.pages[currentPage]={
-          strokes:[],
-          elements:[]
-        };
-
-        redraw();
-        renderObjects();
-        save();
-
-      }
-    );
-
-  /* =========================
-     ZOOM BUTTONS
-  ========================= */
-
-  document
-    .getElementById("zoomIn")
-    .addEventListener(
-      "click",
-      ()=>{
-
-        zoom=
-          Math.min(
-            4,
-            zoom*1.2
-          );
-
-        applyTransform();
-
-      }
-    );
-
-  document
-    .getElementById("zoomOut")
-    .addEventListener(
-      "click",
-      ()=>{
-
-        zoom=
-          Math.max(
-            .25,
-            zoom/1.2
-          );
-
-        applyTransform();
-
-      }
-    );
-
-  document
-    .getElementById("zoomReset")
-    .addEventListener(
-      "click",
-      ()=>{
-
-        zoom=1;
-        cameraX=0;
-        cameraY=0;
-
-        applyTransform();
-
-      }
-    );
-
-  /* =========================
-     PAGES
-  ========================= */
-
-  function updatePage(){
-
-    document
-      .getElementById("pageLabel")
-      .textContent=
-      `${currentPage+1} / ${note.pages.length}`;
-
-    document
-      .querySelector(".pageInfo")
-      .textContent=
-      `${note.pages.length}ページ`;
-
-    redraw();
-    renderObjects();
+    pinchStart=null;
 
   }
 
-  document
-    .getElementById("prevPage")
-    .addEventListener(
-      "click",
-      ()=>{
+  if(
+    activePointerId===
+      e.pointerId
+  ){
 
-        if(currentPage>0){
+    drawing=false;
 
-          currentPage--;
+    moving=false;
 
-          updatePage();
+    activePointerId=null;
 
-        }
+    lastWorldPoint=null;
 
-      }
+    save();
+
+  }
+
+}
+
+function currentToolZoom(){
+
+  return Math.max(
+    .5,
+    camera.zoom
+  );
+
+}
+
+
+/* =========================================================
+   PIXEL ERASER
+========================================================= */
+
+function erasePixelAt(e){
+
+  const canvas =
+    document.getElementById(
+      "drawCanvas"
     );
 
-  document
-    .getElementById("nextPage")
-    .addEventListener(
-      "click",
-      ()=>{
+  const rect =
+    canvas.getBoundingClientRect();
 
-        if(
-          currentPage<
-          note.pages.length-1
-        ){
-
-          currentPage++;
-
-        }else{
-
-          note.pages.push({
-            strokes:[],
-            elements:[]
-          });
-
-          currentPage =
-            note.pages.length-1;
-
-        }
-
-        updatePage();
-        save();
-
-      }
+  const world =
+    screenToWorld(
+      e.clientX-rect.left,
+      e.clientY-rect.top
     );
 
-  document
-    .getElementById("newPage")
-    .addEventListener(
-      "click",
-      ()=>{
+  const page =
+    getCurrentPage();
 
-        note.pages.push({
-          strokes:[],
-          elements:[]
+  const radius =
+    Math.max(
+      8,
+      currentSize*3
+    );
+
+  const newStrokes=[];
+
+  page.strokes.forEach(
+    stroke=>{
+
+      if(
+        !stroke.points ||
+        stroke.points.length===0
+      ){
+        return;
+      }
+
+      let segment=[];
+
+      stroke.points.forEach(
+        p=>{
+
+          const hit =
+            Math.hypot(
+              p.x-world.x,
+              p.y-world.y
+            ) <= radius;
+
+          if(hit){
+
+            if(
+              segment.length>1
+            ){
+
+              newStrokes.push({
+
+                ...stroke,
+
+                id:uid("stroke"),
+
+                points:
+                  segment
+
+              });
+
+            }
+
+            segment=[];
+
+          }else{
+
+            segment.push(p);
+
+          }
+
+        }
+      );
+
+      if(
+        segment.length>1
+      ){
+
+        newStrokes.push({
+
+          ...stroke,
+
+          id:uid("stroke"),
+
+          points:
+            segment
+
         });
 
-        currentPage=
-          note.pages.length-1;
-
-        updatePage();
-        save();
-
       }
+
+    }
+  );
+
+  page.strokes=
+    newStrokes;
+
+  renderCanvas();
+
+}
+
+
+/* =========================================================
+   OBJECT ERASER
+========================================================= */
+
+function eraseObjectAt(e){
+
+  const canvas =
+    document.getElementById(
+      "drawCanvas"
     );
 
-  /* =========================
-     BACK
-  ========================= */
+  const rect =
+    canvas.getBoundingClientRect();
 
-  document
-    .getElementById("noteBack")
-    .addEventListener(
-      "click",
-      ()=>{
+  const world =
+    screenToWorld(
+      e.clientX-rect.left,
+      e.clientY-rect.top
+    );
 
-        openFolder(
-          note.folderId
+  const page =
+    getCurrentPage();
+
+  let hitIndex=-1;
+
+  for(
+    let i=page.elements.length-1;
+    i>=0;
+    i--
+  ){
+
+    const obj =
+      page.elements[i];
+
+    if(
+      world.x>=obj.x &&
+      world.x<=obj.x+obj.width &&
+      world.y>=obj.y &&
+      world.y<=obj.y+obj.height
+    ){
+
+      hitIndex=i;
+
+      break;
+
+    }
+
+  }
+
+  if(hitIndex>=0){
+
+    page.elements.splice(
+      hitIndex,
+      1
+    );
+
+    selectedObjectId=null;
+
+    save();
+
+    renderObjects();
+
+  }
+
+}
+
+
+/* =========================================================
+   ZOOM
+========================================================= */
+
+function zoomAt(
+  screenX,
+  screenY,
+  factor
+){
+
+  const before =
+    screenToWorld(
+      screenX,
+      screenY
+    );
+
+  camera.zoom *= factor;
+
+  camera.zoom =
+    Math.max(
+      .35,
+      Math.min(
+        4,
+        camera.zoom
+      )
+    );
+
+  camera.x =
+    screenX -
+    before.x*camera.zoom;
+
+  camera.y =
+    screenY -
+    before.y*camera.zoom;
+
+  renderCanvas();
+
+  renderObjects();
+
+}
+
+
+/* =========================================================
+   OBJECTS
+========================================================= */
+
+function createTextObject(
+  x,
+  y
+){
+
+  const text =
+    prompt(
+      "入力するテキスト"
+    );
+
+  if(
+    text===null ||
+    !text.trim()
+  ){
+    return;
+  }
+
+  const page =
+    getCurrentPage();
+
+  const obj={
+
+    id:uid("text"),
+
+    type:"text",
+
+    x,
+
+    y,
+
+    width:240,
+
+    height:70,
+
+    text:text.trim(),
+
+    color:currentColor,
+
+    fontSize:
+      Math.max(
+        14,
+        currentSize*5
+      )
+
+  };
+
+  page.elements.push(
+    obj
+  );
+
+  save();
+
+  renderObjects();
+
+  selectedObjectId=
+    obj.id;
+
+}
+
+function createStickyObject(
+  x,
+  y
+){
+
+  const text =
+    prompt(
+      "付箋の内容"
+    );
+
+  if(
+    text===null
+  ){
+    return;
+  }
+
+  const page =
+    getCurrentPage();
+
+  const obj={
+
+    id:uid("sticky"),
+
+    type:"sticky",
+
+    x,
+
+    y,
+
+    width:220,
+
+    height:150,
+
+    text:text,
+
+    color:currentColor,
+
+    fontSize:20
+
+  };
+
+  page.elements.push(
+    obj
+  );
+
+  save();
+
+  renderObjects();
+
+  selectedObjectId=
+    obj.id;
+
+}
+
+function chooseImage(
+  x,
+  y
+){
+
+  const input =
+    document.createElement(
+      "input"
+    );
+
+  input.type="file";
+
+  input.accept=
+    "image/*";
+
+  input.onchange =
+    event=>{
+
+      const file =
+        event.target.files[0];
+
+      if(!file){
+        return;
+      }
+
+      const reader =
+        new FileReader();
+
+      reader.onload =
+        ()=>{
+          const page =
+            getCurrentPage();
+
+          const obj={
+
+            id:uid("image"),
+
+            type:"image",
+
+            x:x,
+
+            y:y,
+
+            width:420,
+
+            height:300,
+
+            src:reader.result
+
+          };
+
+          page.elements.push(
+            obj
+          );
+
+          save();
+
+          renderObjects();
+
+        };
+
+      reader.readAsDataURL(
+        file
+      );
+
+    };
+
+  input.click();
+
+}
+
+
+/* =========================================================
+   OBJECT RENDER
+========================================================= */
+
+function renderObjects(){
+
+  const layer =
+    document.getElementById(
+      "objectLayer"
+    );
+
+  if(!layer){
+    return;
+  }
+
+  layer.innerHTML="";
+
+  const page =
+    getCurrentPage();
+
+  if(!page){
+    return;
+  }
+
+  page.elements.forEach(
+    obj=>{
+
+      const el =
+        document.createElement(
+          "div"
+        );
+
+      el.className=
+        "noteObject";
+
+      el.dataset.id=
+        obj.id;
+
+      el.style.left=
+        (
+          obj.x*camera.zoom+
+          camera.x
+        )+"px";
+
+      el.style.top=
+        (
+          obj.y*camera.zoom+
+          camera.y
+        )+"px";
+
+      el.style.width=
+        (
+          obj.width*camera.zoom
+        )+"px";
+
+      el.style.height=
+        (
+          obj.height*camera.zoom
+        )+"px";
+
+
+      if(
+        selectedObjectId===
+        obj.id
+      ){
+
+        el.classList.add(
+          "objectSelected"
         );
 
       }
-    );
 
-  /* =========================
-     INIT
-  ========================= */
 
-  resizeCanvas();
-  applyTransform();
-  renderObjects();
+      if(
+        obj.type==="text"
+      ){
 
-  window.addEventListener(
-    "resize",
-    resizeCanvas
+        el.classList.add(
+          "textObject"
+        );
+
+        el.textContent =
+          safeText(
+            obj.text,
+            ""
+          );
+
+        el.style.fontSize =
+          (
+            obj.fontSize*
+            camera.zoom
+          )+"px";
+
+        el.style.color =
+          obj.color ||
+          "#111";
+
+      }
+
+
+      if(
+        obj.type==="sticky"
+      ){
+
+        el.classList.add(
+          "stickyObject"
+        );
+
+        el.textContent =
+          safeText(
+            obj.text,
+            ""
+          );
+
+        el.style.fontSize =
+          (
+            obj.fontSize*
+            camera.zoom
+          )+"px";
+
+      }
+
+
+      if(
+        obj.type==="image"
+      ){
+
+        el.classList.add(
+          "imageObject"
+        );
+
+        const img =
+          document.createElement(
+            "img"
+          );
+
+        img.src=obj.src;
+
+        el.appendChild(
+          img
+        );
+
+      }
+
+
+      /*
+        オブジェクト選択
+      */
+
+      el.addEventListener(
+        "pointerdown",
+        event=>{
+
+          event.stopPropagation();
+
+          if(
+            currentTool==="object"
+          ){
+
+            const page =
+              getCurrentPage();
+
+            const index =
+              page.elements.findIndex(
+                x=>x.id===obj.id
+              );
+
+            if(index>=0){
+
+              page.elements.splice(
+                index,
+                1
+              );
+
+              selectedObjectId=null;
+
+              save();
+
+              renderObjects();
+
+            }
+
+            return;
+
+          }
+
+          if(
+            currentTool==="hand" ||
+            currentTool==="pen" ||
+            currentTool==="highlighter"
+          ){
+
+            selectedObjectId=
+              obj.id;
+
+            renderObjects();
+
+          }
+
+        },
+        {
+          passive:false
+        }
+      );
+
+
+      /*
+        ダブルタップで編集
+      */
+
+      el.addEventListener(
+        "dblclick",
+        event=>{
+
+          event.stopPropagation();
+
+          if(
+            obj.type==="text" ||
+            obj.type==="sticky"
+          ){
+
+            const value =
+              prompt(
+                "テキストを編集",
+                obj.text
+              );
+
+            if(value!==null){
+
+              obj.text=value;
+
+              save();
+
+              renderObjects();
+
+            }
+
+          }
+
+        }
+      );
+
+
+      /*
+        リサイズ
+      */
+
+      if(
+        obj.type!=="image" ||
+        true
+      ){
+
+        const handle =
+          document.createElement(
+            "div"
+          );
+
+        handle.className=
+          "resizeHandle";
+
+        handle.addEventListener(
+          "pointerdown",
+          event=>{
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            const startX=
+              event.clientX;
+
+            const startY=
+              event.clientY;
+
+            const startW=
+              obj.width;
+
+            const startH=
+              obj.height;
+
+            function move(ev){
+
+              obj.width =
+                Math.max(
+                  60,
+                  startW+
+                  (
+                    ev.clientX-
+                    startX
+                  )/camera.zoom
+                );
+
+              obj.height =
+                Math.max(
+                  40,
+                  startH+
+                  (
+                    ev.clientY-
+                    startY
+                  )/camera.zoom
+                );
+
+              renderObjects();
+
+            }
+
+            function up(){
+
+              window.removeEventListener(
+                "pointermove",
+                move
+              );
+
+              window.removeEventListener(
+                "pointerup",
+                up
+              );
+
+              save();
+
+            }
+
+            window.addEventListener(
+              "pointermove",
+              move
+            );
+
+            window.addEventListener(
+              "pointerup",
+              up
+            );
+
+          },
+          {
+            passive:false
+          }
+        );
+
+        el.appendChild(
+          handle
+        );
+
+      }
+
+      layer.appendChild(
+        el
+      );
+
+    }
   );
 
 }
+
 
 /* =========================================================
-   SAVE DEBOUNCE
+   OBJECT FONT / COLOR
 ========================================================= */
 
-function saveSoon(){
+function updateSelectedObjectStyle(){
 
-  clearTimeout(
-    autosaveTimer
-  );
+  if(!selectedObjectId){
+    return;
+  }
 
-  autosaveTimer =
-    setTimeout(
-      save,
-      250
+  const page =
+    getCurrentPage();
+
+  const obj =
+    page.elements.find(
+      x=>x.id===
+        selectedObjectId
     );
 
+  if(!obj){
+    return;
+  }
+
+  if(
+    obj.type==="text" ||
+    obj.type==="sticky"
+  ){
+
+    obj.fontSize =
+      Math.max(
+        10,
+        currentSize*5
+      );
+
+    obj.color=
+      currentColor;
+
+  }
+
+  save();
+
+  renderObjects();
+
 }
+
+
+/* =========================================================
+   PAGES
+========================================================= */
+
+function addNewPage(){
+
+  const note =
+    getNote(selectedNoteId);
+
+  if(!note){
+    return;
+  }
+
+  note.pages.push({
+
+    strokes:[],
+
+    elements:[]
+
+  });
+
+  currentPage=
+    note.pages.length-1;
+
+  save();
+
+  renderNoteEditor();
+
+}
+
+function previousPage(){
+
+  if(currentPage<=0){
+    return;
+  }
+
+  currentPage--;
+
+  save();
+
+  renderNoteEditor();
+
+}
+
+function nextPage(){
+
+  const note =
+    getNote(selectedNoteId);
+
+  if(!note){
+    return;
+  }
+
+  if(
+    currentPage<
+    note.pages.length-1
+  ){
+
+    currentPage++;
+
+  }else{
+
+    note.pages.push({
+
+      strokes:[],
+
+      elements:[]
+
+    });
+
+    currentPage=
+      note.pages.length-1;
+
+  }
+
+  save();
+
+  renderNoteEditor();
+
+}
+
 
 /* =========================================================
    SETTINGS
@@ -2961,113 +4710,209 @@ function saveSoon(){
 
 function openSettings(){
 
-  main.innerHTML=`
+  const main =
+    document.getElementById(
+      "main"
+    );
 
-    <div class="screen">
+  main.innerHTML="";
 
-      <div class="content">
+  const page =
+    document.createElement("div");
 
-        <div class="header">
+  page.className="page";
 
-          <div class="headerIcon">
-            ⚙️
-          </div>
+  const inner =
+    document.createElement("div");
 
-          <div>
-            <div class="headerTitle">
-              設定
-            </div>
+  inner.className="pageInner";
 
-            <div class="headerSub">
-              Destination Note
-            </div>
-          </div>
+  const rank =
+    getRank(
+      data.totalSeconds
+    );
 
+  inner.innerHTML=
+    `
+    <div class="header">
+
+      <div class="headerIcon">
+        ⚙️
+      </div>
+
+      <div>
+        <div class="headerTitle">
+          設定
         </div>
 
-        <div class="settingBox">
-
-          <h3>データ</h3>
-
-          <button
-            class="settingButton"
-            id="exportData"
-          >
-            データを書き出す
-          </button>
-
-          <button
-            class="settingButton"
-            id="importData"
-          >
-            データを読み込む
-          </button>
-
-          <input
-            type="file"
-            id="importFile"
-            accept=".json"
-            hidden
-          >
-
+        <div class="headerSub">
+          Destination Note
         </div>
-
-        <div class="settingBox">
-
-          <h3>現在のデータ</h3>
-
-          <p>
-            タブ：
-            ${data.folders.length}
-          </p>
-
-          <p>
-            ノート：
-            ${data.notes.length}
-          </p>
-
-        </div>
-
       </div>
 
     </div>
 
-  `;
+    <div class="cardGrid">
+
+      <div class="card">
+
+        <div class="cardIcon">
+          ⏱️
+        </div>
+
+        <div class="cardTitle">
+          勉強時間
+        </div>
+
+        <div
+          id="studyTime"
+          class="cardSub">
+          ${formatTime(
+            data.totalSeconds
+          )}
+        </div>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="cardIcon">
+          ${rank[1]}
+        </div>
+
+        <div class="cardTitle">
+          ${rank[0]}
+        </div>
+
+        <div class="cardSub">
+          現在のランク
+        </div>
+
+      </div>
+
+
+      <button
+        id="exportButton"
+        class="card">
+
+        <div class="cardIcon">
+          💾
+        </div>
+
+        <div class="cardTitle">
+          バックアップ
+        </div>
+
+        <div class="cardSub">
+          データを書き出す
+        </div>
+
+      </button>
+
+
+      <button
+        id="importButton"
+        class="card">
+
+        <div class="cardIcon">
+          📥
+        </div>
+
+        <div class="cardTitle">
+          復元
+        </div>
+
+        <div class="cardSub">
+          バックアップを読み込む
+        </div>
+
+      </button>
+
+
+      <button
+        id="logoutButton"
+        class="card">
+
+        <div class="cardIcon">
+          🚪
+        </div>
+
+        <div class="cardTitle">
+          ログアウト
+        </div>
+
+        <div class="cardSub">
+          この端末のログイン画面へ
+        </div>
+
+      </button>
+
+    </div>
+    `;
+
+  page.appendChild(
+    inner
+  );
+
+  main.appendChild(
+    page
+  );
+
 
   document
-    .getElementById("exportData")
+    .getElementById(
+      "exportButton"
+    )
     .addEventListener(
       "click",
       exportData
     );
 
+
   document
-    .getElementById("importData")
+    .getElementById(
+      "importButton"
+    )
+    .addEventListener(
+      "click",
+      importData
+    );
+
+
+  document
+    .getElementById(
+      "logoutButton"
+    )
     .addEventListener(
       "click",
       ()=>{
+        flushStudyTime();
+
         document
           .getElementById(
-            "importFile"
+            "app"
           )
-          .click();
-      }
-    );
+          .style.display="none";
 
-  document
-    .getElementById("importFile")
-    .addEventListener(
-      "change",
-      importData
+        document
+          .getElementById(
+            "loginScreen"
+          )
+          .style.display="flex";
+      }
     );
 
 }
 
+
 /* =========================================================
-   EXPORT
+   EXPORT / IMPORT
 ========================================================= */
 
 function exportData(){
+
+  flushStudyTime();
 
   const blob =
     new Blob(
@@ -3079,15 +4924,20 @@ function exportData(){
         )
       ],
       {
-        type:"application/json"
+        type:
+          "application/json"
       }
     );
 
   const url =
-    URL.createObjectURL(blob);
+    URL.createObjectURL(
+      blob
+    );
 
   const a =
-    document.createElement("a");
+    document.createElement(
+      "a"
+    );
 
   a.href=url;
 
@@ -3100,109 +4950,111 @@ function exportData(){
 
 }
 
-/* =========================================================
-   IMPORT
-========================================================= */
+function importData(){
 
-function importData(e){
+  const input =
+    document.createElement(
+      "input"
+    );
 
-  const file =
-    e.target.files[0];
+  input.type="file";
 
-  if(!file) return;
+  input.accept=
+    ".json,application/json";
 
-  const reader =
-    new FileReader();
+  input.onchange =
+    event=>{
 
-  reader.onload=()=>{
+      const file =
+        event.target.files[0];
 
-    try{
-
-      const imported =
-        JSON.parse(
-          reader.result
-        );
-
-      if(
-        !imported.folders ||
-        !imported.notes
-      ){
-
-        alert(
-          "Destination Noteのデータではありません"
-        );
-
+      if(!file){
         return;
-
       }
 
-      data=imported;
+      const reader =
+        new FileReader();
 
-      save();
+      reader.onload =
+        ()=>{
+          try{
 
-      location.reload();
+            const imported =
+              JSON.parse(
+                reader.result
+              );
 
-    }catch(err){
+            if(
+              !imported ||
+              !Array.isArray(
+                imported.folders
+              ) ||
+              !Array.isArray(
+                imported.notes
+              )
+            ){
 
-      alert(
-        "読み込みに失敗しました"
+              throw new Error(
+                "invalid"
+              );
+
+            }
+
+            data=imported;
+
+            normalizeData();
+
+            save();
+
+            selectedFolderId=
+              "root";
+
+            currentFolderId=
+              "root";
+
+            selectedNoteId=null;
+
+            expandedFolders=
+              new Set(["root"]);
+
+            renderTree();
+
+            openFolder(
+              "root"
+            );
+
+            alert(
+              "復元しました！"
+            );
+
+          }catch(error){
+
+            alert(
+              "バックアップを読み込めませんでした。"
+            );
+
+          }
+
+        };
+
+      reader.readAsText(
+        file
       );
 
-    }
+    };
 
-  };
-
-  reader.readAsText(file);
+  input.click();
 
 }
 
-/* =========================================================
-   SIDEBAR BUTTONS
-========================================================= */
-
-document
-  .getElementById("addFolderBtn")
-  .addEventListener(
-    "click",
-    createFolder
-  );
-
-document
-  .getElementById("addNoteBtn")
-  .addEventListener(
-    "click",
-    createNote
-  );
-
-document
-  .getElementById("settingsBtn")
-  .addEventListener(
-    "click",
-    openSettings
-  );
 
 /* =========================================================
-   MOBILE SIDEBAR
+   UTIL
 ========================================================= */
 
-document
-  .getElementById("mobileMenu")
-  .addEventListener(
-    "click",
-    ()=>{
-      sidebar.classList.toggle(
-        "open"
-      );
-    }
-  );
+function escapeHtml(value){
 
-/* =========================================================
-   ESCAPE HTML
-========================================================= */
-
-function escapeHTML(str){
-
-  return String(str ?? "")
+  return String(value)
     .replaceAll("&","&amp;")
     .replaceAll("<","&lt;")
     .replaceAll(">","&gt;")
@@ -3211,12 +5063,105 @@ function escapeHTML(str){
 
 }
 
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+document
+  .getElementById(
+    "addFolderButton"
+  )
+  .addEventListener(
+    "click",
+    createFolder
+  );
+
+document
+  .getElementById(
+    "addNoteButton"
+  )
+  .addEventListener(
+    "click",
+    createNote
+  );
+
+document
+  .getElementById(
+    "settingsButton"
+  )
+  .addEventListener(
+    "click",
+    openSettings
+  );
+
+
+/* =========================================================
+   MOBILE SIDEBAR
+========================================================= */
+
+const mobileButton =
+  document.createElement(
+    "button"
+  );
+
+mobileButton.className=
+  "mobileMenu";
+
+mobileButton.textContent=
+  "☰";
+
+mobileButton.addEventListener(
+  "click",
+  ()=>{
+    document
+      .getElementById(
+        "sidebar"
+      )
+      .classList.toggle(
+        "open"
+      );
+  }
+);
+
+document
+  .getElementById(
+    "main"
+  )
+  .appendChild(
+    mobileButton
+  );
+
+
 /* =========================================================
    START
 ========================================================= */
 
-renderTree();
-openFolder("root");
+load();
+
+if(
+  data.name &&
+  data.password
+){
+
+  /*
+    すでにログイン情報が
+    この端末にある場合
+  */
+
+  document
+    .getElementById(
+      "loginName"
+    )
+    .value=data.name;
+
+  document
+    .getElementById(
+      "loginPassword"
+    )
+    .value=data.password;
+
+}
 
 </script>
 
