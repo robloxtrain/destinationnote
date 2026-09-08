@@ -363,7 +363,7 @@ button{
 }
 
 .home-title{
-  font-size:35px;
+  font-size:38px;
   font-weight:900;
   letter-spacing:-1.8px;
 }
@@ -643,6 +643,11 @@ button{
   background:rgba(255,255,255,.6);
 }
 
+.delete-action{
+  background:rgba(255,80,80,.12);
+  color:#c33;
+}
+
 .item-grid{
   display:grid;
   grid-template-columns:
@@ -656,6 +661,7 @@ button{
   border-radius:23px;
   cursor:pointer;
   transition:.18s;
+  position:relative;
 }
 
 .item:hover{
@@ -669,6 +675,18 @@ button{
 .item-name{
   margin-top:12px;
   font-weight:800;
+}
+
+.item-delete{
+  position:absolute;
+  right:10px;
+  top:10px;
+  border:0;
+  width:32px;
+  height:32px;
+  border-radius:10px;
+  background:rgba(255,80,80,.12);
+  color:#c33;
 }
 
 /* =========================
@@ -695,6 +713,7 @@ button{
   border-bottom:1px solid rgba(0,0,0,.08);
   backdrop-filter:blur(25px);
   -webkit-backdrop-filter:blur(25px);
+  flex:none;
 }
 
 .note-tool{
@@ -705,6 +724,11 @@ button{
   border:0;
   border-radius:13px;
   background:#e9edf2;
+  font-weight:700;
+}
+
+.note-tool:active{
+  transform:scale(.94);
 }
 
 .note-tool.active{
@@ -712,10 +736,21 @@ button{
   color:white;
 }
 
+.history-button{
+  font-size:22px;
+  font-weight:500;
+}
+
+.history-button:disabled{
+  opacity:.3;
+  cursor:default;
+}
+
 .note-separator{
   width:1px;
   height:30px;
   background:rgba(0,0,0,.1);
+  flex:none;
 }
 
 .color-input{
@@ -725,10 +760,12 @@ button{
   padding:3px;
   border-radius:13px;
   background:#e9edf2;
+  flex:none;
 }
 
 .size-input{
   width:110px;
+  flex:none;
 }
 
 .note-board-wrap{
@@ -979,6 +1016,17 @@ button{
   .folder-actions{
     display:none;
   }
+
+  .note-toolbar{
+    min-height:58px;
+    padding:6px;
+  }
+
+  .note-tool{
+    min-width:40px;
+    height:40px;
+  }
+
 }
 </style>
 </head>
@@ -1034,13 +1082,10 @@ button{
 
 <div id="app">
 
-  <!-- SIDEBAR -->
-
   <aside class="sidebar">
 
     <div class="sidebar-inner glass">
 
-      <!-- ★ここ全体がホームボタン★ -->
       <div
         id="homeButton"
         class="home-button"
@@ -1108,8 +1153,6 @@ button{
 
   </aside>
 
-
-  <!-- MAIN -->
 
   <main class="main">
 
@@ -1182,9 +1225,36 @@ button{
     <button
       id="noteBack"
       class="note-tool"
+      title="ホームへ戻る"
     >
       ←
     </button>
+
+
+    <!-- Undo -->
+
+    <button
+      id="undoButton"
+      class="note-tool history-button"
+      title="戻る"
+    >
+      ↶
+    </button>
+
+
+    <!-- Redo -->
+
+    <button
+      id="redoButton"
+      class="note-tool history-button"
+      title="進む"
+    >
+      ↷
+    </button>
+
+
+    <div class="note-separator"></div>
+
 
     <button
       class="note-tool active"
@@ -1228,7 +1298,9 @@ button{
       🟨
     </button>
 
+
     <div class="note-separator"></div>
+
 
     <input
       id="noteColor"
@@ -1245,6 +1317,7 @@ button{
       max="50"
       value="5"
     >
+
 
     <button
       id="zoomOut"
@@ -1267,9 +1340,11 @@ button{
       ＋
     </button>
 
+
     <button
       id="clearPage"
       class="note-tool"
+      title="ページを全部消す"
     >
       🗑️
     </button>
@@ -1412,7 +1487,7 @@ function loadData(){
           "無題のノート";
       }
 
-      if(!note.pages){
+      if(!Array.isArray(note.pages)){
         note.pages=[
           {
             strokes:[],
@@ -1421,8 +1496,27 @@ function loadData(){
         ];
       }
 
-      if(!note.pageIndex){
+      if(
+        typeof note.pageIndex!=="number" ||
+        note.pageIndex<0
+      ){
         note.pageIndex=0;
+      }
+
+      for(const page of note.pages){
+
+        if(!Array.isArray(page.strokes)){
+          page.strokes=[];
+        }
+
+        if(!Array.isArray(page.elements)){
+          page.elements=[];
+        }
+
+      }
+
+      if(note.pageIndex>=note.pages.length){
+        note.pageIndex=note.pages.length-1;
       }
 
     }
@@ -1821,7 +1915,7 @@ function renderHome(){
 
           <div class="next-date">
             ${nearest.date}
-            ・${nearest.type}
+            ・${escapeHtml(nearest.type)}
           </div>
           `
           :
@@ -2620,12 +2714,6 @@ function renderFolderTree(
   `;
 
 
-  /*
-    ★重要
-    三角だけではなく、
-    アイコン・文字・行全体をクリック可能
-  */
-
   row.onclick=(e)=>{
 
     e.stopPropagation();
@@ -2781,6 +2869,10 @@ function createFolder(){
 
   if(!name)return;
 
+  const trimmed=name.trim();
+
+  if(!trimmed)return;
+
 
   const parent=
     currentFolderId ||
@@ -2792,7 +2884,7 @@ function createFolder(){
 
     id:uid("folder"),
 
-    name:name.trim(),
+    name:trimmed,
 
     icon:"📁",
 
@@ -2845,7 +2937,11 @@ function renameFolder(id){
 
   if(!name)return;
 
-  folder.name=name.trim();
+  const trimmed=name.trim();
+
+  if(!trimmed)return;
+
+  folder.name=trimmed;
 
   saveData();
 
@@ -2859,6 +2955,101 @@ function renameFolder(id){
 
 }
 
+
+/* =========================
+   DELETE FOLDER
+========================= */
+
+function deleteFolder(id){
+
+  if(id==="root"){
+
+    alert("マイノートは削除できません");
+
+    return;
+
+  }
+
+
+  const folder=
+    data.folders.find(
+      f=>f.id===id
+    );
+
+  if(!folder)return;
+
+
+  const foldersToDelete=[];
+
+  function collect(folderId){
+
+    foldersToDelete.push(folderId);
+
+    const children=
+      data.folders.filter(
+        f=>f.parent===folderId
+      );
+
+    for(const child of children){
+
+      collect(child.id);
+
+    }
+
+  }
+
+
+  collect(id);
+
+
+  const notesToDelete=
+    data.notes.filter(
+      n=>foldersToDelete.includes(
+        n.folderId
+      )
+    );
+
+
+  const message=
+    `「${folder.name}」を削除しますか？\n\n`+
+    `中にあるフォルダ：${foldersToDelete.length-1}個\n`+
+    `中にあるノート：${notesToDelete.length}個\n\n`+
+    `この操作は元に戻せません。`;
+
+
+  if(!confirm(message))return;
+
+
+  data.folders=
+    data.folders.filter(
+      f=>!foldersToDelete.includes(f.id)
+    );
+
+
+  data.notes=
+    data.notes.filter(
+      n=>!foldersToDelete.includes(n.folderId)
+    );
+
+
+  selectedFolderId="root";
+
+  currentFolderId="root";
+
+  currentNoteId=null;
+
+  saveData();
+
+  renderTree();
+
+  openFolder("root");
+
+}
+
+
+/* =========================
+   CREATE NOTE
+========================= */
 
 function createNote(){
 
@@ -2877,12 +3068,16 @@ function createNote(){
 
   if(!title)return;
 
+  const trimmed=title.trim();
+
+  if(!trimmed)return;
+
 
   const note={
 
     id:uid("note"),
 
-    title:title.trim(),
+    title:trimmed,
 
     folderId,
 
@@ -2934,7 +3129,11 @@ function renameNote(id){
 
   if(!name)return;
 
-  note.title=name.trim();
+  const trimmed=name.trim();
+
+  if(!trimmed)return;
+
+  note.title=trimmed;
 
   saveData();
 
@@ -2947,6 +3146,57 @@ function renameNote(id){
       .textContent=note.title;
 
   }
+
+}
+
+
+/* =========================
+   DELETE NOTE
+========================= */
+
+function deleteNote(id){
+
+  const note=
+    data.notes.find(
+      n=>n.id===id
+    );
+
+  if(!note)return;
+
+
+  if(
+    !confirm(
+      `「${note.title || "無題のノート"}」を削除しますか？\n\nこの操作は元に戻せません。`
+    )
+  ){
+
+    return;
+
+  }
+
+
+  data.notes=
+    data.notes.filter(
+      n=>n.id!==id
+    );
+
+
+  if(currentNoteId===id){
+
+    currentNoteId=null;
+
+  }
+
+
+  saveData();
+
+  renderTree();
+
+
+  const folderId=
+    note.folderId || "root";
+
+  openFolder(folderId);
 
 }
 
@@ -3024,6 +3274,21 @@ function openFolder(id){
             📝 ノート
           </button>
 
+          ${
+            id!=="root"
+            ?
+            `
+            <button
+              id="folderDelete"
+              class="action delete-action"
+            >
+              🗑️ 削除
+            </button>
+            `
+            :
+            ""
+          }
+
         </div>
 
       </div>
@@ -3038,6 +3303,13 @@ function openFolder(id){
               class="item glass"
               data-folder="${f.id}"
             >
+
+              <button
+                class="item-delete"
+                data-delete-folder="${f.id}"
+              >
+                ×
+              </button>
 
               <div class="item-icon">
                 ${f.icon || "📁"}
@@ -3060,6 +3332,13 @@ function openFolder(id){
               class="item glass"
               data-note="${n.id}"
             >
+
+              <button
+                class="item-delete"
+                data-delete-note="${n.id}"
+              >
+                ×
+              </button>
 
               <div class="item-icon">
                 📝
@@ -3089,7 +3368,15 @@ function openFolder(id){
     .querySelectorAll("[data-folder]")
     .forEach(el=>{
 
-      el.onclick=()=>{
+      el.onclick=(e)=>{
+
+        if(
+          e.target.closest(
+            "[data-delete-folder]"
+          )
+        ){
+          return;
+        }
 
         openFolder(
           el.dataset.folder
@@ -3104,10 +3391,56 @@ function openFolder(id){
     .querySelectorAll("[data-note]")
     .forEach(el=>{
 
-      el.onclick=()=>{
+      el.onclick=(e)=>{
+
+        if(
+          e.target.closest(
+            "[data-delete-note]"
+          )
+        ){
+          return;
+        }
 
         openNote(
           el.dataset.note
+        );
+
+      };
+
+    });
+
+
+  document
+    .querySelectorAll(
+      "[data-delete-folder]"
+    )
+    .forEach(btn=>{
+
+      btn.onclick=e=>{
+
+        e.stopPropagation();
+
+        deleteFolder(
+          btn.dataset.deleteFolder
+        );
+
+      };
+
+    });
+
+
+  document
+    .querySelectorAll(
+      "[data-delete-note]"
+    )
+    .forEach(btn=>{
+
+      btn.onclick=e=>{
+
+        e.stopPropagation();
+
+        deleteNote(
+          btn.dataset.deleteNote
         );
 
       };
@@ -3123,6 +3456,23 @@ function openFolder(id){
   document
     .getElementById("folderNewNote")
     .onclick=createNote;
+
+
+  const folderDelete=
+    document.getElementById(
+      "folderDelete"
+    );
+
+
+  if(folderDelete){
+
+    folderDelete.onclick=()=>{
+
+      deleteFolder(id);
+
+    };
+
+  }
 
 
   renderTree();
@@ -3182,9 +3532,256 @@ let lastPoint=null;
 let panStart=null;
 
 
-/* =========================
+/* =========================================================
+   UNDO / REDO SYSTEM
+========================================================= */
+
+const historyMap=new Map();
+
+const MAX_HISTORY=60;
+
+
+function getHistoryKey(){
+
+  if(!currentNoteId){
+
+    return null;
+
+  }
+
+
+  const note=
+    data.notes.find(
+      n=>n.id===currentNoteId
+    );
+
+  if(!note)return null;
+
+
+  return (
+    currentNoteId+
+    "_page_"+
+    (note.pageIndex || 0)
+  );
+
+}
+
+
+function getHistory(){
+
+  const key=
+    getHistoryKey();
+
+  if(!key)return null;
+
+
+  if(!historyMap.has(key)){
+
+    historyMap.set(
+      key,
+      {
+        undo:[],
+        redo:[]
+      }
+    );
+
+  }
+
+
+  return historyMap.get(key);
+
+}
+
+
+function clonePage(page){
+
+  return JSON.parse(
+    JSON.stringify(
+      page || {
+        strokes:[],
+        elements:[]
+      }
+    )
+  );
+
+}
+
+
+function pushHistory(){
+
+  const history=
+    getHistory();
+
+  const page=
+    getCurrentPage();
+
+  if(!history || !page)return;
+
+
+  history.undo.push(
+    clonePage(page)
+  );
+
+
+  if(
+    history.undo.length>
+    MAX_HISTORY
+  ){
+
+    history.undo.shift();
+
+  }
+
+
+  history.redo=[];
+
+  updateHistoryButtons();
+
+}
+
+
+function undo(){
+
+  const history=
+    getHistory();
+
+  const page=
+    getCurrentPage();
+
+  if(
+    !history ||
+    !page ||
+    history.undo.length===0
+  ){
+
+    return;
+
+  }
+
+
+  history.redo.push(
+    clonePage(page)
+  );
+
+
+  const previous=
+    history.undo.pop();
+
+
+  page.strokes=
+    previous.strokes || [];
+
+  page.elements=
+    previous.elements || [];
+
+
+  saveData();
+
+  drawNote();
+
+  renderObjects();
+
+  updateHistoryButtons();
+
+}
+
+
+function redo(){
+
+  const history=
+    getHistory();
+
+  const page=
+    getCurrentPage();
+
+  if(
+    !history ||
+    !page ||
+    history.redo.length===0
+  ){
+
+    return;
+
+  }
+
+
+  history.undo.push(
+    clonePage(page)
+  );
+
+
+  const next=
+    history.redo.pop();
+
+
+  page.strokes=
+    next.strokes || [];
+
+  page.elements=
+    next.elements || [];
+
+
+  saveData();
+
+  drawNote();
+
+  renderObjects();
+
+  updateHistoryButtons();
+
+}
+
+
+function updateHistoryButtons(){
+
+  const history=
+    getHistory();
+
+  const undoButton=
+    document.getElementById(
+      "undoButton"
+    );
+
+  const redoButton=
+    document.getElementById(
+      "redoButton"
+    );
+
+
+  if(!history){
+
+    if(undoButton)
+      undoButton.disabled=true;
+
+    if(redoButton)
+      redoButton.disabled=true;
+
+    return;
+
+  }
+
+
+  if(undoButton){
+
+    undoButton.disabled=
+      history.undo.length===0;
+
+  }
+
+
+  if(redoButton){
+
+    redoButton.disabled=
+      history.redo.length===0;
+
+  }
+
+}
+
+
+/* =========================================================
    NOTE OPEN
-========================= */
+========================================================= */
 
 function openNote(id){
 
@@ -3201,7 +3798,7 @@ function openNote(id){
   currentView="note";
 
 
-  if(!note.pages){
+  if(!Array.isArray(note.pages)){
 
     note.pages=[
       {
@@ -3218,6 +3815,14 @@ function openNote(id){
   ){
 
     note.pageIndex=0;
+
+  }
+
+
+  if(note.pageIndex>=note.pages.length){
+
+    note.pageIndex=
+      note.pages.length-1;
 
   }
 
@@ -3246,6 +3851,8 @@ function openNote(id){
 
   updateCamera();
 
+  updateHistoryButtons();
+
   closeSidebarMobile();
 
 }
@@ -3260,6 +3867,13 @@ function getCurrentPage(){
 
   if(!note)return null;
 
+  if(!Array.isArray(note.pages)){
+
+    note.pages=[];
+
+  }
+
+
   if(!note.pages.length){
 
     note.pages.push({
@@ -3270,12 +3884,26 @@ function getCurrentPage(){
   }
 
 
+  if(
+    note.pageIndex<0 ||
+    note.pageIndex>=note.pages.length
+  ){
+
+    note.pageIndex=0;
+
+  }
+
+
   return note.pages[
-    note.pageIndex || 0
+    note.pageIndex
   ];
 
 }
 
+
+/* =========================================================
+   DRAW NOTE
+========================================================= */
 
 function drawNote(){
 
@@ -3295,8 +3923,10 @@ function drawNote(){
 
   for(const stroke of page.strokes){
 
-    if(!stroke.points ||
-       stroke.points.length<2){
+    if(
+      !stroke.points ||
+      stroke.points.length<2
+    ){
 
       continue;
 
@@ -3351,6 +3981,10 @@ function drawNote(){
 
 }
 
+
+/* =========================================================
+   OBJECTS
+========================================================= */
 
 function renderObjects(){
 
@@ -3421,11 +4055,7 @@ function renderObjects(){
     el.onpointerdown=
       e=>{
 
-        if(noteTool!=="hand"){
-
-          e.stopPropagation();
-
-        }
+        e.stopPropagation();
 
         selectObject(el);
 
@@ -3482,20 +4112,10 @@ function makeObjectDraggable(
     "pointerdown",
     e=>{
 
-      if(
-        noteTool!=="hand" &&
-        noteTool!=="pen" &&
-        noteTool!=="text" &&
-        noteTool!=="sticky"
-      ){
-        return;
-      }
+      if(noteTool!=="hand"){
 
-
-      if(
-        noteTool!=="hand"
-      ){
         return;
+
       }
 
 
@@ -3503,9 +4123,16 @@ function makeObjectDraggable(
 
       dragging=true;
 
-      el.setPointerCapture(
-        e.pointerId
-      );
+      pushHistory();
+
+
+      try{
+
+        el.setPointerCapture(
+          e.pointerId
+        );
+
+      }catch{}
 
 
       const p=
@@ -3556,9 +4183,6 @@ function makeObjectDraggable(
       el.style.top=
         obj.y+"px";
 
-
-      saveData();
-
     }
   );
 
@@ -3567,7 +4191,25 @@ function makeObjectDraggable(
     "pointerup",
     ()=>{
 
+      if(!dragging)return;
+
       dragging=false;
+
+      saveData();
+
+    }
+  );
+
+
+  el.addEventListener(
+    "pointercancel",
+    ()=>{
+
+      if(!dragging)return;
+
+      dragging=false;
+
+      saveData();
 
     }
   );
@@ -3674,6 +4316,8 @@ function startDrawing(e){
 
   if(noteTool==="eraser"){
 
+    pushHistory();
+
     eraseAt(p);
 
     return;
@@ -3685,6 +4329,14 @@ function startDrawing(e){
     getCurrentPage();
 
   if(!page)return;
+
+
+  /*
+    ストローク開始前の状態を保存。
+    これで1本の線を1回のUndoで消せる。
+  */
+
+  pushHistory();
 
 
   currentStroke={
@@ -3750,6 +4402,16 @@ function moveDrawing(e){
   if(!drawing)return;
 
 
+  if(
+    activePointerId!==null &&
+    e.pointerId!==activePointerId
+  ){
+
+    return;
+
+  }
+
+
   const p=
     screenToWorld(
       e.clientX,
@@ -3790,6 +4452,24 @@ function moveDrawing(e){
 
 function endDrawing(){
 
+  if(
+    drawing &&
+    currentStroke &&
+    currentStroke.points.length===1
+  ){
+
+    /*
+      タップだけでも小さな点として表示
+    */
+
+    currentStroke.points.push({
+      x:currentStroke.points[0].x+0.1,
+      y:currentStroke.points[0].y+0.1
+    });
+
+  }
+
+
   drawing=false;
 
   currentStroke=null;
@@ -3800,8 +4480,14 @@ function endDrawing(){
 
   saveData();
 
+  updateHistoryButtons();
+
 }
 
+
+/* =========================================================
+   ERASER
+========================================================= */
 
 function eraseAt(point){
 
@@ -3845,8 +4531,6 @@ function eraseAt(point){
 
   drawNote();
 
-  saveData();
-
 }
 
 
@@ -3875,6 +4559,9 @@ function createObject(
 
 
     if(!text)return;
+
+
+    pushHistory();
 
 
     page.elements.push({
@@ -3917,6 +4604,9 @@ function createObject(
     if(text===null)return;
 
 
+    pushHistory();
+
+
     page.elements.push({
 
       id:uid("obj"),
@@ -3941,6 +4631,8 @@ function createObject(
   saveData();
 
   renderObjects();
+
+  updateHistoryButtons();
 
 }
 
@@ -4010,9 +4702,14 @@ boardWrap.addEventListener(
 
     e.preventDefault();
 
-    boardWrap.setPointerCapture(
-      e.pointerId
-    );
+    try{
+
+      boardWrap.setPointerCapture(
+        e.pointerId
+      );
+
+    }catch{}
+
 
     startDrawing(e);
 
@@ -4090,6 +4787,16 @@ document
 
 
 document
+  .getElementById("undoButton")
+  .onclick=undo;
+
+
+document
+  .getElementById("redoButton")
+  .onclick=redo;
+
+
+document
   .getElementById("noteColor")
   .oninput=e=>{
 
@@ -4112,6 +4819,22 @@ document
   .getElementById("clearPage")
   .onclick=()=>{
 
+    const page=
+      getCurrentPage();
+
+    if(!page)return;
+
+
+    if(
+      page.strokes.length===0 &&
+      page.elements.length===0
+    ){
+
+      return;
+
+    }
+
+
     if(
       !confirm(
         "このページを全部消しますか？"
@@ -4123,10 +4846,7 @@ document
     }
 
 
-    const page=
-      getCurrentPage();
-
-    if(!page)return;
+    pushHistory();
 
 
     page.strokes=[];
@@ -4138,6 +4858,8 @@ document
     drawNote();
 
     renderObjects();
+
+    updateHistoryButtons();
 
   };
 
@@ -4545,10 +5267,6 @@ function login(){
       data.name;
 
 
-  /*
-    ★ログインしたら必ずホーム
-  */
-
   showHome();
 
 }
@@ -4580,13 +5298,6 @@ document
 document
   .getElementById("homeButton")
   .onclick=()=>{
-
-    /*
-      ★
-      Destination Note
-      大神
-      の部分全体を押したらホーム
-    */
 
     showHome();
 
@@ -4695,18 +5406,16 @@ if(data.name){
     .getElementById("loginName")
     .value=data.name;
 
-  /*
-    ★サイトを開いたらログイン済みなら
-      必ずホーム
-  */
 
   document
     .getElementById("loginScreen")
     .classList.add("hidden");
 
+
   document
     .getElementById("app")
     .classList.add("show");
+
 
   showHome();
 
