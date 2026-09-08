@@ -2,7 +2,8 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#f5f5f7">
 <title>Destination Note</title>
 
@@ -14,21 +15,18 @@
 
 :root{
   --bg:#f5f5f7;
-  --card:rgba(255,255,255,.72);
-  --card2:rgba(255,255,255,.55);
+  --card:rgba(255,255,255,.75);
   --text:#171717;
   --sub:#777;
-  --border:rgba(0,0,0,.08);
+  --border:rgba(0,0,0,.09);
   --blue:#007aff;
   --red:#ff3b30;
-  --green:#34c759;
-  --shadow:0 15px 40px rgba(0,0,0,.08);
+  --shadow:0 15px 40px rgba(0,0,0,.09);
 }
 
 body.dark{
   --bg:#101114;
-  --card:rgba(35,36,42,.78);
-  --card2:rgba(35,36,42,.55);
+  --card:rgba(35,36,42,.82);
   --text:#fff;
   --sub:#aaa;
   --border:rgba(255,255,255,.1);
@@ -38,11 +36,16 @@ body.dark{
 body{
   margin:0;
   min-height:100vh;
-  background:
-    radial-gradient(circle at 10% 0%,rgba(0,122,255,.12),transparent 35%),
-    radial-gradient(circle at 100% 20%,rgba(175,82,222,.10),transparent 35%),
-    var(--bg);
   color:var(--text);
+  background:
+    radial-gradient(circle at 10% 0%,
+      rgba(0,122,255,.13),
+      transparent 35%),
+    radial-gradient(circle at 100% 20%,
+      rgba(175,82,222,.10),
+      transparent 35%),
+    var(--bg);
+
   font-family:
     -apple-system,
     BlinkMacSystemFont,
@@ -64,9 +67,9 @@ button{
   display:none!important;
 }
 
-/* ==============================
+/* =========================
 LOGIN
-============================== */
+========================= */
 
 #loginScreen{
   min-height:100vh;
@@ -79,47 +82,54 @@ LOGIN
 .loginBox{
   width:min(430px,100%);
   padding:35px 25px;
-  border:1px solid var(--border);
+  text-align:center;
+
   background:var(--card);
+  border:1px solid var(--border);
+  border-radius:30px;
+
   backdrop-filter:blur(30px);
   -webkit-backdrop-filter:blur(30px);
-  border-radius:30px;
+
   box-shadow:var(--shadow);
-  text-align:center;
 }
 
 .logo{
   width:78px;
   height:78px;
   margin:auto;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   border-radius:23px;
-  background:linear-gradient(135deg,#007aff,#5856d6);
-  color:#fff;
+
+  background:
+    linear-gradient(135deg,#007aff,#5856d6);
+
+  color:white;
   font-size:37px;
-  box-shadow:0 12px 30px rgba(0,122,255,.25);
 }
 
 .loginBox h1{
   margin:20px 0 5px;
-  font-size:30px;
 }
 
 .loginBox p{
   color:var(--sub);
-  margin-bottom:28px;
 }
 
 .input{
   width:100%;
   padding:15px 17px;
   margin-bottom:12px;
-  border-radius:16px;
+
   border:1px solid var(--border);
+  border-radius:16px;
   outline:none;
-  background:var(--card2);
+
+  background:rgba(127,127,127,.08);
   color:var(--text);
 }
 
@@ -130,38 +140,34 @@ LOGIN
 .primary{
   width:100%;
   padding:15px;
+
   border:none;
   border-radius:16px;
+
   background:var(--blue);
   color:white;
+
   font-weight:700;
 }
 
-.loginInfo{
-  color:var(--sub);
-  font-size:12px;
-  margin-top:18px;
-}
-
-/* ==============================
+/* =========================
 HEADER
-============================== */
-
-#app{
-  min-height:100vh;
-  padding-bottom:100px;
-}
+========================= */
 
 header{
   position:sticky;
   top:0;
   z-index:100;
+
   padding:
     max(12px,env(safe-area-inset-top))
     18px 12px;
+
   background:rgba(245,245,247,.72);
+
   backdrop-filter:blur(25px);
   -webkit-backdrop-filter:blur(25px);
+
   border-bottom:1px solid var(--border);
 }
 
@@ -172,6 +178,7 @@ body.dark header{
 .headerInner{
   max-width:1100px;
   margin:auto;
+
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -190,36 +197,44 @@ body.dark header{
 .iconBtn{
   width:42px;
   height:42px;
+
   border:1px solid var(--border);
+  border-radius:14px;
+
   background:var(--card);
   color:var(--text);
-  border-radius:14px;
 }
 
-/* ==============================
+/* =========================
 MAIN
-============================== */
+========================= */
 
 main{
   max-width:1100px;
   margin:auto;
-  padding:24px 18px;
+  padding:24px 18px 120px;
 }
 
 .hero{
   padding:25px;
-  border-radius:28px;
-  background:
-    linear-gradient(135deg,rgba(0,122,255,.15),rgba(88,86,214,.10)),
-    var(--card);
-  border:1px solid var(--border);
-  box-shadow:var(--shadow);
   margin-bottom:18px;
+
+  border-radius:28px;
+  border:1px solid var(--border);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0,122,255,.15),
+      rgba(88,86,214,.10)
+    ),
+    var(--card);
+
+  box-shadow:var(--shadow);
 }
 
 .hero h2{
   margin:0 0 5px;
-  font-size:27px;
 }
 
 .hero p{
@@ -228,50 +243,59 @@ main{
 }
 
 .sectionTitle{
+  margin:28px 3px 12px;
   font-size:20px;
   font-weight:800;
-  margin:28px 3px 12px;
 }
 
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+  grid-template-columns:
+    repeat(auto-fill,minmax(230px,1fr));
   gap:14px;
 }
 
 .card{
+  padding:20px;
+
   border:1px solid var(--border);
+  border-radius:23px;
+
   background:var(--card);
+
   backdrop-filter:blur(20px);
   -webkit-backdrop-filter:blur(20px);
-  border-radius:23px;
-  padding:20px;
+
   box-shadow:var(--shadow);
 }
 
-.folderCard{
+.folderCard,
+.noteCard{
   cursor:pointer;
   transition:.15s;
 }
 
-.folderCard:active{
+.folderCard:active,
+.noteCard:active{
   transform:scale(.98);
 }
 
 .folderIcon{
   font-size:38px;
-  margin-bottom:10px;
 }
 
-.folderName{
+.folderName,
+.noteTitle{
+  margin-top:10px;
   font-size:18px;
   font-weight:750;
 }
 
-.cardSub{
+.cardSub,
+.noteDate{
+  margin-top:5px;
   color:var(--sub);
   font-size:13px;
-  margin-top:5px;
 }
 
 .addArea{
@@ -282,12 +306,15 @@ main{
 }
 
 .addBtn{
-  border:none;
   padding:13px 17px;
+
+  border:none;
   border-radius:16px;
-  font-weight:700;
+
   background:var(--blue);
-  color:#fff;
+  color:white;
+
+  font-weight:700;
 }
 
 .addBtn.secondary{
@@ -297,46 +324,25 @@ main{
 }
 
 .danger{
-  border:none;
   padding:13px 17px;
+
+  border:none;
   border-radius:16px;
+
   background:var(--red);
   color:white;
+
   font-weight:700;
 }
 
-/* ==============================
-BREADCRUMB
-============================== */
-
-.breadcrumb{
-  display:flex;
-  gap:6px;
-  align-items:center;
-  overflow-x:auto;
-  white-space:nowrap;
-  padding-bottom:8px;
-}
-
-.crumb{
-  border:none;
-  background:none;
-  color:var(--blue);
-  font-weight:700;
-}
-
-.separator{
-  color:var(--sub);
-}
-
-/* ==============================
+/* =========================
 RANK
-============================== */
+========================= */
 
 .rankTop{
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
 }
 
 .rankName{
@@ -350,71 +356,79 @@ RANK
 
 .progress{
   height:10px;
-  border-radius:20px;
-  overflow:hidden;
-  background:rgba(127,127,127,.15);
   margin-top:12px;
+
+  overflow:hidden;
+
+  border-radius:20px;
+
+  background:rgba(127,127,127,.15);
 }
 
 .progressBar{
   height:100%;
+
   border-radius:20px;
-  background:linear-gradient(90deg,#007aff,#5856d6);
-  transition:.5s;
+
+  background:
+    linear-gradient(
+      90deg,
+      #007aff,
+      #5856d6
+    );
 }
 
-.nextRank{
-  color:var(--sub);
-  font-size:13px;
-  margin-top:9px;
+/* =========================
+BREADCRUMB
+========================= */
+
+.breadcrumb{
+  display:flex;
+  gap:6px;
+  align-items:center;
+
+  overflow-x:auto;
+  white-space:nowrap;
+
+  padding-bottom:8px;
 }
 
-/* ==============================
-NOTE LIST
-============================== */
+.crumb{
+  border:none;
+  background:none;
 
-.noteCard{
-  cursor:pointer;
+  color:var(--blue);
+  font-weight:700;
 }
 
-.noteTitle{
-  font-size:18px;
-  font-weight:750;
-}
-
-.noteDate{
-  color:var(--sub);
-  font-size:12px;
-  margin-top:7px;
-}
-
-.notePreview{
-  color:var(--sub);
-  margin-top:12px;
-  line-height:1.5;
-  max-height:45px;
-  overflow:hidden;
-}
-
-/* ==============================
+/* =========================
 BOTTOM NAV
-============================== */
+========================= */
 
 .bottomNav{
   position:fixed;
   z-index:150;
-  bottom:max(12px,env(safe-area-inset-bottom));
+
   left:50%;
+  bottom:max(12px,env(safe-area-inset-bottom));
+
   transform:translateX(-50%);
+
   width:min(520px,calc(100% - 24px));
+
   display:flex;
   justify-content:space-around;
+
   padding:8px;
+
   border:1px solid var(--border);
   border-radius:24px;
+
   background:var(--card);
+
   backdrop-filter:blur(30px);
   -webkit-backdrop-filter:blur(30px);
+
   box-shadow:0 15px 40px rgba(0,0,0,.15);
 }
 
@@ -422,8 +436,10 @@ BOTTOM NAV
   border:none;
   background:none;
   color:var(--sub);
+
   padding:8px 18px;
   border-radius:17px;
+
   font-size:11px;
 }
 
@@ -436,30 +452,39 @@ BOTTOM NAV
   color:var(--blue);
 }
 
-/* ==============================
+/* =========================
 MODAL
-============================== */
+========================= */
 
 .modal{
   position:fixed;
   inset:0;
-  z-index:300;
+  z-index:500;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   padding:18px;
+
   background:rgba(0,0,0,.35);
+
   backdrop-filter:blur(8px);
 }
 
 .modalBox{
   width:min(540px,100%);
   max-height:90vh;
+
   overflow:auto;
+
   padding:24px;
+
   border-radius:27px;
-  background:var(--bg);
   border:1px solid var(--border);
+
+  background:var(--bg);
+
   box-shadow:0 25px 70px rgba(0,0,0,.25);
 }
 
@@ -473,9 +498,9 @@ MODAL
   flex:1;
 }
 
-/* ==============================
+/* =========================
 TIMER
-============================== */
+========================= */
 
 .timer{
   text-align:center;
@@ -484,86 +509,93 @@ TIMER
 .timerCircle{
   width:220px;
   height:220px;
+
   margin:25px auto;
-  border-radius:50%;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
+  border-radius:50%;
+  border:12px solid rgba(0,122,255,.14);
+
   font-size:38px;
   font-weight:800;
-  border:12px solid rgba(0,122,255,.14);
 }
 
-.timerButtons{
-  display:flex;
-  gap:10px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-.timerButtons button{
-  border:none;
-  padding:13px 20px;
-  border-radius:15px;
-  background:var(--blue);
-  color:white;
-  font-weight:700;
-}
-
-/* ==============================
-SETTINGS
-============================== */
-
-.settingRow{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:17px 0;
-  border-bottom:1px solid var(--border);
-}
-
-/* ==============================
+/* =========================
 NOTE EDITOR
-============================== */
+========================= */
 
 .notePage{
-  min-height:calc(100vh - 90px);
+  width:100%;
 }
 
 .noteHeader{
   display:flex;
   align-items:center;
   gap:10px;
-  margin-bottom:15px;
+
+  margin-bottom:12px;
 }
 
 .backBtn{
-  border:none;
-  background:var(--card);
-  border:1px solid var(--border);
-  color:var(--text);
-  border-radius:14px;
   padding:10px 14px;
+
+  border:1px solid var(--border);
+  border-radius:14px;
+
+  background:var(--card);
+  color:var(--text);
 }
 
 .noteHeaderTitle{
   font-size:22px;
   font-weight:800;
+
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
 }
 
-.noteTools{
+/* =========================
+NOTE TOOLBAR
+========================= */
+
+.noteToolbar{
+  position:sticky;
+  top:70px;
+
+  z-index:80;
+
   display:flex;
-  gap:8px;
+  gap:7px;
   flex-wrap:wrap;
-  margin-bottom:14px;
+
+  padding:9px;
+
+  margin-bottom:10px;
+
+  border:1px solid var(--border);
+  border-radius:20px;
+
+  background:var(--card);
+
+  backdrop-filter:blur(25px);
+  -webkit-backdrop-filter:blur(25px);
 }
 
 .toolBtn{
+  min-height:42px;
+
+  padding:9px 12px;
+
   border:1px solid var(--border);
-  background:var(--card);
+  border-radius:13px;
+
+  background:rgba(127,127,127,.08);
   color:var(--text);
-  padding:11px 14px;
-  border-radius:14px;
+
   font-weight:700;
 }
 
@@ -572,129 +604,244 @@ NOTE EDITOR
   color:white;
 }
 
-.noteCanvasWrap{
-  position:relative;
-  width:100%;
-  min-height:600px;
-  overflow:hidden;
-  border-radius:25px;
+.colorInput{
+  width:42px;
+  height:42px;
+
+  padding:3px;
+
   border:1px solid var(--border);
+  border-radius:13px;
+
+  background:var(--card);
+}
+
+.range{
+  width:100px;
+}
+
+/* =========================
+PAGE CONTROLS
+========================= */
+
+.pageControls{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  gap:8px;
+
+  margin:10px 0;
+}
+
+.pageBtn{
+  padding:9px 13px;
+
+  border:1px solid var(--border);
+  border-radius:13px;
+
+  background:var(--card);
+  color:var(--text);
+}
+
+.pageNumber{
+  min-width:75px;
+  text-align:center;
+  font-weight:800;
+}
+
+/* =========================
+VIEWPORT
+========================= */
+
+.noteViewport{
+  position:relative;
+
+  width:100%;
+  height:70vh;
+  min-height:500px;
+
+  overflow:hidden;
+
+  border:1px solid var(--border);
+  border-radius:25px;
+
   background:
-    linear-gradient(rgba(127,127,127,.06) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(127,127,127,.06) 1px,transparent 1px),
-    var(--card);
-  background-size:25px 25px;
+    radial-gradient(
+      circle,
+      rgba(127,127,127,.08) 1px,
+      transparent 1px
+    ),
+    var(--bg);
+
+  background-size:20px 20px;
+
+  touch-action:none;
+
   box-shadow:var(--shadow);
 }
 
-#drawCanvas{
+/*
+  実際の巨大なノートページ
+*/
+
+.notePageCanvas{
   position:absolute;
+
+  width:1200px;
+  height:1700px;
+
+  left:50%;
+  top:50%;
+
+  transform-origin:0 0;
+
+  background:white;
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.2);
+
+  overflow:hidden;
+}
+
+body.dark .notePageCanvas{
+  background:#202124;
+}
+
+/* キャンバス */
+
+.notePageCanvas canvas{
+  position:absolute;
+
   inset:0;
-  width:100%;
-  height:100%;
+
+  width:1200px;
+  height:1700px;
+
   touch-action:none;
-  z-index:3;
 }
 
-.textElement,
-.stickyElement{
+/* オブジェクト */
+
+.noteElement{
   position:absolute;
-  z-index:5;
-  user-select:none;
-  touch-action:none;
-}
 
-.textElement{
+  z-index:20;
+
   min-width:150px;
-  max-width:80%;
+
+  user-select:none;
+
+  touch-action:none;
+}
+
+.noteElement textarea{
+  width:100%;
+  min-width:150px;
+  min-height:70px;
+
   padding:10px;
-  white-space:pre-wrap;
-  color:var(--text);
-  font-size:18px;
-  line-height:1.5;
+
+  resize:none;
+
   border:1px dashed transparent;
+  outline:none;
+
+  background:transparent;
+  color:#111;
+
+  font-size:22px;
+  line-height:1.5;
 }
 
-.textElement.selected{
-  border-color:var(--blue);
+.noteElement textarea:focus{
+  border-color:#007aff;
 }
 
-.stickyElement{
-  width:190px;
-  min-height:130px;
+.sticky{
+  width:200px;
+  min-height:140px;
+
   padding:15px;
+
   background:#fff59d;
+
+  box-shadow:0 10px 25px rgba(0,0,0,.18);
+
   color:#333;
-  border-radius:6px;
-  box-shadow:0 8px 20px rgba(0,0,0,.15);
-  font-size:16px;
-  white-space:pre-wrap;
+
+  border-radius:5px;
 }
 
-.stickyElement.selected{
-  outline:3px solid var(--blue);
+.sticky textarea{
+  color:#333;
 }
 
-.elementDelete{
+.objectDelete{
   position:absolute;
+
   right:-10px;
   top:-10px;
-  width:27px;
-  height:27px;
+
+  width:28px;
+  height:28px;
+
   border:none;
   border-radius:50%;
-  background:var(--red);
+
+  background:#ff3b30;
   color:white;
-  z-index:10;
+
+  z-index:50;
 }
 
-.textEdit{
-  width:100%;
-  min-height:100px;
-  border:none;
-  outline:none;
-  resize:none;
-  background:transparent;
-  color:inherit;
-}
+/* =========================
+ZOOM
+========================= */
 
-.stickyEdit{
-  width:100%;
-  min-height:100px;
-  border:none;
-  outline:none;
-  resize:none;
-  background:transparent;
-  color:#333;
-}
-
-.noteBottom{
+.zoomControls{
   display:flex;
-  gap:10px;
-  margin-top:14px;
-  flex-wrap:wrap;
+  justify-content:center;
+  gap:8px;
+
+  margin:10px 0;
 }
 
-/* ==============================
+.zoomBtn{
+  min-width:46px;
+  height:42px;
+
+  border:1px solid var(--border);
+  border-radius:13px;
+
+  background:var(--card);
+  color:var(--text);
+
+  font-weight:800;
+}
+
+/* =========================
 RESPONSIVE
-============================== */
+========================= */
 
 @media(max-width:600px){
 
   main{
-    padding:18px 13px 110px;
+    padding-left:12px;
+    padding-right:12px;
   }
 
   .grid{
     grid-template-columns:1fr 1fr;
   }
 
-  .card{
-    padding:16px;
+  .noteToolbar{
+    top:65px;
   }
 
-  .noteCanvasWrap{
-    min-height:650px;
+  .noteViewport{
+    height:72vh;
+    min-height:520px;
   }
 
 }
@@ -709,55 +856,61 @@ RESPONSIVE
 </style>
 </head>
 
+
 <body>
 
-<!-- ==========================
+
+<!-- =========================================
 LOGIN
-========================== -->
+========================================= -->
 
 <section id="loginScreen">
 
   <div class="loginBox">
 
-    <div class="logo">📚</div>
+    <div class="logo">
+      📚
+    </div>
 
-    <h1>Destination Note</h1>
+    <h1>
+      Destination Note
+    </h1>
 
-    <p>学びの目的地へ。</p>
+    <p>
+      学びの目的地へ。
+    </p>
 
     <input
       id="loginName"
       class="input"
-      placeholder="名前"
-      autocomplete="username">
+      placeholder="名前">
 
     <input
       id="loginPassword"
       class="input"
       type="password"
-      placeholder="パスワード"
-      autocomplete="current-password">
+      placeholder="パスワード">
 
     <button
       class="primary"
       onclick="login()">
-      はじめる
-    </button>
 
-    <div class="loginInfo">
-      この端末に学習データを保存します。
-    </div>
+      はじめる
+
+    </button>
 
   </div>
 
 </section>
 
 
-<!-- ==========================
+<!-- =========================================
 APP
-========================== -->
+========================================= -->
 
-<section id="app" class="hidden">
+<section
+  id="app"
+  class="hidden">
 
 <header>
 
@@ -772,13 +925,17 @@ APP
       <button
         class="iconBtn"
         onclick="toggleDark()">
+
         ◐
+
       </button>
 
       <button
         class="iconBtn"
         onclick="showSettings()">
+
         ⚙️
+
       </button>
 
     </div>
@@ -834,9 +991,9 @@ APP
 </section>
 
 
-<!-- ==========================
+<!-- =========================================
 MODAL
-========================== -->
+========================================= -->
 
 <div
   id="modal"
@@ -852,15 +1009,18 @@ MODAL
 
 <script>
 
-/* ======================================================
+/* =====================================================
 DATA
-====================================================== */
+===================================================== */
 
-const STORAGE_KEY = "destinationNote_v1";
+const STORAGE_KEY =
+  "destinationNote_v1";
 
 let data = {
+
   name:"",
   password:"",
+
   totalSeconds:0,
 
   folders:[
@@ -878,26 +1038,39 @@ let data = {
   settings:{
     dark:false
   }
+
 };
 
 let currentFolder="root";
 
-let timerInterval=null;
-let timerSeconds=0;
-let timerRunning=false;
-
 let currentNoteId=null;
-let currentNoteFolder="root";
+
+let currentPage=0;
+
+let currentTool="pencil";
 
 let drawing=false;
-let currentStroke=null;
 
-let selectedElement=null;
+let color="#111111";
+
+let brushSize=4;
+
+let zoom=0.65;
+
+let panX=0;
+
+let panY=0;
+
+let timerInterval=null;
+
+let timerSeconds=0;
+
+let timerRunning=false;
 
 
-/* ======================================================
-LOAD / SAVE
-====================================================== */
+/* =====================================================
+SAVE
+===================================================== */
 
 function saveData(){
 
@@ -908,12 +1081,19 @@ function saveData(){
 
 }
 
+
+/* =====================================================
+LOAD
+===================================================== */
+
 function loadData(){
 
-  const saved=
-    localStorage.getItem(STORAGE_KEY);
+  const saved =
+    localStorage.getItem(
+      STORAGE_KEY
+    );
 
-  if(!saved) return false;
+  if(!saved) return;
 
   try{
 
@@ -932,108 +1112,99 @@ function loadData(){
     }
 
     /*
-      古いノートとの互換性
+      古いノートを新ページ形式へ
     */
 
     data.notes.forEach(note=>{
 
-      if(!note.elements){
+      if(!note.pages){
 
-        note.elements=[];
+        note.pages=[{
 
-      }
+          image:null,
 
-      if(!note.strokes){
+          elements:
+            note.elements||[],
 
-        note.strokes=[];
+          strokes:
+            note.strokes||[]
+
+        }];
 
       }
 
     });
 
-    return true;
-
   }catch(e){
 
-    return false;
+    console.error(e);
 
   }
 
 }
 
 
-/* ======================================================
+/* =====================================================
 LOGIN
-====================================================== */
+===================================================== */
 
 function login(){
 
-  const name=
+  const name =
     document
       .getElementById("loginName")
       .value
       .trim();
 
-  const password=
+  const password =
     document
       .getElementById("loginPassword")
       .value;
 
   if(!name||!password){
 
-    alert("名前とパスワードを入力してね。");
+    alert(
+      "名前とパスワードを入力してね。"
+    );
 
     return;
 
   }
 
-  const saved=
-    localStorage.getItem(STORAGE_KEY);
+  const saved =
+    localStorage.getItem(
+      STORAGE_KEY
+    );
 
   if(saved){
 
-    try{
+    const old =
+      JSON.parse(saved);
 
-      const oldData=
-        JSON.parse(saved);
+    if(
+      old.name!==name ||
+      old.password!==password
+    ){
 
-      if(
-        oldData.name!==name||
-        oldData.password!==password
-      ){
+      alert(
+        "名前またはパスワードが違います。"
+      );
 
-        alert(
-          "この端末には別のアカウントがあります。\n\n"+
-          "名前またはパスワードが違います。"
-        );
+      return;
 
-        return;
+    }
 
-      }
-
-      data=oldData;
-
-    }catch(e){}
+    data=old;
 
   }else{
 
     data.name=name;
+
     data.password=password;
 
     saveData();
 
   }
-
-  startApp();
-
-}
-
-
-/* ======================================================
-START
-====================================================== */
-
-function startApp(){
 
   document
     .getElementById("loginScreen")
@@ -1043,7 +1214,7 @@ function startApp(){
     .getElementById("app")
     .classList.remove("hidden");
 
-  if(data.settings.dark){
+  if(data.settings?.dark){
 
     document.body.classList.add("dark");
 
@@ -1054,237 +1225,126 @@ function startApp(){
 }
 
 
-/* ======================================================
+/* =====================================================
 RANK
-====================================================== */
+===================================================== */
 
 const ranks=[
 
-  {
-    name:"BRONZE",
-    jp:"ブロンズ",
-    min:0,
-    max:10*3600,
-    icon:"🥉"
-  },
-
-  {
-    name:"SILVER",
-    jp:"シルバー",
-    min:10*3600,
-    max:30*3600,
-    icon:"🥈"
-  },
-
-  {
-    name:"GOLD",
-    jp:"ゴールド",
-    min:30*3600,
-    max:60*3600,
-    icon:"🥇"
-  },
-
-  {
-    name:"PLATINUM",
-    jp:"プラチナ",
-    min:60*3600,
-    max:100*3600,
-    icon:"💎"
-  },
-
-  {
-    name:"BUSINESS",
-    jp:"ビジネス",
-    min:100*3600,
-    max:200*3600,
-    icon:"💼"
-  },
-
-  {
-    name:"FIRST",
-    jp:"ファースト",
-    min:200*3600,
-    max:500*3600,
-    icon:"✈️"
-  },
-
-  {
-    name:"GRAN CLASS",
-    jp:"グランクラス",
-    min:500*3600,
-    max:Infinity,
-    icon:"👑"
-  }
+  ["🥉","BRONZE","ブロンズ",0,10],
+  ["🥈","SILVER","シルバー",10,30],
+  ["🥇","GOLD","ゴールド",30,60],
+  ["💎","PLATINUM","プラチナ",60,100],
+  ["💼","BUSINESS","ビジネス",100,200],
+  ["✈️","FIRST","ファースト",200,500],
+  ["👑","GRAN CLASS","グランクラス",500,Infinity]
 
 ];
 
 
 function getRank(){
 
+  const hours =
+    data.totalSeconds/3600;
+
   return ranks.find(
-    r=>
-      data.totalSeconds>=r.min&&
-      data.totalSeconds<r.max
-  )||ranks[ranks.length-1];
+    r=>hours>=r[3] &&
+       hours<r[4]
+  ) || ranks[ranks.length-1];
 
 }
 
 
-function formatTime(seconds){
+function formatTime(sec){
 
   const h=
-    Math.floor(seconds/3600);
+    Math.floor(sec/3600);
 
   const m=
-    Math.floor(
-      (seconds%3600)/60
-    );
+    Math.floor((sec%3600)/60);
 
   const s=
-    seconds%60;
+    sec%60;
 
-  if(h>0){
-
-    return `${h}時間 ${m}分`;
-
-  }
-
-  return `${m}分 ${s}秒`;
-
-}
-
-
-function rankProgress(){
-
-  const rank=getRank();
-
-  if(rank.max===Infinity){
-
-    return 100;
-
-  }
-
-  return Math.max(
-    0,
-    Math.min(
-      100,
-      (
-        data.totalSeconds-rank.min
-      )/
-      (
-        rank.max-rank.min
-      )*100
-    )
-  );
+  return h+
+    "時間 "+
+    m+
+    "分 "+
+    s+
+    "秒";
 
 }
 
 
-/* ======================================================
+/* =====================================================
 HOME
-====================================================== */
+===================================================== */
 
 function showHome(){
 
   const rank=getRank();
-
-  const next=
-    ranks[
-      ranks.indexOf(rank)+1
-    ];
 
   const folders=
     data.folders.filter(
       f=>f.parent==="root"
     );
 
-  let html="";
-
-  folders.forEach(folder=>{
-
-    const count=
-      countFolderItems(folder.id);
-
-    html+=`
-
-      <div
-        class="card folderCard"
-        onclick="openFolder('${folder.id}')">
-
-        <div class="folderIcon">
-          ${folder.icon}
-        </div>
-
-        <div class="folderName">
-          ${escapeHTML(folder.name)}
-        </div>
-
-        <div class="cardSub">
-          ${count.folders}フォルダ・${count.notes}ノート
-        </div>
-
-      </div>
-
-    `;
-
-  });
-
-
-  document.getElementById("main").innerHTML=`
+  document.getElementById(
+    "main"
+  ).innerHTML=`
 
     <section class="hero">
 
       <h2>
         こんにちは、
-        ${escapeHTML(data.name)}さん 👋
+        ${esc(data.name)}さん 👋
       </h2>
 
       <p>
-        今日も学びの目的地へ進もう。
+        今日も学びの目的地へ。
       </p>
 
-      <div style="margin-top:20px">
+      <br>
 
-        <div class="rankTop">
+      <div class="rankTop">
 
-          <div>
+        <div class="rankName">
 
-            <div class="rankName">
-              ${rank.icon} ${rank.name}
-            </div>
-
-            <div class="cardSub">
-              ${rank.jp}
-            </div>
-
-          </div>
-
-          <div class="rankHours">
-            ${formatTime(data.totalSeconds)}
-          </div>
+          ${rank[0]}
+          ${rank[1]}
 
         </div>
 
-        <div class="progress">
+        <div class="rankHours">
 
-          <div
-            class="progressBar"
-            style="width:${rankProgress()}%">
-          </div>
+          ${formatTime(
+            data.totalSeconds
+          )}
 
         </div>
 
-        <div class="nextRank">
+      </div>
 
+      <div class="progress">
+
+        <div
+          class="progressBar"
+          style="
+          width:
           ${
-            next
-            ?
-            `次のランク：
-             ${next.icon} ${next.name}`
+            rank[4]===Infinity
+            ? 100
             :
-            "🏆 最高ランク到達！"
-          }
-
+            (
+              (
+                data.totalSeconds/3600
+                -rank[3]
+              )/
+              (
+                rank[4]-rank[3]
+              )
+            )*100
+          }%">
         </div>
 
       </div>
@@ -1310,7 +1370,7 @@ function showHome(){
         class="addBtn secondary"
         onclick="showTimer()">
 
-        ⏱️ 勉強を開始
+        ⏱️ 勉強開始
 
       </button>
 
@@ -1320,33 +1380,50 @@ function showHome(){
     <div class="grid">
 
       ${
-        html ||
-        `
-        <div class="card">
+        folders.map(folder=>`
 
+          <div
+            class="card folderCard"
+            onclick="
+              openFolder('${folder.id}')
+            ">
+
+            <div class="folderIcon">
+              ${folder.icon}
+            </div>
+
+            <div class="folderName">
+              ${esc(folder.name)}
+            </div>
+
+          </div>
+
+        `).join("")
+        ||
+        `<div class="card">
           まだタブがありません。
-
-          <br><br>
-
-          「＋ 新しいタブ」から
-          作ってみよう！
-
-        </div>
-        `
+        </div>`
       }
 
     </div>
 
   `;
 
-  setActiveNav(0);
+  activeNav(0);
 
 }
 
 
-/* ======================================================
-FOLDER
-====================================================== */
+/* =====================================================
+FOLDERS
+===================================================== */
+
+function showFolders(){
+
+  renderFolder(currentFolder);
+
+}
+
 
 function openFolder(id){
 
@@ -1364,7 +1441,7 @@ function renderFolder(id){
       f=>f.id===id
     );
 
-  if(!folder) return;
+  if(!folder)return;
 
   const children=
     data.folders.filter(
@@ -1376,129 +1453,36 @@ function renderFolder(id){
       n=>n.folder===id
     );
 
+  document.getElementById(
+    "main"
+  ).innerHTML=`
 
-  let parents=[];
-
-  let current=folder;
-
-  while(current){
-
-    parents.unshift(current);
-
-    current=
-      data.folders.find(
-        f=>f.id===current.parent
-      );
-
-  }
-
-
-  let breadcrumb="";
-
-  parents.forEach((p,i)=>{
-
-    breadcrumb+=`
-
-      ${
-        i>0
-        ?
-        `<span class="separator">›</span>`
-        :
-        ""
-      }
+    <div class="breadcrumb">
 
       <button
         class="crumb"
-        onclick="openFolder('${p.id}')">
+        onclick="showHome()">
 
-        ${escapeHTML(p.name)}
+        🏠
 
       </button>
 
-    `;
+      ›
 
-  });
+      ${esc(folder.name)}
 
-
-  let folderHTML="";
-
-  children.forEach(child=>{
-
-    const count=
-      countFolderItems(child.id);
-
-    folderHTML+=`
-
-      <div
-        class="card folderCard"
-        onclick="openFolder('${child.id}')">
-
-        <div class="folderIcon">
-          ${child.icon}
-        </div>
-
-        <div class="folderName">
-          ${escapeHTML(child.name)}
-        </div>
-
-        <div class="cardSub">
-          ${count.folders}フォルダ・${count.notes}ノート
-        </div>
-
-      </div>
-
-    `;
-
-  });
-
-
-  let noteHTML="";
-
-  notes.forEach(note=>{
-
-    noteHTML+=`
-
-      <div
-        class="card noteCard"
-        onclick="openNote('${note.id}')">
-
-        <div class="noteTitle">
-          📄 ${escapeHTML(note.title)}
-        </div>
-
-        <div class="noteDate">
-          最終更新：
-          ${new Date(note.updated).toLocaleString("ja-JP")}
-        </div>
-
-        <div class="notePreview">
-          ${escapeHTML(
-            note.content||"ノートを開く"
-          )}
-        </div>
-
-      </div>
-
-    `;
-
-  });
-
-
-  document.getElementById("main").innerHTML=`
-
-    <div class="breadcrumb">
-      ${breadcrumb}
     </div>
+
 
     <section class="hero">
 
       <h2>
         ${folder.icon}
-        ${escapeHTML(folder.name)}
+        ${esc(folder.name)}
       </h2>
 
       <p>
-        タブの中にさらにタブやノートを作れます。
+        ここにタブやノートを追加できます。
       </p>
 
     </section>
@@ -1508,7 +1492,9 @@ function renderFolder(id){
 
       <button
         class="addBtn"
-        onclick="createFolder('${id}')">
+        onclick="
+          createFolder('${id}')
+        ">
 
         📁 新しいタブ
 
@@ -1516,35 +1502,13 @@ function renderFolder(id){
 
       <button
         class="addBtn secondary"
-        onclick="createNote('${id}')">
+        onclick="
+          createNote('${id}')
+        ">
 
         📄 新しいノート
 
       </button>
-
-      ${
-        id!=="root"
-        ?
-        `
-        <button
-          class="addBtn secondary"
-          onclick="renameFolder('${id}')">
-
-          ✏️ 名前変更
-
-        </button>
-
-        <button
-          class="danger"
-          onclick="deleteFolder('${id}')">
-
-          🗑️ 削除
-
-        </button>
-        `
-        :
-        ""
-      }
 
     </div>
 
@@ -1553,18 +1517,35 @@ function renderFolder(id){
       children.length
       ?
       `
-
       <div class="sectionTitle">
         📁 タブ
       </div>
 
       <div class="grid">
-        ${folderHTML}
-      </div>
 
+        ${children.map(f=>`
+
+          <div
+            class="card folderCard"
+            onclick="
+              openFolder('${f.id}')
+            ">
+
+            <div class="folderIcon">
+              ${f.icon}
+            </div>
+
+            <div class="folderName">
+              ${esc(f.name)}
+            </div>
+
+          </div>
+
+        `).join("")}
+
+      </div>
       `
-      :
-      ""
+      :""
     }
 
 
@@ -1572,319 +1553,117 @@ function renderFolder(id){
       notes.length
       ?
       `
-
       <div class="sectionTitle">
         📄 ノート
       </div>
 
       <div class="grid">
-        ${noteHTML}
+
+        ${notes.map(n=>`
+
+          <div
+            class="card noteCard"
+            onclick="
+              openNote('${n.id}')
+            ">
+
+            <div class="noteTitle">
+              📄 ${esc(n.title)}
+            </div>
+
+            <div class="noteDate">
+              ${new Date(
+                n.updated
+              ).toLocaleString("ja-JP")}
+            </div>
+
+          </div>
+
+        `).join("")}
+
       </div>
-
       `
-      :
-      ""
-    }
-
-
-    ${
-      !children.length&&!notes.length
-      ?
-      `
-      <div class="card">
-
-        ここにはまだ何もありません。
-
-        <br><br>
-
-        📁 タブ または
-        📄 ノートを作ってみよう！
-
-      </div>
-      `
-      :
-      ""
+      :""
     }
 
   `;
 
-  setActiveNav(1);
+  activeNav(1);
 
 }
 
 
-/* ======================================================
+/* =====================================================
 CREATE FOLDER
-====================================================== */
+===================================================== */
 
 function createFolder(parent){
 
-  showModal(`
-
-    <h2>📁 新しいタブ</h2>
-
-    <input
-      id="newFolderName"
-      class="input"
-      placeholder="例：数学">
-
-    <input
-      id="newFolderIcon"
-      class="input"
-      value="📁"
-      placeholder="アイコン">
-
-    <div class="modalButtons">
-
-      <button
-        class="addBtn secondary"
-        onclick="closeModal()">
-
-        キャンセル
-
-      </button>
-
-      <button
-        class="addBtn"
-        onclick="saveNewFolder('${parent}')">
-
-        作成
-
-      </button>
-
-    </div>
-
-  `);
-
-}
-
-
-function saveNewFolder(parent){
-
   const name=
-    document
-      .getElementById("newFolderName")
-      .value
-      .trim();
+    prompt(
+      "タブ名を入力してください"
+    );
 
-  const icon=
-    document
-      .getElementById("newFolderIcon")
-      .value
-      .trim()||"📁";
-
-  if(!name){
-
-    alert("タブ名を入力してね。");
-    return;
-
-  }
+  if(!name)return;
 
   data.folders.push({
 
     id:
       "folder_"+
       Date.now()+
-      "_"+
-      Math.random()
-        .toString(36)
-        .slice(2),
+      Math.random(),
 
-    name,
-    icon,
-    parent,
+    name:name,
+
+    icon:"📁",
+
+    parent:parent,
+
     created:Date.now()
 
   });
 
   saveData();
-  closeModal();
 
-  if(parent==="root"){
-
+  if(parent==="root")
     showHome();
-
-  }else{
-
+  else
     renderFolder(parent);
 
-  }
-
 }
 
 
-/* ======================================================
-RENAME
-====================================================== */
-
-function renameFolder(id){
-
-  const folder=
-    data.folders.find(
-      f=>f.id===id
-    );
-
-  if(!folder)return;
-
-  showModal(`
-
-    <h2>✏️ 名前変更</h2>
-
-    <input
-      id="renameInput"
-      class="input"
-      value="${escapeAttribute(folder.name)}">
-
-    <div class="modalButtons">
-
-      <button
-        class="addBtn secondary"
-        onclick="closeModal()">
-
-        キャンセル
-
-      </button>
-
-      <button
-        class="addBtn"
-        onclick="saveRename('${id}')">
-
-        保存
-
-      </button>
-
-    </div>
-
-  `);
-
-}
-
-
-function saveRename(id){
-
-  const name=
-    document
-      .getElementById("renameInput")
-      .value
-      .trim();
-
-  if(!name)return;
-
-  const folder=
-    data.folders.find(
-      f=>f.id===id
-    );
-
-  if(folder){
-
-    folder.name=name;
-
-  }
-
-  saveData();
-  closeModal();
-
-  renderFolder(id);
-
-}
-
-
-/* ======================================================
-DELETE FOLDER
-====================================================== */
-
-function deleteFolder(id){
-
-  const folder=
-    data.folders.find(
-      f=>f.id===id
-    );
-
-  if(!folder)return;
-
-  if(
-    !confirm(
-      `「${folder.name}」を削除しますか？\n\n`+
-      "中のタブ・ノートも削除されます。"
-    )
-  ){
-
-    return;
-
-  }
-
-  const ids=
-    getAllChildFolderIds(id);
-
-  ids.push(id);
-
-  data.folders=
-    data.folders.filter(
-      f=>!ids.includes(f.id)
-    );
-
-  data.notes=
-    data.notes.filter(
-      n=>!ids.includes(n.folder)
-    );
-
-  saveData();
-
-  renderFolder(folder.parent||"root");
-
-}
-
-
-function getAllChildFolderIds(id){
-
-  let result=[];
-
-  const children=
-    data.folders.filter(
-      f=>f.parent===id
-    );
-
-  children.forEach(child=>{
-
-    result.push(child.id);
-
-    result=
-      result.concat(
-        getAllChildFolderIds(child.id)
-      );
-
-  });
-
-  return result;
-
-}
-
-
-/* ======================================================
+/* =====================================================
 CREATE NOTE
-====================================================== */
+===================================================== */
 
-function createNote(folderId){
-
-  const id=
-    "note_"+
-    Date.now()+
-    "_"+
-    Math.random()
-      .toString(36)
-      .slice(2);
+function createNote(folder){
 
   const note={
 
-    id,
-    folder:folderId,
+    id:
+      "note_"+
+      Date.now(),
+
+    folder:folder,
+
     title:"新しいノート",
+
     content:"",
+
     created:Date.now(),
+
     updated:Date.now(),
 
-    elements:[],
-    strokes:[]
+    pages:[{
+
+      image:null,
+
+      elements:[],
+
+      strokes:[]
+
+    }]
 
   };
 
@@ -1892,14 +1671,14 @@ function createNote(folderId){
 
   saveData();
 
-  openNote(id);
+  openNote(note.id);
 
 }
 
 
-/* ======================================================
+/* =====================================================
 OPEN NOTE
-====================================================== */
+===================================================== */
 
 function openNote(id){
 
@@ -1911,17 +1690,18 @@ function openNote(id){
   if(!note)return;
 
   currentNoteId=id;
-  currentNoteFolder=note.folder;
 
-  if(!note.elements){
-    note.elements=[];
-  }
+  currentPage=0;
 
-  if(!note.strokes){
-    note.strokes=[];
-  }
+  zoom=.65;
 
-  document.getElementById("main").innerHTML=`
+  panX=0;
+
+  panY=0;
+
+  document.getElementById(
+    "main"
+  ).innerHTML=`
 
     <div class="notePage">
 
@@ -1929,61 +1709,221 @@ function openNote(id){
 
         <button
           class="backBtn"
-          onclick="renderFolder('${note.folder}')">
+          onclick="
+            renderFolder('${note.folder}')
+          ">
 
           ← 戻る
 
         </button>
 
         <div class="noteHeaderTitle">
-
-          ${escapeHTML(note.title)}
-
+          ${esc(note.title)}
         </div>
 
       </div>
 
 
       <input
-        id="noteTitleInput"
+        id="noteTitle"
         class="input"
-        value="${escapeAttribute(note.title)}"
-        placeholder="ノートタイトル"
-        onchange="updateNoteTitle()">
+        value="${attr(note.title)}"
+        onchange="changeNoteTitle()">
 
 
-      <div class="noteTools">
+      <div class="noteToolbar">
+
+        <button
+          id="tool-pencil"
+          class="toolBtn active"
+          onclick="
+            setTool('pencil')
+          ">
+
+          ✏️ 鉛筆
+
+        </button>
+
+
+        <button
+          id="tool-highlighter"
+          class="toolBtn"
+          onclick="
+            setTool('highlighter')
+          ">
+
+          🖍️ 蛍光ペン
+
+        </button>
+
+
+        <button
+          id="tool-pixel"
+          class="toolBtn"
+          onclick="
+            setTool('pixel')
+          ">
+
+          🧽 ピクセル消しゴム
+
+        </button>
+
+
+        <button
+          id="tool-object"
+          class="toolBtn"
+          onclick="
+            setTool('object')
+          ">
+
+          🗑️ オブジェクト消しゴム
+
+        </button>
+
 
         <button
           class="toolBtn"
-          onclick="addTextElement()">
+          onclick="
+            fullErase()
+          ">
+
+          🧹 全消し
+
+        </button>
+
+
+        <button
+          class="toolBtn"
+          onclick="
+            addText()
+          ">
 
           📝 テキスト
 
         </button>
 
+
         <button
           class="toolBtn"
-          onclick="addStickyElement()">
+          onclick="
+            addSticky()
+          ">
 
           📌 付箋
 
         </button>
 
-        <button
-          id="drawTool"
-          class="toolBtn"
-          onclick="toggleDrawing()">
 
-          ✍️ 手書き
+        <input
+          id="colorPicker"
+          class="colorInput"
+          type="color"
+          value="#111111"
+          onchange="
+            color=this.value
+          ">
+
+
+        <label class="toolBtn">
+
+          太さ
+
+          <input
+            id="brushSize"
+            class="range"
+            type="range"
+            min="1"
+            max="50"
+            value="4"
+            oninput="
+              brushSize=Number(this.value)
+            ">
+
+        </label>
+
+      </div>
+
+
+      <div class="pageControls">
+
+        <button
+          class="pageBtn"
+          onclick="
+            previousPage()
+          ">
+
+          ‹ 前
+
+        </button>
+
+        <div
+          id="pageNumber"
+          class="pageNumber">
+
+        </div>
+
+        <button
+          class="pageBtn"
+          onclick="
+            nextPage()
+          ">
+
+          次 ›
 
         </button>
 
         <button
-          class="toolBtn"
-          onclick="clearDrawing()">
+          class="pageBtn"
+          onclick="
+            addPage()
+          ">
 
-          🧹 手書き消去
+          ＋ ページ
+
+        </button>
+
+      </div>
+
+
+      <div class="zoomControls">
+
+        <button
+          class="zoomBtn"
+          onclick="
+            zoomOut()
+          ">
+
+          −
+
+        </button>
+
+        <button
+          class="zoomBtn"
+          onclick="
+            resetZoom()
+          ">
+
+          100%
+
+        </button>
+
+        <button
+          class="zoomBtn"
+          onclick="
+            zoomIn()
+          ">
+
+          ＋
+
+        </button>
+
+        <button
+          class="zoomBtn"
+          onclick="
+            centerPage()
+          ">
+
+          ⌖
 
         </button>
 
@@ -1991,19 +1931,31 @@ function openNote(id){
 
 
       <div
-        id="noteCanvasWrap"
-        class="noteCanvasWrap">
+        id="noteViewport"
+        class="noteViewport">
 
-        <canvas id="drawCanvas"></canvas>
+        <div
+          id="notePageCanvas"
+          class="notePageCanvas">
+
+          <canvas
+            id="drawingCanvas"
+            width="1200"
+            height="1700">
+          </canvas>
+
+        </div>
 
       </div>
 
 
-      <div class="noteBottom">
+      <div class="addArea">
 
         <button
           class="addBtn"
-          onclick="saveCurrentNote()">
+          onclick="
+            saveCurrentNote()
+          ">
 
           💾 保存
 
@@ -2011,7 +1963,9 @@ function openNote(id){
 
         <button
           class="danger"
-          onclick="deleteCurrentNote()">
+          onclick="
+            deleteCurrentNote()
+          ">
 
           🗑️ ノート削除
 
@@ -2023,59 +1977,42 @@ function openNote(id){
 
   `;
 
-  setupCanvas();
+  setupNoteCanvas();
 
-  renderNoteElements();
+  renderCurrentPage();
 
-  redrawStrokes();
-
-  setActiveNav(1);
+  activeNav(1);
 
 }
 
 
-/* ======================================================
+/* =====================================================
 NOTE TITLE
-====================================================== */
+===================================================== */
 
-function updateNoteTitle(){
+function changeNoteTitle(){
 
-  const note=
-    getCurrentNote();
+  const note=getCurrentNote();
 
-  if(!note)return;
-
-  const input=
-    document.getElementById("noteTitleInput");
-
-  if(!input)return;
+  const value=
+    document
+      .getElementById("noteTitle")
+      .value
+      .trim();
 
   note.title=
-    input.value.trim()||
-    "無題のノート";
+    value||"無題のノート";
 
   note.updated=Date.now();
 
   saveData();
 
-  const title=
-    document.querySelector(
-      ".noteHeaderTitle"
-    );
-
-  if(title){
-
-    title.textContent=
-      note.title;
-
-  }
-
 }
 
 
-/* ======================================================
+/* =====================================================
 CURRENT NOTE
-====================================================== */
+===================================================== */
 
 function getCurrentNote(){
 
@@ -2086,158 +2023,181 @@ function getCurrentNote(){
 }
 
 
-/* ======================================================
+function getCurrentPage(){
+
+  const note=getCurrentNote();
+
+  if(!note)return null;
+
+  if(!note.pages){
+
+    note.pages=[{
+
+      image:null,
+      elements:[],
+      strokes:[]
+
+    }];
+
+  }
+
+  if(!note.pages[currentPage]){
+
+    note.pages[currentPage]={
+
+      image:null,
+      elements:[],
+      strokes:[]
+
+    };
+
+  }
+
+  return note.pages[currentPage];
+
+}
+
+
+/* =====================================================
 CANVAS
-====================================================== */
+===================================================== */
 
-let canvas=null;
-let ctx=null;
+let canvas;
+let ctx;
 
-function setupCanvas(){
+function setupNoteCanvas(){
 
   canvas=
-    document.getElementById("drawCanvas");
-
-  if(!canvas)return;
-
-  const wrap=
     document.getElementById(
-      "noteCanvasWrap"
+      "drawingCanvas"
     );
-
-  const rect=
-    wrap.getBoundingClientRect();
-
-  const ratio=
-    window.devicePixelRatio||1;
-
-  canvas.width=
-    rect.width*ratio;
-
-  canvas.height=
-    rect.height*ratio;
-
-  canvas.style.width=
-    rect.width+"px";
-
-  canvas.style.height=
-    rect.height+"px";
 
   ctx=
     canvas.getContext("2d");
 
-  ctx.scale(ratio,ratio);
-
   ctx.lineCap="round";
   ctx.lineJoin="round";
-  ctx.lineWidth=3;
 
   canvas.addEventListener(
     "pointerdown",
-    startDraw
+    pointerDown
   );
 
   canvas.addEventListener(
     "pointermove",
-    drawMove
+    pointerMove
   );
 
   canvas.addEventListener(
     "pointerup",
-    endDraw
+    pointerUp
   );
 
   canvas.addEventListener(
     "pointercancel",
-    endDraw
+    pointerUp
+  );
+
+  /*
+    視点移動用
+  */
+
+  const viewport=
+    document.getElementById(
+      "noteViewport"
+    );
+
+  viewport.addEventListener(
+    "pointerdown",
+    startPan
+  );
+
+  viewport.addEventListener(
+    "pointermove",
+    movePan
+  );
+
+  viewport.addEventListener(
+    "pointerup",
+    endPan
   );
 
 }
 
 
-/* ======================================================
-DRAWING
-====================================================== */
+/* =====================================================
+DRAW
+===================================================== */
 
-let drawingEnabled=false;
+let lastX=0;
+let lastY=0;
 
-function toggleDrawing(){
-
-  drawingEnabled=
-    !drawingEnabled;
-
-  const btn=
-    document.getElementById(
-      "drawTool"
-    );
-
-  if(btn){
-
-    btn.classList.toggle(
-      "active",
-      drawingEnabled
-    );
-
-  }
-
-}
-
-
-function getPointerPosition(e){
+function canvasPosition(e){
 
   const rect=
     canvas.getBoundingClientRect();
 
   return {
 
-    x:e.clientX-rect.left,
-    y:e.clientY-rect.top
+    x:
+      (e.clientX-rect.left)
+      /zoom,
+
+    y:
+      (e.clientY-rect.top)
+      /zoom
 
   };
 
 }
 
 
-function startDraw(e){
+function pointerDown(e){
 
-  if(!drawingEnabled)return;
+  if(
+    currentTool!=="pencil" &&
+    currentTool!=="highlighter" &&
+    currentTool!=="pixel"
+  ){
+
+    return;
+
+  }
 
   e.preventDefault();
+
+  drawing=true;
 
   canvas.setPointerCapture(
     e.pointerId
   );
 
-  drawing=true;
-
   const p=
-    getPointerPosition(e);
+    canvasPosition(e);
 
-  currentStroke={
-    points:[p],
-    width:3
-  };
+  lastX=p.x;
+  lastY=p.y;
 
   ctx.beginPath();
 
   ctx.moveTo(
-    p.x,
-    p.y
+    lastX,
+    lastY
   );
+
+  applyBrush();
 
 }
 
 
-function drawMove(e){
+function pointerMove(e){
 
-  if(!drawing||!drawingEnabled)return;
+  if(!drawing)return;
 
   e.preventDefault();
 
   const p=
-    getPointerPosition(e);
-
-  currentStroke.points.push(p);
+    canvasPosition(e);
 
   ctx.lineTo(
     p.x,
@@ -2246,45 +2206,104 @@ function drawMove(e){
 
   ctx.stroke();
 
+  lastX=p.x;
+  lastY=p.y;
+
 }
 
 
-function endDraw(e){
+function pointerUp(){
 
   if(!drawing)return;
 
   drawing=false;
 
-  const note=
-    getCurrentNote();
-
-  if(note&&currentStroke){
-
-    note.strokes.push(
-      currentStroke
-    );
-
-    note.updated=Date.now();
-
-    saveData();
-
-  }
-
-  currentStroke=null;
+  saveCanvasImage();
 
 }
 
 
-/* ======================================================
-REDRAW
-====================================================== */
+/* =====================================================
+BRUSH
+===================================================== */
 
-function redrawStrokes(){
+function applyBrush(){
+
+  ctx.lineWidth=
+    brushSize;
+
+  if(currentTool==="pencil"){
+
+    ctx.globalCompositeOperation=
+      "source-over";
+
+    ctx.globalAlpha=1;
+
+    ctx.strokeStyle=color;
+
+  }
+
+  else if(
+    currentTool==="highlighter"
+  ){
+
+    ctx.globalCompositeOperation=
+      "source-over";
+
+    ctx.globalAlpha=.28;
+
+    ctx.strokeStyle=color;
+
+  }
+
+  else if(currentTool==="pixel"){
+
+    ctx.globalCompositeOperation=
+      "destination-out";
+
+    ctx.globalAlpha=1;
+
+  }
+
+}
+
+
+/* =====================================================
+SAVE CANVAS
+===================================================== */
+
+function saveCanvasImage(){
+
+  const page=
+    getCurrentPage();
+
+  if(!page)return;
+
+  page.image=
+    canvas.toDataURL(
+      "image/png"
+    );
 
   const note=
     getCurrentNote();
 
-  if(!note||!ctx)return;
+  note.updated=Date.now();
+
+  saveData();
+
+}
+
+
+/* =====================================================
+RENDER PAGE
+===================================================== */
+
+function renderCurrentPage(){
+
+  const page=
+    getCurrentPage();
+
+  if(!page)return;
 
   ctx.clearRect(
     0,
@@ -2293,58 +2312,646 @@ function redrawStrokes(){
     canvas.height
   );
 
-  note.strokes.forEach(stroke=>{
+  ctx.globalAlpha=1;
 
-    if(!stroke.points.length)return;
+  ctx.globalCompositeOperation=
+    "source-over";
 
-    ctx.beginPath();
+  if(page.image){
 
-    ctx.lineWidth=
-      stroke.width||3;
+    const img=
+      new Image();
 
-    ctx.strokeStyle=
-      getComputedStyle(document.body)
-        .getPropertyValue("--text");
+    img.onload=()=>{
 
-    ctx.moveTo(
-      stroke.points[0].x,
-      stroke.points[0].y
-    );
-
-    for(
-      let i=1;
-      i<stroke.points.length;
-      i++
-    ){
-
-      ctx.lineTo(
-        stroke.points[i].x,
-        stroke.points[i].y
+      ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
       );
 
-    }
+      ctx.drawImage(
+        img,
+        0,
+        0,
+        1200,
+        1700
+      );
 
-    ctx.stroke();
+    };
 
-  });
+    img.src=page.image;
+
+  }
+
+  renderElements();
+
+  updatePageNumber();
+
+  applyTransform();
 
 }
 
 
-/* ======================================================
-CLEAR DRAWING
-====================================================== */
+/* =====================================================
+PAGE
+===================================================== */
 
-function clearDrawing(){
+function updatePageNumber(){
 
   const note=
     getCurrentNote();
 
-  if(!note)return;
+  const el=
+    document.getElementById(
+      "pageNumber"
+    );
+
+  if(el&&note){
+
+    el.textContent=
+      `${currentPage+1} / ${note.pages.length}`;
+
+  }
+
+}
+
+
+function addPage(){
+
+  const note=
+    getCurrentNote();
+
+  note.pages.push({
+
+    image:null,
+
+    elements:[],
+
+    strokes:[]
+
+  });
+
+  currentPage=
+    note.pages.length-1;
+
+  saveData();
+
+  renderCurrentPage();
+
+}
+
+
+function nextPage(){
+
+  const note=
+    getCurrentNote();
+
+  if(
+    currentPage<
+    note.pages.length-1
+  ){
+
+    currentPage++;
+
+    renderCurrentPage();
+
+  }else{
+
+    addPage();
+
+  }
+
+}
+
+
+function previousPage(){
+
+  if(currentPage>0){
+
+    currentPage--;
+
+    renderCurrentPage();
+
+  }
+
+}
+
+
+/* =====================================================
+ZOOM
+===================================================== */
+
+function zoomIn(){
+
+  zoom=
+    Math.min(
+      2.5,
+      zoom+.1
+    );
+
+  applyTransform();
+
+}
+
+
+function zoomOut(){
+
+  zoom=
+    Math.max(
+      .25,
+      zoom-.1
+    );
+
+  applyTransform();
+
+}
+
+
+function resetZoom(){
+
+  zoom=.65;
+
+  centerPage();
+
+}
+
+
+function centerPage(){
+
+  const viewport=
+    document.getElementById(
+      "noteViewport"
+    );
+
+  if(!viewport)return;
+
+  panX=
+    (
+      viewport.clientWidth-
+      1200*zoom
+    )/2;
+
+  panY=
+    (
+      viewport.clientHeight-
+      1700*zoom
+    )/2;
+
+  applyTransform();
+
+}
+
+
+function applyTransform(){
+
+  const page=
+    document.getElementById(
+      "notePageCanvas"
+    );
+
+  if(!page)return;
+
+  page.style.transform=
+    `translate(${panX}px,${panY}px) scale(${zoom})`;
+
+}
+
+
+/* =====================================================
+PAN
+===================================================== */
+
+let panning=false;
+let panStartX=0;
+let panStartY=0;
+let panOriginX=0;
+let panOriginY=0;
+
+function startPan(e){
+
+  if(currentTool!=="pan")return;
+
+  panning=true;
+
+  panStartX=e.clientX;
+  panStartY=e.clientY;
+
+  panOriginX=panX;
+  panOriginY=panY;
+
+}
+
+
+function movePan(e){
+
+  if(!panning)return;
+
+  panX=
+    panOriginX+
+    e.clientX-
+    panStartX;
+
+  panY=
+    panOriginY+
+    e.clientY-
+    panStartY;
+
+  applyTransform();
+
+}
+
+
+function endPan(){
+
+  panning=false;
+
+}
+
+
+/* =====================================================
+OBJECT ERASER
+===================================================== */
+
+function objectErase(){
+
+  setTool("object");
+
+}
+
+
+/* =====================================================
+TOOL
+===================================================== */
+
+function setTool(tool){
+
+  currentTool=tool;
+
+  document
+    .querySelectorAll(".toolBtn")
+    .forEach(
+      b=>b.classList.remove("active")
+    );
+
+  const btn=
+    document.getElementById(
+      "tool-"+tool
+    );
+
+  if(btn){
+
+    btn.classList.add("active");
+
+  }
+
+  if(tool==="object"){
+
+    canvas.style.pointerEvents=
+      "none";
+
+  }else{
+
+    canvas.style.pointerEvents=
+      "auto";
+
+  }
+
+}
+
+
+/* =====================================================
+TEXT
+===================================================== */
+
+function addText(){
+
+  const page=
+    getCurrentPage();
+
+  const text=
+    prompt(
+      "入力する文章"
+    );
+
+  if(text===null)return;
+
+  page.elements.push({
+
+    id:
+      "el_"+Date.now(),
+
+    type:"text",
+
+    x:100,
+
+    y:100,
+
+    text:text
+
+  });
+
+  saveData();
+
+  renderElements();
+
+}
+
+
+/* =====================================================
+STICKY
+===================================================== */
+
+function addSticky(){
+
+  const page=
+    getCurrentPage();
+
+  const text=
+    prompt(
+      "付箋の内容"
+    );
+
+  if(text===null)return;
+
+  page.elements.push({
+
+    id:
+      "el_"+Date.now(),
+
+    type:"sticky",
+
+    x:150,
+
+    y:250,
+
+    text:text
+
+  });
+
+  saveData();
+
+  renderElements();
+
+}
+
+
+/* =====================================================
+RENDER ELEMENTS
+===================================================== */
+
+function renderElements(){
+
+  const pageEl=
+    document.getElementById(
+      "notePageCanvas"
+    );
+
+  if(!pageEl)return;
+
+  pageEl
+    .querySelectorAll(
+      ".noteElement"
+    )
+    .forEach(
+      e=>e.remove()
+    );
+
+  const page=
+    getCurrentPage();
+
+  page.elements.forEach(
+    element=>{
+
+      const el=
+        document.createElement(
+          "div"
+        );
+
+      el.className=
+        "noteElement";
+
+      if(
+        element.type==="sticky"
+      ){
+
+        el.classList.add(
+          "sticky"
+        );
+
+      }
+
+      el.style.left=
+        element.x+"px";
+
+      el.style.top=
+        element.y+"px";
+
+      el.innerHTML=`
+
+        <button
+          class="objectDelete"
+          onclick="
+            deleteElement(
+              '${element.id}'
+            )
+          ">
+
+          ×
+
+        </button>
+
+        <textarea>${esc(
+          element.text
+        )}</textarea>
+
+      `;
+
+      const textarea=
+        el.querySelector(
+          "textarea"
+        );
+
+      textarea.addEventListener(
+        "input",
+        ()=>{
+
+          element.text=
+            textarea.value;
+
+          saveData();
+
+        }
+      );
+
+
+      if(currentTool==="object"){
+
+        el.addEventListener(
+          "pointerdown",
+          e=>{
+
+            e.stopPropagation();
+
+            deleteElement(
+              element.id
+            );
+
+          }
+        );
+
+      }else{
+
+        makeDraggable(
+          el,
+          element
+        );
+
+      }
+
+      pageEl.appendChild(el);
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+DRAG
+===================================================== */
+
+function makeDraggable(
+  el,
+  element
+){
+
+  let active=false;
+
+  let startX;
+  let startY;
+
+  let originalX;
+  let originalY;
+
+  el.addEventListener(
+    "pointerdown",
+    e=>{
+
+      if(
+        e.target.tagName==="TEXTAREA" ||
+        e.target.classList.contains(
+          "objectDelete"
+        )
+      ){
+
+        return;
+
+      }
+
+      active=true;
+
+      startX=e.clientX;
+      startY=e.clientY;
+
+      originalX=element.x;
+      originalY=element.y;
+
+      el.setPointerCapture(
+        e.pointerId
+      );
+
+    }
+  );
+
+
+  el.addEventListener(
+    "pointermove",
+    e=>{
+
+      if(!active)return;
+
+      element.x=
+        originalX+
+        (e.clientX-startX)/zoom;
+
+      element.y=
+        originalY+
+        (e.clientY-startY)/zoom;
+
+      el.style.left=
+        element.x+"px";
+
+      el.style.top=
+        element.y+"px";
+
+    }
+  );
+
+
+  el.addEventListener(
+    "pointerup",
+    ()=>{
+
+      active=false;
+
+      saveData();
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+DELETE OBJECT
+===================================================== */
+
+function deleteElement(id){
+
+  const page=
+    getCurrentPage();
+
+  page.elements=
+    page.elements.filter(
+      e=>e.id!==id
+    );
+
+  saveData();
+
+  renderElements();
+
+}
+
+
+/* =====================================================
+PIXEL ERASER
+===================================================== */
+
+/*
+  ピクセル消しゴムは
+  destination-out で実際の
+  キャンバスのピクセルを消す。
+*/
+
+function pixelEraser(){
+
+  setTool("pixel");
+
+}
+
+
+/* =====================================================
+FULL ERASE
+===================================================== */
+
+function fullErase(){
 
   if(
     !confirm(
-      "手書きをすべて消しますか？"
+      "このページを全部消しますか？\n\n"+
+      "手書き・付箋・テキストがすべて消えます。"
     )
   ){
 
@@ -2352,349 +2959,32 @@ function clearDrawing(){
 
   }
 
-  note.strokes=[];
+  const page=
+    getCurrentPage();
 
-  saveData();
+  page.image=null;
 
-  redrawStrokes();
+  page.elements=[];
 
-}
+  page.strokes=[];
 
-
-/* ======================================================
-TEXT ELEMENT
-====================================================== */
-
-function addTextElement(){
-
-  const note=
-    getCurrentNote();
-
-  if(!note)return;
-
-  const id=
-    "element_"+
-    Date.now();
-
-  note.elements.push({
-
-    id,
-    type:"text",
-    x:30,
-    y:40,
-    text:"ここに入力"
-
-  });
-
-  note.updated=Date.now();
-
-  saveData();
-
-  renderNoteElements();
-
-}
-
-
-/* ======================================================
-STICKY
-====================================================== */
-
-function addStickyElement(){
-
-  const note=
-    getCurrentNote();
-
-  if(!note)return;
-
-  const id=
-    "element_"+
-    Date.now();
-
-  note.elements.push({
-
-    id,
-    type:"sticky",
-    x:60,
-    y:150,
-    text:"重要！"
-
-  });
-
-  note.updated=Date.now();
-
-  saveData();
-
-  renderNoteElements();
-
-}
-
-
-/* ======================================================
-RENDER ELEMENTS
-====================================================== */
-
-function renderNoteElements(){
-
-  const wrap=
-    document.getElementById(
-      "noteCanvasWrap"
-    );
-
-  if(!wrap)return;
-
-  wrap
-    .querySelectorAll(
-      ".textElement,.stickyElement"
-    )
-    .forEach(
-      el=>el.remove()
-    );
-
-  const note=
-    getCurrentNote();
-
-  if(!note)return;
-
-  note.elements.forEach(element=>{
-
-    let el;
-
-    if(element.type==="sticky"){
-
-      el=
-        document.createElement(
-          "div"
-        );
-
-      el.className=
-        "stickyElement";
-
-      el.innerHTML=`
-
-        <button
-          class="elementDelete"
-          onclick="deleteElement(event,'${element.id}')">
-
-          ×
-
-        </button>
-
-        <textarea
-          class="stickyEdit"
-          oninput="elementTextChanged('${element.id}',this.value)"
-        >${escapeHTML(element.text)}</textarea>
-
-      `;
-
-    }else{
-
-      el=
-        document.createElement(
-          "div"
-        );
-
-      el.className=
-        "textElement";
-
-      el.innerHTML=`
-
-        <button
-          class="elementDelete"
-          onclick="deleteElement(event,'${element.id}')">
-
-          ×
-
-        </button>
-
-        <textarea
-          class="textEdit"
-          oninput="elementTextChanged('${element.id}',this.value)"
-        >${escapeHTML(element.text)}</textarea>
-
-      `;
-
-    }
-
-    el.dataset.id=
-      element.id;
-
-    el.style.left=
-      element.x+"px";
-
-    el.style.top=
-      element.y+"px";
-
-
-    makeDraggable(
-      el,
-      element
-    );
-
-
-    wrap.appendChild(el);
-
-  });
-
-}
-
-
-/* ======================================================
-ELEMENT TEXT
-====================================================== */
-
-function elementTextChanged(id,text){
-
-  const note=
-    getCurrentNote();
-
-  if(!note)return;
-
-  const element=
-    note.elements.find(
-      e=>e.id===id
-    );
-
-  if(!element)return;
-
-  element.text=text;
-
-  note.updated=Date.now();
-
-  saveData();
-
-}
-
-
-/* ======================================================
-DELETE ELEMENT
-====================================================== */
-
-function deleteElement(event,id){
-
-  event.stopPropagation();
-
-  const note=
-    getCurrentNote();
-
-  if(!note)return;
-
-  note.elements=
-    note.elements.filter(
-      e=>e.id!==id
-    );
-
-  saveData();
-
-  renderNoteElements();
-
-}
-
-
-/* ======================================================
-DRAG ELEMENT
-====================================================== */
-
-function makeDraggable(el,element){
-
-  let startX=0;
-  let startY=0;
-  let originX=0;
-  let originY=0;
-
-  function down(e){
-
-    if(
-      e.target.tagName==="TEXTAREA"||
-      e.target.classList.contains(
-        "elementDelete"
-      )
-    ){
-
-      return;
-
-    }
-
-    e.preventDefault();
-
-    startX=e.clientX;
-    startY=e.clientY;
-
-    originX=element.x;
-    originY=element.y;
-
-    el.setPointerCapture(
-      e.pointerId
-    );
-
-    selectedElement=element;
-
-  }
-
-
-  function move(e){
-
-    if(selectedElement!==element)return;
-
-    e.preventDefault();
-
-    element.x=
-      originX+
-      e.clientX-startX;
-
-    element.y=
-      originY+
-      e.clientY-startY;
-
-    el.style.left=
-      element.x+"px";
-
-    el.style.top=
-      element.y+"px";
-
-  }
-
-
-  function up(){
-
-    if(selectedElement!==element)return;
-
-    selectedElement=null;
-
-    const note=
-      getCurrentNote();
-
-    if(note){
-
-      note.updated=Date.now();
-
-      saveData();
-
-    }
-
-  }
-
-
-  el.addEventListener(
-    "pointerdown",
-    down
+  ctx.clearRect(
+    0,
+    0,
+    canvas.width,
+    canvas.height
   );
 
-  el.addEventListener(
-    "pointermove",
-    move
-  );
+  saveData();
 
-  el.addEventListener(
-    "pointerup",
-    up
-  );
+  renderElements();
 
 }
 
 
-/* ======================================================
+/* =====================================================
 SAVE NOTE
-====================================================== */
+===================================================== */
 
 function saveCurrentNote(){
 
@@ -2703,31 +2993,22 @@ function saveCurrentNote(){
 
   if(!note)return;
 
-  const input=
-    document.getElementById(
-      "noteTitleInput"
-    );
-
-  if(input){
-
-    note.title=
-      input.value.trim()||
-      "無題のノート";
-
-  }
+  saveCanvasImage();
 
   note.updated=Date.now();
 
   saveData();
 
-  alert("ノートを保存しました！📚");
+  alert(
+    "ノートを保存しました！📚"
+  );
 
 }
 
 
-/* ======================================================
+/* =====================================================
 DELETE NOTE
-====================================================== */
+===================================================== */
 
 function deleteCurrentNote(){
 
@@ -2738,7 +3019,7 @@ function deleteCurrentNote(){
 
   if(
     !confirm(
-      `「${note.title}」を削除しますか？`
+      "このノートを削除しますか？"
     )
   ){
 
@@ -2763,117 +3044,69 @@ function deleteCurrentNote(){
 }
 
 
-/* ======================================================
-COUNT
-====================================================== */
-
-function countFolderItems(id){
-
-  const ids=
-    getAllChildFolderIds(id);
-
-  ids.push(id);
-
-  return{
-
-    folders:
-      data.folders.filter(
-        f=>ids.includes(f.id)
-      ).length,
-
-    notes:
-      data.notes.filter(
-        n=>ids.includes(n.folder)
-      ).length
-
-  };
-
-}
-
-
-/* ======================================================
+/* =====================================================
 TIMER
-====================================================== */
+===================================================== */
 
 function showTimer(){
 
-  document.getElementById("main").innerHTML=`
+  document.getElementById(
+    "main"
+  ).innerHTML=`
 
     <section class="card timer">
 
-      <h2>⏱️ 勉強タイマー</h2>
+      <h2>
+        ⏱️ 勉強タイマー
+      </h2>
 
       <p>
-        タイマーを動かした時間が
+        勉強した時間が
         総勉強時間に追加されます。
       </p>
 
       <div
-        class="timerCircle"
-        id="timerDisplay">
+        id="timerDisplay"
+        class="timerCircle">
 
         00:00:00
 
       </div>
 
-      <div class="timerButtons">
+      <div class="addArea"
+           style="justify-content:center">
 
-        <button onclick="startTimer()">
+        <button
+          class="addBtn"
+          onclick="startTimer()">
+
           ▶ 開始
+
         </button>
 
-        <button onclick="pauseTimer()">
+        <button
+          class="addBtn secondary"
+          onclick="pauseTimer()">
+
           ⏸ 一時停止
+
         </button>
 
-        <button onclick="finishTimer()">
+        <button
+          class="danger"
+          onclick="finishTimer()">
+
           ⏹ 終了
+
         </button>
 
       </div>
-
-      <br>
-
-      <select
-        id="timerFolder"
-        class="input">
-
-        ${buildFolderOptions()}
-
-      </select>
 
     </section>
 
   `;
 
-  setActiveNav(2);
-
-  updateTimerDisplay();
-
-}
-
-
-function buildFolderOptions(){
-
-  return data.folders.map(
-    folder=>`
-
-      <option
-        value="${folder.id}"
-        ${
-          folder.id===currentFolder
-          ?
-          "selected"
-          :
-          ""
-        }>
-
-        ${escapeHTML(folder.name)}
-
-      </option>
-
-    `
-  ).join("");
+  activeNav(2);
 
 }
 
@@ -2885,13 +3118,16 @@ function startTimer(){
   timerRunning=true;
 
   timerInterval=
-    setInterval(()=>{
+    setInterval(
+      ()=>{
 
-      timerSeconds++;
+        timerSeconds++;
 
-      updateTimerDisplay();
+        updateTimer();
 
-    },1000);
+      },
+      1000
+    );
 
 }
 
@@ -2900,7 +3136,9 @@ function pauseTimer(){
 
   timerRunning=false;
 
-  clearInterval(timerInterval);
+  clearInterval(
+    timerInterval
+  );
 
 }
 
@@ -2911,26 +3149,27 @@ function finishTimer(){
 
   if(timerSeconds<=0){
 
-    alert("まだ勉強時間がありません。");
-
     return;
 
   }
 
-  data.totalSeconds+=timerSeconds;
+  data.totalSeconds+=
+    timerSeconds;
 
   timerSeconds=0;
 
   saveData();
 
-  updateTimerDisplay();
+  updateTimer();
 
-  alert("勉強時間を記録しました！📚");
+  alert(
+    "勉強時間を記録しました！"
+  );
 
 }
 
 
-function updateTimerDisplay(){
+function updateTimer(){
 
   const el=
     document.getElementById(
@@ -2953,20 +3192,24 @@ function updateTimerDisplay(){
     timerSeconds%60;
 
   el.textContent=
-    `${String(h).padStart(2,"0")}:`+
-    `${String(m).padStart(2,"0")}:`+
-    `${String(s).padStart(2,"0")}`;
+    String(h).padStart(2,"0")+
+    ":"+
+    String(m).padStart(2,"0")+
+    ":"+
+    String(s).padStart(2,"0");
 
 }
 
 
-/* ======================================================
+/* =====================================================
 SETTINGS
-====================================================== */
+===================================================== */
 
 function showSettings(){
 
-  document.getElementById("main").innerHTML=`
+  document.getElementById(
+    "main"
+  ).innerHTML=`
 
     <div class="sectionTitle">
       ⚙️ 設定
@@ -2974,126 +3217,60 @@ function showSettings(){
 
     <div class="card">
 
-      <div class="settingRow">
+      <p>
+        ユーザー：
+        <b>${esc(data.name)}</b>
+      </p>
 
-        <div>
+      <p>
+        総勉強時間：
+        <b>
+          ${formatTime(
+            data.totalSeconds
+          )}
+        </b>
+      </p>
 
-          <b>ユーザー</b>
+      <button
+        class="addBtn"
+        onclick="exportData()">
 
-          <br>
+        📦 データをバックアップ
 
-          <span class="cardSub">
-            ${escapeHTML(data.name)}
-          </span>
+      </button>
 
-        </div>
+      <br><br>
 
-      </div>
+      <button
+        class="addBtn secondary"
+        onclick="toggleDark()">
 
+        ◐ ダークモード
 
-      <div class="settingRow">
+      </button>
 
-        <div>
+      <br><br>
 
-          <b>総勉強時間</b>
+      <button
+        class="danger"
+        onclick="logout()">
 
-          <br>
+        ログアウト
 
-          <span class="cardSub">
-            ${formatTime(data.totalSeconds)}
-          </span>
-
-        </div>
-
-      </div>
-
-
-      <div class="settingRow">
-
-        <div>
-          <b>ダークモード</b>
-        </div>
-
-        <button
-          class="iconBtn"
-          onclick="toggleDark()">
-
-          ◐
-
-        </button>
-
-      </div>
-
-
-      <div class="settingRow">
-
-        <div>
-
-          <b>データバックアップ</b>
-
-          <br>
-
-          <span class="cardSub">
-            JSONファイルとして保存
-          </span>
-
-        </div>
-
-        <button
-          class="addBtn"
-          onclick="exportData()">
-
-          📦 保存
-
-        </button>
-
-      </div>
-
-
-      <div class="settingRow">
-
-        <button
-          class="danger"
-          onclick="logout()">
-
-          ログアウト
-
-        </button>
-
-      </div>
+      </button>
 
     </div>
 
   `;
 
-  setActiveNav(3);
+  activeNav(3);
 
 }
 
 
-/* ======================================================
-DARK
-====================================================== */
-
-function toggleDark(){
-
-  document.body.classList.toggle(
-    "dark"
-  );
-
-  data.settings.dark=
-    document.body.classList.contains(
-      "dark"
-    );
-
-  saveData();
-
-}
-
-
-/* ======================================================
-EXPORT
-====================================================== */
+/* =====================================================
+BACKUP
+===================================================== */
 
 function exportData(){
 
@@ -3129,9 +3306,29 @@ function exportData(){
 }
 
 
-/* ======================================================
+/* =====================================================
+DARK
+===================================================== */
+
+function toggleDark(){
+
+  document.body.classList.toggle(
+    "dark"
+  );
+
+  data.settings.dark=
+    document.body.classList.contains(
+      "dark"
+    );
+
+  saveData();
+
+}
+
+
+/* =====================================================
 LOGOUT
-====================================================== */
+===================================================== */
 
 function logout(){
 
@@ -3151,84 +3348,33 @@ function logout(){
 }
 
 
-/* ======================================================
-MODAL
-====================================================== */
-
-function showModal(html){
-
-  document
-    .getElementById("modalContent")
-    .innerHTML=html;
-
-  document
-    .getElementById("modal")
-    .classList.remove("hidden");
-
-}
-
-
-function closeModal(){
-
-  document
-    .getElementById("modal")
-    .classList.add("hidden");
-
-}
-
-
-document
-  .getElementById("modal")
-  .addEventListener(
-    "click",
-    e=>{
-
-      if(e.target.id==="modal"){
-
-        closeModal();
-
-      }
-
-    }
-  );
-
-
-/* ======================================================
+/* =====================================================
 NAV
-====================================================== */
+===================================================== */
 
-function showFolders(){
-
-  renderFolder(currentFolder);
-
-}
-
-
-function setActiveNav(index){
+function activeNav(index){
 
   document
     .querySelectorAll(".navBtn")
     .forEach(
-      (btn,i)=>{
-
-        btn.classList.toggle(
+      (b,i)=>{
+        b.classList.toggle(
           "active",
           i===index
         );
-
       }
     );
 
 }
 
 
-/* ======================================================
+/* =====================================================
 ESCAPE
-====================================================== */
+===================================================== */
 
-function escapeHTML(str){
+function esc(str){
 
-  return String(str)
+  return String(str||"")
     .replaceAll("&","&amp;")
     .replaceAll("<","&lt;")
     .replaceAll(">","&gt;")
@@ -3238,63 +3384,18 @@ function escapeHTML(str){
 }
 
 
-function escapeAttribute(str){
+function attr(str){
 
-  return escapeHTML(str);
+  return esc(str);
 
 }
 
 
-/* ======================================================
-RESIZE CANVAS
-====================================================== */
-
-window.addEventListener(
-  "resize",
-  ()=>{
-
-    if(
-      currentNoteId&&
-      document.getElementById(
-        "drawCanvas"
-      )
-    ){
-
-      const oldStrokes=
-        getCurrentNote()?.strokes||[];
-
-      setupCanvas();
-
-      const note=
-        getCurrentNote();
-
-      if(note){
-
-        note.strokes=
-          oldStrokes;
-
-      }
-
-      redrawStrokes();
-
-    }
-
-  }
-);
-
-
-/* ======================================================
+/* =====================================================
 AUTO LOAD
-====================================================== */
+===================================================== */
 
-window.addEventListener(
-  "load",
-  ()=>{
-
-    loadData();
-
-  }
-);
+loadData();
 
 </script>
 
