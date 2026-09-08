@@ -2,29 +2,40 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 
 <title>Destination Note</title>
 
 <style>
+
 *{
   box-sizing:border-box;
   -webkit-tap-highlight-color:transparent;
 }
 
-html,body{
-  margin:0;
+html,
+body{
   width:100%;
   height:100%;
-  font-family:-apple-system,BlinkMacSystemFont,
-    "SF Pro Display","Helvetica Neue",Arial,sans-serif;
+  margin:0;
+  overflow:hidden;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Display",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
   background:#f5f5f7;
   color:#111;
-  overflow:hidden;
 }
 
-button,input{
+button,
+input,
+select{
   font:inherit;
 }
 
@@ -37,6 +48,7 @@ button{
   display:none!important;
 }
 
+
 /* =========================
    LOGIN
 ========================= */
@@ -44,46 +56,70 @@ button{
 #loginScreen{
   position:fixed;
   inset:0;
+
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
+
   padding:24px;
+
   background:
-    radial-gradient(circle at 20% 10%,#dbeafe,transparent 35%),
-    radial-gradient(circle at 90% 80%,#ede9fe,transparent 35%),
+    radial-gradient(
+      circle at 20% 10%,
+      #dbeafe,
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      #ede9fe,
+      transparent 35%
+    ),
     #f5f5f7;
 }
 
 .loginBox{
   width:min(420px,100%);
+
   padding:35px;
+
   border-radius:32px;
-  background:rgba(255,255,255,.75);
+
+  background:rgba(255,255,255,.78);
+
   backdrop-filter:blur(30px);
   -webkit-backdrop-filter:blur(30px);
-  box-shadow:0 25px 70px rgba(0,0,0,.12);
+
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.12);
 }
 
 .logo{
   font-size:34px;
   font-weight:800;
   letter-spacing:-1.5px;
-  margin-bottom:8px;
 }
 
 .sub{
-  color:#777;
+  margin-top:8px;
   margin-bottom:28px;
+  color:#777;
 }
 
 .loginInput{
   width:100%;
+
   padding:15px 17px;
-  border-radius:17px;
-  border:1px solid #ddd;
-  background:#fff;
-  outline:none;
+
   margin-bottom:12px;
+
+  border:
+    1px solid #ddd;
+
+  border-radius:17px;
+
+  background:#fff;
+
+  outline:none;
 }
 
 .loginInput:focus{
@@ -92,13 +128,19 @@ button{
 
 .primary{
   width:100%;
+
   padding:15px;
-  border-radius:17px;
-  background:#111;
-  color:#fff;
-  font-weight:700;
+
   margin-top:8px;
+
+  border-radius:17px;
+
+  background:#111;
+  color:white;
+
+  font-weight:700;
 }
+
 
 /* =========================
    APP
@@ -107,6 +149,7 @@ button{
 #app{
   width:100%;
   height:100%;
+
   display:flex;
   flex-direction:column;
 }
@@ -114,20 +157,28 @@ button{
 .topbar{
   height:68px;
   flex-shrink:0;
+
   display:flex;
   align-items:center;
   justify-content:space-between;
+
   padding:0 18px;
-  background:rgba(255,255,255,.72);
+
+  background:
+    rgba(255,255,255,.78);
+
   backdrop-filter:blur(25px);
   -webkit-backdrop-filter:blur(25px);
-  border-bottom:1px solid rgba(0,0,0,.07);
+
+  border-bottom:
+    1px solid rgba(0,0,0,.07);
+
   z-index:100;
 }
 
 .brand{
-  font-weight:800;
   font-size:20px;
+  font-weight:800;
 }
 
 .topRight{
@@ -138,9 +189,12 @@ button{
 
 .clockChip{
   padding:8px 13px;
+
   border-radius:14px;
+
   background:#111;
-  color:white;
+  color:#fff;
+
   font-size:13px;
   font-weight:700;
 }
@@ -148,40 +202,56 @@ button{
 .iconBtn{
   width:40px;
   height:40px;
+
   border-radius:14px;
+
   background:#eee;
 }
 
 .main{
   flex:1;
   overflow:auto;
+
   padding:25px;
 }
+
 
 /* =========================
    HOME
 ========================= */
 
 .hero{
-  max-width:1100px;
+  width:min(1100px,100%);
   margin:auto;
 }
 
 .welcome{
+  margin:10px 0 22px;
+
   font-size:36px;
   font-weight:800;
+
   letter-spacing:-1.5px;
-  margin:10px 0 22px;
 }
 
 .rankCard{
-  border-radius:28px;
   padding:25px;
-  color:white;
-  background:
-    linear-gradient(135deg,#151515,#4b4b4b);
-  box-shadow:0 20px 50px rgba(0,0,0,.18);
+
   margin-bottom:24px;
+
+  border-radius:28px;
+
+  color:white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #151515,
+      #4b4b4b
+    );
+
+  box-shadow:
+    0 20px 50px rgba(0,0,0,.18);
 }
 
 .rankName{
@@ -190,45 +260,68 @@ button{
 }
 
 .rankTime{
-  opacity:.8;
   margin-top:5px;
+  opacity:.8;
 }
 
 .progressOuter{
   height:8px;
-  background:rgba(255,255,255,.18);
-  border-radius:999px;
+
   margin-top:20px;
+
   overflow:hidden;
+
+  border-radius:999px;
+
+  background:
+    rgba(255,255,255,.18);
 }
 
 .progressInner{
-  height:100%;
   width:0%;
-  background:white;
+  height:100%;
+
   border-radius:999px;
+
+  background:#fff;
+
   transition:.3s;
 }
 
 .sectionTitle{
+  margin:25px 0 12px;
+
   font-size:22px;
   font-weight:800;
-  margin:25px 0 12px;
 }
 
-.folderGrid{
+.folderGrid,
+.itemGrid{
   display:grid;
+
   grid-template-columns:
-    repeat(auto-fill,minmax(190px,1fr));
+    repeat(
+      auto-fill,
+      minmax(190px,1fr)
+    );
+
   gap:14px;
 }
 
 .folderCard{
   padding:20px;
+
   border-radius:23px;
-  background:rgba(255,255,255,.8);
-  border:1px solid rgba(0,0,0,.06);
-  box-shadow:0 8px 25px rgba(0,0,0,.05);
+
+  background:
+    rgba(255,255,255,.8);
+
+  border:
+    1px solid rgba(0,0,0,.06);
+
+  box-shadow:
+    0 8px 25px rgba(0,0,0,.05);
+
   transition:.15s;
 }
 
@@ -241,14 +334,15 @@ button{
 }
 
 .folderName{
-  font-weight:750;
   margin-top:10px;
+  font-weight:750;
 }
 
 .folderCount{
-  font-size:13px;
-  color:#888;
   margin-top:4px;
+
+  color:#888;
+  font-size:13px;
 }
 
 .addCard{
@@ -256,22 +350,27 @@ button{
   background:transparent;
 }
 
+
 /* =========================
    FOLDER
 ========================= */
 
 .folderHeader{
-  max-width:1100px;
-  margin:auto;
+  width:min(1100px,100%);
+
+  margin:0 auto 22px;
+
   display:flex;
   align-items:center;
+
   gap:12px;
-  margin-bottom:22px;
 }
 
 .backBtn{
   padding:11px 15px;
+
   border-radius:14px;
+
   background:#eee;
 }
 
@@ -280,22 +379,19 @@ button{
   font-weight:800;
 }
 
-.itemGrid{
-  max-width:1100px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:
-    repeat(auto-fill,minmax(210px,1fr));
-  gap:14px;
-}
-
 .noteCard{
-  min-height:150px;
-  padding:20px;
-  border-radius:24px;
-  background:#fff;
-  box-shadow:0 8px 25px rgba(0,0,0,.06);
   position:relative;
+
+  min-height:150px;
+
+  padding:20px;
+
+  border-radius:24px;
+
+  background:#fff;
+
+  box-shadow:
+    0 8px 25px rgba(0,0,0,.06);
 }
 
 .noteIcon{
@@ -303,101 +399,153 @@ button{
 }
 
 .noteTitle{
+  margin-top:12px;
+
   font-size:18px;
   font-weight:750;
-  margin-top:12px;
 }
 
 .noteDate{
+  margin-top:8px;
+
   color:#888;
   font-size:12px;
-  margin-top:8px;
 }
 
 .smallDelete{
   position:absolute;
+
   top:10px;
   right:10px;
+
   width:32px;
   height:32px;
+
   border-radius:10px;
+
   background:#f2f2f2;
 }
 
+
 /* =========================
-   NOTE EDITOR
+   NOTE SCREEN
 ========================= */
 
 #noteScreen{
   position:fixed;
   inset:0;
-  background:#f1f1f3;
+
   z-index:200;
+
   display:flex;
   flex-direction:column;
+
+  background:#f1f1f3;
 }
 
 .noteTop{
+  min-height:60px;
   height:60px;
+
   flex-shrink:0;
+
   display:flex;
   align-items:center;
-  gap:8px;
+
+  gap:7px;
+
   padding:8px;
-  background:rgba(255,255,255,.82);
+
+  background:
+    rgba(255,255,255,.86);
+
   backdrop-filter:blur(25px);
-  border-bottom:1px solid #ddd;
-  z-index:20;
+
+  border-bottom:
+    1px solid #ddd;
+
+  z-index:30;
 }
 
 .noteTitleInput{
   width:180px;
-  max-width:25vw;
-  border:0;
-  background:transparent;
-  font-weight:750;
-  outline:none;
+  max-width:22vw;
+
   padding:8px;
+
+  border:0;
+
+  outline:none;
+
+  background:transparent;
+
+  font-weight:750;
 }
 
 .toolGroup{
+  flex:1;
+
   display:flex;
   align-items:center;
+
   gap:5px;
+
   overflow-x:auto;
-  flex:1;
+
+  scrollbar-width:none;
+}
+
+.toolGroup::-webkit-scrollbar{
+  display:none;
 }
 
 .tool{
   min-width:40px;
   height:40px;
-  border-radius:12px;
-  background:#eee;
+
+  flex-shrink:0;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
+  border-radius:12px;
+
+  background:#eee;
+
   font-size:18px;
 }
 
 .tool.active{
   background:#111;
-  color:white;
+  color:#fff;
 }
 
 .colorInput{
   width:40px;
   height:40px;
-  border:0;
+
+  flex-shrink:0;
+
   padding:2px;
-  background:none;
+
+  border:0;
+
+  background:transparent;
 }
 
 .sizeSelect{
   height:40px;
-  border-radius:12px;
-  border:0;
-  background:#eee;
+
+  flex-shrink:0;
+
   padding:0 8px;
+
+  border:0;
+
+  border-radius:12px;
+
+  background:#eee;
 }
 
 .pageControls{
@@ -408,83 +556,169 @@ button{
 .pageControls button{
   width:38px;
   height:38px;
+
   border-radius:12px;
+
   background:#eee;
 }
 
+
+/* =========================
+   FREEBOARD
+========================= */
+
 .boardViewport{
-  flex:1;
   position:relative;
+
+  flex:1;
+
   overflow:hidden;
+
   touch-action:none;
-  background:
-    radial-gradient(circle,#d3d3d7 1px,transparent 1px);
+
+  background-color:#f8f8fa;
+
+  background-image:
+    radial-gradient(
+      circle,
+      #d3d3d7 1px,
+      transparent 1px
+    );
+
   background-size:25px 25px;
+
+  user-select:none;
+  -webkit-user-select:none;
 }
 
 .boardWorld{
   position:absolute;
+
   left:0;
   top:0;
+
   width:10000px;
   height:10000px;
+
   transform-origin:0 0;
+
+  will-change:transform;
 }
 
 .boardCanvas{
   position:absolute;
+
   left:0;
   top:0;
+
   width:10000px;
   height:10000px;
+
+  touch-action:none;
+
+  pointer-events:none;
 }
 
 .objectLayer{
   position:absolute;
-  inset:0;
+
+  left:0;
+  top:0;
+
+  width:10000px;
+  height:10000px;
+
   pointer-events:none;
 }
 
+
+/* =========================
+   OBJECTS
+========================= */
+
 .boardObject{
   position:absolute;
+
   pointer-events:auto;
+
   user-select:none;
+  -webkit-user-select:none;
+
+  touch-action:none;
 }
 
 .textObject{
   min-width:60px;
   min-height:30px;
-  padding:4px;
-  font-size:22px;
+
+  padding:5px;
+
+  line-height:1.35;
+
   white-space:pre-wrap;
+
+  cursor:move;
+
+  resize:both;
+
+  overflow:auto;
+
+  border:1px solid transparent;
+}
+
+.textObject:active{
+  border-color:
+    rgba(0,122,255,.4);
 }
 
 .stickyObject{
-  width:180px;
-  min-height:150px;
+  width:220px;
+  min-height:170px;
+
   padding:18px;
+
   background:#fff39b;
-  box-shadow:0 8px 20px rgba(0,0,0,.15);
-  font-size:17px;
+
+  box-shadow:
+    0 8px 20px rgba(0,0,0,.15);
+
+  line-height:1.45;
+
   white-space:pre-wrap;
+
+  cursor:move;
+
+  resize:both;
+
+  overflow:auto;
 }
 
 .imageObject{
-  max-width:400px;
-  max-height:400px;
-  object-fit:contain;
-}
+  width:100%;
+  height:100%;
 
-.shapeObject{
-  position:absolute;
+  object-fit:contain;
+
   pointer-events:none;
 }
 
+.shapeObject{
+  pointer-events:none;
+}
+
+
+/* =========================
+   BOARD UI
+========================= */
+
 .zoomControls{
   position:absolute;
+
   right:15px;
   bottom:15px;
+
   z-index:10;
+
   display:flex;
   gap:7px;
 }
@@ -492,72 +726,82 @@ button{
 .zoomControls button{
   width:46px;
   height:46px;
+
   border-radius:16px;
-  background:rgba(255,255,255,.88);
+
+  background:
+    rgba(255,255,255,.88);
+
   backdrop-filter:blur(15px);
-  box-shadow:0 5px 20px rgba(0,0,0,.12);
+
+  box-shadow:
+    0 5px 20px rgba(0,0,0,.12);
+
   font-size:20px;
 }
 
 .pageLabel{
   position:absolute;
+
   left:50%;
   bottom:16px;
-  transform:translateX(-50%);
+
+  transform:
+    translateX(-50%);
+
   padding:9px 15px;
+
   border-radius:15px;
-  background:rgba(255,255,255,.88);
+
+  background:
+    rgba(255,255,255,.88);
+
   backdrop-filter:blur(15px);
+
   font-size:13px;
+
   z-index:10;
 }
 
-.colorPanel{
-  position:absolute;
-  bottom:75px;
-  right:15px;
-  background:white;
-  border-radius:20px;
-  padding:15px;
-  box-shadow:0 15px 40px rgba(0,0,0,.2);
-  z-index:30;
-}
-
-.colorPanel input{
-  width:120px;
-  height:50px;
-}
 
 /* =========================
    SETTINGS
 ========================= */
 
 .settingsBox{
-  max-width:700px;
+  width:min(700px,100%);
   margin:auto;
 }
 
 .settingCard{
-  background:white;
-  border-radius:22px;
   padding:20px;
+
   margin-bottom:12px;
+
+  border-radius:22px;
+
+  background:#fff;
 }
 
 .settingTitle{
-  font-weight:800;
   margin-bottom:10px;
+
+  font-weight:800;
 }
 
 .settingButton{
   padding:12px 16px;
-  border-radius:13px;
-  background:#eee;
+
   margin:4px 0;
+
+  border-radius:13px;
+
+  background:#eee;
 }
 
+
 /* =========================
-   DARK
+   DARK MODE
 ========================= */
 
 body.dark{
@@ -567,16 +811,19 @@ body.dark{
 
 body.dark .topbar,
 body.dark .noteTop{
-  background:rgba(30,30,30,.85);
-  color:white;
+  color:#fff;
+
+  background:
+    rgba(30,30,30,.88);
+
   border-color:#333;
 }
 
 body.dark .folderCard,
 body.dark .noteCard,
 body.dark .settingCard{
+  color:#fff;
   background:#1e1e1e;
-  color:white;
 }
 
 body.dark .iconBtn,
@@ -584,19 +831,27 @@ body.dark .backBtn,
 body.dark .tool,
 body.dark .sizeSelect,
 body.dark .pageControls button{
+  color:#fff;
   background:#2b2b2b;
-  color:white;
 }
 
 body.dark .boardViewport{
   background-color:#171717;
+
   background-image:
-    radial-gradient(circle,#444 1px,transparent 1px);
+    radial-gradient(
+      circle,
+      #444 1px,
+      transparent 1px
+    );
 }
 
-body.dark .colorPanel{
-  background:#222;
+body.dark .zoomControls button,
+body.dark .pageLabel{
+  color:#fff;
+  background:rgba(35,35,35,.9);
 }
+
 
 /* =========================
    MOBILE
@@ -617,6 +872,7 @@ body.dark .colorPanel{
   }
 
   .noteTitleInput{
+    width:120px;
     max-width:120px;
   }
 
@@ -631,13 +887,33 @@ body.dark .colorPanel{
   .pageControls{
     display:none;
   }
+
+  .clockChip{
+    font-size:11px;
+    padding:7px 9px;
+  }
+
 }
+
+
+/* =========================
+   SAFETY
+========================= */
+
+canvas{
+  -webkit-touch-callout:none;
+}
+
 </style>
 </head>
 
+
 <body>
 
-<!-- LOGIN -->
+
+<!-- =========================
+     LOGIN
+========================= -->
 
 <div id="loginScreen">
 
@@ -654,18 +930,22 @@ body.dark .colorPanel{
     <input
       id="loginName"
       class="loginInput"
-      placeholder="名前">
+      placeholder="名前"
+      autocomplete="username">
 
     <input
       id="loginPassword"
       class="loginInput"
       type="password"
-      placeholder="パスワード">
+      placeholder="パスワード"
+      autocomplete="current-password">
 
     <button
       class="primary"
       onclick="login()">
+
       はじめる
+
     </button>
 
   </div>
@@ -673,9 +953,13 @@ body.dark .colorPanel{
 </div>
 
 
-<!-- APP -->
+<!-- =========================
+     APP
+========================= -->
 
-<div id="app" class="hidden">
+<div
+  id="app"
+  class="hidden">
 
   <header class="topbar">
 
@@ -688,18 +972,23 @@ body.dark .colorPanel{
       <div
         id="clockChip"
         class="clockChip">
+
         00:00:00
+
       </div>
 
       <button
         class="iconBtn"
         onclick="showSettings()">
+
         ⚙️
+
       </button>
 
     </div>
 
   </header>
+
 
   <main
     id="main"
@@ -709,109 +998,179 @@ body.dark .colorPanel{
 </div>
 
 
-<!-- NOTE -->
+<!-- =========================
+     NOTE
+========================= -->
 
 <div
   id="noteScreen"
   class="hidden">
+
 
   <div class="noteTop">
 
     <button
       class="iconBtn"
       onclick="closeNote()">
+
       ‹
+
     </button>
+
 
     <input
       id="noteTitleInput"
       class="noteTitleInput"
       onchange="saveNoteTitle()">
 
+
     <div class="toolGroup">
+
+
+      <!-- Pencil -->
 
       <button
         class="tool active"
         data-tool="pencil"
         onclick="setTool('pencil')">
+
         ✏️
+
       </button>
+
+
+      <!-- Highlighter -->
 
       <button
         class="tool"
         data-tool="highlighter"
         onclick="setTool('highlighter')">
+
         🖍️
+
       </button>
+
+
+      <!-- Eraser -->
 
       <button
         class="tool"
         data-tool="eraser"
         onclick="setTool('eraser')">
+
         🧽
+
       </button>
+
+
+      <!-- Object eraser -->
 
       <button
         class="tool"
         data-tool="objectEraser"
         onclick="setTool('objectEraser')">
+
         🗑️
+
       </button>
+
+
+      <!-- Hand -->
 
       <button
         class="tool"
         data-tool="hand"
         onclick="setTool('hand')">
+
         ✋
+
       </button>
+
+
+      <!-- Text -->
 
       <button
         class="tool"
         data-tool="text"
         onclick="setTool('text')">
+
         T
+
       </button>
+
+
+      <!-- Sticky -->
 
       <button
         class="tool"
         data-tool="sticky"
         onclick="setTool('sticky')">
+
         🟨
+
       </button>
+
+
+      <!-- Rectangle -->
 
       <button
         class="tool"
         data-tool="rect"
         onclick="setTool('rect')">
+
         ▭
+
       </button>
+
+
+      <!-- Circle -->
 
       <button
         class="tool"
         data-tool="circle"
         onclick="setTool('circle')">
+
         ○
+
       </button>
+
+
+      <!-- Arrow -->
 
       <button
         class="tool"
         data-tool="arrow"
         onclick="setTool('arrow')">
+
         ➜
+
       </button>
+
+
+      <!-- Image -->
 
       <button
         class="tool"
         data-tool="image"
         onclick="chooseImage()">
+
         🖼️
+
       </button>
+
+
+      <!-- Full erase -->
 
       <button
         class="tool"
         onclick="fullErase()">
+
         💥
+
       </button>
+
+
+      <!-- Color -->
 
       <input
         id="colorInput"
@@ -820,17 +1179,74 @@ body.dark .colorPanel{
         value="#111111"
         onchange="currentColor=this.value">
 
+
+      <!-- Pen size -->
+
       <select
         id="sizeSelect"
         class="sizeSelect"
         onchange="currentSize=Number(this.value)">
 
-        <option value="2">細</option>
-        <option value="4" selected>普通</option>
-        <option value="8">太</option>
-        <option value="14">極太</option>
+        <option value="2">
+          線 2
+        </option>
+
+        <option value="4" selected>
+          線 4
+        </option>
+
+        <option value="8">
+          線 8
+        </option>
+
+        <option value="14">
+          線 14
+        </option>
+
+        <option value="20">
+          線 20
+        </option>
 
       </select>
+
+
+      <!-- Text size -->
+
+      <select
+        id="fontSizeSelect"
+        class="sizeSelect"
+        onchange="currentFontSize=Number(this.value)">
+
+        <option value="12">
+          文字 12
+        </option>
+
+        <option value="16">
+          文字 16
+        </option>
+
+        <option value="20" selected>
+          文字 20
+        </option>
+
+        <option value="28">
+          文字 28
+        </option>
+
+        <option value="36">
+          文字 36
+        </option>
+
+        <option value="48">
+          文字 48
+        </option>
+
+        <option value="64">
+          文字 64
+        </option>
+
+      </select>
+
 
       <input
         id="imageInput"
@@ -840,6 +1256,7 @@ body.dark .colorPanel{
         onchange="insertImage(event)">
 
     </div>
+
 
     <div class="pageControls">
 
@@ -864,9 +1281,11 @@ body.dark .colorPanel{
     id="boardViewport"
     class="boardViewport">
 
+
     <div
       id="boardWorld"
       class="boardWorld">
+
 
       <canvas
         id="boardCanvas"
@@ -875,10 +1294,12 @@ body.dark .colorPanel{
         height="10000">
       </canvas>
 
+
       <div
         id="objectLayer"
         class="objectLayer">
       </div>
+
 
     </div>
 
@@ -899,11 +1320,15 @@ body.dark .colorPanel{
 
     </div>
 
+
     <div
       id="pageLabel"
       class="pageLabel">
+
       1 / 1
+
     </div>
+
 
   </div>
 
@@ -912,15 +1337,21 @@ body.dark .colorPanel{
 
 <script>
 
+
 /* =========================================================
-   DATA
+   STORAGE
 ========================================================= */
 
-const STORAGE_KEY = "destinationNote_v1";
+const STORAGE_KEY =
+  "destinationNote_v1";
+
 
 let data = {
+
   name:"",
+
   password:"",
+
   totalSeconds:0,
 
   folders:[
@@ -938,37 +1369,118 @@ let data = {
   settings:{
     dark:false
   }
+
 };
 
-let currentFolderId = "root";
-let currentNoteId = null;
 
-let currentPageIndex = 0;
+let currentFolderId =
+  "root";
 
-let currentTool = "pencil";
+let currentNoteId =
+  null;
 
-let currentColor = "#111111";
+let currentPageIndex =
+  0;
 
-let currentSize = 4;
+
+/* =========================================================
+   TOOLS
+========================================================= */
+
+let currentTool =
+  "pencil";
+
+let currentColor =
+  "#111111";
+
+let currentSize =
+  4;
+
+let currentFontSize =
+  20;
+
+
+/* =========================================================
+   BOARD
+========================================================= */
 
 let zoom = 1;
 
 let panX = 0;
+
 let panY = 0;
 
-let drawing = false;
 
-let activePointer = null;
+/* =========================================================
+   DRAW STATE
+========================================================= */
 
-let lastPoint = null;
+let isDrawing =
+  false;
 
-let sessionStartedAt = null;
+let drawingPointerId =
+  null;
 
-let clockInterval = null;
+let lastDrawPoint =
+  null;
 
-let saveTimer = null;
 
-let pinchData = null;
+/* =========================================================
+   PINCH
+========================================================= */
+
+const activePointers =
+  new Map();
+
+let pinchData =
+  null;
+
+
+/* =========================================================
+   STUDY CLOCK
+========================================================= */
+
+let sessionStartedAt =
+  null;
+
+let clockInterval =
+  null;
+
+
+/* =========================================================
+   SAVE
+========================================================= */
+
+let saveTimer =
+  null;
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const canvas =
+  document.getElementById(
+    "boardCanvas"
+  );
+
+const ctx =
+  canvas.getContext("2d");
+
+const viewport =
+  document.getElementById(
+    "boardViewport"
+  );
+
+const world =
+  document.getElementById(
+    "boardWorld"
+  );
+
+const objectLayer =
+  document.getElementById(
+    "objectLayer"
+  );
 
 
 /* =========================================================
@@ -977,62 +1489,98 @@ let pinchData = null;
 
 function loadData(){
 
-  const raw = localStorage.getItem(STORAGE_KEY);
+  const raw =
+    localStorage.getItem(
+      STORAGE_KEY
+    );
 
-  if(!raw) return;
+  if(!raw){
+    return;
+  }
+
 
   try{
 
-    const saved = JSON.parse(raw);
+    const saved =
+      JSON.parse(raw);
+
 
     data = {
+
       ...data,
+
       ...saved
+
     };
 
+
     if(!Array.isArray(data.folders)){
-      data.folders = [];
+      data.folders=[];
     }
+
 
     if(!Array.isArray(data.notes)){
-      data.notes = [];
+      data.notes=[];
     }
 
+
     /*
-      旧バージョンとの互換
+      旧データ互換
     */
 
-    data.notes.forEach(note=>{
+    data.notes.forEach(
+      note=>{
 
-      if(!note.pages){
+        if(!note.pages){
 
-        note.pages = [
-          {
-            image:note.image || null,
-            elements:note.elements || [],
-            strokes:note.strokes || []
+          note.pages=[{
+
+            image:
+              note.image || null,
+
+            elements:
+              note.elements || [],
+
+            strokes:
+              note.strokes || []
+
+          }];
+
+        }
+
+
+        note.pages.forEach(
+          page=>{
+
+            if(
+              !Array.isArray(
+                page.elements
+              )
+            ){
+              page.elements=[];
+            }
+
+            if(
+              !Array.isArray(
+                page.strokes
+              )
+            ){
+              page.strokes=[];
+            }
+
           }
-        ];
+        );
 
       }
+    );
 
-      note.pages.forEach(page=>{
 
-        if(!Array.isArray(page.elements)){
-          page.elements = [];
-        }
+  }catch(error){
 
-        if(!Array.isArray(page.strokes)){
-          page.strokes = [];
-        }
-
-      });
-
-    });
-
-  }catch(e){
-
-    console.error(e);
+    console.error(
+      "データ読み込みエラー",
+      error
+    );
 
   }
 
@@ -1045,21 +1593,40 @@ function loadData(){
 
 function saveData(){
 
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify(data)
-  );
+  try{
+
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify(data)
+    );
+
+  }catch(error){
+
+    console.error(
+      "保存エラー",
+      error
+    );
+
+    alert(
+      "保存できませんでした。画像を大量に貼っている場合は、画像を減らしてみてね。"
+    );
+
+  }
 
 }
 
+
 function autoSave(){
 
-  clearTimeout(saveTimer);
-
-  saveTimer = setTimeout(
-    saveData,
-    400
+  clearTimeout(
+    saveTimer
   );
+
+  saveTimer =
+    setTimeout(
+      saveData,
+      300
+    );
 
 }
 
@@ -1071,48 +1638,87 @@ function autoSave(){
 function login(){
 
   const name =
-    document.getElementById("loginName").value.trim();
+    document
+      .getElementById(
+        "loginName"
+      )
+      .value
+      .trim();
+
 
   const password =
-    document.getElementById("loginPassword").value;
+    document
+      .getElementById(
+        "loginPassword"
+      )
+      .value;
+
 
   if(!name || !password){
 
-    alert("名前とパスワードを入力してね");
+    alert(
+      "名前とパスワードを入力してね"
+    );
 
     return;
 
   }
 
+
+  /*
+    初回
+  */
+
   if(!data.name){
 
-    data.name = name;
-    data.password = password;
+    data.name =
+      name;
+
+    data.password =
+      password;
 
     saveData();
 
-  }else{
+  }
 
-    if(
-      data.name !== name ||
-      data.password !== password
-    ){
 
-      alert("名前またはパスワードが違います");
+  /*
+    ログイン確認
+  */
 
-      return;
+  else if(
 
-    }
+    data.name !== name ||
+    data.password !== password
+
+  ){
+
+    alert(
+      "名前またはパスワードが違います"
+    );
+
+    return;
 
   }
 
-  document
-    .getElementById("loginScreen")
-    .classList.add("hidden");
 
   document
-    .getElementById("app")
-    .classList.remove("hidden");
+    .getElementById(
+      "loginScreen"
+    )
+    .classList.add(
+      "hidden"
+    );
+
+
+  document
+    .getElementById(
+      "app"
+    )
+    .classList.remove(
+      "hidden"
+    );
+
 
   applyDark();
 
@@ -1131,10 +1737,14 @@ function getTotalStudySeconds(){
 
   if(sessionStartedAt){
 
-    return data.totalSeconds +
+    return (
+      data.totalSeconds +
       Math.floor(
-        (Date.now()-sessionStartedAt)/1000
-      );
+        (Date.now() -
+          sessionStartedAt) /
+        1000
+      )
+    );
 
   }
 
@@ -1143,26 +1753,40 @@ function getTotalStudySeconds(){
 }
 
 
-function formatTime(sec){
+function formatTime(seconds){
 
-  sec = Math.max(
-    0,
-    Math.floor(sec)
-  );
+  seconds =
+    Math.max(
+      0,
+      Math.floor(seconds)
+    );
+
 
   const h =
-    Math.floor(sec/3600);
+    Math.floor(
+      seconds / 3600
+    );
 
   const m =
-    Math.floor((sec%3600)/60);
+    Math.floor(
+      (seconds % 3600) / 60
+    );
 
   const s =
-    sec%60;
+    seconds % 60;
+
 
   return [
-    String(h).padStart(2,"0"),
-    String(m).padStart(2,"0"),
-    String(s).padStart(2,"0")
+
+    String(h)
+      .padStart(2,"0"),
+
+    String(m)
+      .padStart(2,"0"),
+
+    String(s)
+      .padStart(2,"0")
+
   ].join(":");
 
 }
@@ -1170,13 +1794,22 @@ function formatTime(sec){
 
 function startStudyClock(){
 
-  if(sessionStartedAt) return;
+  if(sessionStartedAt){
+    return;
+  }
 
-  sessionStartedAt = Date.now();
+
+  sessionStartedAt =
+    Date.now();
+
 
   updateClock();
 
-  clearInterval(clockInterval);
+
+  clearInterval(
+    clockInterval
+  );
+
 
   clockInterval =
     setInterval(
@@ -1189,12 +1822,18 @@ function startStudyClock(){
 
 function stopStudyClock(){
 
-  if(!sessionStartedAt) return;
+  if(!sessionStartedAt){
+    return;
+  }
+
 
   data.totalSeconds =
     getTotalStudySeconds();
 
-  sessionStartedAt = null;
+
+  sessionStartedAt =
+    null;
+
 
   saveData();
 
@@ -1206,15 +1845,20 @@ function updateClock(){
   const total =
     getTotalStudySeconds();
 
-  const clock =
-    document.getElementById("clockChip");
 
-  if(clock){
+  const chip =
+    document.getElementById(
+      "clockChip"
+    );
 
-    clock.textContent =
+
+  if(chip){
+
+    chip.textContent =
       formatTime(total);
 
   }
+
 
   updateRankCard();
 
@@ -1231,7 +1875,11 @@ document.addEventListener(
 
     }else{
 
-      startStudyClock();
+      if(data.name){
+
+        startStudyClock();
+
+      }
 
     }
 
@@ -1254,54 +1902,83 @@ window.addEventListener(
 function getRank(seconds){
 
   const hours =
-    seconds/3600;
+    seconds / 3600;
 
-  if(hours < 10)
+
+  if(hours < 10){
+
     return {
       name:"ブロンズ",
       min:0,
       max:10
     };
 
-  if(hours < 30)
+  }
+
+
+  if(hours < 30){
+
     return {
       name:"シルバー",
       min:10,
       max:30
     };
 
-  if(hours < 60)
+  }
+
+
+  if(hours < 60){
+
     return {
       name:"ゴールド",
       min:30,
       max:60
     };
 
-  if(hours < 100)
+  }
+
+
+  if(hours < 100){
+
     return {
       name:"プラチナ",
       min:60,
       max:100
     };
 
-  if(hours < 200)
+  }
+
+
+  if(hours < 200){
+
     return {
       name:"ビジネス",
       min:100,
       max:200
     };
 
-  if(hours < 500)
+  }
+
+
+  if(hours < 500){
+
     return {
       name:"ファースト",
       min:200,
       max:500
     };
 
+  }
+
+
   return {
+
     name:"グランクラス",
+
     min:500,
+
     max:Infinity
+
   };
 
 }
@@ -1309,57 +1986,94 @@ function getRank(seconds){
 
 function updateRankCard(){
 
-  const el =
-    document.getElementById("rankCard");
+  const card =
+    document.getElementById(
+      "rankCard"
+    );
 
-  if(!el) return;
+
+  if(!card){
+    return;
+  }
+
 
   const total =
     getTotalStudySeconds();
 
+
   const rank =
     getRank(total);
 
-  const hours =
-    total/3600;
 
-  let progress = 100;
+  const hours =
+    total / 3600;
+
+
+  let progress=100;
+
 
   if(rank.max !== Infinity){
 
     progress =
-      ((hours-rank.min) /
-      (rank.max-rank.min))*100;
+      (
+        (hours-rank.min) /
+        (rank.max-rank.min)
+      ) * 100;
 
   }
+
 
   progress =
     Math.max(
       0,
-      Math.min(100,progress)
+      Math.min(
+        100,
+        progress
+      )
     );
 
-  const nameEl =
-    document.getElementById("rankName");
 
-  const timeEl =
-    document.getElementById("rankTime");
+  const name =
+    document.getElementById(
+      "rankName"
+    );
+
+
+  const time =
+    document.getElementById(
+      "rankTime"
+    );
+
 
   const bar =
-    document.getElementById("rankProgress");
+    document.getElementById(
+      "rankProgress"
+    );
 
-  if(nameEl)
-    nameEl.textContent =
+
+  if(name){
+
+    name.textContent =
       rank.name;
 
-  if(timeEl)
-    timeEl.textContent =
+  }
+
+
+  if(time){
+
+    time.textContent =
       "学習時間 " +
       formatTime(total);
 
-  if(bar)
+  }
+
+
+  if(bar){
+
     bar.style.width =
-      progress+"%";
+      progress + "%";
+
+  }
 
 }
 
@@ -1370,45 +2084,65 @@ function updateRankCard(){
 
 function showHome(){
 
-  currentFolderId = "root";
+  currentFolderId =
+    "root";
+
 
   const main =
-    document.getElementById("main");
+    document.getElementById(
+      "main"
+    );
+
 
   main.innerHTML = `
 
     <div class="hero">
 
       <div class="welcome">
+
         ${escapeHTML(data.name)}さん
+
       </div>
 
-      <div class="rankCard" id="rankCard">
+
+      <div
+        id="rankCard"
+        class="rankCard">
 
         <div
           id="rankName"
           class="rankName">
+
           ブロンズ
+
         </div>
+
 
         <div
           id="rankTime"
           class="rankTime">
+
           学習時間 00:00:00
+
         </div>
 
+
         <div class="progressOuter">
+
           <div
             id="rankProgress"
             class="progressInner">
           </div>
+
         </div>
 
       </div>
 
+
       <div class="sectionTitle">
         ノート
       </div>
+
 
       <div
         id="homeFolders"
@@ -1419,6 +2153,7 @@ function showHome(){
 
   `;
 
+
   renderRootFolders();
 
   updateRankCard();
@@ -1426,72 +2161,127 @@ function showHome(){
 }
 
 
+/* =========================================================
+   ROOT FOLDERS
+========================================================= */
+
 function renderRootFolders(){
 
   const box =
-    document.getElementById("homeFolders");
+    document.getElementById(
+      "homeFolders"
+    );
 
-  if(!box) return;
+
+  if(!box){
+    return;
+  }
+
+
+  box.innerHTML="";
+
 
   const folders =
     data.folders.filter(
-      f=>f.parent==="root"
+      folder =>
+        folder.parent === "root"
     );
 
-  box.innerHTML = "";
 
-  folders.forEach(folder=>{
+  folders.forEach(
+    folder=>{
 
-    const count =
-      data.notes.filter(
-        n=>n.folder===folder.id
-      ).length;
+      const count =
+        data.notes.filter(
+          note =>
+            note.folder ===
+            folder.id
+        ).length;
 
-    const div =
-      document.createElement("div");
 
-    div.className =
-      "folderCard";
+      const div =
+        document.createElement(
+          "div"
+        );
 
-    div.innerHTML = `
-      <div class="folderIcon">
-        ${folder.icon || "📁"}
-      </div>
 
-      <div class="folderName">
-        ${escapeHTML(folder.name)}
-      </div>
+      div.className =
+        "folderCard";
 
-      <div class="folderCount">
-        ${count} ノート
-      </div>
-    `;
 
-    div.onclick =
-      ()=>openFolder(folder.id);
+      div.innerHTML = `
 
-    box.appendChild(div);
+        <div class="folderIcon">
 
-  });
+          ${folder.icon || "📁"}
+
+        </div>
+
+
+        <div class="folderName">
+
+          ${escapeHTML(
+            folder.name
+          )}
+
+        </div>
+
+
+        <div class="folderCount">
+
+          ${count} ノート
+
+        </div>
+
+      `;
+
+
+      div.onclick =
+        ()=>openFolder(
+          folder.id
+        );
+
+
+      box.appendChild(
+        div
+      );
+
+    }
+  );
 
 
   const add =
-    document.createElement("div");
+    document.createElement(
+      "div"
+    );
+
 
   add.className =
     "folderCard addCard";
 
+
   add.innerHTML = `
-    <div class="folderIcon">＋</div>
+
+    <div class="folderIcon">
+      ＋
+    </div>
+
     <div class="folderName">
       フォルダを追加
     </div>
+
   `;
 
-  add.onclick =
-    ()=>createFolder("root");
 
-  box.appendChild(add);
+  add.onclick =
+    ()=>createFolder(
+      "root"
+    );
+
+
+  box.appendChild(
+    add
+  );
 
 }
 
@@ -1502,7 +2292,8 @@ function renderRootFolders(){
 
 function openFolder(id){
 
-  currentFolderId = id;
+  currentFolderId =
+    id;
 
   renderFolder(id);
 
@@ -1516,15 +2307,21 @@ function renderFolder(id){
       f=>f.id===id
     );
 
+
   if(!folder){
 
     showHome();
+
     return;
 
   }
 
+
   const main =
-    document.getElementById("main");
+    document.getElementById(
+      "main"
+    );
+
 
   main.innerHTML = `
 
@@ -1533,15 +2330,24 @@ function renderFolder(id){
       <button
         class="backBtn"
         onclick="goParentFolder()">
+
         ‹ 戻る
+
       </button>
 
+
       <div class="folderTitle">
+
         ${folder.icon || "📁"}
-        ${escapeHTML(folder.name)}
+
+        ${escapeHTML(
+          folder.name
+        )}
+
       </div>
 
     </div>
+
 
     <div
       id="folderItems"
@@ -1550,8 +2356,11 @@ function renderFolder(id){
 
   `;
 
+
   const box =
-    document.getElementById("folderItems");
+    document.getElementById(
+      "folderItems"
+    );
 
 
   /*
@@ -1562,34 +2371,58 @@ function renderFolder(id){
     .filter(
       f=>f.parent===id
     )
-    .forEach(child=>{
+    .forEach(
+      child=>{
 
-      const div =
-        document.createElement("div");
+        const div =
+          document.createElement(
+            "div"
+          );
 
-      div.className =
-        "folderCard";
 
-      div.innerHTML = `
-        <div class="folderIcon">
-          ${child.icon || "📁"}
-        </div>
+        div.className =
+          "folderCard";
 
-        <div class="folderName">
-          ${escapeHTML(child.name)}
-        </div>
 
-        <div class="folderCount">
-          フォルダ
-        </div>
-      `;
+        div.innerHTML = `
 
-      div.onclick =
-        ()=>openFolder(child.id);
+          <div class="folderIcon">
 
-      box.appendChild(div);
+            ${child.icon || "📁"}
 
-    });
+          </div>
+
+
+          <div class="folderName">
+
+            ${escapeHTML(
+              child.name
+            )}
+
+          </div>
+
+
+          <div class="folderCount">
+
+            フォルダ
+
+          </div>
+
+        `;
+
+
+        div.onclick =
+          ()=>openFolder(
+            child.id
+          );
+
+
+        box.appendChild(
+          div
+        );
+
+      }
+    );
 
 
   /*
@@ -1600,93 +2433,158 @@ function renderFolder(id){
     .filter(
       n=>n.folder===id
     )
-    .forEach(note=>{
+    .forEach(
+      note=>{
 
-      const div =
-        document.createElement("div");
+        const div =
+          document.createElement(
+            "div"
+          );
 
-      div.className =
-        "noteCard";
 
-      div.innerHTML = `
+        div.className =
+          "noteCard";
 
-        <button
-          class="smallDelete"
-          onclick="event.stopPropagation();deleteNote('${note.id}')">
-          ×
-        </button>
 
-        <div class="noteIcon">
-          📝
-        </div>
+        div.innerHTML = `
 
-        <div class="noteTitle">
-          ${escapeHTML(note.title)}
-        </div>
+          <button
+            class="smallDelete"
+            onclick="
+              event.stopPropagation();
+              deleteNote('${note.id}')
+            ">
 
-        <div class="noteDate">
-          更新 ${new Date(note.updated).toLocaleDateString()}
-        </div>
+            ×
 
-      `;
+          </button>
 
-      div.onclick =
-        ()=>openNote(note.id);
 
-      box.appendChild(div);
+          <div class="noteIcon">
+            📝
+          </div>
 
-    });
+
+          <div class="noteTitle">
+
+            ${escapeHTML(
+              note.title
+            )}
+
+          </div>
+
+
+          <div class="noteDate">
+
+            更新
+            ${new Date(
+              note.updated
+            ).toLocaleDateString()}
+
+          </div>
+
+        `;
+
+
+        div.onclick =
+          ()=>openNote(
+            note.id
+          );
+
+
+        box.appendChild(
+          div
+        );
+
+      }
+    );
 
 
   /*
-    追加
+    フォルダ追加
   */
 
   const addFolder =
-    document.createElement("div");
+    document.createElement(
+      "div"
+    );
+
 
   addFolder.className =
     "folderCard addCard";
 
+
   addFolder.innerHTML = `
-    <div class="folderIcon">＋</div>
+
+    <div class="folderIcon">
+      ＋
+    </div>
+
     <div class="folderName">
       フォルダ
     </div>
+
   `;
+
 
   addFolder.onclick =
     ()=>createFolder(id);
 
-  box.appendChild(addFolder);
 
+  box.appendChild(
+    addFolder
+  );
+
+
+  /*
+    ノート追加
+  */
 
   const addNote =
-    document.createElement("div");
+    document.createElement(
+      "div"
+    );
+
 
   addNote.className =
     "noteCard";
 
+
   addNote.style.border =
     "2px dashed #ccc";
+
 
   addNote.style.background =
     "transparent";
 
+
   addNote.innerHTML = `
-    <div class="noteIcon">＋</div>
+
+    <div class="noteIcon">
+      ＋
+    </div>
+
     <div class="noteTitle">
       ノートを追加
     </div>
+
   `;
+
 
   addNote.onclick =
     ()=>createNote(id);
 
-  box.appendChild(addNote);
+
+  box.appendChild(
+    addNote
+  );
 
 }
 
+
+/* =========================================================
+   PARENT
+========================================================= */
 
 function goParentFolder(){
 
@@ -1694,6 +2592,7 @@ function goParentFolder(){
     data.folders.find(
       f=>f.id===currentFolderId
     );
+
 
   if(
     !folder ||
@@ -1706,13 +2605,18 @@ function goParentFolder(){
 
   }
 
-  if(folder.parent==="root"){
+
+  if(
+    folder.parent==="root"
+  ){
 
     showHome();
 
   }else{
 
-    openFolder(folder.parent);
+    openFolder(
+      folder.parent
+    );
 
   }
 
@@ -1720,20 +2624,29 @@ function goParentFolder(){
 
 
 /* =========================================================
-   CREATE
+   CREATE FOLDER
 ========================================================= */
 
 function createFolder(parent){
 
   const name =
-    prompt("フォルダ名を入力");
+    prompt(
+      "フォルダ名を入力"
+    );
 
-  if(!name) return;
 
-  const folder = {
+  if(!name){
+    return;
+  }
+
+
+  data.folders.push({
 
     id:
-      "folder_"+Date.now()+"_"+Math.random(),
+      "folder_" +
+      Date.now() +
+      "_" +
+      Math.random(),
 
     name:name,
 
@@ -1743,31 +2656,50 @@ function createFolder(parent){
 
     created:Date.now()
 
-  };
+  });
 
-  data.folders.push(folder);
 
   autoSave();
 
-  if(parent==="root")
+
+  if(parent==="root"){
+
     showHome();
-  else
+
+  }else{
+
     renderFolder(parent);
+
+  }
 
 }
 
 
+/* =========================================================
+   CREATE NOTE
+========================================================= */
+
 function createNote(folder){
 
   const title =
-    prompt("ノート名を入力","新しいノート");
+    prompt(
+      "ノート名を入力",
+      "新しいノート"
+    );
 
-  if(!title) return;
 
-  const note = {
+  if(!title){
+    return;
+  }
+
+
+  const note={
 
     id:
-      "note_"+Date.now()+"_"+Math.random(),
+      "note_" +
+      Date.now() +
+      "_" +
+      Math.random(),
 
     folder:folder,
 
@@ -1778,43 +2710,70 @@ function createNote(folder){
     updated:Date.now(),
 
     pages:[
+
       {
+
         image:null,
+
         elements:[],
+
         strokes:[]
+
       }
+
     ]
 
   };
 
-  data.notes.push(note);
+
+  data.notes.push(
+    note
+  );
+
 
   autoSave();
 
-  openNote(note.id);
+  openNote(
+    note.id
+  );
 
 }
 
 
+/* =========================================================
+   DELETE NOTE
+========================================================= */
+
 function deleteNote(id){
 
-  if(!confirm("このノートを削除する？"))
+  if(
+    !confirm(
+      "このノートを削除する？"
+    )
+  ){
+
     return;
+
+  }
+
 
   data.notes =
     data.notes.filter(
       n=>n.id!==id
     );
 
+
   autoSave();
 
-  renderFolder(currentFolderId);
+  renderFolder(
+    currentFolderId
+  );
 
 }
 
 
 /* =========================================================
-   NOTE OPEN
+   OPEN NOTE
 ========================================================= */
 
 function openNote(id){
@@ -1824,66 +2783,111 @@ function openNote(id){
       n=>n.id===id
     );
 
-  if(!note) return;
 
-  currentNoteId = id;
+  if(!note){
+    return;
+  }
 
-  currentPageIndex = 0;
 
-  zoom = 1;
+  currentNoteId =
+    id;
+
+
+  currentPageIndex =
+    0;
+
+
+  zoom=1;
+
 
   panX =
-    window.innerWidth/2 -
+    viewport.clientWidth/2 -
     5000;
+
 
   panY =
-    window.innerHeight/2 -
+    viewport.clientHeight/2 -
     5000;
 
-  document
-    .getElementById("noteScreen")
-    .classList.remove("hidden");
 
   document
-    .getElementById("noteTitleInput")
+    .getElementById(
+      "noteScreen"
+    )
+    .classList.remove(
+      "hidden"
+    );
+
+
+  document
+    .getElementById(
+      "noteTitleInput"
+    )
     .value =
     note.title;
+
 
   setupBoard();
 
 }
 
 
+/* =========================================================
+   CLOSE NOTE
+========================================================= */
+
 function closeNote(){
 
   saveCurrentNote();
 
+
   document
-    .getElementById("noteScreen")
-    .classList.add("hidden");
+    .getElementById(
+      "noteScreen"
+    )
+    .classList.add(
+      "hidden"
+    );
 
-  currentNoteId = null;
 
-  renderFolder(currentFolderId);
+  currentNoteId =
+    null;
+
+
+  renderFolder(
+    currentFolderId
+  );
 
 }
 
+
+/* =========================================================
+   NOTE TITLE
+========================================================= */
 
 function saveNoteTitle(){
 
   const note =
     getCurrentNote();
 
-  if(!note) return;
+
+  if(!note){
+    return;
+  }
+
 
   note.title =
     document
-      .getElementById("noteTitleInput")
+      .getElementById(
+        "noteTitleInput"
+      )
       .value ||
-      "無題";
+    "無題";
+
 
   note.updated =
     Date.now();
+
 
   autoSave();
 
@@ -1891,24 +2895,8 @@ function saveNoteTitle(){
 
 
 /* =========================================================
-   BOARD
+   GET NOTE
 ========================================================= */
-
-const canvas =
-  document.getElementById("boardCanvas");
-
-const ctx =
-  canvas.getContext("2d");
-
-const viewport =
-  document.getElementById("boardViewport");
-
-const world =
-  document.getElementById("boardWorld");
-
-const objectLayer =
-  document.getElementById("objectLayer");
-
 
 function getCurrentNote(){
 
@@ -1924,12 +2912,22 @@ function getCurrentPage(){
   const note =
     getCurrentNote();
 
-  if(!note) return null;
 
-  return note.pages[currentPageIndex];
+  if(!note){
+    return null;
+  }
+
+
+  return note.pages[
+    currentPageIndex
+  ];
 
 }
 
+
+/* =========================================================
+   BOARD SETUP
+========================================================= */
 
 function setupBoard(){
 
@@ -1942,26 +2940,53 @@ function setupBoard(){
 }
 
 
+/* =========================================================
+   TRANSFORM
+========================================================= */
+
 function updateTransform(){
 
   world.style.transform =
-    `translate3d(${panX}px,${panY}px,0) scale(${zoom})`;
+    `
+      translate3d(
+        ${panX}px,
+        ${panY}px,
+        0
+      )
+      scale(${zoom})
+    `;
 
 }
 
 
-function screenToWorld(clientX,clientY){
+/* =========================================================
+   SCREEN → WORLD
+========================================================= */
+
+function screenToWorld(
+  clientX,
+  clientY
+){
 
   const rect =
     viewport.getBoundingClientRect();
 
+
   return {
 
     x:
-      (clientX-rect.left-panX)/zoom,
+      (
+        clientX -
+        rect.left -
+        panX
+      ) / zoom,
 
     y:
-      (clientY-rect.top-panY)/zoom
+      (
+        clientY -
+        rect.top -
+        panY
+      ) / zoom
 
   };
 
@@ -1969,7 +2994,7 @@ function screenToWorld(clientX,clientY){
 
 
 /* =========================================================
-   DRAW
+   DRAW BOARD
 ========================================================= */
 
 function drawBoard(){
@@ -1981,20 +3006,25 @@ function drawBoard(){
     canvas.height
   );
 
+
   const page =
     getCurrentPage();
 
-  if(!page) return;
+
+  if(!page){
+    return;
+  }
 
 
   /*
-    旧画像
+    旧バージョンの画像
   */
 
   if(page.image){
 
     const img =
       new Image();
+
 
     img.onload =
       ()=>{
@@ -2007,34 +3037,63 @@ function drawBoard(){
           1700
         );
 
-        drawStrokes(page);
+
+        drawStrokes(
+          page
+        );
 
       };
+
 
     img.src =
       page.image;
 
   }else{
 
-    drawStrokes(page);
+    drawStrokes(
+      page
+    );
 
   }
 
-  renderObjects(page);
+
+  renderObjects(
+    page
+  );
 
 }
 
 
+/* =========================================================
+   DRAW STROKES
+========================================================= */
+
 function drawStrokes(page){
+
+  if(
+    !Array.isArray(
+      page.strokes
+    )
+  ){
+    return;
+  }
+
 
   page.strokes.forEach(
     stroke=>{
 
-      if(!stroke.points ||
-         stroke.points.length<2)
+      if(
+        !stroke.points ||
+        stroke.points.length < 2
+      ){
+
         return;
 
+      }
+
+
       ctx.save();
+
 
       ctx.lineCap =
         "round";
@@ -2042,34 +3101,63 @@ function drawStrokes(page){
       ctx.lineJoin =
         "round";
 
+
       ctx.strokeStyle =
-        stroke.color || "#111";
+        stroke.color ||
+        "#111";
+
 
       ctx.lineWidth =
-        stroke.size || 4;
+        stroke.size ||
+        4;
 
-      if(stroke.tool==="highlighter"){
 
-        ctx.globalAlpha=.3;
+      if(
+        stroke.tool ===
+        "highlighter"
+      ){
+
+        ctx.globalAlpha =
+          .30;
 
       }else{
 
-        ctx.globalAlpha=1;
+        ctx.globalAlpha =
+          1;
 
       }
 
+
       ctx.beginPath();
 
-      stroke.points.forEach(
-        (p,i)=>{
 
-          if(i===0)
-            ctx.moveTo(p.x,p.y);
-          else
-            ctx.lineTo(p.x,p.y);
+      /*
+        なめらかに描画
+      */
 
-        }
+      ctx.moveTo(
+        stroke.points[0].x,
+        stroke.points[0].y
       );
+
+
+      for(
+        let i=1;
+        i<stroke.points.length;
+        i++
+      ){
+
+        const p =
+          stroke.points[i];
+
+
+        ctx.lineTo(
+          p.x,
+          p.y
+        );
+
+      }
+
 
       ctx.stroke();
 
@@ -2082,274 +3170,147 @@ function drawStrokes(page){
 
 
 /* =========================================================
-   POINTER DRAWING
+   TOOL
+========================================================= */
+
+function setTool(tool){
+
+  currentTool =
+    tool;
+
+
+  document
+    .querySelectorAll(
+      ".tool"
+    )
+    .forEach(
+      button=>{
+
+        button.classList.toggle(
+          "active",
+          button.dataset.tool ===
+          tool
+        );
+
+      }
+    );
+
+}
+
+
+/* =========================================================
+   POINTER DOWN
 ========================================================= */
 
 viewport.addEventListener(
   "pointerdown",
-  startPointer
-);
+  e=>{
 
-viewport.addEventListener(
-  "pointermove",
-  movePointer
-);
-
-viewport.addEventListener(
-  "pointerup",
-  endPointer
-);
-
-viewport.addEventListener(
-  "pointercancel",
-  endPointer
-);
+    e.preventDefault();
 
 
-function startPointer(e){
+    activePointers.set(
+      e.pointerId,
+      {
+        x:e.clientX,
+        y:e.clientY
+      }
+    );
 
-  viewport.setPointerCapture(
-    e.pointerId
-  );
 
-  activePointer = e.pointerId;
+    /*
+      2本指
+    */
+
+    if(
+      activePointers.size >= 2
+    ){
+
+      isDrawing=false;
 
 
-  /*
-    2本指
-  */
+      const pts =
+        [
+          ...activePointers.values()
+        ];
 
-  if(e.pointerType==="touch"){
 
-    if(!pinchData){
+      const dx =
+        pts[0].x -
+        pts[1].x;
 
-      const touches =
-        [...activePointers.values()];
+
+      const dy =
+        pts[0].y -
+        pts[1].y;
+
+
+      pinchData={
+
+        distance:
+          Math.hypot(
+            dx,
+            dy
+          ),
+
+        zoom:zoom,
+
+        center:{
+          x:
+            (
+              pts[0].x +
+              pts[1].x
+            ) / 2,
+
+          y:
+            (
+              pts[0].y +
+              pts[1].y
+            ) / 2
+
+        }
+
+      };
+
+
+      return;
 
     }
 
-  }
 
+    /*
+      手のひら
+    */
 
-  const p =
-    screenToWorld(
-      e.clientX,
-      e.clientY
-    );
+    if(
+      currentTool ===
+      "hand"
+    ){
 
+      isDrawing=true;
 
-  if(currentTool==="hand"){
+      drawingPointerId =
+        e.pointerId;
 
-    drawing=true;
 
-    lastPoint={
-      x:e.clientX,
-      y:e.clientY
-    };
+      lastDrawPoint={
 
-    return;
+        x:e.clientX,
 
-  }
+        y:e.clientY
 
+      };
 
-  if(
-    currentTool==="text" ||
-    currentTool==="sticky"
-  ){
 
-    createObjectAt(
-      currentTool,
-      p.x,
-      p.y
-    );
+      viewport.setPointerCapture(
+        e.pointerId
+      );
 
-    return;
 
-  }
+      return;
 
+    }
 
-  if(
-    currentTool==="objectEraser"
-  ){
-
-    eraseObjectAt(
-      p.x,
-      p.y
-    );
-
-    return;
-
-  }
-
-
-  if(currentTool==="eraser"){
-
-    eraseStrokeAt(
-      p.x,
-      p.y
-    );
-
-    drawing=true;
-
-    return;
-
-  }
-
-
-  if(
-    currentTool==="rect" ||
-    currentTool==="circle" ||
-    currentTool==="arrow"
-  ){
-
-    drawing=true;
-
-    lastPoint={
-      x:p.x,
-      y:p.y
-    };
-
-    return;
-
-  }
-
-
-  if(currentTool==="image"){
-
-    imagePlacePoint=p;
-
-    chooseImage();
-
-    return;
-
-  }
-
-
-  drawing=true;
-
-  lastPoint=p;
-
-  const page =
-    getCurrentPage();
-
-  page.strokes.push({
-
-    tool:currentTool,
-
-    color:currentColor,
-
-    size:currentSize,
-
-    points:[p]
-
-  });
-
-  autoSave();
-
-}
-
-
-function movePointer(e){
-
-  if(!drawing) return;
-
-  if(
-    activePointer!==null &&
-    e.pointerId!==activePointer
-  )
-    return;
-
-
-  if(currentTool==="hand"){
-
-    const dx =
-      e.clientX-lastPoint.x;
-
-    const dy =
-      e.clientY-lastPoint.y;
-
-    panX += dx;
-    panY += dy;
-
-    lastPoint={
-      x:e.clientX,
-      y:e.clientY
-    };
-
-    updateTransform();
-
-    return;
-
-  }
-
-
-  const p =
-    screenToWorld(
-      e.clientX,
-      e.clientY
-    );
-
-
-  if(currentTool==="eraser"){
-
-    eraseStrokeAt(
-      p.x,
-      p.y
-    );
-
-    return;
-
-  }
-
-
-  if(
-    currentTool==="rect" ||
-    currentTool==="circle" ||
-    currentTool==="arrow"
-  ){
-
-    drawBoard();
-
-    drawPreviewShape(
-      lastPoint,
-      p
-    );
-
-    return;
-
-  }
-
-
-  const page =
-    getCurrentPage();
-
-  const stroke =
-    page.strokes[
-      page.strokes.length-1
-    ];
-
-  if(!stroke) return;
-
-  stroke.points.push(p);
-
-  drawBoard();
-
-}
-
-
-function endPointer(e){
-
-  if(
-    activePointer!==null &&
-    e.pointerId!==activePointer
-  )
-    return;
-
-  if(
-    currentTool==="rect" ||
-    currentTool==="circle" ||
-    currentTool==="arrow"
-  ){
 
     const p =
       screenToWorld(
@@ -2357,161 +3318,607 @@ function endPointer(e){
         e.clientY
       );
 
-    createShape(
-      currentTool,
-      lastPoint,
-      p
-    );
 
-  }
+    /*
+      テキスト
+    */
 
-  drawing=false;
+    if(
+      currentTool ===
+      "text"
+    ){
 
-  activePointer=null;
+      createObjectAt(
+        "text",
+        p.x,
+        p.y
+      );
 
-  lastPoint=null;
+      return;
 
-  autoSave();
-
-}
+    }
 
 
-/* =========================================================
-   MULTI TOUCH / PINCH
-========================================================= */
+    /*
+      付箋
+    */
 
-const activePointers =
-  new Map();
+    if(
+      currentTool ===
+      "sticky"
+    ){
 
-viewport.addEventListener(
-  "pointerdown",
-  e=>{
-    activePointers.set(
-      e.pointerId,
-      {
-        x:e.clientX,
-        y:e.clientY
+      createObjectAt(
+        "sticky",
+        p.x,
+        p.y
+      );
+
+      return;
+
+    }
+
+
+    /*
+      オブジェクト消去
+    */
+
+    if(
+      currentTool ===
+      "objectEraser"
+    ){
+
+      eraseObjectAt(
+        p.x,
+        p.y
+      );
+
+      return;
+
+    }
+
+
+    /*
+      画像
+    */
+
+    if(
+      currentTool ===
+      "image"
+    ){
+
+      imagePlacePoint =
+        p;
+
+      chooseImage();
+
+      return;
+
+    }
+
+
+    /*
+      図形
+    */
+
+    if(
+
+      currentTool === "rect" ||
+
+      currentTool === "circle" ||
+
+      currentTool === "arrow"
+
+    ){
+
+      isDrawing=true;
+
+      drawingPointerId =
+        e.pointerId;
+
+      lastDrawPoint =
+        p;
+
+
+      viewport.setPointerCapture(
+        e.pointerId
+      );
+
+
+      return;
+
+    }
+
+
+    /*
+      鉛筆・蛍光ペン・消しゴム
+    */
+
+    if(
+
+      currentTool === "pencil" ||
+
+      currentTool === "highlighter" ||
+
+      currentTool === "eraser"
+
+    ){
+
+      isDrawing=true;
+
+      drawingPointerId =
+        e.pointerId;
+
+      lastDrawPoint =
+        p;
+
+
+      viewport.setPointerCapture(
+        e.pointerId
+      );
+
+
+      /*
+        消しゴム
+      */
+
+      if(
+        currentTool ===
+        "eraser"
+      ){
+
+        eraseStrokeAt(
+          p.x,
+          p.y
+        );
+
+        return;
+
       }
-    );
 
-    if(activePointers.size===2){
 
-      const pts =
-        [...activePointers.values()];
+      /*
+        新しい線
+      */
 
-      const dx =
-        pts[0].x-pts[1].x;
+      const page =
+        getCurrentPage();
 
-      const dy =
-        pts[0].y-pts[1].y;
 
-      pinchData={
+      if(!page){
+        return;
+      }
 
-        distance:
-          Math.hypot(dx,dy),
 
-        zoom:zoom,
+      page.strokes.push({
 
-        center:{
-          x:(pts[0].x+pts[1].x)/2,
-          y:(pts[0].y+pts[1].y)/2
-        }
+        id:
+          "stroke_" +
+          Date.now() +
+          "_" +
+          Math.random(),
 
-      };
+        tool:
+          currentTool,
 
-      drawing=false;
+        color:
+          currentColor,
+
+        size:
+          currentSize,
+
+        points:[
+          p
+        ]
+
+      });
+
+
+      drawBoard();
 
     }
 
   }
 );
+
+
+/* =========================================================
+   POINTER MOVE
+========================================================= */
 
 viewport.addEventListener(
   "pointermove",
   e=>{
 
-    if(!activePointers.has(e.pointerId))
+    e.preventDefault();
+
+
+    /*
+      ポインター更新
+    */
+
+    if(
+      activePointers.has(
+        e.pointerId
+      )
+    ){
+
+      activePointers.set(
+        e.pointerId,
+        {
+          x:e.clientX,
+          y:e.clientY
+        }
+      );
+
+    }
+
+
+    /*
+      ピンチ
+    */
+
+    if(
+
+      activePointers.size >= 2 &&
+      pinchData
+
+    ){
+
+      const pts =
+        [
+          ...activePointers.values()
+        ];
+
+
+      const dx =
+        pts[0].x -
+        pts[1].x;
+
+
+      const dy =
+        pts[0].y -
+        pts[1].y;
+
+
+      const distance =
+        Math.hypot(
+          dx,
+          dy
+        );
+
+
+      const factor =
+        distance /
+        pinchData.distance;
+
+
+      const newZoom =
+        Math.max(
+          .25,
+          Math.min(
+            4,
+            pinchData.zoom *
+            factor
+          )
+        );
+
+
+      const rect =
+        viewport.getBoundingClientRect();
+
+
+      const centerX =
+        (
+          pts[0].x +
+          pts[1].x
+        ) / 2 -
+        rect.left;
+
+
+      const centerY =
+        (
+          pts[0].y +
+          pts[1].y
+        ) / 2 -
+        rect.top;
+
+
+      const worldX =
+        (
+          centerX -
+          panX
+        ) / zoom;
+
+
+      const worldY =
+        (
+          centerY -
+          panY
+        ) / zoom;
+
+
+      zoom =
+        newZoom;
+
+
+      panX =
+        centerX -
+        worldX * zoom;
+
+
+      panY =
+        centerY -
+        worldY * zoom;
+
+
+      updateTransform();
+
+
       return;
 
-    activePointers.set(
-      e.pointerId,
-      {
+    }
+
+
+    /*
+      通常描画
+    */
+
+    if(
+
+      !isDrawing ||
+
+      e.pointerId !==
+      drawingPointerId
+
+    ){
+
+      return;
+
+    }
+
+
+    /*
+      手のひら
+    */
+
+    if(
+      currentTool ===
+      "hand"
+    ){
+
+      const dx =
+        e.clientX -
+        lastDrawPoint.x;
+
+
+      const dy =
+        e.clientY -
+        lastDrawPoint.y;
+
+
+      panX += dx;
+
+      panY += dy;
+
+
+      lastDrawPoint={
+
         x:e.clientX,
-        y:e.clientY
-      }
-    );
 
-    if(activePointers.size!==2 ||
-       !pinchData)
+        y:e.clientY
+
+      };
+
+
+      updateTransform();
+
+
       return;
 
-    const pts =
-      [...activePointers.values()];
+    }
 
-    const dx =
-      pts[0].x-pts[1].x;
 
-    const dy =
-      pts[0].y-pts[1].y;
+    const p =
+      screenToWorld(
+        e.clientX,
+        e.clientY
+      );
+
+
+    /*
+      消しゴム
+    */
+
+    if(
+      currentTool ===
+      "eraser"
+    ){
+
+      eraseStrokeAt(
+        p.x,
+        p.y
+      );
+
+      return;
+
+    }
+
+
+    /*
+      図形
+    */
+
+    if(
+
+      currentTool === "rect" ||
+
+      currentTool === "circle" ||
+
+      currentTool === "arrow"
+
+    ){
+
+      drawBoard();
+
+
+      drawPreviewShape(
+        lastDrawPoint,
+        p
+      );
+
+
+      return;
+
+    }
+
+
+    /*
+      手書き
+    */
+
+    const page =
+      getCurrentPage();
+
+
+    if(!page){
+      return;
+    }
+
+
+    const stroke =
+      page.strokes[
+        page.strokes.length - 1
+      ];
+
+
+    if(!stroke){
+      return;
+    }
+
+
+    const last =
+      stroke.points[
+        stroke.points.length - 1
+      ];
+
 
     const distance =
-      Math.hypot(dx,dy);
-
-    const factor =
-      distance /
-      pinchData.distance;
-
-    const newZoom =
-      Math.max(
-        .25,
-        Math.min(
-          4,
-          pinchData.zoom*factor
-        )
+      Math.hypot(
+        p.x-last.x,
+        p.y-last.y
       );
 
-    const center={
-      x:(pts[0].x+pts[1].x)/2,
-      y:(pts[0].y+pts[1].y)/2
-    };
 
-    const worldPoint =
-      screenToWorld(
-        pinchData.center.x,
-        pinchData.center.y
+    /*
+      細かく点を追加
+    */
+
+    if(distance >= .5){
+
+      stroke.points.push(
+        p
       );
 
-    zoom=newZoom;
-
-    panX =
-      pinchData.center.x -
-      worldPoint.x*zoom;
-
-    panY =
-      pinchData.center.y -
-      worldPoint.y*zoom;
-
-    updateTransform();
-
-  }
-);
-
-viewport.addEventListener(
-  "pointerup",
-  e=>{
-
-    activePointers.delete(
-      e.pointerId
-    );
-
-    if(activePointers.size<2){
-
-      pinchData=null;
+      drawBoard();
 
     }
 
   }
 );
+
+
+/* =========================================================
+   POINTER UP
+========================================================= */
+
+viewport.addEventListener(
+  "pointerup",
+  e=>{
+
+    e.preventDefault();
+
+
+    activePointers.delete(
+      e.pointerId
+    );
+
+
+    if(
+      e.pointerId !==
+      drawingPointerId
+    ){
+
+      if(
+        activePointers.size < 2
+      ){
+
+        pinchData=null;
+
+      }
+
+      return;
+
+    }
+
+
+    /*
+      図形確定
+    */
+
+    if(
+
+      isDrawing &&
+
+      (
+        currentTool === "rect" ||
+        currentTool === "circle" ||
+        currentTool === "arrow"
+      )
+
+    ){
+
+      const p =
+        screenToWorld(
+          e.clientX,
+          e.clientY
+        );
+
+
+      createShape(
+        currentTool,
+        lastDrawPoint,
+        p
+      );
+
+    }
+
+
+    isDrawing=false;
+
+    drawingPointerId=null;
+
+    lastDrawPoint=null;
+
+
+    if(
+      activePointers.size < 2
+    ){
+
+      pinchData=null;
+
+    }
+
+
+    autoSave();
+
+  }
+);
+
+
+/* =========================================================
+   POINTER CANCEL
+========================================================= */
 
 viewport.addEventListener(
   "pointercancel",
@@ -2521,67 +3928,125 @@ viewport.addEventListener(
       e.pointerId
     );
 
-    if(activePointers.size<2)
-      pinchData=null;
+
+    isDrawing=false;
+
+    drawingPointerId=null;
+
+    lastDrawPoint=null;
+
+    pinchData=null;
 
   }
 );
 
 
 /* =========================================================
-   TOOL
+   ERASE STROKE
 ========================================================= */
 
-function setTool(tool){
-
-  currentTool=tool;
-
-  document
-    .querySelectorAll(".tool")
-    .forEach(btn=>{
-
-      btn.classList.toggle(
-        "active",
-        btn.dataset.tool===tool
-      );
-
-    });
-
-}
-
-
-/* =========================================================
-   ERASER
-========================================================= */
-
-function eraseStrokeAt(x,y){
+function eraseStrokeAt(
+  x,
+  y
+){
 
   const page =
     getCurrentPage();
 
-  if(!page) return;
+
+  if(!page){
+    return;
+  }
+
+
+  /*
+    消しゴム範囲
+  */
 
   const radius =
     Math.max(
       12,
-      currentSize*3
+      currentSize * 3
     );
 
-  page.strokes =
-    page.strokes.filter(
-      stroke=>{
 
-        return !stroke.points.some(
-          p=>{
-            return Math.hypot(
-              p.x-x,
-              p.y-y
-            ) < radius;
-          }
-        );
+  const newStrokes=[];
+
+
+  page.strokes.forEach(
+    stroke=>{
+
+      /*
+        線を細かいセグメントに分解して
+        消しゴムに当たった部分を削除
+      */
+
+      let segment=[];
+
+
+      function flush(){
+
+        if(
+          segment.length >= 2
+        ){
+
+          newStrokes.push({
+
+            ...stroke,
+
+            id:
+              "stroke_" +
+              Date.now() +
+              "_" +
+              Math.random(),
+
+            points:
+              segment
+
+          });
+
+        }
+
+        segment=[];
 
       }
-    );
+
+
+      stroke.points.forEach(
+        point=>{
+
+          const hit =
+            Math.hypot(
+              point.x-x,
+              point.y-y
+            ) < radius;
+
+
+          if(hit){
+
+            flush();
+
+          }else{
+
+            segment.push(
+              point
+            );
+
+          }
+
+        }
+      );
+
+
+      flush();
+
+    }
+  );
+
+
+  page.strokes =
+    newStrokes;
+
 
   drawBoard();
 
@@ -2590,38 +4055,63 @@ function eraseStrokeAt(x,y){
 }
 
 
-function eraseObjectAt(x,y){
+/* =========================================================
+   OBJECT ERASER
+========================================================= */
+
+function eraseObjectAt(
+  x,
+  y
+){
 
   const page =
     getCurrentPage();
 
-  if(!page) return;
 
-  let index=-1;
+  if(!page){
+    return;
+  }
+
+
+  let found=-1;
+
 
   for(
-    let i=page.elements.length-1;
+    let i=
+      page.elements.length-1;
+
     i>=0;
+
     i--
   ){
 
     const obj =
       page.elements[i];
 
+
     const width =
-      obj.width || 200;
+      obj.width ||
+      200;
+
 
     const height =
-      obj.height || 100;
+      obj.height ||
+      100;
+
 
     if(
-      x>=obj.x &&
-      x<=obj.x+width &&
-      y>=obj.y &&
-      y<=obj.y+height
+
+      x >= obj.x &&
+
+      x <= obj.x + width &&
+
+      y >= obj.y &&
+
+      y <= obj.y + height
+
     ){
 
-      index=i;
+      found=i;
 
       break;
 
@@ -2629,12 +4119,14 @@ function eraseObjectAt(x,y){
 
   }
 
-  if(index>=0){
+
+  if(found >= 0){
 
     page.elements.splice(
-      index,
+      found,
       1
     );
+
 
     drawBoard();
 
@@ -2645,19 +4137,38 @@ function eraseObjectAt(x,y){
 }
 
 
+/* =========================================================
+   FULL ERASE
+========================================================= */
+
 function fullErase(){
 
-  if(!confirm(
-    "このページを全部消す？"
-  ))
+  if(
+    !confirm(
+      "このページを全部消す？"
+    )
+  ){
+
     return;
+
+  }
+
 
   const page =
     getCurrentPage();
 
+
+  if(!page){
+    return;
+  }
+
+
   page.strokes=[];
+
   page.elements=[];
+
   page.image=null;
+
 
   drawBoard();
 
@@ -2667,7 +4178,7 @@ function fullErase(){
 
 
 /* =========================================================
-   OBJECTS
+   CREATE TEXT / STICKY
 ========================================================= */
 
 function createObjectAt(
@@ -2679,21 +4190,37 @@ function createObjectAt(
   const page =
     getCurrentPage();
 
-  if(!page) return;
+
+  if(!page){
+    return;
+  }
+
 
   const text =
     prompt(
-      type==="text"
+      type === "text"
         ? "文字を入力"
         : "付箋の内容を入力"
     );
 
-  if(text===null) return;
 
-  page.elements.push({
+  if(
+    text === null ||
+    text === ""
+  ){
+
+    return;
+
+  }
+
+
+  const obj={
 
     id:
-      "obj_"+Date.now()+"_"+Math.random(),
+      "obj_" +
+      Date.now() +
+      "_" +
+      Math.random(),
 
     type:type,
 
@@ -2702,27 +4229,44 @@ function createObjectAt(
     y:y,
 
     width:
-      type==="sticky"
-        ? 180
+      type === "sticky"
+        ? 220
         : 300,
 
     height:
-      type==="sticky"
-        ? 150
+      type === "sticky"
+        ? 170
         : 80,
 
     text:text,
 
-    color:currentColor
+    color:
+      currentColor,
 
-  });
+    fontSize:
+      currentFontSize
 
-  renderObjects(page);
+  };
+
+
+  page.elements.push(
+    obj
+  );
+
+
+  renderObjects(
+    page
+  );
+
 
   autoSave();
 
 }
 
+
+/* =========================================================
+   SHAPES
+========================================================= */
 
 function createShape(
   type,
@@ -2733,24 +4277,51 @@ function createShape(
   const page =
     getCurrentPage();
 
-  if(!page) return;
+
+  if(!page){
+    return;
+  }
+
 
   const x =
-    Math.min(a.x,b.x);
+    Math.min(
+      a.x,
+      b.x
+    );
+
 
   const y =
-    Math.min(a.y,b.y);
+    Math.min(
+      a.y,
+      b.y
+    );
+
 
   const width =
-    Math.abs(b.x-a.x);
+    Math.max(
+      10,
+      Math.abs(
+        b.x-a.x
+      )
+    );
+
 
   const height =
-    Math.abs(b.y-a.y);
+    Math.max(
+      10,
+      Math.abs(
+        b.y-a.y
+      )
+    );
+
 
   page.elements.push({
 
     id:
-      "shape_"+Date.now()+"_"+Math.random(),
+      "shape_" +
+      Date.now() +
+      "_" +
+      Math.random(),
 
     type:type,
 
@@ -2758,19 +4329,22 @@ function createShape(
 
     y:y,
 
-    width:Math.max(width,10),
+    width:width,
 
-    height:Math.max(height,10),
+    height:height,
 
     x2:b.x,
 
     y2:b.y,
 
-    color:currentColor,
+    color:
+      currentColor,
 
-    size:currentSize
+    size:
+      currentSize
 
   });
+
 
   drawBoard();
 
@@ -2779,21 +4353,43 @@ function createShape(
 }
 
 
-function drawPreviewShape(a,b){
+/* =========================================================
+   PREVIEW SHAPE
+========================================================= */
+
+function drawPreviewShape(
+  a,
+  b
+){
+
+  if(!a || !b){
+    return;
+  }
+
 
   ctx.save();
+
 
   ctx.strokeStyle =
     currentColor;
 
+
   ctx.lineWidth =
     currentSize;
 
-  ctx.setLineDash([8,8]);
+
+  ctx.setLineDash(
+    [8,8]
+  );
+
 
   ctx.beginPath();
 
-  if(currentTool==="rect"){
+
+  if(
+    currentTool ===
+    "rect"
+  ){
 
     ctx.rect(
       a.x,
@@ -2804,7 +4400,11 @@ function drawPreviewShape(a,b){
 
   }
 
-  if(currentTool==="circle"){
+
+  if(
+    currentTool ===
+    "circle"
+  ){
 
     const cx =
       (a.x+b.x)/2;
@@ -2813,10 +4413,15 @@ function drawPreviewShape(a,b){
       (a.y+b.y)/2;
 
     const rx =
-      Math.abs(b.x-a.x)/2;
+      Math.abs(
+        b.x-a.x
+      )/2;
 
     const ry =
-      Math.abs(b.y-a.y)/2;
+      Math.abs(
+        b.y-a.y
+      )/2;
+
 
     ctx.ellipse(
       cx,
@@ -2830,13 +4435,24 @@ function drawPreviewShape(a,b){
 
   }
 
-  if(currentTool==="arrow"){
 
-    ctx.moveTo(a.x,a.y);
+  if(
+    currentTool ===
+    "arrow"
+  ){
 
-    ctx.lineTo(b.x,b.y);
+    ctx.moveTo(
+      a.x,
+      a.y
+    );
+
+    ctx.lineTo(
+      b.x,
+      b.y
+    );
 
   }
+
 
   ctx.stroke();
 
@@ -2849,114 +4465,194 @@ function drawPreviewShape(a,b){
    RENDER OBJECTS
 ========================================================= */
 
-function renderObjects(page){
+function renderObjects(
+  page
+){
 
   objectLayer.innerHTML="";
+
 
   page.elements.forEach(
     obj=>{
 
       const el =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
+
 
       el.className =
         "boardObject";
 
+
       el.style.left =
-        obj.x+"px";
+        obj.x + "px";
+
 
       el.style.top =
-        obj.y+"px";
+        obj.y + "px";
+
 
       el.style.width =
-        (obj.width||200)+"px";
+        (
+          obj.width ||
+          200
+        ) + "px";
+
 
       el.style.height =
-        (obj.height||100)+"px";
+        (
+          obj.height ||
+          100
+        ) + "px";
 
 
-      if(obj.type==="text"){
+      /*
+        TEXT
+      */
+
+      if(
+        obj.type ===
+        "text"
+      ){
 
         el.classList.add(
           "textObject"
         );
 
+
         el.textContent =
           obj.text;
+
 
         el.style.color =
           obj.color ||
           "#111";
 
+
+        el.style.fontSize =
+          (
+            obj.fontSize ||
+            20
+          ) + "px";
+
       }
 
 
-      if(obj.type==="sticky"){
+      /*
+        STICKY
+      */
+
+      if(
+        obj.type ===
+        "sticky"
+      ){
 
         el.classList.add(
           "stickyObject"
         );
 
+
         el.textContent =
           obj.text;
+
+
+        el.style.fontSize =
+          (
+            obj.fontSize ||
+            20
+          ) + "px";
 
       }
 
 
-      if(obj.type==="image"){
+      /*
+        IMAGE
+      */
+
+      if(
+        obj.type ===
+        "image"
+      ){
 
         const img =
-          document.createElement("img");
+          document.createElement(
+            "img"
+          );
+
 
         img.className =
           "imageObject";
 
+
         img.src =
           obj.src;
 
-        img.style.width =
-          "100%";
 
-        img.style.height =
-          "100%";
-
-        el.appendChild(img);
+        el.appendChild(
+          img
+        );
 
       }
 
 
+      /*
+        SHAPES
+      */
+
       if(
-        obj.type==="rect" ||
-        obj.type==="circle" ||
-        obj.type==="arrow"
+
+        obj.type === "rect" ||
+
+        obj.type === "circle" ||
+
+        obj.type === "arrow"
+
       ){
 
         el.classList.add(
           "shapeObject"
         );
 
+
         const c =
-          document.createElement("canvas");
+          document.createElement(
+            "canvas"
+          );
+
 
         c.width =
-          obj.width+20;
+          obj.width + 20;
+
 
         c.height =
-          obj.height+20;
+          obj.height + 20;
+
 
         const cctx =
-          c.getContext("2d");
+          c.getContext(
+            "2d"
+          );
+
 
         cctx.strokeStyle =
-          obj.color;
+          obj.color ||
+          "#111";
+
 
         cctx.lineWidth =
-          obj.size || 4;
+          obj.size ||
+          4;
+
 
         cctx.lineCap =
           "round";
 
-        if(obj.type==="rect"){
+
+        if(
+          obj.type ===
+          "rect"
+        ){
 
           cctx.strokeRect(
             5,
@@ -2967,9 +4663,14 @@ function renderObjects(page){
 
         }
 
-        if(obj.type==="circle"){
+
+        if(
+          obj.type ===
+          "circle"
+        ){
 
           cctx.beginPath();
+
 
           cctx.ellipse(
             obj.width/2+5,
@@ -2981,72 +4682,118 @@ function renderObjects(page){
             Math.PI*2
           );
 
+
           cctx.stroke();
 
         }
 
-        if(obj.type==="arrow"){
+
+        if(
+          obj.type ===
+          "arrow"
+        ){
+
+          const ex =
+            obj.x2 -
+            obj.x +
+            5;
+
+
+          const ey =
+            obj.y2 -
+            obj.y +
+            5;
+
 
           cctx.beginPath();
+
 
           cctx.moveTo(
             5,
             5
           );
 
+
           cctx.lineTo(
-            obj.x2-obj.x+5,
-            obj.y2-obj.y+5
+            ex,
+            ey
           );
+
 
           cctx.stroke();
 
+
           const angle =
             Math.atan2(
-              obj.y2-obj.y,
-              obj.x2-obj.x
+              ey-5,
+              ex-5
             );
+
 
           const size=15;
 
-          const ex =
-            obj.x2-obj.x+5;
-
-          const ey =
-            obj.y2-obj.y+5;
 
           cctx.beginPath();
 
-          cctx.moveTo(
-            ex,
-            ey
-          );
-
-          cctx.lineTo(
-            ex-size*Math.cos(angle-.5),
-            ey-size*Math.sin(angle-.5)
-          );
 
           cctx.moveTo(
             ex,
             ey
           );
 
+
           cctx.lineTo(
-            ex-size*Math.cos(angle+.5),
-            ey-size*Math.sin(angle+.5)
+            ex -
+              size *
+              Math.cos(
+                angle-.5
+              ),
+
+            ey -
+              size *
+              Math.sin(
+                angle-.5
+              )
           );
+
+
+          cctx.moveTo(
+            ex,
+            ey
+          );
+
+
+          cctx.lineTo(
+            ex -
+              size *
+              Math.cos(
+                angle+.5
+              ),
+
+            ey -
+              size *
+              Math.sin(
+                angle+.5
+              )
+          );
+
 
           cctx.stroke();
 
         }
 
-        el.appendChild(c);
+
+        el.appendChild(
+          c
+        );
 
       }
 
 
-      objectLayer.appendChild(el);
+      objectLayer.appendChild(
+        el
+      );
+
 
       makeObjectDraggable(
         el,
@@ -3060,7 +4807,7 @@ function renderObjects(page){
 
 
 /* =========================================================
-   OBJECT DRAG
+   OBJECT DRAG / RESIZE
 ========================================================= */
 
 function makeObjectDraggable(
@@ -3068,30 +4815,62 @@ function makeObjectDraggable(
   obj
 ){
 
-  let startX=0;
-  let startY=0;
-  let originalX=0;
-  let originalY=0;
   let moving=false;
+
+  let resizing=false;
+
+  let startX=0;
+
+  let startY=0;
+
+  let originalX=0;
+
+  let originalY=0;
+
+  let originalWidth=0;
+
+  let originalHeight=0;
+
+
+  /*
+    移動
+  */
 
   el.addEventListener(
     "pointerdown",
     e=>{
 
       if(
-        currentTool!=="hand"
-      )
+        currentTool !==
+        "hand"
+      ){
+
         return;
+
+      }
+
 
       e.stopPropagation();
 
+      e.preventDefault();
+
+
       moving=true;
 
-      startX=e.clientX;
-      startY=e.clientY;
 
-      originalX=obj.x;
-      originalY=obj.y;
+      startX =
+        e.clientX;
+
+      startY =
+        e.clientY;
+
+
+      originalX =
+        obj.x;
+
+      originalY =
+        obj.y;
+
 
       el.setPointerCapture(
         e.pointerId
@@ -3100,28 +4879,42 @@ function makeObjectDraggable(
     }
   );
 
+
   el.addEventListener(
     "pointermove",
     e=>{
 
-      if(!moving) return;
+      if(!moving){
+        return;
+      }
+
 
       obj.x =
         originalX +
-        (e.clientX-startX)/zoom;
+        (
+          e.clientX -
+          startX
+        ) / zoom;
+
 
       obj.y =
         originalY +
-        (e.clientY-startY)/zoom;
+        (
+          e.clientY -
+          startY
+        ) / zoom;
+
 
       el.style.left =
-        obj.x+"px";
+        obj.x + "px";
+
 
       el.style.top =
-        obj.y+"px";
+        obj.y + "px";
 
     }
   );
+
 
   el.addEventListener(
     "pointerup",
@@ -3130,6 +4923,143 @@ function makeObjectDraggable(
       moving=false;
 
       autoSave();
+
+    }
+  );
+
+
+  /*
+    サイズ変更
+  */
+
+  el.addEventListener(
+    "pointerdown",
+    e=>{
+
+      if(
+        currentTool !==
+        "hand"
+      ){
+
+        return;
+
+      }
+
+
+      /*
+        右下付近ならリサイズ
+      */
+
+      const rect =
+        el.getBoundingClientRect();
+
+
+      const distanceRight =
+        rect.right -
+        e.clientX;
+
+
+      const distanceBottom =
+        rect.bottom -
+        e.clientY;
+
+
+      if(
+        distanceRight < 25 &&
+        distanceBottom < 25
+      ){
+
+        moving=false;
+
+        resizing=true;
+
+
+        startX =
+          e.clientX;
+
+        startY =
+          e.clientY;
+
+
+        originalWidth =
+          obj.width ||
+          rect.width / zoom;
+
+
+        originalHeight =
+          obj.height ||
+          rect.height / zoom;
+
+
+        e.stopPropagation();
+
+      }
+
+    }
+  );
+
+
+  el.addEventListener(
+    "pointermove",
+    e=>{
+
+      if(!resizing){
+        return;
+      }
+
+
+      const newWidth =
+        Math.max(
+          50,
+          originalWidth +
+          (
+            e.clientX -
+            startX
+          ) / zoom
+        );
+
+
+      const newHeight =
+        Math.max(
+          35,
+          originalHeight +
+          (
+            e.clientY -
+            startY
+          ) / zoom
+        );
+
+
+      obj.width =
+        newWidth;
+
+
+      obj.height =
+        newHeight;
+
+
+      el.style.width =
+        newWidth + "px";
+
+
+      el.style.height =
+        newHeight + "px";
+
+    }
+  );
+
+
+  el.addEventListener(
+    "pointerup",
+    e=>{
+
+      if(resizing){
+
+        resizing=false;
+
+        autoSave();
+
+      }
 
     }
   );
@@ -3146,24 +5076,34 @@ let imagePlacePoint={
   y:5000
 };
 
+
 function chooseImage(){
 
   document
-    .getElementById("imageInput")
+    .getElementById(
+      "imageInput"
+    )
     .click();
 
 }
 
 
-function insertImage(event){
+function insertImage(
+  event
+){
 
   const file =
     event.target.files[0];
 
-  if(!file) return;
+
+  if(!file){
+    return;
+  }
+
 
   const reader =
     new FileReader();
+
 
   reader.onload =
     e=>{
@@ -3171,35 +5111,54 @@ function insertImage(event){
       const page =
         getCurrentPage();
 
+
+      if(!page){
+        return;
+      }
+
+
       page.elements.push({
 
         id:
-          "img_"+Date.now()+"_"+Math.random(),
+          "img_" +
+          Date.now() +
+          "_" +
+          Math.random(),
 
         type:"image",
 
-        x:imagePlacePoint.x,
+        x:
+          imagePlacePoint.x,
 
-        y:imagePlacePoint.y,
+        y:
+          imagePlacePoint.y,
 
         width:350,
 
         height:250,
 
-        src:e.target.result
+        src:
+          e.target.result
 
       });
 
-      renderObjects(page);
+
+      renderObjects(
+        page
+      );
+
 
       autoSave();
 
     };
 
-  reader.readAsDataURL(file);
+
+  reader.readAsDataURL(
+    file
+  );
+
 
   event.target.value="";
-
 }
 
 
@@ -3212,8 +5171,9 @@ function zoomIn(){
   zoom =
     Math.min(
       4,
-      zoom*1.2
+      zoom * 1.2
     );
+
 
   updateTransform();
 
@@ -3225,8 +5185,9 @@ function zoomOut(){
   zoom =
     Math.max(
       .25,
-      zoom/1.2
+      zoom / 1.2
     );
+
 
   updateTransform();
 
@@ -3237,13 +5198,16 @@ function resetView(){
 
   zoom=1;
 
+
   panX =
     viewport.clientWidth/2 -
     5000;
 
+
   panY =
     viewport.clientHeight/2 -
     5000;
+
 
   updateTransform();
 
@@ -3259,12 +5223,22 @@ function updatePageLabel(){
   const note =
     getCurrentNote();
 
-  if(!note) return;
+
+  if(!note){
+    return;
+  }
+
 
   document
-    .getElementById("pageLabel")
+    .getElementById(
+      "pageLabel"
+    )
     .textContent =
-      `${currentPageIndex+1} / ${note.pages.length}`;
+      (
+        currentPageIndex + 1
+      ) +
+      " / " +
+      note.pages.length;
 
 }
 
@@ -3274,15 +5248,21 @@ function previousPage(){
   const note =
     getCurrentNote();
 
-  if(!note) return;
+
+  if(!note){
+    return;
+  }
+
 
   if(
-    currentPageIndex>0
+    currentPageIndex > 0
   ){
 
     saveCurrentNote();
 
+
     currentPageIndex--;
+
 
     drawBoard();
 
@@ -3298,16 +5278,22 @@ function nextPage(){
   const note =
     getCurrentNote();
 
-  if(!note) return;
+
+  if(!note){
+    return;
+  }
+
 
   if(
-    currentPageIndex<
+    currentPageIndex <
     note.pages.length-1
   ){
 
     saveCurrentNote();
 
+
     currentPageIndex++;
+
 
     drawBoard();
 
@@ -3323,7 +5309,11 @@ function addPage(){
   const note =
     getCurrentNote();
 
-  if(!note) return;
+
+  if(!note){
+    return;
+  }
+
 
   note.pages.push({
 
@@ -3335,8 +5325,10 @@ function addPage(){
 
   });
 
+
   currentPageIndex =
     note.pages.length-1;
+
 
   drawBoard();
 
@@ -3348,7 +5340,7 @@ function addPage(){
 
 
 /* =========================================================
-   SAVE NOTE
+   SAVE CURRENT NOTE
 ========================================================= */
 
 function saveCurrentNote(){
@@ -3356,10 +5348,15 @@ function saveCurrentNote(){
   const note =
     getCurrentNote();
 
-  if(!note) return;
+
+  if(!note){
+    return;
+  }
+
 
   note.updated =
     Date.now();
+
 
   saveData();
 
@@ -3373,7 +5370,10 @@ function saveCurrentNote(){
 function showSettings(){
 
   const main =
-    document.getElementById("main");
+    document.getElementById(
+      "main"
+    );
+
 
   main.innerHTML = `
 
@@ -3383,6 +5383,7 @@ function showSettings(){
         設定
       </div>
 
+
       <div class="settingCard">
 
         <div class="settingTitle">
@@ -3390,10 +5391,13 @@ function showSettings(){
         </div>
 
         <div>
-          ${escapeHTML(data.name)}
+          ${escapeHTML(
+            data.name
+          )}
         </div>
 
       </div>
+
 
       <div class="settingCard">
 
@@ -3402,10 +5406,13 @@ function showSettings(){
         </div>
 
         <div>
-          ${formatTime(getTotalStudySeconds())}
+          ${formatTime(
+            getTotalStudySeconds()
+          )}
         </div>
 
       </div>
+
 
       <div class="settingCard">
 
@@ -3413,13 +5420,17 @@ function showSettings(){
           外観
         </div>
 
+
         <button
           class="settingButton"
           onclick="toggleDark()">
+
           🌙 ダークモード
+
         </button>
 
       </div>
+
 
       <div class="settingCard">
 
@@ -3427,26 +5438,36 @@ function showSettings(){
           データ
         </div>
 
+
         <button
           class="settingButton"
           onclick="exportData()">
+
           💾 バックアップ
+
         </button>
 
+
         <br>
+
 
         <button
           class="settingButton"
           onclick="logout()">
+
           ログアウト
+
         </button>
 
       </div>
 
+
       <button
         class="backBtn"
         onclick="showHome()">
+
         ‹ ホームへ戻る
+
       </button>
 
     </div>
@@ -3460,6 +5481,7 @@ function toggleDark(){
 
   data.settings.dark =
     !data.settings.dark;
+
 
   applyDark();
 
@@ -3486,6 +5508,7 @@ function exportData(){
 
   stopStudyClock();
 
+
   const blob =
     new Blob(
       [
@@ -3496,29 +5519,47 @@ function exportData(){
         )
       ],
       {
-        type:"application/json"
+        type:
+          "application/json"
       }
     );
 
+
   const url =
-    URL.createObjectURL(blob);
+    URL.createObjectURL(
+      blob
+    );
+
 
   const a =
-    document.createElement("a");
+    document.createElement(
+      "a"
+    );
+
 
   a.href=url;
 
-  a.download=
+
+  a.download =
     "destination-note-backup.json";
+
 
   a.click();
 
-  URL.revokeObjectURL(url);
+
+  URL.revokeObjectURL(
+    url
+  );
+
 
   startStudyClock();
 
 }
 
+
+/* =========================================================
+   LOGOUT
+========================================================= */
 
 function logout(){
 
@@ -3530,99 +5571,146 @@ function logout(){
 
 
 /* =========================================================
-   ESCAPE HTML
+   ESCAPE
 ========================================================= */
 
-function escapeHTML(str){
+function escapeHTML(
+  str
+){
 
   return String(str)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
 
 }
 
 
 /* =========================================================
-   INIT
-========================================================= */
-
-loadData();
-
-if(data.name){
-
-  document
-    .getElementById("loginName")
-    .value =
-    data.name;
-
-}
-
-
-/* =========================================================
-   KEYBOARD SHORTCUTS
+   KEYBOARD
 ========================================================= */
 
 document.addEventListener(
   "keydown",
   e=>{
 
+    const noteScreen =
+      document.getElementById(
+        "noteScreen"
+      );
+
+
     if(
-      document
-        .getElementById("noteScreen")
-        .classList.contains("hidden")
-    )
+      noteScreen.classList.contains(
+        "hidden"
+      )
+    ){
+
       return;
-
-
-    /*
-      スペース + ドラッグ
-      → 手のひら
-    */
-
-    if(e.code==="Space"){
-
-      e.preventDefault();
 
     }
 
 
-    /*
-      キーショートカット
-    */
+    if(
+      e.key === "p"
+    ){
 
-    if(e.key==="p")
-      setTool("pencil");
+      setTool(
+        "pencil"
+      );
 
-    if(e.key==="h")
-      setTool("highlighter");
+    }
 
-    if(e.key==="e")
-      setTool("eraser");
 
-    if(e.key==="v")
-      setTool("hand");
+    if(
+      e.key === "h"
+    ){
 
-    if(e.key==="t")
-      setTool("text");
+      setTool(
+        "highlighter"
+      );
+
+    }
+
+
+    if(
+      e.key === "e"
+    ){
+
+      setTool(
+        "eraser"
+      );
+
+    }
+
+
+    if(
+      e.key === "v"
+    ){
+
+      setTool(
+        "hand"
+      );
+
+    }
+
+
+    if(
+      e.key === "t"
+    ){
+
+      setTool(
+        "text"
+      );
+
+    }
 
   }
 );
 
 
 /* =========================================================
-   WHEEL ZOOM
+   WHEEL
 ========================================================= */
 
 viewport.addEventListener(
   "wheel",
   e=>{
 
-    if(e.ctrlKey || e.metaKey){
+    /*
+      Ctrl / Command + ホイール
+      → ズーム
+    */
+
+    if(
+      e.ctrlKey ||
+      e.metaKey
+    ){
 
       e.preventDefault();
+
 
       const before =
         screenToWorld(
@@ -3630,40 +5718,67 @@ viewport.addEventListener(
           e.clientY
         );
 
+
       const factor =
-        e.deltaY<0
+        e.deltaY < 0
           ? 1.1
           : .9;
+
 
       zoom =
         Math.max(
           .25,
           Math.min(
             4,
-            zoom*factor
+            zoom * factor
           )
         );
+
 
       const rect =
         viewport.getBoundingClientRect();
 
+
       panX =
-        e.clientX-rect.left -
-        before.x*zoom;
+        e.clientX -
+        rect.left -
+        before.x * zoom;
+
 
       panY =
-        e.clientY-rect.top -
-        before.y*zoom;
+        e.clientY -
+        rect.top -
+        before.y * zoom;
+
 
       updateTransform();
 
-    }else if(currentTool==="hand"){
+
+      return;
+
+    }
+
+
+    /*
+      手のひらツールなら
+      マウス・トラックパッド移動
+    */
+
+    if(
+      currentTool ===
+      "hand"
+    ){
 
       e.preventDefault();
 
-      panX -= e.deltaX;
 
-      panY -= e.deltaY;
+      panX -=
+        e.deltaX;
+
+
+      panY -=
+        e.deltaY;
+
 
       updateTransform();
 
@@ -3674,6 +5789,26 @@ viewport.addEventListener(
     passive:false
   }
 );
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+loadData();
+
+
+if(data.name){
+
+  document
+    .getElementById(
+      "loginName"
+    )
+    .value =
+      data.name;
+
+}
+
 
 </script>
 
