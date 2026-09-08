@@ -1,0 +1,2175 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#f5f5f7">
+<title>Destination Note</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  --bg: #f5f5f7;
+  --card: rgba(255,255,255,.72);
+  --card2: rgba(255,255,255,.52);
+  --text: #171717;
+  --sub: #777;
+  --border: rgba(0,0,0,.08);
+  --blue: #007aff;
+  --green: #34c759;
+  --red: #ff3b30;
+  --shadow: 0 12px 35px rgba(0,0,0,.08);
+}
+
+body.dark {
+  --bg: #101114;
+  --card: rgba(35,36,42,.75);
+  --card2: rgba(35,36,42,.55);
+  --text: #fff;
+  --sub: #aaa;
+  --border: rgba(255,255,255,.09);
+  --shadow: 0 12px 35px rgba(0,0,0,.25);
+}
+
+body {
+  margin: 0;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Display",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(0,122,255,.10), transparent 35%),
+    radial-gradient(circle at 100% 30%, rgba(175,82,222,.10), transparent 35%),
+    var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* =========================
+   LOGIN
+========================= */
+
+#loginScreen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.loginBox {
+  width: min(430px, 100%);
+  padding: 35px 25px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border-radius: 30px;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.logo {
+  width: 75px;
+  height: 75px;
+  margin: auto;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  background: linear-gradient(135deg,#007aff,#5856d6);
+  color: white;
+  box-shadow: 0 12px 30px rgba(0,122,255,.25);
+}
+
+.loginBox h1 {
+  margin: 20px 0 5px;
+  font-size: 30px;
+}
+
+.loginBox p {
+  color: var(--sub);
+  margin-bottom: 28px;
+}
+
+.input {
+  width: 100%;
+  padding: 15px 17px;
+  margin-bottom: 12px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  outline: none;
+  background: var(--card2);
+  color: var(--text);
+}
+
+.input:focus {
+  border-color: var(--blue);
+}
+
+.primary {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 16px;
+  background: var(--blue);
+  color: white;
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+.loginInfo {
+  margin-top: 18px;
+  font-size: 12px;
+  color: var(--sub);
+}
+
+/* =========================
+   APP
+========================= */
+
+#app {
+  min-height: 100vh;
+  padding-bottom: 100px;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding:
+    max(14px, env(safe-area-inset-top))
+    18px 14px;
+  background: rgba(245,245,247,.72);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-bottom: 1px solid var(--border);
+}
+
+body.dark header {
+  background: rgba(16,17,20,.72);
+}
+
+.headerInner {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.brand {
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.headerButtons {
+  display: flex;
+  gap: 8px;
+}
+
+.iconBtn {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  border-radius: 14px;
+  font-size: 19px;
+}
+
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 25px 18px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  padding: 25px;
+  border-radius: 28px;
+  background:
+    linear-gradient(135deg,
+      rgba(0,122,255,.16),
+      rgba(88,86,214,.10)),
+    var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  margin-bottom: 18px;
+}
+
+.hero h2 {
+  margin: 0 0 5px;
+  font-size: 27px;
+}
+
+.hero p {
+  margin: 0;
+  color: var(--sub);
+}
+
+.rankCard {
+  margin-top: 20px;
+}
+
+.rankTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rankName {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.rankHours {
+  color: var(--sub);
+}
+
+.progress {
+  height: 10px;
+  border-radius: 20px;
+  background: rgba(127,127,127,.15);
+  overflow: hidden;
+  margin-top: 12px;
+}
+
+.progressBar {
+  height: 100%;
+  border-radius: 20px;
+  background: linear-gradient(90deg,#007aff,#5856d6);
+  transition: width .5s ease;
+}
+
+.nextRank {
+  margin-top: 9px;
+  font-size: 13px;
+  color: var(--sub);
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.sectionTitle {
+  margin: 28px 3px 12px;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(230px,1fr));
+  gap: 14px;
+}
+
+.card {
+  border: 1px solid var(--border);
+  background: var(--card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 23px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+.folderCard {
+  cursor: pointer;
+  transition: transform .15s;
+}
+
+.folderCard:active {
+  transform: scale(.98);
+}
+
+.folderIcon {
+  font-size: 38px;
+  margin-bottom: 10px;
+}
+
+.folderName {
+  font-size: 18px;
+  font-weight: 750;
+}
+
+.cardSub {
+  margin-top: 5px;
+  color: var(--sub);
+  font-size: 13px;
+}
+
+/* =========================
+   BOTTOM NAV
+========================= */
+
+.bottomNav {
+  position: fixed;
+  z-index: 100;
+  bottom: max(12px, env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(500px, calc(100% - 25px));
+  display: flex;
+  justify-content: space-around;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--card);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  box-shadow: 0 15px 40px rgba(0,0,0,.15);
+}
+
+.navBtn {
+  border: none;
+  background: transparent;
+  color: var(--sub);
+  padding: 10px 20px;
+  border-radius: 17px;
+  font-size: 12px;
+}
+
+.navBtn span {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 2px;
+}
+
+.navBtn.active {
+  color: var(--blue);
+}
+
+/* =========================
+   BREADCRUMB
+========================= */
+
+.breadcrumb {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  overflow-x: auto;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+  white-space: nowrap;
+}
+
+.crumb {
+  border: none;
+  background: transparent;
+  color: var(--blue);
+  font-weight: 650;
+}
+
+.separator {
+  color: var(--sub);
+}
+
+/* =========================
+   ADD
+========================= */
+
+.addArea {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.addBtn {
+  border: none;
+  padding: 13px 17px;
+  border-radius: 16px;
+  font-weight: 700;
+  background: var(--blue);
+  color: white;
+}
+
+.addBtn.secondary {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+/* =========================
+   NOTE
+========================= */
+
+.noteCard {
+  cursor: pointer;
+}
+
+.noteTitle {
+  font-size: 18px;
+  font-weight: 750;
+}
+
+.noteDate {
+  font-size: 12px;
+  color: var(--sub);
+  margin-top: 7px;
+}
+
+.notePreview {
+  color: var(--sub);
+  margin-top: 12px;
+  line-height: 1.5;
+  max-height: 45px;
+  overflow: hidden;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(8px);
+}
+
+.modalBox {
+  width: min(520px,100%);
+  max-height: 90vh;
+  overflow: auto;
+  padding: 24px;
+  border-radius: 27px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  box-shadow: 0 25px 70px rgba(0,0,0,.25);
+}
+
+.modalBox h2 {
+  margin-top: 0;
+}
+
+.modalButtons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.modalButtons button {
+  flex: 1;
+}
+
+.danger {
+  background: var(--red);
+  color: white;
+  border: none;
+  border-radius: 15px;
+  padding: 13px;
+}
+
+/* =========================
+   NOTE EDITOR
+========================= */
+
+.noteEditor textarea {
+  width: 100%;
+  min-height: 400px;
+  resize: vertical;
+  padding: 18px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  outline: none;
+  line-height: 1.7;
+}
+
+.saveNote {
+  margin-top: 12px;
+}
+
+/* =========================
+   TIMER
+========================= */
+
+.timer {
+  text-align: center;
+  padding: 25px;
+}
+
+.timerCircle {
+  width: 220px;
+  height: 220px;
+  margin: 20px auto;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42px;
+  font-weight: 800;
+  border: 12px solid rgba(0,122,255,.15);
+  box-shadow: inset 0 0 30px rgba(0,122,255,.08);
+}
+
+.timerButtons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.timerButtons button {
+  border: none;
+  border-radius: 15px;
+  padding: 13px 20px;
+  background: var(--blue);
+  color: white;
+  font-weight: 700;
+}
+
+/* =========================
+   SETTINGS
+========================= */
+
+.settingRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 17px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.settingRow:last-child {
+  border-bottom: none;
+}
+
+.logout {
+  background: var(--red);
+  color: white;
+  border: none;
+  border-radius: 15px;
+  padding: 13px 18px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:600px) {
+  main {
+    padding: 18px 13px 110px;
+  }
+
+  .hero {
+    padding: 20px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .folderIcon {
+    font-size: 30px;
+  }
+}
+
+@media(max-width:390px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     LOGIN
+========================= -->
+
+<section id="loginScreen">
+  <div class="loginBox">
+
+    <div class="logo">📚</div>
+
+    <h1>Destination Note</h1>
+    <p>学びの目的地へ。</p>
+
+    <input
+      id="loginName"
+      class="input"
+      placeholder="名前"
+      autocomplete="username">
+
+    <input
+      id="loginPassword"
+      class="input"
+      type="password"
+      placeholder="パスワード"
+      autocomplete="current-password">
+
+    <button class="primary" onclick="login()">
+      はじめる
+    </button>
+
+    <div class="loginInfo">
+      この端末に学習データを保存します。
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================
+     APP
+========================= -->
+
+<section id="app" class="hidden">
+
+<header>
+  <div class="headerInner">
+
+    <div class="brand">
+      📚 Destination Note
+    </div>
+
+    <div class="headerButtons">
+      <button class="iconBtn" onclick="toggleDark()">
+        ◐
+      </button>
+
+      <button class="iconBtn" onclick="showSettings()">
+        ⚙️
+      </button>
+    </div>
+
+  </div>
+</header>
+
+
+<main id="main"></main>
+
+
+<nav class="bottomNav">
+
+  <button class="navBtn active" onclick="showHome()">
+    <span>🏠</span>
+    ホーム
+  </button>
+
+  <button class="navBtn" onclick="showFolders()">
+    <span>📁</span>
+    ノート
+  </button>
+
+  <button class="navBtn" onclick="showTimer()">
+    <span>⏱️</span>
+    勉強
+  </button>
+
+  <button class="navBtn" onclick="showSettings()">
+    <span>⚙️</span>
+    設定
+  </button>
+
+</nav>
+
+</section>
+
+
+<!-- =========================
+     MODAL
+========================= -->
+
+<div id="modal" class="modal hidden">
+  <div class="modalBox" id="modalContent"></div>
+</div>
+
+
+<script>
+
+/* =====================================================
+   DATA
+===================================================== */
+
+const STORAGE_KEY = "destinationNote_v1";
+
+let data = {
+  name: "",
+  password: "",
+  totalSeconds: 0,
+
+  folders: [
+    {
+      id: "root",
+      name: "マイノート",
+      icon: "📚",
+      parent: null,
+      created: Date.now()
+    }
+  ],
+
+  notes: [],
+
+  settings: {
+    dark: false
+  }
+};
+
+let currentFolder = "root";
+let timerInterval = null;
+let timerSeconds = 0;
+let timerRunning = false;
+let timerFolder = "root";
+
+
+/* =====================================================
+   STORAGE
+===================================================== */
+
+function saveData() {
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(data)
+  );
+}
+
+function loadData() {
+
+  const saved = localStorage.getItem(STORAGE_KEY);
+
+  if (!saved) return false;
+
+  try {
+    data = JSON.parse(saved);
+
+    if (!data.folders) data.folders = [];
+    if (!data.notes) data.notes = [];
+    if (!data.settings) data.settings = {};
+
+    return true;
+
+  } catch(e) {
+
+    return false;
+
+  }
+}
+
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+function login() {
+
+  const name =
+    document.getElementById("loginName").value.trim();
+
+  const password =
+    document.getElementById("loginPassword").value;
+
+  if (!name || !password) {
+
+    alert("名前とパスワードを入力してね。");
+    return;
+
+  }
+
+  const saved = localStorage.getItem(STORAGE_KEY);
+
+  if (saved) {
+
+    try {
+
+      const oldData = JSON.parse(saved);
+
+      if (
+        oldData.name !== name ||
+        oldData.password !== password
+      ) {
+
+        alert(
+          "この端末には別のアカウントがあります。\n\n" +
+          "名前またはパスワードが違います。"
+        );
+
+        return;
+      }
+
+      data = oldData;
+
+    } catch(e) {}
+
+  } else {
+
+    data.name = name;
+    data.password = password;
+
+    saveData();
+
+  }
+
+  startApp();
+}
+
+
+/* =====================================================
+   START
+===================================================== */
+
+function startApp() {
+
+  document
+    .getElementById("loginScreen")
+    .classList.add("hidden");
+
+  document
+    .getElementById("app")
+    .classList.remove("hidden");
+
+  if (data.settings.dark) {
+    document.body.classList.add("dark");
+  }
+
+  showHome();
+}
+
+
+/* =====================================================
+   RANK
+===================================================== */
+
+const ranks = [
+
+  {
+    name: "BRONZE",
+    jp: "ブロンズ",
+    min: 0,
+    max: 10 * 3600,
+    icon: "🥉"
+  },
+
+  {
+    name: "SILVER",
+    jp: "シルバー",
+    min: 10 * 3600,
+    max: 30 * 3600,
+    icon: "🥈"
+  },
+
+  {
+    name: "GOLD",
+    jp: "ゴールド",
+    min: 30 * 3600,
+    max: 60 * 3600,
+    icon: "🥇"
+  },
+
+  {
+    name: "PLATINUM",
+    jp: "プラチナ",
+    min: 60 * 3600,
+    max: 100 * 3600,
+    icon: "💎"
+  },
+
+  {
+    name: "BUSINESS",
+    jp: "ビジネス",
+    min: 100 * 3600,
+    max: 200 * 3600,
+    icon: "💼"
+  },
+
+  {
+    name: "FIRST",
+    jp: "ファースト",
+    min: 200 * 3600,
+    max: 500 * 3600,
+    icon: "✈️"
+  },
+
+  {
+    name: "GRAN CLASS",
+    jp: "グランクラス",
+    min: 500 * 3600,
+    max: Infinity,
+    icon: "👑"
+  }
+
+];
+
+
+function getRank() {
+
+  return ranks.find(
+    r =>
+      data.totalSeconds >= r.min &&
+      data.totalSeconds < r.max
+  ) || ranks[ranks.length - 1];
+
+}
+
+
+function formatTime(seconds) {
+
+  const h = Math.floor(seconds / 3600);
+
+  const m = Math.floor(
+    (seconds % 3600) / 60
+  );
+
+  const s = seconds % 60;
+
+  if (h > 0) {
+
+    return `${h}時間 ${m}分`;
+
+  }
+
+  return `${m}分 ${s}秒`;
+}
+
+
+function rankProgress() {
+
+  const rank = getRank();
+
+  if (rank.max === Infinity) return 100;
+
+  const range =
+    rank.max - rank.min;
+
+  const current =
+    data.totalSeconds - rank.min;
+
+  return Math.max(
+    0,
+    Math.min(
+      100,
+      current / range * 100
+    )
+  );
+}
+
+
+/* =====================================================
+   HOME
+===================================================== */
+
+function showHome() {
+
+  const rank = getRank();
+
+  const next =
+    ranks[ranks.indexOf(rank) + 1];
+
+  const progress = rankProgress();
+
+  const folders =
+    data.folders.filter(
+      f => f.parent === "root"
+    );
+
+  let folderHTML = "";
+
+  folders.forEach(folder => {
+
+    const count =
+      countFolderItems(folder.id);
+
+    folderHTML += `
+      <div
+        class="card folderCard"
+        onclick="openFolder('${folder.id}')">
+
+        <div class="folderIcon">
+          ${folder.icon}
+        </div>
+
+        <div class="folderName">
+          ${escapeHTML(folder.name)}
+        </div>
+
+        <div class="cardSub">
+          ${count.folders}フォルダ・${count.notes}ノート
+        </div>
+
+      </div>
+    `;
+
+  });
+
+
+  document.getElementById("main").innerHTML = `
+
+    <section class="hero">
+
+      <h2>
+        こんにちは、${escapeHTML(data.name)}さん 👋
+      </h2>
+
+      <p>
+        今日も学びの目的地へ進もう。
+      </p>
+
+      <div class="rankCard">
+
+        <div class="rankTop">
+
+          <div>
+
+            <div class="rankName">
+              ${rank.icon} ${rank.name}
+            </div>
+
+            <div class="cardSub">
+              ${rank.jp}
+            </div>
+
+          </div>
+
+          <div class="rankHours">
+            ${formatTime(data.totalSeconds)}
+          </div>
+
+        </div>
+
+        <div class="progress">
+          <div
+            class="progressBar"
+            style="width:${progress}%">
+          </div>
+        </div>
+
+        <div class="nextRank">
+
+          ${
+            next
+            ? `次のランク：${next.icon} ${next.name}`
+            : "🏆 最高ランク到達！"
+          }
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <div class="sectionTitle">
+      📁 マイノート
+    </div>
+
+    <div class="addArea">
+
+      <button
+        class="addBtn"
+        onclick="createFolder('root')">
+        ＋ 新しいタブ
+      </button>
+
+      <button
+        class="addBtn secondary"
+        onclick="showTimer()">
+        ⏱️ 勉強を開始
+      </button>
+
+    </div>
+
+    <div class="grid">
+
+      ${
+        folderHTML ||
+        `
+        <div class="card">
+          まだタブがありません。<br>
+          「＋ 新しいタブ」から作ってみよう！
+        </div>
+        `
+      }
+
+    </div>
+
+  `;
+
+  setActiveNav(0);
+}
+
+
+/* =====================================================
+   FOLDER
+===================================================== */
+
+function openFolder(id) {
+
+  currentFolder = id;
+
+  renderFolder(id);
+
+}
+
+
+function renderFolder(id) {
+
+  const folder =
+    data.folders.find(f => f.id === id);
+
+  if (!folder) return;
+
+  const children =
+    data.folders.filter(
+      f => f.parent === id
+    );
+
+  const notes =
+    data.notes.filter(
+      n => n.folder === id
+    );
+
+
+  let parents = [];
+
+  let current = folder;
+
+  while (current) {
+
+    parents.unshift(current);
+
+    current =
+      data.folders.find(
+        f => f.id === current.parent
+      );
+
+  }
+
+
+  let breadcrumb = "";
+
+  parents.forEach((p,i) => {
+
+    breadcrumb += `
+
+      ${
+        i > 0
+        ? `<span class="separator">›</span>`
+        : ""
+      }
+
+      <button
+        class="crumb"
+        onclick="openFolder('${p.id}')">
+        ${escapeHTML(p.name)}
+      </button>
+
+    `;
+
+  });
+
+
+  let folderHTML = "";
+
+  children.forEach(child => {
+
+    const count =
+      countFolderItems(child.id);
+
+    folderHTML += `
+
+      <div
+        class="card folderCard"
+        onclick="openFolder('${child.id}')">
+
+        <div class="folderIcon">
+          ${child.icon}
+        </div>
+
+        <div class="folderName">
+          ${escapeHTML(child.name)}
+        </div>
+
+        <div class="cardSub">
+          ${count.folders}フォルダ・${count.notes}ノート
+        </div>
+
+      </div>
+
+    `;
+
+  });
+
+
+  let noteHTML = "";
+
+  notes.forEach(note => {
+
+    noteHTML += `
+
+      <div
+        class="card noteCard"
+        onclick="editNote('${note.id}')">
+
+        <div class="noteTitle">
+          📄 ${escapeHTML(note.title)}
+        </div>
+
+        <div class="noteDate">
+          ${new Date(note.updated).toLocaleString("ja-JP")}
+        </div>
+
+        <div class="notePreview">
+          ${escapeHTML(note.content || "内容なし")}
+        </div>
+
+      </div>
+
+    `;
+
+  });
+
+
+  document.getElementById("main").innerHTML = `
+
+    <div class="breadcrumb">
+      ${breadcrumb}
+    </div>
+
+    <section class="hero">
+
+      <h2>
+        ${folder.icon}
+        ${escapeHTML(folder.name)}
+      </h2>
+
+      <p>
+        このタブの中にさらにタブやノートを作れます。
+      </p>
+
+    </section>
+
+
+    <div class="addArea">
+
+      <button
+        class="addBtn"
+        onclick="createFolder('${id}')">
+        📁 新しいタブ
+      </button>
+
+      <button
+        class="addBtn secondary"
+        onclick="createNote('${id}')">
+        📄 新しいノート
+      </button>
+
+      ${
+        id !== "root"
+        ? `
+        <button
+          class="addBtn secondary"
+          onclick="renameFolder('${id}')">
+          ✏️ 名前変更
+        </button>
+
+        <button
+          class="danger"
+          onclick="deleteFolder('${id}')">
+          🗑️ 削除
+        </button>
+        `
+        : ""
+      }
+
+    </div>
+
+
+    ${
+      children.length
+      ? `
+        <div class="sectionTitle">
+          📁 タブ
+        </div>
+
+        <div class="grid">
+          ${folderHTML}
+        </div>
+      `
+      : ""
+    }
+
+
+    ${
+      notes.length
+      ? `
+        <div class="sectionTitle">
+          📄 ノート
+        </div>
+
+        <div class="grid">
+          ${noteHTML}
+        </div>
+      `
+      : ""
+    }
+
+
+    ${
+      !children.length && !notes.length
+      ? `
+        <div class="card">
+          ここにはまだ何もありません。<br><br>
+          📁 タブ または 📄 ノートを作ってみよう！
+        </div>
+      `
+      : ""
+    }
+
+  `;
+
+  setActiveNav(1);
+}
+
+
+/* =====================================================
+   CREATE FOLDER
+===================================================== */
+
+function createFolder(parent) {
+
+  showModal(`
+
+    <h2>📁 新しいタブ</h2>
+
+    <input
+      id="newFolderName"
+      class="input"
+      placeholder="例：数学">
+
+    <input
+      id="newFolderIcon"
+      class="input"
+      placeholder="アイコン（例：➗）"
+      value="📁">
+
+    <div class="modalButtons">
+
+      <button
+        class="addBtn secondary"
+        onclick="closeModal()">
+        キャンセル
+      </button>
+
+      <button
+        class="addBtn"
+        onclick="saveNewFolder('${parent}')">
+        作成
+      </button>
+
+    </div>
+
+  `);
+
+}
+
+
+function saveNewFolder(parent) {
+
+  const name =
+    document
+      .getElementById("newFolderName")
+      .value
+      .trim();
+
+  const icon =
+    document
+      .getElementById("newFolderIcon")
+      .value
+      .trim() || "📁";
+
+  if (!name) {
+
+    alert("タブ名を入力してね。");
+    return;
+
+  }
+
+  data.folders.push({
+
+    id:
+      "folder_" +
+      Date.now() +
+      "_" +
+      Math.random()
+        .toString(36)
+        .slice(2),
+
+    name,
+    icon,
+    parent,
+    created: Date.now()
+
+  });
+
+  saveData();
+  closeModal();
+
+  if (parent === "root") {
+    showHome();
+  } else {
+    renderFolder(parent);
+  }
+
+}
+
+
+/* =====================================================
+   RENAME FOLDER
+===================================================== */
+
+function renameFolder(id) {
+
+  const folder =
+    data.folders.find(f => f.id === id);
+
+  if (!folder) return;
+
+  showModal(`
+
+    <h2>✏️ 名前変更</h2>
+
+    <input
+      id="renameInput"
+      class="input"
+      value="${escapeAttribute(folder.name)}">
+
+    <div class="modalButtons">
+
+      <button
+        class="addBtn secondary"
+        onclick="closeModal()">
+        キャンセル
+      </button>
+
+      <button
+        class="addBtn"
+        onclick="saveRename('${id}')">
+        保存
+      </button>
+
+    </div>
+
+  `);
+
+}
+
+
+function saveRename(id) {
+
+  const input =
+    document.getElementById("renameInput");
+
+  const name = input.value.trim();
+
+  if (!name) return;
+
+  const folder =
+    data.folders.find(f => f.id === id);
+
+  if (folder) {
+    folder.name = name;
+  }
+
+  saveData();
+  closeModal();
+  renderFolder(id);
+
+}
+
+
+/* =====================================================
+   DELETE FOLDER
+===================================================== */
+
+function deleteFolder(id) {
+
+  if (id === "root") return;
+
+  const folder =
+    data.folders.find(f => f.id === id);
+
+  if (!folder) return;
+
+  const ok =
+    confirm(
+      `「${folder.name}」を削除しますか？\n\n` +
+      "中にあるタブとノートもすべて削除されます。"
+    );
+
+  if (!ok) return;
+
+  const ids = getAllChildFolderIds(id);
+
+  ids.push(id);
+
+  data.folders =
+    data.folders.filter(
+      f => !ids.includes(f.id)
+    );
+
+  data.notes =
+    data.notes.filter(
+      n => !ids.includes(n.folder)
+    );
+
+  saveData();
+
+  const parent = folder.parent || "root";
+
+  renderFolder(parent);
+
+}
+
+
+function getAllChildFolderIds(id) {
+
+  let result = [];
+
+  const children =
+    data.folders.filter(
+      f => f.parent === id
+    );
+
+  children.forEach(child => {
+
+    result.push(child.id);
+
+    result =
+      result.concat(
+        getAllChildFolderIds(child.id)
+      );
+
+  });
+
+  return result;
+
+}
+
+
+/* =====================================================
+   NOTES
+===================================================== */
+
+function createNote(folderId) {
+
+  const id =
+    "note_" +
+    Date.now() +
+    "_" +
+    Math.random()
+      .toString(36)
+      .slice(2);
+
+  data.notes.push({
+
+    id,
+    folder: folderId,
+    title: "新しいノート",
+    content: "",
+    created: Date.now(),
+    updated: Date.now()
+
+  });
+
+  saveData();
+
+  editNote(id);
+
+}
+
+
+function editNote(id) {
+
+  const note =
+    data.notes.find(n => n.id === id);
+
+  if (!note) return;
+
+  showModal(`
+
+    <div class="noteEditor">
+
+      <h2>📄 ノート</h2>
+
+      <input
+        id="noteTitle"
+        class="input"
+        value="${escapeAttribute(note.title)}"
+        placeholder="ノートタイトル">
+
+      <textarea
+        id="noteContent"
+        placeholder="ここに勉強内容を書こう！">${escapeHTML(note.content)}</textarea>
+
+      <div class="modalButtons">
+
+        <button
+          class="danger"
+          onclick="deleteNote('${id}')">
+          🗑️ 削除
+        </button>
+
+        <button
+          class="addBtn"
+          onclick="saveNote('${id}')">
+          保存
+        </button>
+
+      </div>
+
+    </div>
+
+  `);
+
+}
+
+
+function saveNote(id) {
+
+  const note =
+    data.notes.find(n => n.id === id);
+
+  if (!note) return;
+
+  note.title =
+    document
+      .getElementById("noteTitle")
+      .value
+      .trim() || "無題のノート";
+
+  note.content =
+    document
+      .getElementById("noteContent")
+      .value;
+
+  note.updated = Date.now();
+
+  saveData();
+
+  closeModal();
+
+  renderFolder(note.folder);
+
+}
+
+
+function deleteNote(id) {
+
+  const note =
+    data.notes.find(n => n.id === id);
+
+  if (!note) return;
+
+  if (!confirm("このノートを削除しますか？")) {
+    return;
+  }
+
+  const folder = note.folder;
+
+  data.notes =
+    data.notes.filter(
+      n => n.id !== id
+    );
+
+  saveData();
+
+  closeModal();
+
+  renderFolder(folder);
+
+}
+
+
+/* =====================================================
+   COUNT
+===================================================== */
+
+function countFolderItems(id) {
+
+  const folderIds =
+    getAllChildFolderIds(id);
+
+  folderIds.push(id);
+
+  return {
+
+    folders:
+      data.folders.filter(
+        f => folderIds.includes(f.id)
+      ).length,
+
+    notes:
+      data.notes.filter(
+        n => folderIds.includes(n.folder)
+      ).length
+
+  };
+
+}
+
+
+/* =====================================================
+   TIMER
+===================================================== */
+
+function showTimer() {
+
+  document.getElementById("main").innerHTML = `
+
+    <section class="card timer">
+
+      <h2>⏱️ 勉強タイマー</h2>
+
+      <p>
+        タイマーを動かした時間が
+        総勉強時間に追加されます。
+      </p>
+
+      <div class="timerCircle" id="timerDisplay">
+        00:00:00
+      </div>
+
+      <div class="timerButtons">
+
+        <button onclick="startTimer()">
+          ▶ 開始
+        </button>
+
+        <button onclick="pauseTimer()">
+          ⏸ 一時停止
+        </button>
+
+        <button onclick="finishTimer()">
+          ⏹ 終了
+        </button>
+
+      </div>
+
+      <br>
+
+      <select
+        id="timerFolder"
+        class="input"
+        onchange="timerFolder=this.value">
+
+        ${buildFolderOptions()}
+
+      </select>
+
+    </section>
+
+  `;
+
+  setActiveNav(2);
+
+  updateTimerDisplay();
+
+}
+
+
+function buildFolderOptions() {
+
+  return data.folders.map(folder => `
+
+    <option
+      value="${folder.id}"
+      ${folder.id === currentFolder ? "selected" : ""}>
+
+      ${escapeHTML(folder.name)}
+
+    </option>
+
+  `).join("");
+
+}
+
+
+function startTimer() {
+
+  if (timerRunning) return;
+
+  timerRunning = true;
+
+  timerInterval =
+    setInterval(() => {
+
+      timerSeconds++;
+
+      updateTimerDisplay();
+
+    },1000);
+
+}
+
+
+function pauseTimer() {
+
+  timerRunning = false;
+
+  clearInterval(timerInterval);
+
+}
+
+
+function finishTimer() {
+
+  pauseTimer();
+
+  if (timerSeconds <= 0) {
+
+    alert("まだ勉強時間がありません。");
+    return;
+
+  }
+
+  data.totalSeconds += timerSeconds;
+
+  timerSeconds = 0;
+
+  saveData();
+
+  updateTimerDisplay();
+
+  alert("勉強時間を記録しました！📚");
+
+}
+
+
+function updateTimerDisplay() {
+
+  const el =
+    document.getElementById("timerDisplay");
+
+  if (!el) return;
+
+  const h =
+    Math.floor(timerSeconds / 3600);
+
+  const m =
+    Math.floor(
+      (timerSeconds % 3600) / 60
+    );
+
+  const s =
+    timerSeconds % 60;
+
+  el.textContent =
+    `${String(h).padStart(2,"0")}:` +
+    `${String(m).padStart(2,"0")}:` +
+    `${String(s).padStart(2,"0")}`;
+
+}
+
+
+/* =====================================================
+   SETTINGS
+===================================================== */
+
+function showSettings() {
+
+  document.getElementById("main").innerHTML = `
+
+    <div class="sectionTitle">
+      ⚙️ 設定
+    </div>
+
+    <div class="card">
+
+      <div class="settingRow">
+
+        <div>
+          <b>ユーザー</b><br>
+          <span class="cardSub">
+            ${escapeHTML(data.name)}
+          </span>
+        </div>
+
+      </div>
+
+
+      <div class="settingRow">
+
+        <div>
+          <b>総勉強時間</b><br>
+          <span class="cardSub">
+            ${formatTime(data.totalSeconds)}
+          </span>
+        </div>
+
+      </div>
+
+
+      <div class="settingRow">
+
+        <div>
+          <b>ダークモード</b>
+        </div>
+
+        <button
+          class="iconBtn"
+          onclick="toggleDark()">
+          ◐
+        </button>
+
+      </div>
+
+
+      <div class="settingRow">
+
+        <div>
+          <b>データ</b><br>
+          <span class="cardSub">
+            この端末に保存されています
+          </span>
+        </div>
+
+        <button
+          class="danger"
+          onclick="exportData()">
+          📦 バックアップ
+        </button>
+
+      </div>
+
+
+      <div class="settingRow">
+
+        <button
+          class="logout"
+          onclick="logout()">
+          ログアウト
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+
+  setActiveNav(3);
+
+}
+
+
+/* =====================================================
+   DARK
+===================================================== */
+
+function toggleDark() {
+
+  document.body.classList.toggle("dark");
+
+  data.settings.dark =
+    document.body.classList.contains("dark");
+
+  saveData();
+
+}
+
+
+/* =====================================================
+   EXPORT
+===================================================== */
+
+function exportData() {
+
+  const blob =
+    new Blob(
+      [JSON.stringify(data,null,2)],
+      {type:"application/json"}
+    );
+
+  const url =
+    URL.createObjectURL(blob);
+
+  const a =
+    document.createElement("a");
+
+  a.href = url;
+
+  a.download =
+    "destination-note-backup.json";
+
+  a.click();
+
+  URL.revokeObjectURL(url);
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+function logout() {
+
+  if (
+    !confirm(
+      "ログアウトしますか？\n\n" +
+      "データはこの端末に残ります。"
+    )
+  ) {
+    return;
+  }
+
+  location.reload();
+
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+function showModal(html) {
+
+  document
+    .getElementById("modalContent")
+    .innerHTML = html;
+
+  document
+    .getElementById("modal")
+    .classList.remove("hidden");
+
+}
+
+
+function closeModal() {
+
+  document
+    .getElementById("modal")
+    .classList.add("hidden");
+
+}
+
+
+document
+  .getElementById("modal")
+  .addEventListener("click", e => {
+
+    if (e.target.id === "modal") {
+      closeModal();
+    }
+
+  });
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+function showFolders() {
+
+  renderFolder(currentFolder);
+
+}
+
+
+function setActiveNav(index) {
+
+  document
+    .querySelectorAll(".navBtn")
+    .forEach(
+      (btn,i) =>
+        btn.classList.toggle(
+          "active",
+          i === index
+        )
+    );
+
+}
+
+
+/* =====================================================
+   SECURITY / HTML
+===================================================== */
+
+function escapeHTML(str) {
+
+  return String(str)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+
+function escapeAttribute(str) {
+
+  return escapeHTML(str);
+
+}
+
+
+/* =====================================================
+   AUTO LOGIN
+===================================================== */
+
+window.addEventListener("load", () => {
+
+  const saved =
+    localStorage.getItem(STORAGE_KEY);
+
+  if (!saved) return;
+
+  try {
+
+    const savedData =
+      JSON.parse(saved);
+
+    /*
+      自動ログインはしない。
+      名前とパスワードを入力して開く。
+    */
+
+  } catch(e) {}
+
+});
+
+</script>
+
+</body>
+</html>
