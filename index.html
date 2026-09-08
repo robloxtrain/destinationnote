@@ -2,40 +2,29 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-
-<meta
-  name="viewport"
-  content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-
+<meta name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#f5f5f7">
 <title>Destination Note</title>
 
 <style>
-
 *{
   box-sizing:border-box;
   -webkit-tap-highlight-color:transparent;
 }
 
-html,
-body{
+html,body{
+  margin:0;
   width:100%;
   height:100%;
-  margin:0;
   overflow:hidden;
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "SF Pro Display",
-    "Helvetica Neue",
-    Arial,
-    sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",
+    "Helvetica Neue",Arial,sans-serif;
   background:#f5f5f7;
   color:#111;
 }
 
-button,
-input,
-select{
+button,input{
   font:inherit;
 }
 
@@ -48,99 +37,66 @@ button{
   display:none!important;
 }
 
-
 /* =========================
    LOGIN
 ========================= */
 
 #loginScreen{
-  position:fixed;
-  inset:0;
-
+  width:100%;
+  height:100%;
   display:flex;
-  justify-content:center;
   align-items:center;
-
+  justify-content:center;
   padding:24px;
-
   background:
-    radial-gradient(
-      circle at 20% 10%,
-      #dbeafe,
-      transparent 35%
-    ),
-    radial-gradient(
-      circle at 90% 80%,
-      #ede9fe,
-      transparent 35%
-    ),
+    radial-gradient(circle at 20% 20%,#dfe9ff,transparent 35%),
+    radial-gradient(circle at 80% 80%,#e8ddff,transparent 35%),
     #f5f5f7;
 }
 
-.loginBox{
-  width:min(420px,100%);
-
-  padding:35px;
-
-  border-radius:32px;
-
-  background:rgba(255,255,255,.78);
-
+.login-card{
+  width:min(430px,100%);
+  padding:34px;
+  border-radius:30px;
+  background:rgba(255,255,255,.72);
   backdrop-filter:blur(30px);
   -webkit-backdrop-filter:blur(30px);
-
-  box-shadow:
-    0 25px 70px rgba(0,0,0,.12);
+  box-shadow:0 25px 80px rgba(0,0,0,.12);
 }
 
 .logo{
-  font-size:34px;
-  font-weight:800;
-  letter-spacing:-1.5px;
+  font-size:42px;
+  margin-bottom:8px;
 }
 
-.sub{
-  margin-top:8px;
-  margin-bottom:28px;
+.login-card h1{
+  margin:0;
+  font-size:32px;
+}
+
+.login-card p{
   color:#777;
 }
 
-.loginInput{
+.login-card input{
   width:100%;
-
   padding:15px 17px;
-
-  margin-bottom:12px;
-
-  border:
-    1px solid #ddd;
-
-  border-radius:17px;
-
-  background:#fff;
-
+  margin:7px 0;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:15px;
   outline:none;
-}
-
-.loginInput:focus{
-  border-color:#777;
+  background:rgba(255,255,255,.85);
 }
 
 .primary{
   width:100%;
-
+  margin-top:12px;
   padding:15px;
-
-  margin-top:8px;
-
-  border-radius:17px;
-
+  border-radius:16px;
   background:#111;
   color:white;
-
   font-weight:700;
 }
-
 
 /* =========================
    APP
@@ -149,659 +105,489 @@ button{
 #app{
   width:100%;
   height:100%;
+}
 
-  display:flex;
-  flex-direction:column;
+.screen{
+  width:100%;
+  height:100%;
+  overflow:auto;
 }
 
 .topbar{
-  height:68px;
-  flex-shrink:0;
-
+  height:72px;
+  padding:12px 18px;
   display:flex;
   align-items:center;
-  justify-content:space-between;
-
-  padding:0 18px;
-
-  background:
-    rgba(255,255,255,.78);
-
-  backdrop-filter:blur(25px);
-  -webkit-backdrop-filter:blur(25px);
-
-  border-bottom:
-    1px solid rgba(0,0,0,.07);
-
+  gap:12px;
+  position:sticky;
+  top:0;
   z-index:100;
+  background:rgba(245,245,247,.78);
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
+  border-bottom:1px solid rgba(0,0,0,.06);
 }
 
-.brand{
-  font-size:20px;
+.topbar-title{
+  font-size:21px;
   font-weight:800;
+  flex:1;
 }
 
-.topRight{
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-
-.clockChip{
-  padding:8px 13px;
-
+.icon-btn{
+  width:44px;
+  height:44px;
   border-radius:14px;
+  background:rgba(0,0,0,.06);
+  display:grid;
+  place-items:center;
+  font-size:20px;
+}
 
-  background:#111;
-  color:#fff;
-
+.clock{
+  padding:9px 13px;
+  border-radius:13px;
+  background:rgba(255,255,255,.8);
+  font-variant-numeric:tabular-nums;
   font-size:13px;
   font-weight:700;
 }
-
-.iconBtn{
-  width:40px;
-  height:40px;
-
-  border-radius:14px;
-
-  background:#eee;
-}
-
-.main{
-  flex:1;
-  overflow:auto;
-
-  padding:25px;
-}
-
 
 /* =========================
    HOME
 ========================= */
 
-.hero{
-  width:min(1100px,100%);
+.home{
+  padding:24px;
+  max-width:1100px;
   margin:auto;
 }
 
-.welcome{
-  margin:10px 0 22px;
-
-  font-size:36px;
-  font-weight:800;
-
-  letter-spacing:-1.5px;
-}
-
-.rankCard{
-  padding:25px;
-
-  margin-bottom:24px;
-
-  border-radius:28px;
-
+.hero{
+  padding:28px;
+  border-radius:30px;
+  background:linear-gradient(135deg,#111,#343434);
   color:white;
-
-  background:
-    linear-gradient(
-      135deg,
-      #151515,
-      #4b4b4b
-    );
-
-  box-shadow:
-    0 20px 50px rgba(0,0,0,.18);
+  box-shadow:0 20px 60px rgba(0,0,0,.18);
 }
 
-.rankName{
-  font-size:30px;
+.hero small{
+  opacity:.65;
+}
+
+.hero h2{
+  margin:5px 0 15px;
+  font-size:32px;
+}
+
+.study-time{
+  font-size:28px;
   font-weight:800;
+  font-variant-numeric:tabular-nums;
 }
 
-.rankTime{
-  margin-top:5px;
-  opacity:.8;
-}
-
-.progressOuter{
-  height:8px;
-
-  margin-top:20px;
-
-  overflow:hidden;
-
+.rank{
+  display:inline-block;
+  margin-top:15px;
+  padding:8px 13px;
   border-radius:999px;
-
-  background:
-    rgba(255,255,255,.18);
+  background:rgba(255,255,255,.15);
 }
 
-.progressInner{
-  width:0%;
-  height:100%;
-
-  border-radius:999px;
-
-  background:#fff;
-
-  transition:.3s;
+.section{
+  margin-top:25px;
 }
 
-.sectionTitle{
-  margin:25px 0 12px;
-
-  font-size:22px;
-  font-weight:800;
+.section-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:12px;
 }
 
-.folderGrid,
-.itemGrid{
+.section-head h3{
+  margin:0;
+}
+
+.cards{
   display:grid;
-
-  grid-template-columns:
-    repeat(
-      auto-fill,
-      minmax(190px,1fr)
-    );
-
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
   gap:14px;
 }
 
-.folderCard{
+.card{
   padding:20px;
-
-  border-radius:23px;
-
-  background:
-    rgba(255,255,255,.8);
-
-  border:
-    1px solid rgba(0,0,0,.06);
-
-  box-shadow:
-    0 8px 25px rgba(0,0,0,.05);
-
-  transition:.15s;
+  border-radius:22px;
+  background:white;
+  box-shadow:0 8px 30px rgba(0,0,0,.07);
+  cursor:pointer;
+  transition:.18s transform;
 }
 
-.folderCard:active{
+.card:active{
   transform:scale(.97);
 }
 
-.folderIcon{
-  font-size:34px;
+.folder-icon{
+  font-size:35px;
 }
 
-.folderName{
-  margin-top:10px;
+.card-title{
   font-weight:750;
+  margin-top:10px;
 }
 
-.folderCount{
-  margin-top:4px;
-
-  color:#888;
+.card-sub{
   font-size:13px;
+  color:#888;
+  margin-top:5px;
 }
-
-.addCard{
-  border:2px dashed #ccc;
-  background:transparent;
-}
-
 
 /* =========================
    FOLDER
 ========================= */
 
-.folderHeader{
-  width:min(1100px,100%);
+.folder-page{
+  padding:22px;
+  max-width:1100px;
+  margin:auto;
+}
 
-  margin:0 auto 22px;
-
+.breadcrumb{
   display:flex;
+  gap:7px;
   align-items:center;
-
-  gap:12px;
+  flex-wrap:wrap;
+  color:#777;
+  margin-bottom:18px;
 }
 
-.backBtn{
-  padding:11px 15px;
+.breadcrumb button{
+  background:none;
+  color:#555;
+}
 
+.actions{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+}
+
+.action{
+  padding:12px 15px;
   border-radius:14px;
-
-  background:#eee;
+  background:#111;
+  color:#fff;
+  font-weight:700;
 }
 
-.folderTitle{
-  font-size:30px;
-  font-weight:800;
+.action.light{
+  background:white;
+  color:#111;
 }
-
-.noteCard{
-  position:relative;
-
-  min-height:150px;
-
-  padding:20px;
-
-  border-radius:24px;
-
-  background:#fff;
-
-  box-shadow:
-    0 8px 25px rgba(0,0,0,.06);
-}
-
-.noteIcon{
-  font-size:32px;
-}
-
-.noteTitle{
-  margin-top:12px;
-
-  font-size:18px;
-  font-weight:750;
-}
-
-.noteDate{
-  margin-top:8px;
-
-  color:#888;
-  font-size:12px;
-}
-
-.smallDelete{
-  position:absolute;
-
-  top:10px;
-  right:10px;
-
-  width:32px;
-  height:32px;
-
-  border-radius:10px;
-
-  background:#f2f2f2;
-}
-
 
 /* =========================
-   NOTE SCREEN
+   NOTE EDITOR
 ========================= */
 
 #noteScreen{
-  position:fixed;
-  inset:0;
-
-  z-index:200;
-
-  display:flex;
-  flex-direction:column;
-
-  background:#f1f1f3;
+  background:#e9e9ed;
+  overflow:hidden;
 }
 
-.noteTop{
-  min-height:60px;
-  height:60px;
-
-  flex-shrink:0;
-
+.note-topbar{
+  height:64px;
   display:flex;
   align-items:center;
-
   gap:7px;
-
-  padding:8px;
-
-  background:
-    rgba(255,255,255,.86);
-
+  padding:8px 10px;
+  background:rgba(245,245,247,.9);
   backdrop-filter:blur(25px);
-
-  border-bottom:
-    1px solid #ddd;
-
-  z-index:30;
+  -webkit-backdrop-filter:blur(25px);
+  border-bottom:1px solid rgba(0,0,0,.08);
+  position:relative;
+  z-index:1000;
 }
 
-.noteTitleInput{
-  width:180px;
-  max-width:22vw;
-
-  padding:8px;
-
-  border:0;
-
-  outline:none;
-
-  background:transparent;
-
-  font-weight:750;
-}
-
-.toolGroup{
+.note-title{
+  min-width:100px;
+  max-width:240px;
   flex:1;
+  border:0;
+  background:transparent;
+  outline:none;
+  font-weight:750;
+  font-size:17px;
+}
 
+.tool-scroll{
   display:flex;
-  align-items:center;
-
-  gap:5px;
-
+  gap:6px;
   overflow-x:auto;
-
+  padding:6px;
   scrollbar-width:none;
 }
 
-.toolGroup::-webkit-scrollbar{
+.tool-scroll::-webkit-scrollbar{
   display:none;
 }
 
 .tool{
-  min-width:40px;
-  height:40px;
-
-  flex-shrink:0;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  border-radius:12px;
-
-  background:#eee;
-
+  min-width:43px;
+  height:43px;
+  padding:0 11px;
+  border-radius:13px;
+  background:white;
   font-size:18px;
+  white-space:nowrap;
+  box-shadow:0 2px 8px rgba(0,0,0,.05);
 }
 
 .tool.active{
   background:#111;
-  color:#fff;
+  color:white;
 }
 
-.colorInput{
-  width:40px;
-  height:40px;
+.size-wrap{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  padding:7px 10px;
+  border-radius:13px;
+  background:white;
+  white-space:nowrap;
+}
 
-  flex-shrink:0;
+#sizeRange{
+  width:90px;
+}
 
-  padding:2px;
+#sizeValue{
+  min-width:32px;
+  text-align:center;
+  font-size:12px;
+  font-weight:700;
+}
 
+.color-wrap{
+  position:relative;
+  width:43px;
+  height:43px;
+  flex:none;
+}
+
+#colorPicker{
+  width:43px;
+  height:43px;
   border:0;
-
+  padding:0;
   background:transparent;
 }
 
-.sizeSelect{
-  height:40px;
-
-  flex-shrink:0;
-
-  padding:0 8px;
-
-  border:0;
-
-  border-radius:12px;
-
-  background:#eee;
-}
-
-.pageControls{
-  display:flex;
-  gap:5px;
-}
-
-.pageControls button{
-  width:38px;
-  height:38px;
-
-  border-radius:12px;
-
-  background:#eee;
-}
-
-
 /* =========================
-   FREEBOARD
+   BOARD
 ========================= */
 
-.boardViewport{
-  position:relative;
-
-  flex:1;
-
+.board-viewport{
+  position:absolute;
+  top:64px;
+  left:0;
+  right:0;
+  bottom:0;
   overflow:hidden;
-
   touch-action:none;
-
-  background-color:#f8f8fa;
-
-  background-image:
-    radial-gradient(
-      circle,
-      #d3d3d7 1px,
-      transparent 1px
-    );
-
-  background-size:25px 25px;
-
   user-select:none;
-  -webkit-user-select:none;
+  background:#dcdce1;
 }
 
-.boardWorld{
+.board-world{
   position:absolute;
-
   left:0;
   top:0;
-
   width:10000px;
-  height:10000px;
-
+  height:7000px;
   transform-origin:0 0;
-
   will-change:transform;
+
+  background-color:#fff;
+  background-image:
+    radial-gradient(circle,rgba(0,0,0,.09) 1px,transparent 1px);
+  background-size:28px 28px;
 }
 
-.boardCanvas{
+#drawSvg{
   position:absolute;
-
   left:0;
   top:0;
-
   width:10000px;
-  height:10000px;
-
-  touch-action:none;
-
+  height:7000px;
+  overflow:visible;
   pointer-events:none;
 }
 
-.objectLayer{
+#objectLayer{
   position:absolute;
-
-  left:0;
-  top:0;
-
-  width:10000px;
-  height:10000px;
-
+  inset:0;
   pointer-events:none;
 }
 
-
-/* =========================
-   OBJECTS
-========================= */
-
-.boardObject{
+.board-object{
   position:absolute;
-
   pointer-events:auto;
-
   user-select:none;
-  -webkit-user-select:none;
-
   touch-action:none;
+  cursor:grab;
 }
 
-.textObject{
-  min-width:60px;
-  min-height:30px;
+.board-object.selected{
+  outline:2px solid #007aff;
+  outline-offset:5px;
+}
 
-  padding:5px;
-
-  line-height:1.35;
-
+.text-object{
+  min-width:80px;
+  min-height:35px;
+  padding:6px;
   white-space:pre-wrap;
-
-  cursor:move;
-
-  resize:both;
-
-  overflow:auto;
-
-  border:1px solid transparent;
+  word-break:break-word;
+  background:transparent;
 }
 
-.textObject:active{
-  border-color:
-    rgba(0,122,255,.4);
-}
-
-.stickyObject{
-  width:220px;
-  min-height:170px;
-
+.sticky-object{
+  width:260px;
+  height:180px;
   padding:18px;
-
-  background:#fff39b;
-
-  box-shadow:
-    0 8px 20px rgba(0,0,0,.15);
-
-  line-height:1.45;
-
+  border-radius:5px;
+  background:#fff29b;
+  box-shadow:0 8px 25px rgba(0,0,0,.15);
   white-space:pre-wrap;
-
-  cursor:move;
-
-  resize:both;
-
-  overflow:auto;
+  word-break:break-word;
 }
 
-.imageObject{
-  width:100%;
-  height:100%;
-
+.image-object{
   object-fit:contain;
-
-  pointer-events:none;
+  border-radius:8px;
+  box-shadow:0 8px 30px rgba(0,0,0,.15);
 }
 
-.shapeObject{
-  pointer-events:none;
+.resize-handle{
+  position:absolute;
+  right:-9px;
+  bottom:-9px;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background:#007aff;
+  border:3px solid white;
+  cursor:nwse-resize;
 }
 
+.object-delete{
+  position:absolute;
+  top:-12px;
+  right:-12px;
+  width:25px;
+  height:25px;
+  border-radius:50%;
+  background:#ff3b30;
+  color:#fff;
+  font-size:13px;
+  display:none;
+}
+
+.selected .object-delete{
+  display:block;
+}
 
 /* =========================
-   BOARD UI
+   ZOOM
 ========================= */
 
-.zoomControls{
+.zoom-controls{
   position:absolute;
-
-  right:15px;
-  bottom:15px;
-
-  z-index:10;
-
+  right:14px;
+  bottom:88px;
+  z-index:900;
   display:flex;
+  flex-direction:column;
   gap:7px;
 }
 
-.zoomControls button{
-  width:46px;
-  height:46px;
-
-  border-radius:16px;
-
-  background:
-    rgba(255,255,255,.88);
-
+.zoom-controls button{
+  width:45px;
+  height:45px;
+  border-radius:14px;
+  background:rgba(255,255,255,.88);
   backdrop-filter:blur(15px);
-
-  box-shadow:
-    0 5px 20px rgba(0,0,0,.12);
-
+  box-shadow:0 5px 20px rgba(0,0,0,.12);
   font-size:20px;
 }
 
-.pageLabel{
+.page-controls{
   position:absolute;
-
   left:50%;
   bottom:16px;
-
-  transform:
-    translateX(-50%);
-
-  padding:9px 15px;
-
-  border-radius:15px;
-
-  background:
-    rgba(255,255,255,.88);
-
-  backdrop-filter:blur(15px);
-
-  font-size:13px;
-
-  z-index:10;
+  transform:translateX(-50%);
+  z-index:900;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  padding:7px;
+  border-radius:17px;
+  background:rgba(255,255,255,.88);
+  backdrop-filter:blur(20px);
+  box-shadow:0 7px 30px rgba(0,0,0,.13);
 }
 
+.page-controls button{
+  width:38px;
+  height:38px;
+  border-radius:11px;
+  background:#f0f0f2;
+}
+
+.page-number{
+  min-width:70px;
+  text-align:center;
+  font-weight:700;
+  font-size:13px;
+}
 
 /* =========================
-   SETTINGS
+   EMPTY / SETTINGS
 ========================= */
 
-.settingsBox{
-  width:min(700px,100%);
+.center{
+  display:grid;
+  place-items:center;
+  min-height:300px;
+  color:#777;
+}
+
+.settings{
+  max-width:800px;
+  padding:25px;
   margin:auto;
 }
 
-.settingCard{
-  padding:20px;
-
-  margin-bottom:12px;
-
+.setting-card{
+  background:white;
   border-radius:22px;
-
-  background:#fff;
+  padding:20px;
+  margin-bottom:14px;
 }
 
-.settingTitle{
-  margin-bottom:10px;
-
-  font-weight:800;
+.setting-card h3{
+  margin-top:0;
 }
 
-.settingButton{
-  padding:12px 16px;
-
-  margin:4px 0;
-
-  border-radius:13px;
-
-  background:#eee;
+.danger{
+  background:#ff3b30!important;
+  color:white!important;
 }
-
 
 /* =========================
-   DARK MODE
+   DARK
 ========================= */
 
 body.dark{
@@ -810,550 +596,370 @@ body.dark{
 }
 
 body.dark .topbar,
-body.dark .noteTop{
-  color:#fff;
-
-  background:
-    rgba(30,30,30,.88);
-
-  border-color:#333;
+body.dark .note-topbar{
+  background:rgba(25,25,28,.86);
+  color:#eee;
 }
 
-body.dark .folderCard,
-body.dark .noteCard,
-body.dark .settingCard{
-  color:#fff;
-  background:#1e1e1e;
-}
-
-body.dark .iconBtn,
-body.dark .backBtn,
+body.dark .card,
+body.dark .setting-card,
 body.dark .tool,
-body.dark .sizeSelect,
-body.dark .pageControls button{
-  color:#fff;
-  background:#2b2b2b;
+body.dark .size-wrap{
+  background:#222;
+  color:#eee;
 }
 
-body.dark .boardViewport{
-  background-color:#171717;
+body.dark .board-viewport{
+  background:#333;
+}
 
+body.dark .board-world{
+  background-color:#181818;
   background-image:
-    radial-gradient(
-      circle,
-      #444 1px,
-      transparent 1px
-    );
+    radial-gradient(circle,rgba(255,255,255,.12) 1px,transparent 1px);
 }
 
-body.dark .zoomControls button,
-body.dark .pageLabel{
+body.dark .login-card{
+  background:rgba(30,30,35,.85);
   color:#fff;
-  background:rgba(35,35,35,.9);
 }
 
+body.dark .login-card input{
+  background:#222;
+  color:#fff;
+}
+
+body.dark .primary{
+  background:#fff;
+  color:#111;
+}
+
+body.dark .clock{
+  background:#222;
+  color:#fff;
+}
 
 /* =========================
    MOBILE
 ========================= */
 
 @media(max-width:700px){
-
-  .main{
-    padding:16px;
+  .topbar{
+    height:64px;
   }
 
-  .welcome{
-    font-size:29px;
-  }
-
-  .rankName{
-    font-size:25px;
-  }
-
-  .noteTitleInput{
-    width:120px;
-    max-width:120px;
-  }
-
-  .noteTop{
-    gap:4px;
-  }
-
-  .tool{
-    min-width:38px;
-  }
-
-  .pageControls{
+  .clock{
     display:none;
   }
 
-  .clockChip{
-    font-size:11px;
-    padding:7px 9px;
+  .home,
+  .folder-page{
+    padding:15px;
   }
 
+  .hero h2{
+    font-size:27px;
+  }
+
+  .note-topbar{
+    height:62px;
+  }
+
+  .board-viewport{
+    top:62px;
+  }
+
+  .note-title{
+    max-width:130px;
+  }
+
+  .tool{
+    min-width:42px;
+  }
 }
-
-
-/* =========================
-   SAFETY
-========================= */
-
-canvas{
-  -webkit-touch-callout:none;
-}
-
 </style>
 </head>
 
-
 <body>
 
+<!-- ================= LOGIN ================= -->
 
-<!-- =========================
-     LOGIN
-========================= -->
+<section id="loginScreen">
+  <div class="login-card">
+    <div class="logo">📚</div>
+    <h1>Destination Note</h1>
+    <p id="loginDescription">勉強を記録して、自分だけのノートを作ろう。</p>
 
-<div id="loginScreen">
+    <input id="loginName" type="text" placeholder="名前">
+    <input id="loginPassword" type="password" placeholder="パスワード">
 
-  <div class="loginBox">
+    <button class="primary" id="loginButton">はじめる</button>
 
-    <div class="logo">
-      Destination Note
-    </div>
-
-    <div class="sub">
-      自分だけの勉強ノート
-    </div>
-
-    <input
-      id="loginName"
-      class="loginInput"
-      placeholder="名前"
-      autocomplete="username">
-
-    <input
-      id="loginPassword"
-      class="loginInput"
-      type="password"
-      placeholder="パスワード"
-      autocomplete="current-password">
-
-    <button
-      class="primary"
-      onclick="login()">
-
-      はじめる
-
-    </button>
-
+    <p style="font-size:12px;margin-top:15px;">
+      ※データはこの端末のブラウザに保存されます。
+    </p>
   </div>
+</section>
 
-</div>
+<!-- ================= APP ================= -->
 
+<div id="app" class="hidden">
 
-<!-- =========================
-     APP
-========================= -->
+  <!-- HOME -->
+  <section id="homeScreen" class="screen hidden">
 
-<div
-  id="app"
-  class="hidden">
+    <header class="topbar">
+      <div class="topbar-title">Destination Note</div>
+      <div class="clock" id="homeClock">00:00:00</div>
+      <button class="icon-btn" id="settingsBtn">⚙️</button>
+    </header>
 
-  <header class="topbar">
+    <main class="home">
 
-    <div class="brand">
-      Destination Note
-    </div>
+      <div class="hero">
+        <small>WELCOME</small>
+        <h2 id="welcomeName">こんにちは</h2>
 
-    <div class="topRight">
+        <div class="study-time" id="studyTime">
+          00:00:00
+        </div>
 
-      <div
-        id="clockChip"
-        class="clockChip">
+        <div>サイト滞在中の学習時間</div>
 
-        00:00:00
+        <div class="rank" id="rankText">
+          🥉 ブロンズ
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-head">
+          <h3>📚 ノート</h3>
+          <button class="action" id="openRootBtn">開く</button>
+        </div>
+
+        <div class="cards" id="recentNotes"></div>
+      </div>
+
+      <div class="section">
+        <div class="section-head">
+          <h3>📁 フォルダ</h3>
+        </div>
+
+        <div class="cards" id="homeFolders"></div>
+      </div>
+
+    </main>
+  </section>
+
+  <!-- FOLDER -->
+  <section id="folderScreen" class="screen hidden">
+
+    <header class="topbar">
+      <button class="icon-btn" id="folderBackBtn">‹</button>
+      <div class="topbar-title" id="folderTitle">フォルダ</div>
+      <div class="clock" id="folderClock">00:00:00</div>
+      <button class="icon-btn" id="folderHomeBtn">⌂</button>
+    </header>
+
+    <main class="folder-page">
+
+      <div class="breadcrumb" id="breadcrumb"></div>
+
+      <div class="actions">
+        <button class="action" id="newFolderBtn">＋ フォルダ</button>
+        <button class="action" id="newNoteBtn">＋ ノート</button>
+      </div>
+
+      <div class="section">
+        <div class="cards" id="folderContents"></div>
+      </div>
+
+    </main>
+  </section>
+
+  <!-- NOTE -->
+  <section id="noteScreen" class="screen hidden">
+
+    <header class="note-topbar">
+
+      <button class="icon-btn" id="noteBackBtn">‹</button>
+
+      <input id="noteTitle" class="note-title" value="新しいノート">
+
+      <div class="tool-scroll">
+
+        <button class="tool active" data-tool="pencil">
+          ✏️
+        </button>
+
+        <button class="tool" data-tool="highlighter">
+          🖍️
+        </button>
+
+        <button class="tool" data-tool="pixel">
+          🧽
+        </button>
+
+        <button class="tool" data-tool="objectEraser">
+          🗑️
+        </button>
+
+        <button class="tool" data-tool="hand">
+          ✋
+        </button>
+
+        <button class="tool" data-tool="text">
+          T
+        </button>
+
+        <button class="tool" data-tool="sticky">
+          📌
+        </button>
+
+        <button class="tool" id="imageBtn">
+          🖼️
+        </button>
+
+        <div class="color-wrap">
+          <input type="color" id="colorPicker" value="#111111">
+        </div>
+
+        <div class="size-wrap">
+          <span>サイズ</span>
+          <input id="sizeRange"
+                 type="range"
+                 min="2"
+                 max="80"
+                 value="5">
+          <span id="sizeValue">5</span>
+        </div>
+
+        <button class="tool" id="clearBtn">
+          🗑
+        </button>
+
+      </div>
+    </header>
+
+    <input
+      id="imageInput"
+      type="file"
+      accept="image/*"
+      class="hidden"
+    >
+
+    <div class="board-viewport" id="boardViewport">
+
+      <div class="board-world" id="boardWorld">
+
+        <svg id="drawSvg"
+             viewBox="0 0 10000 7000"
+             width="10000"
+             height="7000">
+        </svg>
+
+        <div id="objectLayer"></div>
 
       </div>
 
-      <button
-        class="iconBtn"
-        onclick="showSettings()">
-
-        ⚙️
-
-      </button>
-
     </div>
 
-  </header>
-
-
-  <main
-    id="main"
-    class="main">
-  </main>
-
-</div>
-
-
-<!-- =========================
-     NOTE
-========================= -->
-
-<div
-  id="noteScreen"
-  class="hidden">
-
-
-  <div class="noteTop">
-
-    <button
-      class="iconBtn"
-      onclick="closeNote()">
-
-      ‹
-
-    </button>
-
-
-    <input
-      id="noteTitleInput"
-      class="noteTitleInput"
-      onchange="saveNoteTitle()">
-
-
-    <div class="toolGroup">
-
-
-      <!-- Pencil -->
-
-      <button
-        class="tool active"
-        data-tool="pencil"
-        onclick="setTool('pencil')">
-
-        ✏️
-
-      </button>
-
-
-      <!-- Highlighter -->
-
-      <button
-        class="tool"
-        data-tool="highlighter"
-        onclick="setTool('highlighter')">
-
-        🖍️
-
-      </button>
-
-
-      <!-- Eraser -->
-
-      <button
-        class="tool"
-        data-tool="eraser"
-        onclick="setTool('eraser')">
-
-        🧽
-
-      </button>
-
-
-      <!-- Object eraser -->
-
-      <button
-        class="tool"
-        data-tool="objectEraser"
-        onclick="setTool('objectEraser')">
-
-        🗑️
-
-      </button>
-
-
-      <!-- Hand -->
-
-      <button
-        class="tool"
-        data-tool="hand"
-        onclick="setTool('hand')">
-
-        ✋
-
-      </button>
-
-
-      <!-- Text -->
-
-      <button
-        class="tool"
-        data-tool="text"
-        onclick="setTool('text')">
-
-        T
-
-      </button>
-
-
-      <!-- Sticky -->
-
-      <button
-        class="tool"
-        data-tool="sticky"
-        onclick="setTool('sticky')">
-
-        🟨
-
-      </button>
-
-
-      <!-- Rectangle -->
-
-      <button
-        class="tool"
-        data-tool="rect"
-        onclick="setTool('rect')">
-
-        ▭
-
-      </button>
-
-
-      <!-- Circle -->
-
-      <button
-        class="tool"
-        data-tool="circle"
-        onclick="setTool('circle')">
-
-        ○
-
-      </button>
-
-
-      <!-- Arrow -->
-
-      <button
-        class="tool"
-        data-tool="arrow"
-        onclick="setTool('arrow')">
-
-        ➜
-
-      </button>
-
-
-      <!-- Image -->
-
-      <button
-        class="tool"
-        data-tool="image"
-        onclick="chooseImage()">
-
-        🖼️
-
-      </button>
-
-
-      <!-- Full erase -->
-
-      <button
-        class="tool"
-        onclick="fullErase()">
-
-        💥
-
-      </button>
-
-
-      <!-- Color -->
-
-      <input
-        id="colorInput"
-        class="colorInput"
-        type="color"
-        value="#111111"
-        onchange="currentColor=this.value">
-
-
-      <!-- Pen size -->
-
-      <select
-        id="sizeSelect"
-        class="sizeSelect"
-        onchange="currentSize=Number(this.value)">
-
-        <option value="2">
-          線 2
-        </option>
-
-        <option value="4" selected>
-          線 4
-        </option>
-
-        <option value="8">
-          線 8
-        </option>
-
-        <option value="14">
-          線 14
-        </option>
-
-        <option value="20">
-          線 20
-        </option>
-
-      </select>
-
-
-      <!-- Text size -->
-
-      <select
-        id="fontSizeSelect"
-        class="sizeSelect"
-        onchange="currentFontSize=Number(this.value)">
-
-        <option value="12">
-          文字 12
-        </option>
-
-        <option value="16">
-          文字 16
-        </option>
-
-        <option value="20" selected>
-          文字 20
-        </option>
-
-        <option value="28">
-          文字 28
-        </option>
-
-        <option value="36">
-          文字 36
-        </option>
-
-        <option value="48">
-          文字 48
-        </option>
-
-        <option value="64">
-          文字 64
-        </option>
-
-      </select>
-
-
-      <input
-        id="imageInput"
-        type="file"
-        accept="image/*"
-        style="display:none"
-        onchange="insertImage(event)">
-
+    <div class="zoom-controls">
+      <button id="zoomIn">＋</button>
+      <button id="zoomReset">100%</button>
+      <button id="zoomOut">−</button>
     </div>
 
+    <div class="page-controls">
 
-    <div class="pageControls">
+      <button id="prevPage">‹</button>
 
-      <button onclick="previousPage()">
-        ‹
-      </button>
-
-      <button onclick="nextPage()">
-        ›
-      </button>
-
-      <button onclick="addPage()">
-        ＋
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div
-    id="boardViewport"
-    class="boardViewport">
-
-
-    <div
-      id="boardWorld"
-      class="boardWorld">
-
-
-      <canvas
-        id="boardCanvas"
-        class="boardCanvas"
-        width="10000"
-        height="10000">
-      </canvas>
-
-
-      <div
-        id="objectLayer"
-        class="objectLayer">
+      <div class="page-number" id="pageNumber">
+        1 / 1
       </div>
 
+      <button id="nextPage">›</button>
+
+      <button id="addPage">＋</button>
 
     </div>
 
+  </section>
 
-    <div class="zoomControls">
+  <!-- SETTINGS -->
 
-      <button onclick="zoomOut()">
-        −
-      </button>
+  <section id="settingsScreen" class="screen hidden">
 
-      <button onclick="resetView()">
-        ⌂
-      </button>
+    <header class="topbar">
+      <button class="icon-btn" id="settingsBack">‹</button>
+      <div class="topbar-title">設定</div>
+    </header>
 
-      <button onclick="zoomIn()">
-        ＋
-      </button>
+    <main class="settings">
 
-    </div>
+      <div class="setting-card">
+        <h3>🌙 外観</h3>
+        <button class="action light" id="darkToggle">
+          ダークモード切替
+        </button>
+      </div>
 
+      <div class="setting-card">
+        <h3>💾 データ</h3>
 
-    <div
-      id="pageLabel"
-      class="pageLabel">
+        <button class="action light" id="exportBtn">
+          バックアップを書き出す
+        </button>
 
-      1 / 1
+        <button class="action light" id="importBtn">
+          バックアップを読み込む
+        </button>
 
-    </div>
+        <input
+          id="importInput"
+          type="file"
+          accept=".json"
+          class="hidden"
+        >
+      </div>
 
+      <div class="setting-card">
+        <h3>👤 アカウント</h3>
 
-  </div>
+        <button class="action light" id="logoutBtn">
+          ログアウト
+        </button>
+      </div>
+
+      <div class="setting-card">
+        <h3>⚠️ データ削除</h3>
+
+        <button class="action danger" id="resetBtn">
+          すべて削除
+        </button>
+      </div>
+
+    </main>
+  </section>
 
 </div>
-
 
 <script>
-
+"use strict";
 
 /* =========================================================
    STORAGE
 ========================================================= */
 
-const STORAGE_KEY =
-  "destinationNote_v1";
+const STORAGE_KEY = "destinationNote_v1";
 
+const WORLD_W = 10000;
+const WORLD_H = 7000;
 
 let data = {
-
   name:"",
-
   password:"",
-
   totalSeconds:0,
-
   folders:[
     {
       id:"root",
@@ -1363,1414 +969,1083 @@ let data = {
       created:Date.now()
     }
   ],
-
   notes:[],
-
   settings:{
     dark:false
   }
-
 };
 
+function uid(prefix="id"){
+  if(window.crypto && crypto.randomUUID){
+    return prefix + "_" + crypto.randomUUID();
+  }
 
-let currentFolderId =
-  "root";
+  return prefix + "_" +
+    Date.now().toString(36) +
+    Math.random().toString(36).slice(2);
+}
 
-let currentNoteId =
-  null;
-
-let currentPageIndex =
-  0;
-
-
-/* =========================================================
-   TOOLS
-========================================================= */
-
-let currentTool =
-  "pencil";
-
-let currentColor =
-  "#111111";
-
-let currentSize =
-  4;
-
-let currentFontSize =
-  20;
-
-
-/* =========================================================
-   BOARD
-========================================================= */
-
-let zoom = 1;
-
-let panX = 0;
-
-let panY = 0;
-
-
-/* =========================================================
-   DRAW STATE
-========================================================= */
-
-let isDrawing =
-  false;
-
-let drawingPointerId =
-  null;
-
-let lastDrawPoint =
-  null;
-
-
-/* =========================================================
-   PINCH
-========================================================= */
-
-const activePointers =
-  new Map();
-
-let pinchData =
-  null;
-
-
-/* =========================================================
-   STUDY CLOCK
-========================================================= */
-
-let sessionStartedAt =
-  null;
-
-let clockInterval =
-  null;
-
-
-/* =========================================================
-   SAVE
-========================================================= */
-
-let saveTimer =
-  null;
-
-
-/* =========================================================
-   ELEMENTS
-========================================================= */
-
-const canvas =
-  document.getElementById(
-    "boardCanvas"
+function saveData(){
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(data)
   );
-
-const ctx =
-  canvas.getContext("2d");
-
-const viewport =
-  document.getElementById(
-    "boardViewport"
-  );
-
-const world =
-  document.getElementById(
-    "boardWorld"
-  );
-
-const objectLayer =
-  document.getElementById(
-    "objectLayer"
-  );
-
-
-/* =========================================================
-   LOAD
-========================================================= */
+}
 
 function loadData(){
 
-  const raw =
-    localStorage.getItem(
-      STORAGE_KEY
-    );
-
-  if(!raw){
-    return;
-  }
-
-
   try{
 
-    const saved =
+    const raw =
+      localStorage.getItem(STORAGE_KEY);
+
+    if(!raw) return;
+
+    const parsed =
       JSON.parse(raw);
 
-
     data = {
-
       ...data,
-
-      ...saved
-
+      ...parsed,
+      settings:{
+        ...data.settings,
+        ...(parsed.settings || {})
+      }
     };
-
 
     if(!Array.isArray(data.folders)){
       data.folders=[];
     }
 
+    if(!data.folders.some(f=>f.id==="root")){
+      data.folders.unshift({
+        id:"root",
+        name:"マイノート",
+        icon:"📚",
+        parent:null,
+        created:Date.now()
+      });
+    }
 
     if(!Array.isArray(data.notes)){
       data.notes=[];
     }
 
+    normalizeNotes();
 
-    /*
-      旧データ互換
-    */
+  }catch(e){
 
-    data.notes.forEach(
-      note=>{
+    console.error(e);
 
-        if(!note.pages){
+  }
 
-          note.pages=[{
+}
 
-            image:
-              note.image || null,
+function normalizeNotes(){
 
-            elements:
-              note.elements || [],
+  data.notes.forEach(note=>{
 
-            strokes:
-              note.strokes || []
+    if(!note.id){
+      note.id=uid("note");
+    }
 
-          }];
+    if(!note.folder){
+      note.folder="root";
+    }
 
-        }
+    if(!Array.isArray(note.pages)){
 
+      note.pages=[{
+        strokes:Array.isArray(note.strokes)
+          ? note.strokes
+          : [],
+        elements:Array.isArray(note.elements)
+          ? note.elements
+          : [],
+        image:note.image || null
+      }];
 
-        note.pages.forEach(
-          page=>{
+    }
 
-            if(
-              !Array.isArray(
-                page.elements
-              )
-            ){
-              page.elements=[];
-            }
+    note.pages.forEach(page=>{
 
-            if(
-              !Array.isArray(
-                page.strokes
-              )
-            ){
-              page.strokes=[];
-            }
+      if(!Array.isArray(page.strokes)){
+        page.strokes=[];
+      }
 
+      if(!Array.isArray(page.elements)){
+        page.elements=[];
+      }
+
+      page.strokes =
+        page.strokes.map(s=>{
+
+          if(!s.points){
+            s.points=[];
           }
-        );
+
+          return {
+            id:s.id || uid("stroke"),
+            tool:s.tool || "pencil",
+            color:s.color || "#111111",
+            size:Number(s.size)||5,
+            opacity:
+              s.opacity === undefined
+                ? 1
+                : Number(s.opacity),
+            points:s.points
+          };
+
+        });
+
+      page.elements =
+        page.elements.map(el=>{
+
+          return {
+            ...el,
+            id:el.id || uid("obj"),
+            x:Number(el.x ?? el.left ?? 500),
+            y:Number(el.y ?? el.top ?? 500),
+            width:Number(el.width)||300,
+            height:Number(el.height)||100,
+            fontSize:Number(
+              el.fontSize || el.size || 28
+            ),
+            color:el.color || "#111111"
+          };
+
+        });
+
+      /* 古いページ画像を画像オブジェクトへ変換 */
+
+      if(
+        page.image &&
+        !page.elements.some(
+          e=>e.type==="image"
+        )
+      ){
+
+        page.elements.push({
+          id:uid("image"),
+          type:"image",
+          x:1000,
+          y:500,
+          width:1200,
+          height:1600,
+          src:page.image
+        });
 
       }
-    );
 
+    });
 
-  }catch(error){
-
-    console.error(
-      "データ読み込みエラー",
-      error
-    );
-
-  }
+  });
 
 }
-
-
-/* =========================================================
-   SAVE
-========================================================= */
-
-function saveData(){
-
-  try{
-
-    localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify(data)
-    );
-
-  }catch(error){
-
-    console.error(
-      "保存エラー",
-      error
-    );
-
-    alert(
-      "保存できませんでした。画像を大量に貼っている場合は、画像を減らしてみてね。"
-    );
-
-  }
-
-}
-
-
-function autoSave(){
-
-  clearTimeout(
-    saveTimer
-  );
-
-  saveTimer =
-    setTimeout(
-      saveData,
-      300
-    );
-
-}
-
 
 /* =========================================================
    LOGIN
 ========================================================= */
 
+let loggedIn=false;
+
+const loginScreen =
+  document.getElementById("loginScreen");
+
+const app =
+  document.getElementById("app");
+
+const loginName =
+  document.getElementById("loginName");
+
+const loginPassword =
+  document.getElementById("loginPassword");
+
+const loginButton =
+  document.getElementById("loginButton");
+
+function updateLoginUI(){
+
+  if(data.name){
+
+    document.getElementById(
+      "loginDescription"
+    ).textContent =
+      "この端末のDestination Noteにログイン";
+
+    loginButton.textContent="ログイン";
+
+  }else{
+
+    document.getElementById(
+      "loginDescription"
+    ).textContent =
+      "勉強を記録して、自分だけのノートを作ろう。";
+
+    loginButton.textContent="はじめる";
+
+  }
+
+}
+
+loginButton.addEventListener(
+  "click",
+  login
+);
+
+loginPassword.addEventListener(
+  "keydown",
+  e=>{
+    if(e.key==="Enter") login();
+  }
+);
+
 function login(){
 
   const name =
-    document
-      .getElementById(
-        "loginName"
-      )
-      .value
-      .trim();
-
+    loginName.value.trim();
 
   const password =
-    document
-      .getElementById(
-        "loginPassword"
-      )
-      .value;
-
+    loginPassword.value;
 
   if(!name || !password){
 
-    alert(
-      "名前とパスワードを入力してね"
-    );
-
+    alert("名前とパスワードを入力してね。");
     return;
 
   }
 
+  if(data.name){
 
-  /*
-    初回
-  */
+    if(
+      name!==data.name ||
+      password!==data.password
+    ){
 
-  if(!data.name){
+      alert("名前またはパスワードが違います。");
+      return;
 
-    data.name =
-      name;
+    }
 
-    data.password =
-      password;
+  }else{
+
+    data.name=name;
+    data.password=password;
 
     saveData();
 
   }
 
+  loggedIn=true;
 
-  /*
-    ログイン確認
-  */
+  loginScreen.classList.add("hidden");
+  app.classList.remove("hidden");
 
-  else if(
+  showScreen("homeScreen");
 
-    data.name !== name ||
-    data.password !== password
-
-  ){
-
-    alert(
-      "名前またはパスワードが違います"
-    );
-
-    return;
-
-  }
-
-
-  document
-    .getElementById(
-      "loginScreen"
-    )
-    .classList.add(
-      "hidden"
-    );
-
-
-  document
-    .getElementById(
-      "app"
-    )
-    .classList.remove(
-      "hidden"
-    );
-
-
-  applyDark();
-
-  startStudyClock();
-
-  showHome();
+  startStudyTracking();
+  updateHome();
 
 }
-
 
 /* =========================================================
-   STUDY CLOCK
+   SCREEN
 ========================================================= */
 
-function getTotalStudySeconds(){
+const screens=[
+  "homeScreen",
+  "folderScreen",
+  "noteScreen",
+  "settingsScreen"
+];
 
-  if(sessionStartedAt){
+function showScreen(id){
 
-    return (
-      data.totalSeconds +
-      Math.floor(
-        (Date.now() -
-          sessionStartedAt) /
-        1000
-      )
-    );
-
-  }
-
-  return data.totalSeconds;
-
-}
-
-
-function formatTime(seconds){
-
-  seconds =
-    Math.max(
-      0,
-      Math.floor(seconds)
-    );
-
-
-  const h =
-    Math.floor(
-      seconds / 3600
-    );
-
-  const m =
-    Math.floor(
-      (seconds % 3600) / 60
-    );
-
-  const s =
-    seconds % 60;
-
-
-  return [
-
-    String(h)
-      .padStart(2,"0"),
-
-    String(m)
-      .padStart(2,"0"),
-
-    String(s)
-      .padStart(2,"0")
-
-  ].join(":");
-
-}
-
-
-function startStudyClock(){
-
-  if(sessionStartedAt){
-    return;
-  }
-
-
-  sessionStartedAt =
-    Date.now();
-
-
-  updateClock();
-
-
-  clearInterval(
-    clockInterval
+  screens.forEach(
+    s=>{
+      document
+        .getElementById(s)
+        .classList.toggle(
+          "hidden",
+          s!==id
+        );
+    }
   );
 
-
-  clockInterval =
-    setInterval(
-      updateClock,
-      1000
-    );
-
 }
 
+/* =========================================================
+   STUDY TIMER
+========================================================= */
 
-function stopStudyClock(){
+let trackingStart=null;
 
-  if(!sessionStartedAt){
-    return;
-  }
+function startStudyTracking(){
 
+  if(!loggedIn) return;
 
-  data.totalSeconds =
-    getTotalStudySeconds();
+  if(
+    document.visibilityState==="visible" &&
+    trackingStart===null
+  ){
 
-
-  sessionStartedAt =
-    null;
-
-
-  saveData();
-
-}
-
-
-function updateClock(){
-
-  const total =
-    getTotalStudySeconds();
-
-
-  const chip =
-    document.getElementById(
-      "clockChip"
-    );
-
-
-  if(chip){
-
-    chip.textContent =
-      formatTime(total);
+    trackingStart=Date.now();
 
   }
 
-
-  updateRankCard();
-
 }
 
+function flushStudyTime(){
+
+  if(trackingStart===null) return;
+
+  const now=Date.now();
+
+  const seconds=Math.max(
+    0,
+    Math.floor(
+      (now-trackingStart)/1000
+    )
+  );
+
+  if(seconds>0){
+
+    data.totalSeconds += seconds;
+    saveData();
+
+  }
+
+  trackingStart =
+    document.visibilityState==="visible"
+      ? now
+      : null;
+
+}
 
 document.addEventListener(
   "visibilitychange",
   ()=>{
 
-    if(document.hidden){
+    if(!loggedIn) return;
 
-      stopStudyClock();
+    flushStudyTime();
 
-    }else{
+  }
+);
 
-      if(data.name){
+setInterval(
+  ()=>{
 
-        startStudyClock();
+    if(loggedIn){
 
-      }
+      updateStudyDisplay();
 
     }
 
-  }
+  },
+  250
 );
 
+function getLiveStudySeconds(){
 
-window.addEventListener(
-  "pagehide",
-  ()=>{
-    stopStudyClock();
-  }
-);
+  let total=data.totalSeconds;
 
+  if(
+    loggedIn &&
+    trackingStart!==null &&
+    document.visibilityState==="visible"
+  ){
 
-/* =========================================================
-   RANK
-========================================================= */
-
-function getRank(seconds){
-
-  const hours =
-    seconds / 3600;
-
-
-  if(hours < 10){
-
-    return {
-      name:"ブロンズ",
-      min:0,
-      max:10
-    };
-
-  }
-
-
-  if(hours < 30){
-
-    return {
-      name:"シルバー",
-      min:10,
-      max:30
-    };
-
-  }
-
-
-  if(hours < 60){
-
-    return {
-      name:"ゴールド",
-      min:30,
-      max:60
-    };
-
-  }
-
-
-  if(hours < 100){
-
-    return {
-      name:"プラチナ",
-      min:60,
-      max:100
-    };
-
-  }
-
-
-  if(hours < 200){
-
-    return {
-      name:"ビジネス",
-      min:100,
-      max:200
-    };
-
-  }
-
-
-  if(hours < 500){
-
-    return {
-      name:"ファースト",
-      min:200,
-      max:500
-    };
-
-  }
-
-
-  return {
-
-    name:"グランクラス",
-
-    min:500,
-
-    max:Infinity
-
-  };
-
-}
-
-
-function updateRankCard(){
-
-  const card =
-    document.getElementById(
-      "rankCard"
-    );
-
-
-  if(!card){
-    return;
-  }
-
-
-  const total =
-    getTotalStudySeconds();
-
-
-  const rank =
-    getRank(total);
-
-
-  const hours =
-    total / 3600;
-
-
-  let progress=100;
-
-
-  if(rank.max !== Infinity){
-
-    progress =
-      (
-        (hours-rank.min) /
-        (rank.max-rank.min)
-      ) * 100;
-
-  }
-
-
-  progress =
-    Math.max(
+    total += Math.max(
       0,
-      Math.min(
-        100,
-        progress
+      Math.floor(
+        (Date.now()-trackingStart)/1000
       )
     );
 
-
-  const name =
-    document.getElementById(
-      "rankName"
-    );
-
-
-  const time =
-    document.getElementById(
-      "rankTime"
-    );
-
-
-  const bar =
-    document.getElementById(
-      "rankProgress"
-    );
-
-
-  if(name){
-
-    name.textContent =
-      rank.name;
-
   }
 
+  return total;
+}
 
-  if(time){
+function formatTime(seconds){
 
-    time.textContent =
-      "学習時間 " +
-      formatTime(total);
+  seconds=Math.max(
+    0,
+    Math.floor(seconds)
+  );
 
-  }
+  const h =
+    Math.floor(seconds/3600);
 
+  const m =
+    Math.floor(
+      (seconds%3600)/60
+    );
 
-  if(bar){
+  const s =
+    seconds%60;
 
-    bar.style.width =
-      progress + "%";
+  return [
+    String(h).padStart(2,"0"),
+    String(m).padStart(2,"0"),
+    String(s).padStart(2,"0")
+  ].join(":");
+
+}
+
+function getRank(seconds){
+
+  const h=seconds/3600;
+
+  if(h<10)
+    return ["🥉","ブロンズ"];
+
+  if(h<30)
+    return ["🥈","シルバー"];
+
+  if(h<60)
+    return ["🥇","ゴールド"];
+
+  if(h<100)
+    return ["💎","プラチナ"];
+
+  if(h<200)
+    return ["💼","ビジネス"];
+
+  if(h<500)
+    return ["🚄","ファースト"];
+
+  return ["👑","グランクラス"];
+
+}
+
+function updateStudyDisplay(){
+
+  const time=
+    formatTime(
+      getLiveStudySeconds()
+    );
+
+  [
+    "studyTime",
+    "homeClock",
+    "folderClock"
+  ].forEach(id=>{
+
+    const el=
+      document.getElementById(id);
+
+    if(el) el.textContent=time;
+
+  });
+
+  const rank=
+    getRank(
+      getLiveStudySeconds()
+    );
+
+  const rankEl=
+    document.getElementById("rankText");
+
+  if(rankEl){
+
+    rankEl.textContent=
+      `${rank[0]} ${rank[1]}`;
 
   }
 
 }
-
 
 /* =========================================================
    HOME
 ========================================================= */
 
-function showHome(){
+function updateHome(){
 
-  currentFolderId =
-    "root";
+  document.getElementById(
+    "welcomeName"
+  ).textContent =
+    `こんにちは、${data.name}さん`;
 
-
-  const main =
-    document.getElementById(
-      "main"
-    );
-
-
-  main.innerHTML = `
-
-    <div class="hero">
-
-      <div class="welcome">
-
-        ${escapeHTML(data.name)}さん
-
-      </div>
-
-
-      <div
-        id="rankCard"
-        class="rankCard">
-
-        <div
-          id="rankName"
-          class="rankName">
-
-          ブロンズ
-
-        </div>
-
-
-        <div
-          id="rankTime"
-          class="rankTime">
-
-          学習時間 00:00:00
-
-        </div>
-
-
-        <div class="progressOuter">
-
-          <div
-            id="rankProgress"
-            class="progressInner">
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="sectionTitle">
-        ノート
-      </div>
-
-
-      <div
-        id="homeFolders"
-        class="folderGrid">
-      </div>
-
-    </div>
-
-  `;
-
-
-  renderRootFolders();
-
-  updateRankCard();
+  renderHomeFolders();
+  renderRecentNotes();
+  updateStudyDisplay();
 
 }
 
+function renderHomeFolders(){
 
-/* =========================================================
-   ROOT FOLDERS
-========================================================= */
+  const root=
+    getChildrenFolders("root");
 
-function renderRootFolders(){
-
-  const box =
+  const el=
     document.getElementById(
       "homeFolders"
     );
 
+  el.innerHTML="";
 
-  if(!box){
+  if(root.length===0){
+
+    el.innerHTML=
+      `<div class="center">
+        フォルダはまだありません
+      </div>`;
+
     return;
+
   }
 
+  root.forEach(folder=>{
 
-  box.innerHTML="";
+    const card=
+      document.createElement("div");
 
+    card.className="card";
 
-  const folders =
-    data.folders.filter(
-      folder =>
-        folder.parent === "root"
+    card.innerHTML=`
+      <div class="folder-icon">
+        ${folder.icon || "📁"}
+      </div>
+      <div class="card-title"></div>
+      <div class="card-sub">フォルダ</div>
+    `;
+
+    card.querySelector(
+      ".card-title"
+    ).textContent=folder.name;
+
+    card.onclick=()=>{
+      openFolder(folder.id);
+    };
+
+    el.appendChild(card);
+
+  });
+
+}
+
+function renderRecentNotes(){
+
+  const el=
+    document.getElementById(
+      "recentNotes"
     );
 
+  el.innerHTML="";
 
-  folders.forEach(
-    folder=>{
+  const notes=
+    [...data.notes]
+      .sort(
+        (a,b)=>
+          (b.updated||0)-
+          (a.updated||0)
+      )
+      .slice(0,8);
 
-      const count =
-        data.notes.filter(
-          note =>
-            note.folder ===
-            folder.id
-        ).length;
+  if(!notes.length){
 
+    el.innerHTML=
+      `<div class="center">
+        まだノートがありません
+      </div>`;
 
-      const div =
-        document.createElement(
-          "div"
-        );
+    return;
 
+  }
 
-      div.className =
-        "folderCard";
+  notes.forEach(note=>{
 
+    const card=
+      document.createElement("div");
 
-      div.innerHTML = `
+    card.className="card";
 
-        <div class="folderIcon">
+    card.innerHTML=`
+      <div style="font-size:30px">📝</div>
+      <div class="card-title"></div>
+      <div class="card-sub">ノート</div>
+    `;
 
-          ${folder.icon || "📁"}
+    card.querySelector(
+      ".card-title"
+    ).textContent=note.title;
 
-        </div>
+    card.onclick=()=>{
+      openNote(note.id);
+    };
 
+    el.appendChild(card);
 
-        <div class="folderName">
+  });
 
-          ${escapeHTML(
-            folder.name
-          )}
+}
 
-        </div>
+document.getElementById(
+  "openRootBtn"
+).onclick=()=>{
+  openFolder("root");
+};
 
+document.getElementById(
+  "settingsBtn"
+).onclick=()=>{
+  showScreen("settingsScreen");
+};
 
-        <div class="folderCount">
+/* =========================================================
+   FOLDERS
+========================================================= */
 
-          ${count} ノート
+let currentFolderId="root";
 
-        </div>
+function getChildrenFolders(parent){
 
-      `;
+  return data.folders.filter(
+    f=>f.parent===parent
+  );
 
+}
 
-      div.onclick =
-        ()=>openFolder(
-          folder.id
-        );
+function getFolder(id){
 
+  return data.folders.find(
+    f=>f.id===id
+  );
 
-      box.appendChild(
-        div
-      );
+}
+
+function openFolder(id){
+
+  currentFolderId=id;
+
+  renderFolder();
+
+  showScreen("folderScreen");
+
+}
+
+function renderFolder(){
+
+  const folder=
+    getFolder(currentFolderId);
+
+  if(!folder) return;
+
+  document.getElementById(
+    "folderTitle"
+  ).textContent=folder.name;
+
+  renderBreadcrumb();
+
+  const container=
+    document.getElementById(
+      "folderContents"
+    );
+
+  container.innerHTML="";
+
+  const folders=
+    getChildrenFolders(
+      currentFolderId
+    );
+
+  const notes=
+    data.notes.filter(
+      n=>n.folder===currentFolderId
+    );
+
+  folders.forEach(folder=>{
+
+    const card=
+      document.createElement("div");
+
+    card.className="card";
+
+    card.innerHTML=`
+      <div class="folder-icon">
+        ${folder.icon||"📁"}
+      </div>
+      <div class="card-title"></div>
+      <div class="card-sub">フォルダ</div>
+    `;
+
+    card.querySelector(
+      ".card-title"
+    ).textContent=folder.name;
+
+    card.onclick=()=>{
+      openFolder(folder.id);
+    };
+
+    container.appendChild(card);
+
+  });
+
+  notes.forEach(note=>{
+
+    const card=
+      document.createElement("div");
+
+    card.className="card";
+
+    card.innerHTML=`
+      <div class="folder-icon">📝</div>
+      <div class="card-title"></div>
+      <div class="card-sub">ノート</div>
+    `;
+
+    card.querySelector(
+      ".card-title"
+    ).textContent=note.title;
+
+    card.onclick=()=>{
+      openNote(note.id);
+    };
+
+    container.appendChild(card);
+
+  });
+
+  if(!folders.length && !notes.length){
+
+    container.innerHTML=
+      `<div class="center">
+        ここにはまだ何もありません
+      </div>`;
+
+  }
+
+}
+
+function renderBreadcrumb(){
+
+  const el=
+    document.getElementById(
+      "breadcrumb"
+    );
+
+  el.innerHTML="";
+
+  const path=[];
+
+  let current=
+    getFolder(currentFolderId);
+
+  while(current){
+
+    path.unshift(current);
+
+    current=
+      getFolder(current.parent);
+
+  }
+
+  path.forEach(
+    (folder,index)=>{
+
+      const btn=
+        document.createElement("button");
+
+      btn.textContent=
+        folder.name;
+
+      btn.onclick=()=>{
+        openFolder(folder.id);
+      };
+
+      el.appendChild(btn);
+
+      if(index<path.length-1){
+
+        const span=
+          document.createElement("span");
+
+        span.textContent="›";
+
+        el.appendChild(span);
+
+      }
 
     }
   );
 
-
-  const add =
-    document.createElement(
-      "div"
-    );
-
-
-  add.className =
-    "folderCard addCard";
-
-
-  add.innerHTML = `
-
-    <div class="folderIcon">
-      ＋
-    </div>
-
-    <div class="folderName">
-      フォルダを追加
-    </div>
-
-  `;
-
-
-  add.onclick =
-    ()=>createFolder(
-      "root"
-    );
-
-
-  box.appendChild(
-    add
-  );
-
 }
 
+document.getElementById(
+  "newFolderBtn"
+).onclick=()=>{
 
-/* =========================================================
-   FOLDER
-========================================================= */
+  const name=
+    prompt("フォルダ名を入力");
 
-function openFolder(id){
-
-  currentFolderId =
-    id;
-
-  renderFolder(id);
-
-}
-
-
-function renderFolder(id){
-
-  const folder =
-    data.folders.find(
-      f=>f.id===id
-    );
-
-
-  if(!folder){
-
-    showHome();
-
-    return;
-
-  }
-
-
-  const main =
-    document.getElementById(
-      "main"
-    );
-
-
-  main.innerHTML = `
-
-    <div class="folderHeader">
-
-      <button
-        class="backBtn"
-        onclick="goParentFolder()">
-
-        ‹ 戻る
-
-      </button>
-
-
-      <div class="folderTitle">
-
-        ${folder.icon || "📁"}
-
-        ${escapeHTML(
-          folder.name
-        )}
-
-      </div>
-
-    </div>
-
-
-    <div
-      id="folderItems"
-      class="itemGrid">
-    </div>
-
-  `;
-
-
-  const box =
-    document.getElementById(
-      "folderItems"
-    );
-
-
-  /*
-    子フォルダ
-  */
-
-  data.folders
-    .filter(
-      f=>f.parent===id
-    )
-    .forEach(
-      child=>{
-
-        const div =
-          document.createElement(
-            "div"
-          );
-
-
-        div.className =
-          "folderCard";
-
-
-        div.innerHTML = `
-
-          <div class="folderIcon">
-
-            ${child.icon || "📁"}
-
-          </div>
-
-
-          <div class="folderName">
-
-            ${escapeHTML(
-              child.name
-            )}
-
-          </div>
-
-
-          <div class="folderCount">
-
-            フォルダ
-
-          </div>
-
-        `;
-
-
-        div.onclick =
-          ()=>openFolder(
-            child.id
-          );
-
-
-        box.appendChild(
-          div
-        );
-
-      }
-    );
-
-
-  /*
-    ノート
-  */
-
-  data.notes
-    .filter(
-      n=>n.folder===id
-    )
-    .forEach(
-      note=>{
-
-        const div =
-          document.createElement(
-            "div"
-          );
-
-
-        div.className =
-          "noteCard";
-
-
-        div.innerHTML = `
-
-          <button
-            class="smallDelete"
-            onclick="
-              event.stopPropagation();
-              deleteNote('${note.id}')
-            ">
-
-            ×
-
-          </button>
-
-
-          <div class="noteIcon">
-            📝
-          </div>
-
-
-          <div class="noteTitle">
-
-            ${escapeHTML(
-              note.title
-            )}
-
-          </div>
-
-
-          <div class="noteDate">
-
-            更新
-            ${new Date(
-              note.updated
-            ).toLocaleDateString()}
-
-          </div>
-
-        `;
-
-
-        div.onclick =
-          ()=>openNote(
-            note.id
-          );
-
-
-        box.appendChild(
-          div
-        );
-
-      }
-    );
-
-
-  /*
-    フォルダ追加
-  */
-
-  const addFolder =
-    document.createElement(
-      "div"
-    );
-
-
-  addFolder.className =
-    "folderCard addCard";
-
-
-  addFolder.innerHTML = `
-
-    <div class="folderIcon">
-      ＋
-    </div>
-
-    <div class="folderName">
-      フォルダ
-    </div>
-
-  `;
-
-
-  addFolder.onclick =
-    ()=>createFolder(id);
-
-
-  box.appendChild(
-    addFolder
-  );
-
-
-  /*
-    ノート追加
-  */
-
-  const addNote =
-    document.createElement(
-      "div"
-    );
-
-
-  addNote.className =
-    "noteCard";
-
-
-  addNote.style.border =
-    "2px dashed #ccc";
-
-
-  addNote.style.background =
-    "transparent";
-
-
-  addNote.innerHTML = `
-
-    <div class="noteIcon">
-      ＋
-    </div>
-
-    <div class="noteTitle">
-      ノートを追加
-    </div>
-
-  `;
-
-
-  addNote.onclick =
-    ()=>createNote(id);
-
-
-  box.appendChild(
-    addNote
-  );
-
-}
-
-
-/* =========================================================
-   PARENT
-========================================================= */
-
-function goParentFolder(){
-
-  const folder =
-    data.folders.find(
-      f=>f.id===currentFolderId
-    );
-
-
-  if(
-    !folder ||
-    folder.parent===null
-  ){
-
-    showHome();
-
-    return;
-
-  }
-
-
-  if(
-    folder.parent==="root"
-  ){
-
-    showHome();
-
-  }else{
-
-    openFolder(
-      folder.parent
-    );
-
-  }
-
-}
-
-
-/* =========================================================
-   CREATE FOLDER
-========================================================= */
-
-function createFolder(parent){
-
-  const name =
-    prompt(
-      "フォルダ名を入力"
-    );
-
-
-  if(!name){
-    return;
-  }
-
+  if(!name) return;
 
   data.folders.push({
-
-    id:
-      "folder_" +
-      Date.now() +
-      "_" +
-      Math.random(),
-
-    name:name,
-
+    id:uid("folder"),
+    name:name.trim(),
     icon:"📁",
-
-    parent:parent,
-
+    parent:currentFolderId,
     created:Date.now()
-
   });
 
+  saveData();
+  renderFolder();
+  updateHome();
 
-  autoSave();
+};
 
+document.getElementById(
+  "newNoteBtn"
+).onclick=()=>{
 
-  if(parent==="root"){
+  const note={
+    id:uid("note"),
+    folder:currentFolderId,
+    title:"新しいノート",
+    content:"",
+    created:Date.now(),
+    updated:Date.now(),
+    pages:[
+      {
+        strokes:[],
+        elements:[]
+      }
+    ]
+  };
 
-    showHome();
+  data.notes.push(note);
+
+  saveData();
+
+  openNote(note.id);
+
+};
+
+document.getElementById(
+  "folderBackBtn"
+).onclick=()=>{
+
+  const folder=
+    getFolder(currentFolderId);
+
+  if(
+    folder &&
+    folder.parent
+  ){
+
+    openFolder(folder.parent);
 
   }else{
 
-    renderFolder(parent);
+    showScreen("homeScreen");
 
   }
+
+};
+
+document.getElementById(
+  "folderHomeBtn"
+).onclick=()=>{
+  showScreen("homeScreen");
+};
+
+/* =========================================================
+   NOTE EDITOR
+========================================================= */
+
+let currentNote=null;
+let currentPage=0;
+
+let currentTool="pencil";
+let currentColor="#111111";
+let currentSize=5;
+
+let selectedObjectId=null;
+
+const viewport=
+  document.getElementById(
+    "boardViewport"
+  );
+
+const world=
+  document.getElementById(
+    "boardWorld"
+  );
+
+const svg=
+  document.getElementById(
+    "drawSvg"
+  );
+
+const objectLayer=
+  document.getElementById(
+    "objectLayer"
+  );
+
+/* CAMERA */
+
+let zoom=1;
+let panX=0;
+let panY=0;
+
+function centerBoard(){
+
+  const rect=
+    viewport.getBoundingClientRect();
+
+  zoom=1;
+
+  panX=
+    rect.width/2-
+    WORLD_W/2;
+
+  panY=
+    rect.height/2-
+    WORLD_H/2;
+
+  applyCamera();
 
 }
 
+function applyCamera(){
 
-/* =========================================================
-   CREATE NOTE
-========================================================= */
+  world.style.transform=
+    `translate3d(${panX}px,${panY}px,0) scale(${zoom})`;
 
-function createNote(folder){
+}
 
-  const title =
-    prompt(
-      "ノート名を入力",
-      "新しいノート"
-    );
+function clampZoom(z){
 
+  return Math.min(
+    4,
+    Math.max(.2,z)
+  );
 
-  if(!title){
-    return;
-  }
+}
 
+function screenToWorld(clientX,clientY){
 
-  const note={
+  const rect=
+    viewport.getBoundingClientRect();
 
-    id:
-      "note_" +
-      Date.now() +
-      "_" +
-      Math.random(),
+  return {
+    x:
+      (clientX-
+       rect.left-
+       panX)/zoom,
 
-    folder:folder,
-
-    title:title,
-
-    created:Date.now(),
-
-    updated:Date.now(),
-
-    pages:[
-
-      {
-
-        image:null,
-
-        elements:[],
-
-        strokes:[]
-
-      }
-
-    ]
-
+    y:
+      (clientY-
+       rect.top-
+       panY)/zoom
   };
 
+}
 
-  data.notes.push(
-    note
-  );
+/*
+  ズームの中心を維持
+*/
 
+function zoomAt(
+  newZoom,
+  clientX,
+  clientY
+){
 
-  autoSave();
+  newZoom=
+    clampZoom(newZoom);
 
-  openNote(
-    note.id
-  );
+  const rect=
+    viewport.getBoundingClientRect();
+
+  const sx=
+    clientX-rect.left;
+
+  const sy=
+    clientY-rect.top;
+
+  const wx=
+    (sx-panX)/zoom;
+
+  const wy=
+    (sy-panY)/zoom;
+
+  zoom=newZoom;
+
+  panX=sx-wx*zoom;
+  panY=sy-wy*zoom;
+
+  applyCamera();
 
 }
 
+document.getElementById(
+  "zoomIn"
+).onclick=()=>{
 
-/* =========================================================
-   DELETE NOTE
-========================================================= */
+  const r=
+    viewport.getBoundingClientRect();
 
-function deleteNote(id){
-
-  if(
-    !confirm(
-      "このノートを削除する？"
-    )
-  ){
-
-    return;
-
-  }
-
-
-  data.notes =
-    data.notes.filter(
-      n=>n.id!==id
-    );
-
-
-  autoSave();
-
-  renderFolder(
-    currentFolderId
+  zoomAt(
+    zoom*1.2,
+    r.left+r.width/2,
+    r.top+r.height/2
   );
 
-}
+};
 
+document.getElementById(
+  "zoomOut"
+).onclick=()=>{
+
+  const r=
+    viewport.getBoundingClientRect();
+
+  zoomAt(
+    zoom/1.2,
+    r.left+r.width/2,
+    r.top+r.height/2
+  );
+
+};
+
+document.getElementById(
+  "zoomReset"
+).onclick=()=>{
+  centerBoard();
+};
+
+viewport.addEventListener(
+  "wheel",
+  e=>{
+
+    e.preventDefault();
+
+    if(e.ctrlKey || e.metaKey){
+
+      const factor=
+        e.deltaY<0 ? 1.08 : .92;
+
+      zoomAt(
+        zoom*factor,
+        e.clientX,
+        e.clientY
+      );
+
+    }else{
+
+      panX-=e.deltaX;
+      panY-=e.deltaY;
+
+      applyCamera();
+
+    }
+
+  },
+  {passive:false}
+);
 
 /* =========================================================
    OPEN NOTE
@@ -2778,429 +2053,359 @@ function deleteNote(id){
 
 function openNote(id){
 
-  const note =
+  const note=
     data.notes.find(
       n=>n.id===id
     );
 
+  if(!note) return;
 
-  if(!note){
-    return;
+  currentNote=note;
+  currentPage=0;
+
+  document.getElementById(
+    "noteTitle"
+  ).value=note.title;
+
+  showScreen("noteScreen");
+
+  requestAnimationFrame(()=>{
+    centerBoard();
+    renderPage();
+  });
+
+}
+
+document.getElementById(
+  "noteBackBtn"
+).onclick=()=>{
+
+  if(currentNote){
+
+    currentNote.updated=Date.now();
+
   }
 
+  saveData();
+  updateHome();
 
-  currentNoteId =
-    id;
+  showScreen("folderScreen");
 
+  renderFolder();
 
-  currentPageIndex =
-    0;
-
-
-  zoom=1;
-
-
-  panX =
-    viewport.clientWidth/2 -
-    5000;
-
-
-  panY =
-    viewport.clientHeight/2 -
-    5000;
-
-
-  document
-    .getElementById(
-      "noteScreen"
-    )
-    .classList.remove(
-      "hidden"
-    );
-
-
-  document
-    .getElementById(
-      "noteTitleInput"
-    )
-    .value =
-    note.title;
-
-
-  setupBoard();
-
-}
-
+};
 
 /* =========================================================
-   CLOSE NOTE
+   TOOLS
 ========================================================= */
 
-function closeNote(){
-
-  saveCurrentNote();
-
-
-  document
-    .getElementById(
-      "noteScreen"
-    )
-    .classList.add(
-      "hidden"
-    );
-
-
-  currentNoteId =
-    null;
-
-
-  renderFolder(
-    currentFolderId
-  );
-
-}
-
-
-/* =========================================================
-   NOTE TITLE
-========================================================= */
-
-function saveNoteTitle(){
-
-  const note =
-    getCurrentNote();
-
-
-  if(!note){
-    return;
-  }
-
-
-  note.title =
-    document
-      .getElementById(
-        "noteTitleInput"
-      )
-      .value ||
-    "無題";
-
-
-  note.updated =
-    Date.now();
-
-
-  autoSave();
-
-}
-
-
-/* =========================================================
-   GET NOTE
-========================================================= */
-
-function getCurrentNote(){
-
-  return data.notes.find(
-    n=>n.id===currentNoteId
-  );
-
-}
-
-
-function getCurrentPage(){
-
-  const note =
-    getCurrentNote();
-
-
-  if(!note){
-    return null;
-  }
-
-
-  return note.pages[
-    currentPageIndex
-  ];
-
-}
-
-
-/* =========================================================
-   BOARD SETUP
-========================================================= */
-
-function setupBoard(){
-
-  drawBoard();
-
-  updateTransform();
-
-  updatePageLabel();
-
-}
-
-
-/* =========================================================
-   TRANSFORM
-========================================================= */
-
-function updateTransform(){
-
-  world.style.transform =
-    `
-      translate3d(
-        ${panX}px,
-        ${panY}px,
-        0
-      )
-      scale(${zoom})
-    `;
-
-}
-
-
-/* =========================================================
-   SCREEN → WORLD
-========================================================= */
-
-function screenToWorld(
-  clientX,
-  clientY
-){
-
-  const rect =
-    viewport.getBoundingClientRect();
-
-
-  return {
-
-    x:
-      (
-        clientX -
-        rect.left -
-        panX
-      ) / zoom,
-
-    y:
-      (
-        clientY -
-        rect.top -
-        panY
-      ) / zoom
-
-  };
-
-}
-
-
-/* =========================================================
-   DRAW BOARD
-========================================================= */
-
-function drawBoard(){
-
-  ctx.clearRect(
-    0,
-    0,
-    canvas.width,
-    canvas.height
-  );
-
-
-  const page =
-    getCurrentPage();
-
-
-  if(!page){
-    return;
-  }
-
-
-  /*
-    旧バージョンの画像
-  */
-
-  if(page.image){
-
-    const img =
-      new Image();
-
-
-    img.onload =
+document
+  .querySelectorAll(".tool[data-tool]")
+  .forEach(btn=>{
+
+    btn.addEventListener(
+      "click",
       ()=>{
 
-        ctx.drawImage(
-          img,
-          4400,
-          4150,
-          1200,
-          1700
+        setTool(
+          btn.dataset.tool
         );
 
-
-        drawStrokes(
-          page
-        );
-
-      };
-
-
-    img.src =
-      page.image;
-
-  }else{
-
-    drawStrokes(
-      page
+      }
     );
 
-  }
+  });
 
+function setTool(tool){
 
-  renderObjects(
-    page
-  );
+  currentTool=tool;
+
+  document
+    .querySelectorAll(
+      ".tool[data-tool]"
+    )
+    .forEach(btn=>{
+
+      btn.classList.toggle(
+        "active",
+        btn.dataset.tool===tool
+      );
+
+    });
+
+  viewport.style.cursor=
+    tool==="hand"
+      ? "grab"
+      : "crosshair";
 
 }
 
+document.getElementById(
+  "colorPicker"
+).addEventListener(
+  "input",
+  e=>{
 
-/* =========================================================
-   DRAW STROKES
-========================================================= */
+    currentColor=e.target.value;
 
-function drawStrokes(page){
+    /*
+      選択中のテキスト/付箋の色も変更
+    */
 
-  if(
-    !Array.isArray(
-      page.strokes
-    )
-  ){
-    return;
-  }
+    if(
+      currentNote &&
+      selectedObjectId
+    ){
 
+      const page=
+        currentNote.pages[currentPage];
 
-  page.strokes.forEach(
-    stroke=>{
-
-      if(
-        !stroke.points ||
-        stroke.points.length < 2
-      ){
-
-        return;
-
-      }
-
-
-      ctx.save();
-
-
-      ctx.lineCap =
-        "round";
-
-      ctx.lineJoin =
-        "round";
-
-
-      ctx.strokeStyle =
-        stroke.color ||
-        "#111";
-
-
-      ctx.lineWidth =
-        stroke.size ||
-        4;
-
-
-      if(
-        stroke.tool ===
-        "highlighter"
-      ){
-
-        ctx.globalAlpha =
-          .30;
-
-      }else{
-
-        ctx.globalAlpha =
-          1;
-
-      }
-
-
-      ctx.beginPath();
-
-
-      /*
-        なめらかに描画
-      */
-
-      ctx.moveTo(
-        stroke.points[0].x,
-        stroke.points[0].y
-      );
-
-
-      for(
-        let i=1;
-        i<stroke.points.length;
-        i++
-      ){
-
-        const p =
-          stroke.points[i];
-
-
-        ctx.lineTo(
-          p.x,
-          p.y
+      const obj=
+        page.elements.find(
+          o=>o.id===selectedObjectId
         );
 
+      if(obj){
+
+        obj.color=currentColor;
+
+        renderObjects();
+        saveData();
+
       }
 
+    }
 
-      ctx.stroke();
+  }
+);
 
-      ctx.restore();
+document.getElementById(
+  "sizeRange"
+).addEventListener(
+  "input",
+  e=>{
+
+    currentSize=
+      Number(e.target.value);
+
+    document.getElementById(
+      "sizeValue"
+    ).textContent=
+      currentSize;
+
+    /*
+      選択オブジェクトの文字サイズ変更
+    */
+
+    if(
+      currentNote &&
+      selectedObjectId
+    ){
+
+      const page=
+        currentNote.pages[currentPage];
+
+      const obj=
+        page.elements.find(
+          o=>o.id===selectedObjectId
+        );
+
+      if(
+        obj &&
+        (
+          obj.type==="text" ||
+          obj.type==="sticky"
+        )
+      ){
+
+        obj.fontSize=currentSize;
+
+        renderObjects();
+        saveData();
+
+      }
+
+    }
+
+  }
+);
+
+/* =========================================================
+   SVG DRAWING
+========================================================= */
+
+let drawing=null;
+
+let redrawQueued=false;
+
+function queueRender(){
+
+  if(redrawQueued) return;
+
+  redrawQueued=true;
+
+  requestAnimationFrame(
+    ()=>{
+
+      redrawQueued=false;
+
+      renderStrokes();
 
     }
   );
 
 }
 
+function pointsToPath(points){
 
-/* =========================================================
-   TOOL
-========================================================= */
+  if(!points || !points.length){
+    return "";
+  }
 
-function setTool(tool){
+  let d=
+    `M ${points[0].x.toFixed(2)} ${points[0].y.toFixed(2)}`;
 
-  currentTool =
-    tool;
+  for(let i=1;i<points.length;i++){
 
+    /*
+      少し滑らかにするための
+      中間点
+    */
 
-  document
-    .querySelectorAll(
-      ".tool"
-    )
-    .forEach(
-      button=>{
+    const p=points[i];
 
-        button.classList.toggle(
-          "active",
-          button.dataset.tool ===
-          tool
-        );
+    d+=
+      ` L ${p.x.toFixed(2)} ${p.y.toFixed(2)}`;
 
-      }
-    );
+  }
+
+  return d;
 
 }
 
+function renderStrokes(){
+
+  if(!currentNote) return;
+
+  const page=
+    currentNote.pages[currentPage];
+
+  /*
+    一度だけ描き直す。
+    CanvasではなくSVGなので
+    巨大なボードでも比較的軽い。
+  */
+
+  svg.replaceChildren();
+
+  const fragment=
+    document.createDocumentFragment();
+
+  page.strokes.forEach(
+    stroke=>{
+
+      if(
+        !stroke.points ||
+        stroke.points.length<2
+      ){
+        return;
+      }
+
+      const path=
+        document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "path"
+        );
+
+      path.setAttribute(
+        "d",
+        pointsToPath(stroke.points)
+      );
+
+      path.setAttribute(
+        "fill",
+        "none"
+      );
+
+      path.setAttribute(
+        "stroke",
+        stroke.color || "#111"
+      );
+
+      let width=
+        Number(stroke.size)||5;
+
+      let opacity=
+        stroke.opacity ?? 1;
+
+      if(stroke.tool==="highlighter"){
+
+        width*=3.5;
+        opacity=.27;
+
+      }
+
+      path.setAttribute(
+        "stroke-width",
+        width
+      );
+
+      path.setAttribute(
+        "stroke-opacity",
+        opacity
+      );
+
+      path.setAttribute(
+        "stroke-linecap",
+        "round"
+      );
+
+      path.setAttribute(
+        "stroke-linejoin",
+        "round"
+      );
+
+      fragment.appendChild(path);
+
+    }
+  );
+
+  svg.appendChild(fragment);
+
+}
 
 /* =========================================================
-   POINTER DOWN
+   SMOOTH POINTER DRAWING
 ========================================================= */
+
+const pointers=new Map();
+
+let panGesture=null;
+let pinchGesture=null;
+
+function distance(a,b){
+
+  return Math.hypot(
+    a.x-b.x,
+    a.y-b.y
+  );
+
+}
+
+function midpoint(a,b){
+
+  return {
+    x:(a.x+b.x)/2,
+    y:(a.y+b.y)/2
+  };
+
+}
+
+function getPointerList(){
+
+  return [...pointers.values()];
+
+}
 
 viewport.addEventListener(
   "pointerdown",
@@ -3208,8 +2413,7 @@ viewport.addEventListener(
 
     e.preventDefault();
 
-
-    activePointers.set(
+    pointers.set(
       e.pointerId,
       {
         x:e.clientX,
@@ -3217,2278 +2421,1421 @@ viewport.addEventListener(
       }
     );
 
+    viewport.setPointerCapture?.(
+      e.pointerId
+    );
 
     /*
-      2本指
+      2本指になったら
+      何をしていてもピンチへ
     */
 
-    if(
-      activePointers.size >= 2
-    ){
+    if(pointers.size>=2){
 
-      isDrawing=false;
+      drawing=null;
+      panGesture=null;
 
+      const pts=
+        getPointerList();
 
-      const pts =
-        [
-          ...activePointers.values()
-        ];
+      const a=pts[0];
+      const b=pts[1];
 
+      const mid=
+        midpoint(a,b);
 
-      const dx =
-        pts[0].x -
-        pts[1].x;
+      const rect=
+        viewport.getBoundingClientRect();
 
+      const mx=
+        mid.x-rect.left;
 
-      const dy =
-        pts[0].y -
-        pts[1].y;
+      const my=
+        mid.y-rect.top;
 
+      pinchGesture={
 
-      pinchData={
+        startDistance:
+          distance(a,b),
 
-        distance:
-          Math.hypot(
-            dx,
-            dy
-          ),
+        startZoom:zoom,
 
-        zoom:zoom,
+        worldX:
+          (mx-panX)/zoom,
 
-        center:{
-          x:
-            (
-              pts[0].x +
-              pts[1].x
-            ) / 2,
-
-          y:
-            (
-              pts[0].y +
-              pts[1].y
-            ) / 2
-
-        }
+        worldY:
+          (my-panY)/zoom
 
       };
-
 
       return;
 
     }
 
-
     /*
-      手のひら
+      オブジェクト上なら
+      オブジェクト処理側へ
     */
 
     if(
-      currentTool ===
-      "hand"
+      e.target.closest &&
+      e.target.closest(".board-object")
     ){
-
-      isDrawing=true;
-
-      drawingPointerId =
-        e.pointerId;
-
-
-      lastDrawPoint={
-
-        x:e.clientX,
-
-        y:e.clientY
-
-      };
-
-
-      viewport.setPointerCapture(
-        e.pointerId
-      );
-
 
       return;
 
     }
 
-
-    const p =
+    const point=
       screenToWorld(
         e.clientX,
         e.clientY
       );
 
+    /*
+      TEXT
+    */
+
+    if(currentTool==="text"){
+
+      createText(point);
+
+      pointers.delete(e.pointerId);
+
+      return;
+
+    }
 
     /*
-      テキスト
+      STICKY
+    */
+
+    if(currentTool==="sticky"){
+
+      createSticky(point);
+
+      pointers.delete(e.pointerId);
+
+      return;
+
+    }
+
+    /*
+      PIXEL ERASER
+    */
+
+    if(currentTool==="pixel"){
+
+      eraseAt(point);
+
+      return;
+
+    }
+
+    /*
+      OBJECT ERASER
+    */
+
+    if(currentTool==="objectEraser"){
+
+      eraseObjectAt(point);
+
+      pointers.delete(e.pointerId);
+
+      return;
+
+    }
+
+    /*
+      PEN / HIGHLIGHTER
     */
 
     if(
-      currentTool ===
-      "text"
+      currentTool==="pencil" ||
+      currentTool==="highlighter"
     ){
 
-      createObjectAt(
-        "text",
-        p.x,
-        p.y
+      startDrawing(
+        e.pointerId,
+        point
       );
 
       return;
 
     }
 
-
     /*
-      付箋
+      HAND
     */
 
-    if(
-      currentTool ===
-      "sticky"
-    ){
+    if(currentTool==="hand"){
 
-      createObjectAt(
-        "sticky",
-        p.x,
-        p.y
-      );
-
-      return;
+      panGesture={
+        pointerId:e.pointerId,
+        startX:e.clientX,
+        startY:e.clientY,
+        startPanX:panX,
+        startPanY:panY
+      };
 
     }
 
-
-    /*
-      オブジェクト消去
-    */
-
-    if(
-      currentTool ===
-      "objectEraser"
-    ){
-
-      eraseObjectAt(
-        p.x,
-        p.y
-      );
-
-      return;
-
-    }
-
-
-    /*
-      画像
-    */
-
-    if(
-      currentTool ===
-      "image"
-    ){
-
-      imagePlacePoint =
-        p;
-
-      chooseImage();
-
-      return;
-
-    }
-
-
-    /*
-      図形
-    */
-
-    if(
-
-      currentTool === "rect" ||
-
-      currentTool === "circle" ||
-
-      currentTool === "arrow"
-
-    ){
-
-      isDrawing=true;
-
-      drawingPointerId =
-        e.pointerId;
-
-      lastDrawPoint =
-        p;
-
-
-      viewport.setPointerCapture(
-        e.pointerId
-      );
-
-
-      return;
-
-    }
-
-
-    /*
-      鉛筆・蛍光ペン・消しゴム
-    */
-
-    if(
-
-      currentTool === "pencil" ||
-
-      currentTool === "highlighter" ||
-
-      currentTool === "eraser"
-
-    ){
-
-      isDrawing=true;
-
-      drawingPointerId =
-        e.pointerId;
-
-      lastDrawPoint =
-        p;
-
-
-      viewport.setPointerCapture(
-        e.pointerId
-      );
-
-
-      /*
-        消しゴム
-      */
-
-      if(
-        currentTool ===
-        "eraser"
-      ){
-
-        eraseStrokeAt(
-          p.x,
-          p.y
-        );
-
-        return;
-
-      }
-
-
-      /*
-        新しい線
-      */
-
-      const page =
-        getCurrentPage();
-
-
-      if(!page){
-        return;
-      }
-
-
-      page.strokes.push({
-
-        id:
-          "stroke_" +
-          Date.now() +
-          "_" +
-          Math.random(),
-
-        tool:
-          currentTool,
-
-        color:
-          currentColor,
-
-        size:
-          currentSize,
-
-        points:[
-          p
-        ]
-
-      });
-
-
-      drawBoard();
-
-    }
-
-  }
+  },
+  {passive:false}
 );
-
-
-/* =========================================================
-   POINTER MOVE
-========================================================= */
 
 viewport.addEventListener(
   "pointermove",
   e=>{
 
-    e.preventDefault();
-
-
-    /*
-      ポインター更新
-    */
-
-    if(
-      activePointers.has(
-        e.pointerId
-      )
-    ){
-
-      activePointers.set(
-        e.pointerId,
-        {
-          x:e.clientX,
-          y:e.clientY
-        }
-      );
-
-    }
-
-
-    /*
-      ピンチ
-    */
-
-    if(
-
-      activePointers.size >= 2 &&
-      pinchData
-
-    ){
-
-      const pts =
-        [
-          ...activePointers.values()
-        ];
-
-
-      const dx =
-        pts[0].x -
-        pts[1].x;
-
-
-      const dy =
-        pts[0].y -
-        pts[1].y;
-
-
-      const distance =
-        Math.hypot(
-          dx,
-          dy
-        );
-
-
-      const factor =
-        distance /
-        pinchData.distance;
-
-
-      const newZoom =
-        Math.max(
-          .25,
-          Math.min(
-            4,
-            pinchData.zoom *
-            factor
-          )
-        );
-
-
-      const rect =
-        viewport.getBoundingClientRect();
-
-
-      const centerX =
-        (
-          pts[0].x +
-          pts[1].x
-        ) / 2 -
-        rect.left;
-
-
-      const centerY =
-        (
-          pts[0].y +
-          pts[1].y
-        ) / 2 -
-        rect.top;
-
-
-      const worldX =
-        (
-          centerX -
-          panX
-        ) / zoom;
-
-
-      const worldY =
-        (
-          centerY -
-          panY
-        ) / zoom;
-
-
-      zoom =
-        newZoom;
-
-
-      panX =
-        centerX -
-        worldX * zoom;
-
-
-      panY =
-        centerY -
-        worldY * zoom;
-
-
-      updateTransform();
-
-
+    if(!pointers.has(e.pointerId)){
       return;
-
     }
 
-
-    /*
-      通常描画
-    */
-
-    if(
-
-      !isDrawing ||
-
-      e.pointerId !==
-      drawingPointerId
-
-    ){
-
-      return;
-
-    }
-
-
-    /*
-      手のひら
-    */
-
-    if(
-      currentTool ===
-      "hand"
-    ){
-
-      const dx =
-        e.clientX -
-        lastDrawPoint.x;
-
-
-      const dy =
-        e.clientY -
-        lastDrawPoint.y;
-
-
-      panX += dx;
-
-      panY += dy;
-
-
-      lastDrawPoint={
-
+    pointers.set(
+      e.pointerId,
+      {
         x:e.clientX,
-
         y:e.clientY
-
-      };
-
-
-      updateTransform();
-
-
-      return;
-
-    }
-
-
-    const p =
-      screenToWorld(
-        e.clientX,
-        e.clientY
-      );
-
-
-    /*
-      消しゴム
-    */
-
-    if(
-      currentTool ===
-      "eraser"
-    ){
-
-      eraseStrokeAt(
-        p.x,
-        p.y
-      );
-
-      return;
-
-    }
-
-
-    /*
-      図形
-    */
-
-    if(
-
-      currentTool === "rect" ||
-
-      currentTool === "circle" ||
-
-      currentTool === "arrow"
-
-    ){
-
-      drawBoard();
-
-
-      drawPreviewShape(
-        lastDrawPoint,
-        p
-      );
-
-
-      return;
-
-    }
-
-
-    /*
-      手書き
-    */
-
-    const page =
-      getCurrentPage();
-
-
-    if(!page){
-      return;
-    }
-
-
-    const stroke =
-      page.strokes[
-        page.strokes.length - 1
-      ];
-
-
-    if(!stroke){
-      return;
-    }
-
-
-    const last =
-      stroke.points[
-        stroke.points.length - 1
-      ];
-
-
-    const distance =
-      Math.hypot(
-        p.x-last.x,
-        p.y-last.y
-      );
-
-
-    /*
-      細かく点を追加
-    */
-
-    if(distance >= .5){
-
-      stroke.points.push(
-        p
-      );
-
-      drawBoard();
-
-    }
-
-  }
-);
-
-
-/* =========================================================
-   POINTER UP
-========================================================= */
-
-viewport.addEventListener(
-  "pointerup",
-  e=>{
-
-    e.preventDefault();
-
-
-    activePointers.delete(
-      e.pointerId
+      }
     );
 
+    /*
+      PINCH
+    */
 
     if(
-      e.pointerId !==
-      drawingPointerId
+      pinchGesture &&
+      pointers.size>=2
     ){
 
-      if(
-        activePointers.size < 2
-      ){
+      e.preventDefault();
 
-        pinchData=null;
+      const pts=
+        getPointerList();
 
-      }
+      const a=pts[0];
+      const b=pts[1];
+
+      const mid=
+        midpoint(a,b);
+
+      const rect=
+        viewport.getBoundingClientRect();
+
+      const mx=
+        mid.x-rect.left;
+
+      const my=
+        mid.y-rect.top;
+
+      const newDistance=
+        distance(a,b);
+
+      let newZoom=
+        pinchGesture.startZoom *
+        (
+          newDistance /
+          pinchGesture.startDistance
+        );
+
+      newZoom=
+        clampZoom(newZoom);
+
+      zoom=newZoom;
+
+      panX=
+        mx-
+        pinchGesture.worldX*
+        zoom;
+
+      panY=
+        my-
+        pinchGesture.worldY*
+        zoom;
+
+      applyCamera();
 
       return;
 
     }
 
-
     /*
-      図形確定
+      DRAW
     */
 
     if(
-
-      isDrawing &&
-
-      (
-        currentTool === "rect" ||
-        currentTool === "circle" ||
-        currentTool === "arrow"
-      )
-
+      drawing &&
+      drawing.pointerId===e.pointerId
     ){
 
-      const p =
+      e.preventDefault();
+
+      const point=
         screenToWorld(
           e.clientX,
           e.clientY
         );
 
+      const points=
+        drawing.stroke.points;
 
-      createShape(
-        currentTool,
-        lastDrawPoint,
-        p
-      );
-
-    }
-
-
-    isDrawing=false;
-
-    drawingPointerId=null;
-
-    lastDrawPoint=null;
-
-
-    if(
-      activePointers.size < 2
-    ){
-
-      pinchData=null;
-
-    }
-
-
-    autoSave();
-
-  }
-);
-
-
-/* =========================================================
-   POINTER CANCEL
-========================================================= */
-
-viewport.addEventListener(
-  "pointercancel",
-  e=>{
-
-    activePointers.delete(
-      e.pointerId
-    );
-
-
-    isDrawing=false;
-
-    drawingPointerId=null;
-
-    lastDrawPoint=null;
-
-    pinchData=null;
-
-  }
-);
-
-
-/* =========================================================
-   ERASE STROKE
-========================================================= */
-
-function eraseStrokeAt(
-  x,
-  y
-){
-
-  const page =
-    getCurrentPage();
-
-
-  if(!page){
-    return;
-  }
-
-
-  /*
-    消しゴム範囲
-  */
-
-  const radius =
-    Math.max(
-      12,
-      currentSize * 3
-    );
-
-
-  const newStrokes=[];
-
-
-  page.strokes.forEach(
-    stroke=>{
+      const last=
+        points[points.length-1];
 
       /*
-        線を細かいセグメントに分解して
-        消しゴムに当たった部分を削除
+        細かすぎる点を間引く。
+        これで動作が軽くなる。
       */
 
-      let segment=[];
+      const dx=
+        point.x-last.x;
 
+      const dy=
+        point.y-last.y;
 
-      function flush(){
+      const dist=
+        Math.hypot(dx,dy);
 
-        if(
-          segment.length >= 2
-        ){
+      if(dist>=1.2){
 
-          newStrokes.push({
+        /*
+          速度に応じて少し補間
+        */
 
-            ...stroke,
+        if(dist>20){
 
-            id:
-              "stroke_" +
-              Date.now() +
-              "_" +
-              Math.random(),
+          const steps=
+            Math.ceil(dist/8);
 
-            points:
-              segment
+          for(
+            let i=1;
+            i<steps;
+            i++
+          ){
 
-          });
+            const t=i/steps;
 
-        }
+            points.push({
+              x:
+                last.x+
+                dx*t,
 
-        segment=[];
-
-      }
-
-
-      stroke.points.forEach(
-        point=>{
-
-          const hit =
-            Math.hypot(
-              point.x-x,
-              point.y-y
-            ) < radius;
-
-
-          if(hit){
-
-            flush();
-
-          }else{
-
-            segment.push(
-              point
-            );
+              y:
+                last.y+
+                dy*t
+            });
 
           }
 
         }
+
+        points.push(point);
+
+        queueRender();
+
+      }
+
+      return;
+
+    }
+
+    /*
+      PIXEL ERASER
+    */
+
+    if(
+      currentTool==="pixel" &&
+      pointers.size===1
+    ){
+
+      e.preventDefault();
+
+      eraseAt(
+        screenToWorld(
+          e.clientX,
+          e.clientY
+        )
       );
 
+      return;
 
-      flush();
+    }
+
+    /*
+      PAN
+    */
+
+    if(
+      panGesture &&
+      panGesture.pointerId===e.pointerId
+    ){
+
+      e.preventDefault();
+
+      panX=
+        panGesture.startPanX+
+        (
+          e.clientX-
+          panGesture.startX
+        );
+
+      panY=
+        panGesture.startPanY+
+        (
+          e.clientY-
+          panGesture.startY
+        );
+
+      applyCamera();
+
+    }
+
+  },
+  {passive:false}
+);
+
+function endPointer(e){
+
+  pointers.delete(e.pointerId);
+
+  if(
+    drawing &&
+    drawing.pointerId===e.pointerId
+  ){
+
+    finishDrawing();
+
+  }
+
+  if(
+    panGesture &&
+    panGesture.pointerId===e.pointerId
+  ){
+
+    panGesture=null;
+
+  }
+
+  if(pointers.size<2){
+
+    pinchGesture=null;
+
+  }
+
+}
+
+viewport.addEventListener(
+  "pointerup",
+  endPointer
+);
+
+viewport.addEventListener(
+  "pointercancel",
+  endPointer
+);
+
+viewport.addEventListener(
+  "pointerleave",
+  e=>{
+
+    /*
+      pointer capture中なので
+      実際にはpointerupまで続く
+    */
+
+  }
+);
+
+/* =========================================================
+   DRAW
+========================================================= */
+
+function startDrawing(
+  pointerId,
+  point
+){
+
+  const page=
+    currentNote.pages[currentPage];
+
+  const stroke={
+
+    id:uid("stroke"),
+
+    tool:currentTool,
+
+    color:currentColor,
+
+    size:currentSize,
+
+    opacity:
+      currentTool==="highlighter"
+        ? .27
+        : 1,
+
+    points:[point]
+
+  };
+
+  page.strokes.push(stroke);
+
+  drawing={
+    pointerId,
+    stroke
+  };
+
+  queueRender();
+
+}
+
+function finishDrawing(){
+
+  if(!drawing) return;
+
+  const points=
+    drawing.stroke.points;
+
+  /*
+    点が1個しかない場合でも
+    小さな点として残す
+  */
+
+  if(points.length===1){
+
+    points.push({
+      x:points[0].x+.01,
+      y:points[0].y+.01
+    });
+
+  }
+
+  drawing=null;
+
+  if(currentNote){
+
+    currentNote.updated=Date.now();
+
+    saveData();
+
+  }
+
+}
+
+/* =========================================================
+   PIXEL ERASER
+========================================================= */
+
+function pointDistance(
+  a,b
+){
+
+  return Math.hypot(
+    a.x-b.x,
+    a.y-b.y
+  );
+
+}
+
+function eraseAt(point){
+
+  if(!currentNote) return;
+
+  const page=
+    currentNote.pages[currentPage];
+
+  const radius=
+    Math.max(
+      8,
+      currentSize*1.8
+    );
+
+  let changed=false;
+
+  const newStrokes=[];
+
+  page.strokes.forEach(
+    stroke=>{
+
+      const pts=
+        stroke.points || [];
+
+      if(pts.length<2){
+        return;
+      }
+
+      let current=[];
+
+      let hit=false;
+
+      pts.forEach(p=>{
+
+        if(
+          pointDistance(
+            p,
+            point
+          )<=radius
+        ){
+
+          hit=true;
+
+          if(current.length>=2){
+
+            newStrokes.push({
+
+              ...stroke,
+
+              id:uid("stroke"),
+
+              points:[
+                ...current
+              ]
+
+            });
+
+          }
+
+          current=[];
+
+        }else{
+
+          current.push(p);
+
+        }
+
+      });
+
+      if(current.length>=2){
+
+        newStrokes.push({
+
+          ...stroke,
+
+          id:
+            hit
+              ? uid("stroke")
+              : stroke.id,
+
+          points:[
+            ...current
+          ]
+
+        });
+
+      }
+
+      if(hit){
+
+        changed=true;
+
+      }
 
     }
   );
 
+  if(changed){
 
-  page.strokes =
-    newStrokes;
+    page.strokes=
+      newStrokes;
 
+    queueRender();
 
-  drawBoard();
+    currentNote.updated=
+      Date.now();
 
-  autoSave();
+    scheduleSave();
+
+  }
 
 }
-
 
 /* =========================================================
    OBJECT ERASER
 ========================================================= */
 
-function eraseObjectAt(
-  x,
-  y
-){
+function eraseObjectAt(point){
 
-  const page =
-    getCurrentPage();
+  if(!currentNote) return;
 
+  const page=
+    currentNote.pages[currentPage];
 
-  if(!page){
-    return;
-  }
-
-
-  let found=-1;
-
+  let target=null;
 
   for(
-    let i=
-      page.elements.length-1;
-
+    let i=page.elements.length-1;
     i>=0;
-
     i--
   ){
 
-    const obj =
+    const o=
       page.elements[i];
 
-
-    const width =
-      obj.width ||
-      200;
-
-
-    const height =
-      obj.height ||
-      100;
-
-
     if(
-
-      x >= obj.x &&
-
-      x <= obj.x + width &&
-
-      y >= obj.y &&
-
-      y <= obj.y + height
-
+      point.x>=o.x &&
+      point.x<=o.x+o.width &&
+      point.y>=o.y &&
+      point.y<=o.y+o.height
     ){
 
-      found=i;
-
+      target=o;
       break;
 
     }
 
   }
 
+  if(target){
 
-  if(found >= 0){
+    page.elements=
+      page.elements.filter(
+        o=>o.id!==target.id
+      );
 
-    page.elements.splice(
-      found,
-      1
-    );
+    selectedObjectId=null;
 
-
-    drawBoard();
-
-    autoSave();
+    renderObjects();
+    saveData();
 
   }
 
 }
 
-
 /* =========================================================
-   FULL ERASE
+   TEXT
 ========================================================= */
 
-function fullErase(){
+function createText(point){
 
-  if(
-    !confirm(
-      "このページを全部消す？"
-    )
-  ){
-
-    return;
-
-  }
-
-
-  const page =
-    getCurrentPage();
-
-
-  if(!page){
-    return;
-  }
-
-
-  page.strokes=[];
-
-  page.elements=[];
-
-  page.image=null;
-
-
-  drawBoard();
-
-  autoSave();
-
-}
-
-
-/* =========================================================
-   CREATE TEXT / STICKY
-========================================================= */
-
-function createObjectAt(
-  type,
-  x,
-  y
-){
-
-  const page =
-    getCurrentPage();
-
-
-  if(!page){
-    return;
-  }
-
-
-  const text =
+  const text=
     prompt(
-      type === "text"
-        ? "文字を入力"
-        : "付箋の内容を入力"
+      "文字を入力してください"
     );
 
-
   if(
-    text === null ||
-    text === ""
+    text===null ||
+    !text.trim()
   ){
 
+    setTool("pencil");
     return;
 
   }
 
+  const page=
+    currentNote.pages[currentPage];
 
   const obj={
 
-    id:
-      "obj_" +
-      Date.now() +
-      "_" +
-      Math.random(),
+    id:uid("text"),
 
-    type:type,
+    type:"text",
 
-    x:x,
+    x:point.x,
+    y:point.y,
 
-    y:y,
-
-    width:
-      type === "sticky"
-        ? 220
-        : 300,
-
-    height:
-      type === "sticky"
-        ? 170
-        : 80,
+    width:500,
+    height:100,
 
     text:text,
 
-    color:
-      currentColor,
+    color:currentColor,
 
-    fontSize:
-      currentFontSize
+    fontSize:currentSize
 
   };
 
+  page.elements.push(obj);
 
-  page.elements.push(
-    obj
-  );
+  selectedObjectId=obj.id;
 
-
-  renderObjects(
-    page
-  );
-
-
-  autoSave();
-
-}
-
-
-/* =========================================================
-   SHAPES
-========================================================= */
-
-function createShape(
-  type,
-  a,
-  b
-){
-
-  const page =
-    getCurrentPage();
-
-
-  if(!page){
-    return;
-  }
-
-
-  const x =
-    Math.min(
-      a.x,
-      b.x
-    );
-
-
-  const y =
-    Math.min(
-      a.y,
-      b.y
-    );
-
-
-  const width =
-    Math.max(
-      10,
-      Math.abs(
-        b.x-a.x
-      )
-    );
-
-
-  const height =
-    Math.max(
-      10,
-      Math.abs(
-        b.y-a.y
-      )
-    );
-
-
-  page.elements.push({
-
-    id:
-      "shape_" +
-      Date.now() +
-      "_" +
-      Math.random(),
-
-    type:type,
-
-    x:x,
-
-    y:y,
-
-    width:width,
-
-    height:height,
-
-    x2:b.x,
-
-    y2:b.y,
-
-    color:
-      currentColor,
-
-    size:
-      currentSize
-
-  });
-
-
-  drawBoard();
-
-  autoSave();
-
-}
-
-
-/* =========================================================
-   PREVIEW SHAPE
-========================================================= */
-
-function drawPreviewShape(
-  a,
-  b
-){
-
-  if(!a || !b){
-    return;
-  }
-
-
-  ctx.save();
-
-
-  ctx.strokeStyle =
-    currentColor;
-
-
-  ctx.lineWidth =
-    currentSize;
-
-
-  ctx.setLineDash(
-    [8,8]
-  );
-
-
-  ctx.beginPath();
-
-
-  if(
-    currentTool ===
-    "rect"
-  ){
-
-    ctx.rect(
-      a.x,
-      a.y,
-      b.x-a.x,
-      b.y-a.y
-    );
-
-  }
-
-
-  if(
-    currentTool ===
-    "circle"
-  ){
-
-    const cx =
-      (a.x+b.x)/2;
-
-    const cy =
-      (a.y+b.y)/2;
-
-    const rx =
-      Math.abs(
-        b.x-a.x
-      )/2;
-
-    const ry =
-      Math.abs(
-        b.y-a.y
-      )/2;
-
-
-    ctx.ellipse(
-      cx,
-      cy,
-      rx,
-      ry,
-      0,
-      0,
-      Math.PI*2
-    );
-
-  }
-
-
-  if(
-    currentTool ===
-    "arrow"
-  ){
-
-    ctx.moveTo(
-      a.x,
-      a.y
-    );
-
-    ctx.lineTo(
-      b.x,
-      b.y
-    );
-
-  }
-
-
-  ctx.stroke();
-
-  ctx.restore();
-
-}
-
-
-/* =========================================================
-   RENDER OBJECTS
-========================================================= */
-
-function renderObjects(
-  page
-){
-
-  objectLayer.innerHTML="";
-
-
-  page.elements.forEach(
-    obj=>{
-
-      const el =
-        document.createElement(
-          "div"
-        );
-
-
-      el.className =
-        "boardObject";
-
-
-      el.style.left =
-        obj.x + "px";
-
-
-      el.style.top =
-        obj.y + "px";
-
-
-      el.style.width =
-        (
-          obj.width ||
-          200
-        ) + "px";
-
-
-      el.style.height =
-        (
-          obj.height ||
-          100
-        ) + "px";
-
-
-      /*
-        TEXT
-      */
-
-      if(
-        obj.type ===
-        "text"
-      ){
-
-        el.classList.add(
-          "textObject"
-        );
-
-
-        el.textContent =
-          obj.text;
-
-
-        el.style.color =
-          obj.color ||
-          "#111";
-
-
-        el.style.fontSize =
-          (
-            obj.fontSize ||
-            20
-          ) + "px";
-
-      }
-
-
-      /*
-        STICKY
-      */
-
-      if(
-        obj.type ===
-        "sticky"
-      ){
-
-        el.classList.add(
-          "stickyObject"
-        );
-
-
-        el.textContent =
-          obj.text;
-
-
-        el.style.fontSize =
-          (
-            obj.fontSize ||
-            20
-          ) + "px";
-
-      }
-
-
-      /*
-        IMAGE
-      */
-
-      if(
-        obj.type ===
-        "image"
-      ){
-
-        const img =
-          document.createElement(
-            "img"
-          );
-
-
-        img.className =
-          "imageObject";
-
-
-        img.src =
-          obj.src;
-
-
-        el.appendChild(
-          img
-        );
-
-      }
-
-
-      /*
-        SHAPES
-      */
-
-      if(
-
-        obj.type === "rect" ||
-
-        obj.type === "circle" ||
-
-        obj.type === "arrow"
-
-      ){
-
-        el.classList.add(
-          "shapeObject"
-        );
-
-
-        const c =
-          document.createElement(
-            "canvas"
-          );
-
-
-        c.width =
-          obj.width + 20;
-
-
-        c.height =
-          obj.height + 20;
-
-
-        const cctx =
-          c.getContext(
-            "2d"
-          );
-
-
-        cctx.strokeStyle =
-          obj.color ||
-          "#111";
-
-
-        cctx.lineWidth =
-          obj.size ||
-          4;
-
-
-        cctx.lineCap =
-          "round";
-
-
-        if(
-          obj.type ===
-          "rect"
-        ){
-
-          cctx.strokeRect(
-            5,
-            5,
-            obj.width,
-            obj.height
-          );
-
-        }
-
-
-        if(
-          obj.type ===
-          "circle"
-        ){
-
-          cctx.beginPath();
-
-
-          cctx.ellipse(
-            obj.width/2+5,
-            obj.height/2+5,
-            obj.width/2,
-            obj.height/2,
-            0,
-            0,
-            Math.PI*2
-          );
-
-
-          cctx.stroke();
-
-        }
-
-
-        if(
-          obj.type ===
-          "arrow"
-        ){
-
-          const ex =
-            obj.x2 -
-            obj.x +
-            5;
-
-
-          const ey =
-            obj.y2 -
-            obj.y +
-            5;
-
-
-          cctx.beginPath();
-
-
-          cctx.moveTo(
-            5,
-            5
-          );
-
-
-          cctx.lineTo(
-            ex,
-            ey
-          );
-
-
-          cctx.stroke();
-
-
-          const angle =
-            Math.atan2(
-              ey-5,
-              ex-5
-            );
-
-
-          const size=15;
-
-
-          cctx.beginPath();
-
-
-          cctx.moveTo(
-            ex,
-            ey
-          );
-
-
-          cctx.lineTo(
-            ex -
-              size *
-              Math.cos(
-                angle-.5
-              ),
-
-            ey -
-              size *
-              Math.sin(
-                angle-.5
-              )
-          );
-
-
-          cctx.moveTo(
-            ex,
-            ey
-          );
-
-
-          cctx.lineTo(
-            ex -
-              size *
-              Math.cos(
-                angle+.5
-              ),
-
-            ey -
-              size *
-              Math.sin(
-                angle+.5
-              )
-          );
-
-
-          cctx.stroke();
-
-        }
-
-
-        el.appendChild(
-          c
-        );
-
-      }
-
-
-      objectLayer.appendChild(
-        el
-      );
-
-
-      makeObjectDraggable(
-        el,
-        obj
-      );
-
-    }
-  );
-
-}
-
-
-/* =========================================================
-   OBJECT DRAG / RESIZE
-========================================================= */
-
-function makeObjectDraggable(
-  el,
-  obj
-){
-
-  let moving=false;
-
-  let resizing=false;
-
-  let startX=0;
-
-  let startY=0;
-
-  let originalX=0;
-
-  let originalY=0;
-
-  let originalWidth=0;
-
-  let originalHeight=0;
-
-
-  /*
-    移動
-  */
-
-  el.addEventListener(
-    "pointerdown",
-    e=>{
-
-      if(
-        currentTool !==
-        "hand"
-      ){
-
-        return;
-
-      }
-
-
-      e.stopPropagation();
-
-      e.preventDefault();
-
-
-      moving=true;
-
-
-      startX =
-        e.clientX;
-
-      startY =
-        e.clientY;
-
-
-      originalX =
-        obj.x;
-
-      originalY =
-        obj.y;
-
-
-      el.setPointerCapture(
-        e.pointerId
-      );
-
-    }
-  );
-
-
-  el.addEventListener(
-    "pointermove",
-    e=>{
-
-      if(!moving){
-        return;
-      }
-
-
-      obj.x =
-        originalX +
-        (
-          e.clientX -
-          startX
-        ) / zoom;
-
-
-      obj.y =
-        originalY +
-        (
-          e.clientY -
-          startY
-        ) / zoom;
-
-
-      el.style.left =
-        obj.x + "px";
-
-
-      el.style.top =
-        obj.y + "px";
-
-    }
-  );
-
-
-  el.addEventListener(
-    "pointerup",
-    e=>{
-
-      moving=false;
-
-      autoSave();
-
-    }
-  );
-
-
-  /*
-    サイズ変更
-  */
-
-  el.addEventListener(
-    "pointerdown",
-    e=>{
-
-      if(
-        currentTool !==
-        "hand"
-      ){
-
-        return;
-
-      }
-
-
-      /*
-        右下付近ならリサイズ
-      */
-
-      const rect =
-        el.getBoundingClientRect();
-
-
-      const distanceRight =
-        rect.right -
-        e.clientX;
-
-
-      const distanceBottom =
-        rect.bottom -
-        e.clientY;
-
-
-      if(
-        distanceRight < 25 &&
-        distanceBottom < 25
-      ){
-
-        moving=false;
-
-        resizing=true;
-
-
-        startX =
-          e.clientX;
-
-        startY =
-          e.clientY;
-
-
-        originalWidth =
-          obj.width ||
-          rect.width / zoom;
-
-
-        originalHeight =
-          obj.height ||
-          rect.height / zoom;
-
-
-        e.stopPropagation();
-
-      }
-
-    }
-  );
-
-
-  el.addEventListener(
-    "pointermove",
-    e=>{
-
-      if(!resizing){
-        return;
-      }
-
-
-      const newWidth =
-        Math.max(
-          50,
-          originalWidth +
-          (
-            e.clientX -
-            startX
-          ) / zoom
-        );
-
-
-      const newHeight =
-        Math.max(
-          35,
-          originalHeight +
-          (
-            e.clientY -
-            startY
-          ) / zoom
-        );
-
-
-      obj.width =
-        newWidth;
-
-
-      obj.height =
-        newHeight;
-
-
-      el.style.width =
-        newWidth + "px";
-
-
-      el.style.height =
-        newHeight + "px";
-
-    }
-  );
-
-
-  el.addEventListener(
-    "pointerup",
-    e=>{
-
-      if(resizing){
-
-        resizing=false;
-
-        autoSave();
-
-      }
-
-    }
-  );
-
-}
-
-
-/* =========================================================
-   IMAGE
-========================================================= */
-
-let imagePlacePoint={
-  x:5000,
-  y:5000
-};
-
-
-function chooseImage(){
-
-  document
-    .getElementById(
-      "imageInput"
-    )
-    .click();
-
-}
-
-
-function insertImage(
-  event
-){
-
-  const file =
-    event.target.files[0];
-
-
-  if(!file){
-    return;
-  }
-
-
-  const reader =
-    new FileReader();
-
-
-  reader.onload =
-    e=>{
-
-      const page =
-        getCurrentPage();
-
-
-      if(!page){
-        return;
-      }
-
-
-      page.elements.push({
-
-        id:
-          "img_" +
-          Date.now() +
-          "_" +
-          Math.random(),
-
-        type:"image",
-
-        x:
-          imagePlacePoint.x,
-
-        y:
-          imagePlacePoint.y,
-
-        width:350,
-
-        height:250,
-
-        src:
-          e.target.result
-
-      });
-
-
-      renderObjects(
-        page
-      );
-
-
-      autoSave();
-
-    };
-
-
-  reader.readAsDataURL(
-    file
-  );
-
-
-  event.target.value="";
-}
-
-
-/* =========================================================
-   ZOOM
-========================================================= */
-
-function zoomIn(){
-
-  zoom =
-    Math.min(
-      4,
-      zoom * 1.2
-    );
-
-
-  updateTransform();
-
-}
-
-
-function zoomOut(){
-
-  zoom =
-    Math.max(
-      .25,
-      zoom / 1.2
-    );
-
-
-  updateTransform();
-
-}
-
-
-function resetView(){
-
-  zoom=1;
-
-
-  panX =
-    viewport.clientWidth/2 -
-    5000;
-
-
-  panY =
-    viewport.clientHeight/2 -
-    5000;
-
-
-  updateTransform();
-
-}
-
-
-/* =========================================================
-   PAGE
-========================================================= */
-
-function updatePageLabel(){
-
-  const note =
-    getCurrentNote();
-
-
-  if(!note){
-    return;
-  }
-
-
-  document
-    .getElementById(
-      "pageLabel"
-    )
-    .textContent =
-      (
-        currentPageIndex + 1
-      ) +
-      " / " +
-      note.pages.length;
-
-}
-
-
-function previousPage(){
-
-  const note =
-    getCurrentNote();
-
-
-  if(!note){
-    return;
-  }
-
-
-  if(
-    currentPageIndex > 0
-  ){
-
-    saveCurrentNote();
-
-
-    currentPageIndex--;
-
-
-    drawBoard();
-
-    updatePageLabel();
-
-  }
-
-}
-
-
-function nextPage(){
-
-  const note =
-    getCurrentNote();
-
-
-  if(!note){
-    return;
-  }
-
-
-  if(
-    currentPageIndex <
-    note.pages.length-1
-  ){
-
-    saveCurrentNote();
-
-
-    currentPageIndex++;
-
-
-    drawBoard();
-
-    updatePageLabel();
-
-  }
-
-}
-
-
-function addPage(){
-
-  const note =
-    getCurrentNote();
-
-
-  if(!note){
-    return;
-  }
-
-
-  note.pages.push({
-
-    image:null,
-
-    elements:[],
-
-    strokes:[]
-
-  });
-
-
-  currentPageIndex =
-    note.pages.length-1;
-
-
-  drawBoard();
-
-  updatePageLabel();
-
-  autoSave();
-
-}
-
-
-/* =========================================================
-   SAVE CURRENT NOTE
-========================================================= */
-
-function saveCurrentNote(){
-
-  const note =
-    getCurrentNote();
-
-
-  if(!note){
-    return;
-  }
-
-
-  note.updated =
-    Date.now();
-
+  renderObjects();
 
   saveData();
 
 }
 
+/* =========================================================
+   STICKY
+========================================================= */
+
+function createSticky(point){
+
+  const text=
+    prompt(
+      "付箋に書く文字を入力してください"
+    );
+
+  if(
+    text===null ||
+    !text.trim()
+  ){
+
+    setTool("pencil");
+    return;
+
+  }
+
+  const page=
+    currentNote.pages[currentPage];
+
+  const obj={
+
+    id:uid("sticky"),
+
+    type:"sticky",
+
+    x:point.x,
+    y:point.y,
+
+    width:260,
+    height:180,
+
+    text:text,
+
+    color:currentColor,
+
+    fontSize:
+      Math.max(
+        14,
+        currentSize
+      )
+
+  };
+
+  page.elements.push(obj);
+
+  selectedObjectId=obj.id;
+
+  renderObjects();
+
+  saveData();
+
+}
+
+/* =========================================================
+   OBJECT RENDER
+========================================================= */
+
+function renderObjects(){
+
+  if(!currentNote) return;
+
+  const page=
+    currentNote.pages[currentPage];
+
+  objectLayer.innerHTML="";
+
+  page.elements.forEach(
+    obj=>{
+
+      let el;
+
+      if(obj.type==="image"){
+
+        el=
+          document.createElement("img");
+
+        el.src=obj.src;
+
+        el.className=
+          "board-object image-object";
+
+      }else{
+
+        el=
+          document.createElement("div");
+
+        el.className=
+          "board-object "+
+          (
+            obj.type==="sticky"
+              ? "sticky-object"
+              : "text-object"
+          );
+
+        el.textContent=
+          obj.text || "";
+
+      }
+
+      el.style.left=
+        obj.x+"px";
+
+      el.style.top=
+        obj.y+"px";
+
+      el.style.width=
+        obj.width+"px";
+
+      el.style.height=
+        obj.height+"px";
+
+      if(
+        obj.type==="text" ||
+        obj.type==="sticky"
+      ){
+
+        el.style.fontSize=
+          obj.fontSize+"px";
+
+        el.style.color=
+          obj.color || "#111";
+
+      }
+
+      if(
+        selectedObjectId===obj.id
+      ){
+
+        el.classList.add(
+          "selected"
+        );
+
+      }
+
+      const deleteBtn=
+        document.createElement(
+          "button"
+        );
+
+      deleteBtn.className=
+        "object-delete";
+
+      deleteBtn.textContent="×";
+
+      deleteBtn.addEventListener(
+        "pointerdown",
+        e=>{
+
+          e.preventDefault();
+          e.stopPropagation();
+
+          page.elements=
+            page.elements.filter(
+              x=>x.id!==obj.id
+            );
+
+          selectedObjectId=null;
+
+          renderObjects();
+          saveData();
+
+        }
+      );
+
+      el.appendChild(deleteBtn);
+
+      const resize=
+        document.createElement(
+          "div"
+        );
+
+      resize.className=
+        "resize-handle";
+
+      resize.addEventListener(
+        "pointerdown",
+        e=>{
+
+          e.preventDefault();
+          e.stopPropagation();
+
+          beginResize(
+            e,
+            obj
+          );
+
+        }
+      );
+
+      el.appendChild(resize);
+
+      el.addEventListener(
+        "pointerdown",
+        e=>{
+
+          if(
+            e.target===resize ||
+            e.target===deleteBtn
+          ){
+
+            return;
+
+          }
+
+          e.preventDefault();
+          e.stopPropagation();
+
+          selectedObjectId=obj.id;
+
+          beginObjectDrag(
+            e,
+            obj
+          );
+
+        }
+      );
+
+      el.addEventListener(
+        "dblclick",
+        e=>{
+
+          e.preventDefault();
+          e.stopPropagation();
+
+          if(
+            obj.type==="text" ||
+            obj.type==="sticky"
+          ){
+
+            const newText=
+              prompt(
+                "文字を編集",
+                obj.text
+              );
+
+            if(
+              newText!==null
+            ){
+
+              obj.text=newText;
+
+              renderObjects();
+              saveData();
+
+            }
+
+          }
+
+        }
+      );
+
+      objectLayer.appendChild(el);
+
+    }
+  );
+
+}
+
+/* =========================================================
+   OBJECT DRAG
+========================================================= */
+
+let objectDrag=null;
+let objectResize=null;
+
+function beginObjectDrag(
+  e,
+  obj
+){
+
+  const point=
+    screenToWorld(
+      e.clientX,
+      e.clientY
+    );
+
+  selectedObjectId=obj.id;
+
+  objectDrag={
+
+    id:obj.id,
+
+    dx:
+      point.x-obj.x,
+
+    dy:
+      point.y-obj.y
+
+  };
+
+  const move=e2=>{
+
+    if(!objectDrag) return;
+
+    const p=
+      screenToWorld(
+        e2.clientX,
+        e2.clientY
+      );
+
+    obj.x=
+      p.x-objectDrag.dx;
+
+    obj.y=
+      p.y-objectDrag.dy;
+
+    renderObjects();
+
+  };
+
+  const up=()=>{
+
+    objectDrag=null;
+
+    window.removeEventListener(
+      "pointermove",
+      move
+    );
+
+    window.removeEventListener(
+      "pointerup",
+      up
+    );
+
+    saveData();
+
+  };
+
+  window.addEventListener(
+    "pointermove",
+    move,
+    {passive:false}
+  );
+
+  window.addEventListener(
+    "pointerup",
+    up,
+    {once:true}
+  );
+
+}
+
+/* =========================================================
+   RESIZE
+========================================================= */
+
+function beginResize(
+  e,
+  obj
+){
+
+  const start=
+    screenToWorld(
+      e.clientX,
+      e.clientY
+    );
+
+  const original={
+
+    x:obj.x,
+    y:obj.y,
+    width:obj.width,
+    height:obj.height
+
+  };
+
+  objectResize={
+    id:obj.id
+  };
+
+  const move=e2=>{
+
+    if(!objectResize) return;
+
+    const p=
+      screenToWorld(
+        e2.clientX,
+        e2.clientY
+      );
+
+    obj.width=
+      Math.max(
+        80,
+        original.width+
+        (p.x-start.x)
+      );
+
+    obj.height=
+      Math.max(
+        45,
+        original.height+
+        (p.y-start.y)
+      );
+
+    renderObjects();
+
+  };
+
+  const up=()=>{
+
+    objectResize=null;
+
+    window.removeEventListener(
+      "pointermove",
+      move
+    );
+
+    saveData();
+
+  };
+
+  window.addEventListener(
+    "pointermove",
+    move,
+    {passive:false}
+  );
+
+  window.addEventListener(
+    "pointerup",
+    up,
+    {once:true}
+  );
+
+}
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+document.getElementById(
+  "imageBtn"
+).onclick=()=>{
+
+  document.getElementById(
+    "imageInput"
+  ).click();
+
+};
+
+document.getElementById(
+  "imageInput"
+).addEventListener(
+  "change",
+  e=>{
+
+    const file=
+      e.target.files[0];
+
+    if(!file) return;
+
+    const reader=
+      new FileReader();
+
+    reader.onload=()=>{
+
+      const page=
+        currentNote.pages[currentPage];
+
+      const obj={
+
+        id:uid("image"),
+
+        type:"image",
+
+        x:
+          WORLD_W/2-300,
+
+        y:
+          WORLD_H/2-225,
+
+        width:600,
+        height:450,
+
+        src:reader.result
+
+      };
+
+      page.elements.push(obj);
+
+      selectedObjectId=obj.id;
+
+      renderObjects();
+      saveData();
+
+    };
+
+    reader.readAsDataURL(file);
+
+    e.target.value="";
+
+  }
+);
+
+/* =========================================================
+   PAGES
+========================================================= */
+
+function renderPage(){
+
+  if(!currentNote) return;
+
+  if(
+    !currentNote.pages[currentPage]
+  ){
+
+    currentNote.pages[currentPage]={
+      strokes:[],
+      elements:[]
+    };
+
+  }
+
+  renderStrokes();
+  renderObjects();
+
+  document.getElementById(
+    "pageNumber"
+  ).textContent=
+    `${currentPage+1} / ${currentNote.pages.length}`;
+
+}
+
+document.getElementById(
+  "prevPage"
+).onclick=()=>{
+
+  if(currentPage<=0) return;
+
+  currentPage--;
+
+  selectedObjectId=null;
+
+  renderPage();
+
+};
+
+document.getElementById(
+  "nextPage"
+).onclick=()=>{
+
+  if(
+    currentPage>=
+    currentNote.pages.length-1
+  ) return;
+
+  currentPage++;
+
+  selectedObjectId=null;
+
+  renderPage();
+
+};
+
+document.getElementById(
+  "addPage"
+).onclick=()=>{
+
+  currentNote.pages.push({
+    strokes:[],
+    elements:[]
+  });
+
+  currentPage=
+    currentNote.pages.length-1;
+
+  selectedObjectId=null;
+
+  renderPage();
+
+  saveData();
+
+};
+
+/* =========================================================
+   NOTE TITLE
+========================================================= */
+
+document.getElementById(
+  "noteTitle"
+).addEventListener(
+  "input",
+  e=>{
+
+    if(!currentNote) return;
+
+    currentNote.title=
+      e.target.value ||
+      "新しいノート";
+
+    currentNote.updated=
+      Date.now();
+
+    scheduleSave();
+
+  }
+);
+
+/* =========================================================
+   CLEAR PAGE
+========================================================= */
+
+document.getElementById(
+  "clearBtn"
+).onclick=()=>{
+
+  if(!currentNote) return;
+
+  if(
+    !confirm(
+      "このページを全部消しますか？"
+    )
+  ){
+
+    return;
+
+  }
+
+  currentNote.pages[currentPage]={
+    strokes:[],
+    elements:[]
+  };
+
+  selectedObjectId=null;
+
+  renderPage();
+
+  saveData();
+
+};
+
+/* =========================================================
+   AUTOSAVE
+========================================================= */
+
+let saveTimer=null;
+
+function scheduleSave(){
+
+  clearTimeout(saveTimer);
+
+  saveTimer=
+    setTimeout(
+      ()=>{
+
+        saveData();
+
+      },
+      300
+    );
+
+}
 
 /* =========================================================
    SETTINGS
 ========================================================= */
 
-function showSettings(){
+document.getElementById(
+  "settingsBack"
+).onclick=()=>{
 
-  const main =
-    document.getElementById(
-      "main"
-    );
+  updateHome();
+  showScreen("homeScreen");
 
+};
 
-  main.innerHTML = `
+document.getElementById(
+  "darkToggle"
+).onclick=()=>{
 
-    <div class="settingsBox">
-
-      <div class="welcome">
-        設定
-      </div>
-
-
-      <div class="settingCard">
-
-        <div class="settingTitle">
-          アカウント
-        </div>
-
-        <div>
-          ${escapeHTML(
-            data.name
-          )}
-        </div>
-
-      </div>
-
-
-      <div class="settingCard">
-
-        <div class="settingTitle">
-          学習時間
-        </div>
-
-        <div>
-          ${formatTime(
-            getTotalStudySeconds()
-          )}
-        </div>
-
-      </div>
-
-
-      <div class="settingCard">
-
-        <div class="settingTitle">
-          外観
-        </div>
-
-
-        <button
-          class="settingButton"
-          onclick="toggleDark()">
-
-          🌙 ダークモード
-
-        </button>
-
-      </div>
-
-
-      <div class="settingCard">
-
-        <div class="settingTitle">
-          データ
-        </div>
-
-
-        <button
-          class="settingButton"
-          onclick="exportData()">
-
-          💾 バックアップ
-
-        </button>
-
-
-        <br>
-
-
-        <button
-          class="settingButton"
-          onclick="logout()">
-
-          ログアウト
-
-        </button>
-
-      </div>
-
-
-      <button
-        class="backBtn"
-        onclick="showHome()">
-
-        ‹ ホームへ戻る
-
-      </button>
-
-    </div>
-
-  `;
-
-}
-
-
-function toggleDark(){
-
-  data.settings.dark =
+  data.settings.dark=
     !data.settings.dark;
 
-
   applyDark();
+  saveData();
 
-  autoSave();
-
-}
-
+};
 
 function applyDark(){
 
@@ -5499,17 +3846,17 @@ function applyDark(){
 
 }
 
-
 /* =========================================================
    EXPORT
 ========================================================= */
 
-function exportData(){
+document.getElementById(
+  "exportBtn"
+).onclick=()=>{
 
-  stopStudyClock();
+  flushStudyTime();
 
-
-  const blob =
+  const blob=
     new Blob(
       [
         JSON.stringify(
@@ -5519,296 +3866,173 @@ function exportData(){
         )
       ],
       {
-        type:
-          "application/json"
+        type:"application/json"
       }
     );
 
+  const url=
+    URL.createObjectURL(blob);
 
-  const url =
-    URL.createObjectURL(
-      blob
-    );
-
-
-  const a =
-    document.createElement(
-      "a"
-    );
-
+  const a=
+    document.createElement("a");
 
   a.href=url;
 
-
-  a.download =
-    "destination-note-backup.json";
-
+  a.download=
+    "DestinationNote-backup.json";
 
   a.click();
 
-
-  URL.revokeObjectURL(
-    url
+  setTimeout(
+    ()=>{
+      URL.revokeObjectURL(url);
+    },
+    1000
   );
 
+};
 
-  startStudyClock();
+/* =========================================================
+   IMPORT
+========================================================= */
 
-}
+document.getElementById(
+  "importBtn"
+).onclick=()=>{
 
+  document.getElementById(
+    "importInput"
+  ).click();
+
+};
+
+document.getElementById(
+  "importInput"
+).addEventListener(
+  "change",
+  e=>{
+
+    const file=
+      e.target.files[0];
+
+    if(!file) return;
+
+    const reader=
+      new FileReader();
+
+    reader.onload=()=>{
+
+      try{
+
+        const imported=
+          JSON.parse(
+            reader.result
+          );
+
+        if(
+          !imported ||
+          !Array.isArray(
+            imported.notes
+          )
+        ){
+
+          throw new Error();
+
+        }
+
+        if(
+          !confirm(
+            "現在のデータをバックアップの内容で置き換えますか？"
+          )
+        ){
+
+          return;
+
+        }
+
+        data=imported;
+
+        normalizeNotes();
+        saveData();
+
+        alert(
+          "読み込み完了！"
+        );
+
+        location.reload();
+
+      }catch(err){
+
+        alert(
+          "バックアップファイルを読み込めませんでした。"
+        );
+
+      }
+
+    };
+
+    reader.readAsText(file);
+
+    e.target.value="";
+
+  }
+);
 
 /* =========================================================
    LOGOUT
 ========================================================= */
 
-function logout(){
+document.getElementById(
+  "logoutBtn"
+).onclick=()=>{
 
-  stopStudyClock();
+  flushStudyTime();
+
+  loggedIn=false;
+  trackingStart=null;
+
+  showScreen("homeScreen");
+
+  app.classList.add("hidden");
+  loginScreen.classList.remove("hidden");
+
+  loginName.value="";
+  loginPassword.value="";
+
+  updateLoginUI();
+
+};
+
+/* =========================================================
+   RESET
+========================================================= */
+
+document.getElementById(
+  "resetBtn"
+).onclick=()=>{
+
+  const ok=
+    confirm(
+      "本当にすべてのデータを削除しますか？\nこの操作は元に戻せません。"
+    );
+
+  if(!ok) return;
+
+  localStorage.removeItem(
+    STORAGE_KEY
+  );
 
   location.reload();
 
-}
-
-
-/* =========================================================
-   ESCAPE
-========================================================= */
-
-function escapeHTML(
-  str
-){
-
-  return String(str)
-
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
-
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
-
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
-
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
-
-    .replaceAll(
-      "'",
-      "&#039;"
-    );
-
-}
-
+};
 
 /* =========================================================
-   KEYBOARD
-========================================================= */
-
-document.addEventListener(
-  "keydown",
-  e=>{
-
-    const noteScreen =
-      document.getElementById(
-        "noteScreen"
-      );
-
-
-    if(
-      noteScreen.classList.contains(
-        "hidden"
-      )
-    ){
-
-      return;
-
-    }
-
-
-    if(
-      e.key === "p"
-    ){
-
-      setTool(
-        "pencil"
-      );
-
-    }
-
-
-    if(
-      e.key === "h"
-    ){
-
-      setTool(
-        "highlighter"
-      );
-
-    }
-
-
-    if(
-      e.key === "e"
-    ){
-
-      setTool(
-        "eraser"
-      );
-
-    }
-
-
-    if(
-      e.key === "v"
-    ){
-
-      setTool(
-        "hand"
-      );
-
-    }
-
-
-    if(
-      e.key === "t"
-    ){
-
-      setTool(
-        "text"
-      );
-
-    }
-
-  }
-);
-
-
-/* =========================================================
-   WHEEL
-========================================================= */
-
-viewport.addEventListener(
-  "wheel",
-  e=>{
-
-    /*
-      Ctrl / Command + ホイール
-      → ズーム
-    */
-
-    if(
-      e.ctrlKey ||
-      e.metaKey
-    ){
-
-      e.preventDefault();
-
-
-      const before =
-        screenToWorld(
-          e.clientX,
-          e.clientY
-        );
-
-
-      const factor =
-        e.deltaY < 0
-          ? 1.1
-          : .9;
-
-
-      zoom =
-        Math.max(
-          .25,
-          Math.min(
-            4,
-            zoom * factor
-          )
-        );
-
-
-      const rect =
-        viewport.getBoundingClientRect();
-
-
-      panX =
-        e.clientX -
-        rect.left -
-        before.x * zoom;
-
-
-      panY =
-        e.clientY -
-        rect.top -
-        before.y * zoom;
-
-
-      updateTransform();
-
-
-      return;
-
-    }
-
-
-    /*
-      手のひらツールなら
-      マウス・トラックパッド移動
-    */
-
-    if(
-      currentTool ===
-      "hand"
-    ){
-
-      e.preventDefault();
-
-
-      panX -=
-        e.deltaX;
-
-
-      panY -=
-        e.deltaY;
-
-
-      updateTransform();
-
-    }
-
-  },
-  {
-    passive:false
-  }
-);
-
-
-/* =========================================================
-   INITIALIZE
+   INIT
 ========================================================= */
 
 loadData();
-
-
-if(data.name){
-
-  document
-    .getElementById(
-      "loginName"
-    )
-    .value =
-      data.name;
-
-}
-
+applyDark();
+updateLoginUI();
 
 </script>
 
