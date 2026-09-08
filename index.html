@@ -1,23 +1,33 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+<meta
+  name="viewport"
+  content="width=device-width,
+  initial-scale=1,
+  maximum-scale=1,
+  user-scalable=no"
+>
 
 <title>Destination Note</title>
 
 <style>
+
 *{
   box-sizing:border-box;
   -webkit-tap-highlight-color:transparent;
 }
 
-html,body{
+html,
+body{
+  margin:0;
   width:100%;
   height:100%;
-  margin:0;
   overflow:hidden;
+
   font-family:
     -apple-system,
     BlinkMacSystemFont,
@@ -29,254 +39,350 @@ html,body{
 }
 
 body{
+
+  color:#111;
+
   background:
     radial-gradient(
-      circle at 20% 0%,
-      rgba(120,170,255,.32),
-      transparent 35%
+      circle at 10% 0%,
+      rgba(120,180,255,.38),
+      transparent 32%
     ),
+
     radial-gradient(
-      circle at 90% 20%,
-      rgba(190,120,255,.28),
+      circle at 90% 10%,
+      rgba(210,130,255,.32),
       transparent 35%
     ),
+
     linear-gradient(
       135deg,
-      #eef5ff,
-      #f7f7fb 45%,
-      #edf1ff
+      #eaf2ff,
+      #f9f8ff 48%,
+      #eeeaff
     );
-  color:#111;
 }
 
 body.dark{
+
+  color:#fff;
+
   background:
     radial-gradient(
-      circle at 20% 0%,
-      rgba(70,130,255,.22),
-      transparent 35%
+      circle at 10% 0%,
+      rgba(60,130,255,.25),
+      transparent 32%
     ),
+
     radial-gradient(
-      circle at 90% 20%,
-      rgba(150,80,255,.20),
+      circle at 90% 10%,
+      rgba(170,80,255,.22),
       transparent 35%
     ),
+
     linear-gradient(
       135deg,
-      #070a12,
-      #10131d 50%,
-      #080b13
+      #070910,
+      #111522 50%,
+      #080a12
     );
-  color:white;
 }
 
-/* =========================
+
+/* =========================================
    LIQUID GLASS
-========================= */
+========================================= */
 
 .glass{
+
   background:
     linear-gradient(
       135deg,
-      rgba(255,255,255,.58),
-      rgba(255,255,255,.22)
+      rgba(255,255,255,.65),
+      rgba(255,255,255,.24)
     );
-  border:1px solid rgba(255,255,255,.58);
+
+  border:
+    1px solid
+    rgba(255,255,255,.62);
+
   box-shadow:
-    0 12px 40px rgba(0,0,0,.10),
-    inset 0 1px 0 rgba(255,255,255,.75),
-    inset 0 -1px 0 rgba(255,255,255,.18);
-  backdrop-filter:blur(30px) saturate(180%);
-  -webkit-backdrop-filter:blur(30px) saturate(180%);
+
+    0 15px 45px
+    rgba(0,0,0,.09),
+
+    inset 0 1px 0
+    rgba(255,255,255,.85),
+
+    inset 0 -1px 0
+    rgba(255,255,255,.18);
+
+  backdrop-filter:
+    blur(35px)
+    saturate(190%);
+
+  -webkit-backdrop-filter:
+    blur(35px)
+    saturate(190%);
 }
 
 .dark .glass{
+
   background:
     linear-gradient(
       135deg,
-      rgba(35,40,55,.62),
-      rgba(20,24,36,.38)
+      rgba(38,43,58,.66),
+      rgba(20,24,36,.42)
     );
-  border-color:rgba(255,255,255,.13);
+
+  border-color:
+    rgba(255,255,255,.13);
+
   box-shadow:
-    0 15px 45px rgba(0,0,0,.35),
-    inset 0 1px 0 rgba(255,255,255,.12),
-    inset 0 -1px 0 rgba(255,255,255,.03);
+
+    0 20px 55px
+    rgba(0,0,0,.35),
+
+    inset 0 1px 0
+    rgba(255,255,255,.12);
 }
 
-/* =========================
+
+/* =========================================
    LOGIN
-========================= */
+========================================= */
 
 #loginScreen{
+
   width:100%;
   height:100%;
+
   display:flex;
+
   align-items:center;
   justify-content:center;
+
   padding:20px;
 }
 
 .loginCard{
+
   width:min(430px,100%);
-  padding:34px;
-  border-radius:34px;
+
+  padding:35px;
+
+  border-radius:35px;
+
   position:relative;
+
   overflow:hidden;
 }
 
-.loginCard::before{
+.loginCard:before{
+
   content:"";
+
   position:absolute;
-  width:260px;
-  height:260px;
-  top:-150px;
-  right:-100px;
+
+  width:300px;
+  height:300px;
+
+  right:-130px;
+  top:-170px;
+
   border-radius:50%;
-  background:rgba(255,255,255,.5);
+
+  background:
+    rgba(255,255,255,.55);
+
   filter:blur(35px);
 }
 
 .logo{
+
   font-size:38px;
-  font-weight:800;
-  letter-spacing:-1.5px;
-  margin-bottom:5px;
+
+  font-weight:850;
+
+  letter-spacing:-2px;
 }
 
 .subtitle{
-  opacity:.6;
-  margin-bottom:28px;
-}
 
-input,
-textarea,
-select{
-  font:inherit;
+  margin-top:5px;
+  margin-bottom:25px;
+
+  opacity:.55;
 }
 
 .input{
+
   width:100%;
-  padding:15px 17px;
+
   margin:6px 0;
-  border:1px solid rgba(255,255,255,.5);
+
+  padding:15px 17px;
+
   border-radius:18px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.5);
+
   outline:none;
-  background:rgba(255,255,255,.34);
-  backdrop-filter:blur(20px);
-  -webkit-backdrop-filter:blur(20px);
+
+  background:
+    rgba(255,255,255,.35);
+
   color:inherit;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.55);
+
+  font-size:16px;
+
+  backdrop-filter:blur(20px);
+
+  -webkit-backdrop-filter:blur(20px);
 }
 
 .dark .input{
-  background:rgba(255,255,255,.08);
-  border-color:rgba(255,255,255,.12);
-}
 
-button{
-  border:0;
-  font:inherit;
-  cursor:pointer;
-  color:inherit;
+  background:
+    rgba(255,255,255,.08);
+
+  border-color:
+    rgba(255,255,255,.12);
 }
 
 .primary{
+
   width:100%;
-  padding:15px;
+
   margin-top:12px;
+
+  padding:15px;
+
   border-radius:18px;
-  font-weight:700;
+
   color:white;
+
+  font-weight:750;
+
   background:
     linear-gradient(
       135deg,
-      #4c8dff,
-      #7b61ff
+      #438bff,
+      #8060ff
     );
+
   box-shadow:
-    0 10px 25px rgba(76,141,255,.28),
-    inset 0 1px 0 rgba(255,255,255,.5);
+    0 10px 25px
+    rgba(70,130,255,.28);
 }
 
-.primary:active{
-  transform:scale(.98);
-}
 
-/* =========================
+/* =========================================
    APP
-========================= */
+========================================= */
 
 #app{
+
   display:none;
+
   width:100%;
   height:100%;
 }
 
 .appShell{
+
   width:100%;
   height:100%;
+
   display:flex;
+
   gap:12px;
+
   padding:12px;
 }
 
-/* =========================
+
+/* =========================================
    SIDEBAR
-========================= */
+========================================= */
 
 .sidebar{
-  width:290px;
-  min-width:290px;
+
+  width:300px;
+
+  min-width:300px;
+
   height:100%;
-  border-radius:28px;
+
+  border-radius:30px;
+
   padding:12px;
+
   display:flex;
+
   flex-direction:column;
+
   overflow:hidden;
 }
 
 .sidebarTop{
+
   display:flex;
+
   align-items:center;
+
   gap:10px;
+
   padding:8px;
 }
 
 .appIcon{
-  width:44px;
-  height:44px;
-  border-radius:15px;
+
+  width:45px;
+  height:45px;
+
   display:flex;
+
   align-items:center;
   justify-content:center;
+
+  border-radius:16px;
+
   font-size:23px;
+
   background:
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,.8),
-      rgba(255,255,255,.28)
-    );
+    rgba(255,255,255,.45);
+
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.8),
-    0 8px 20px rgba(0,0,0,.08);
+    inset 0 1px 0
+    rgba(255,255,255,.8);
 }
 
 .sidebarTitle{
+
   font-weight:800;
   font-size:17px;
 }
 
 .sidebarSub{
+
   font-size:11px;
   opacity:.5;
 }
 
+
+/* TREE */
+
 .tree{
+
   flex:1;
+
   overflow:auto;
-  padding:7px 3px;
+
+  padding:8px 3px;
+
   scrollbar-width:none;
 }
 
@@ -285,313 +391,469 @@ button{
 }
 
 .treeRow{
+
   display:flex;
+
   align-items:center;
-  min-height:42px;
+
+  min-height:43px;
+
   margin:2px 0;
+
   padding:5px 7px;
-  border-radius:14px;
+
+  border-radius:15px;
+
   cursor:pointer;
+
   user-select:none;
+
   transition:
-    background .18s ease,
-    transform .15s ease;
+    background .18s,
+    transform .12s;
 }
 
 .treeRow:hover{
-  background:rgba(255,255,255,.35);
+
+  background:
+    rgba(255,255,255,.38);
 }
 
 .dark .treeRow:hover{
-  background:rgba(255,255,255,.07);
+
+  background:
+    rgba(255,255,255,.08);
 }
 
 .treeRow:active{
-  transform:scale(.98);
+
+  transform:
+    scale(.98);
 }
 
 .treeRow.selected{
+
   background:
     linear-gradient(
       135deg,
-      rgba(255,255,255,.66),
-      rgba(255,255,255,.25)
+      rgba(255,255,255,.7),
+      rgba(255,255,255,.28)
     );
+
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.65),
-    0 5px 18px rgba(0,0,0,.06);
+    inset 0 1px 0
+    rgba(255,255,255,.75),
+
+    0 6px 20px
+    rgba(0,0,0,.06);
 }
 
 .dark .treeRow.selected{
-  background:rgba(255,255,255,.11);
+
+  background:
+    rgba(255,255,255,.12);
 }
 
 .arrow{
-  width:24px;
-  height:28px;
+
+  width:25px;
+
+  height:30px;
+
+  flex-shrink:0;
+
   display:flex;
+
   align-items:center;
   justify-content:center;
+
   opacity:.65;
-  flex-shrink:0;
 }
 
 .arrow span{
-  transition:transform .2s ease;
+
+  transition:
+    transform .2s;
 }
 
 .arrow.open span{
-  transform:rotate(90deg);
+
+  transform:
+    rotate(90deg);
 }
 
 .treeIcon{
-  width:28px;
+
+  width:30px;
+
   text-align:center;
+
   flex-shrink:0;
 }
 
 .treeName{
+
   flex:1;
+
   min-width:0;
-  white-space:nowrap;
+
   overflow:hidden;
+
+  white-space:nowrap;
+
   text-overflow:ellipsis;
+
   font-size:14px;
 }
 
 .sidebarBottom{
+
   display:flex;
+
   gap:7px;
-  padding:7px 2px 2px;
+
+  padding-top:7px;
 }
 
 .smallButton{
+
   flex:1;
-  min-height:42px;
-  border-radius:15px;
-  background:rgba(255,255,255,.35);
-  border:1px solid rgba(255,255,255,.4);
-  backdrop-filter:blur(20px);
-  -webkit-backdrop-filter:blur(20px);
+
+  min-height:43px;
+
+  border-radius:16px;
+
+  background:
+    rgba(255,255,255,.38);
+
+  border:
+    1px solid
+    rgba(255,255,255,.42);
+
+  backdrop-filter:
+    blur(20px);
+
+  -webkit-backdrop-filter:
+    blur(20px);
 }
 
 .dark .smallButton{
-  background:rgba(255,255,255,.07);
-  border-color:rgba(255,255,255,.1);
+
+  background:
+    rgba(255,255,255,.07);
+
+  border-color:
+    rgba(255,255,255,.1);
 }
 
-/* =========================
+
+/* =========================================
    MAIN
-========================= */
+========================================= */
 
 .main{
+
   flex:1;
+
   min-width:0;
+
   height:100%;
+
   border-radius:30px;
-  position:relative;
+
   overflow:hidden;
+
+  position:relative;
 }
 
-/* =========================
+
+/* =========================================
    HOME
-========================= */
+========================================= */
 
 .home{
+
   width:100%;
   height:100%;
+
   overflow:auto;
+
   padding:35px;
 }
 
 .hero{
-  padding:30px;
-  border-radius:30px;
-  margin-bottom:20px;
-  position:relative;
-  overflow:hidden;
-}
 
-.hero::after{
-  content:"";
-  position:absolute;
-  width:400px;
-  height:400px;
-  border-radius:50%;
-  right:-160px;
-  top:-200px;
-  background:
-    radial-gradient(
-      circle,
-      rgba(255,255,255,.55),
-      transparent 65%
-    );
-  filter:blur(12px);
+  padding:30px;
+
+  border-radius:30px;
+
+  margin-bottom:20px;
 }
 
 .hero h1{
+
   margin:0;
+
   font-size:38px;
+
   letter-spacing:-1.5px;
 }
 
 .hero p{
+
   opacity:.55;
 }
 
 .rankCard{
+
   display:flex;
+
   align-items:center;
+
   gap:18px;
+
   padding:22px;
+
   border-radius:25px;
-  margin-bottom:20px;
+
+  margin-bottom:25px;
 }
 
 .rankIcon{
+
   width:64px;
   height:64px;
-  border-radius:21px;
+
   display:flex;
+
   align-items:center;
   justify-content:center;
-  font-size:28px;
-  background:rgba(255,255,255,.42);
+
+  border-radius:21px;
+
+  font-size:29px;
+
+  background:
+    rgba(255,255,255,.45);
+
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.75);
+    inset 0 1px 0
+    rgba(255,255,255,.8);
 }
 
 .rankName{
+
   font-size:20px;
+
   font-weight:800;
 }
 
 .studyTime{
-  opacity:.55;
+
+  margin-top:4px;
+
   font-size:13px;
+
+  opacity:.5;
 }
 
 .sectionTitle{
-  font-size:19px;
-  font-weight:800;
+
   margin:25px 0 12px;
+
+  font-size:19px;
+
+  font-weight:800;
 }
 
 .folderGrid{
+
   display:grid;
+
   grid-template-columns:
-    repeat(auto-fill,minmax(210px,1fr));
+    repeat(
+      auto-fill,
+      minmax(210px,1fr)
+    );
+
   gap:13px;
 }
 
 .folderCard{
+
   padding:22px;
-  border-radius:24px;
+
+  border-radius:25px;
+
   cursor:pointer;
+
   transition:
-    transform .18s ease,
-    box-shadow .18s ease;
+    transform .18s,
+    box-shadow .18s;
 }
 
 .folderCard:hover{
-  transform:translateY(-3px);
+
+  transform:
+    translateY(-3px);
 }
 
 .folderCard:active{
-  transform:scale(.98);
+
+  transform:
+    scale(.98);
 }
 
 .folderEmoji{
+
   font-size:30px;
 }
 
 .folderName{
+
   margin-top:10px;
-  font-weight:700;
+
+  font-weight:750;
 }
 
 .folderCount{
+
   margin-top:4px;
+
   font-size:12px;
+
   opacity:.5;
 }
 
-/* =========================
+
+/* =========================================
    FOLDER
-========================= */
+========================================= */
 
 .folderView{
+
   width:100%;
   height:100%;
+
   overflow:auto;
+
   padding:30px;
 }
 
 .viewHeader{
+
   display:flex;
+
   align-items:center;
+
   gap:12px;
+
   margin-bottom:20px;
 }
 
 .viewHeader h2{
+
   margin:0;
+
   font-size:30px;
 }
 
 .backButton{
-  width:42px;
-  height:42px;
-  border-radius:15px;
-  background:rgba(255,255,255,.35);
+
+  width:43px;
+  height:43px;
+
+  border-radius:16px;
+
+  background:
+    rgba(255,255,255,.4);
 }
 
-/* =========================
+
+/* =========================================
    NOTE EDITOR
-========================= */
+========================================= */
 
 .noteView{
+
   width:100%;
   height:100%;
+
   display:flex;
+
   flex-direction:column;
 }
 
 .noteHeader{
-  min-height:68px;
+
+  min-height:70px;
+
   display:flex;
+
   align-items:center;
+
   gap:8px;
+
   padding:10px 14px;
+
   position:relative;
+
   z-index:20;
 }
 
 .noteTitle{
-  font-weight:800;
-  font-size:18px;
+
   flex:1;
+
   min-width:0;
-  white-space:nowrap;
+
+  font-weight:800;
+
+  font-size:18px;
+
   overflow:hidden;
+
+  white-space:nowrap;
+
   text-overflow:ellipsis;
 }
 
 .toolBar{
+
   display:flex;
+
   align-items:center;
+
   gap:5px;
+
   padding:6px;
-  border-radius:20px;
+
+  border-radius:21px;
+
   background:
     rgba(255,255,255,.43);
-  border:1px solid rgba(255,255,255,.55);
-  backdrop-filter:blur(25px) saturate(180%);
-  -webkit-backdrop-filter:blur(25px) saturate(180%);
+
+  border:
+    1px solid
+    rgba(255,255,255,.58);
+
+  backdrop-filter:
+    blur(28px)
+    saturate(190%);
+
+  -webkit-backdrop-filter:
+    blur(28px)
+    saturate(190%);
+
   box-shadow:
-    0 10px 30px rgba(0,0,0,.08),
-    inset 0 1px 0 rgba(255,255,255,.8);
+    0 10px 30px
+    rgba(0,0,0,.08),
+
+    inset 0 1px 0
+    rgba(255,255,255,.8);
+
   overflow-x:auto;
+
   scrollbar-width:none;
 }
 
@@ -600,239 +862,348 @@ button{
 }
 
 .tool{
+
   width:40px;
   height:40px;
-  border-radius:14px;
+
   flex-shrink:0;
-  background:rgba(255,255,255,.28);
-  transition:.15s ease;
-}
 
-.tool:hover{
-  background:rgba(255,255,255,.55);
-}
+  border-radius:14px;
 
-.tool.active{
   background:
-    linear-gradient(
-      135deg,
-      rgba(100,145,255,.75),
-      rgba(150,100,255,.7)
-    );
-  color:white;
-  box-shadow:
-    0 5px 15px rgba(80,120,255,.25);
+    rgba(255,255,255,.3);
+
+  transition:.15s;
 }
 
 .tool:active{
-  transform:scale(.9);
+
+  transform:
+    scale(.9);
+}
+
+.tool.active{
+
+  color:white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #518cff,
+      #805fff
+    );
+
+  box-shadow:
+    0 6px 16px
+    rgba(80,120,255,.28);
 }
 
 .colorInput{
+
   width:40px;
   height:40px;
-  border:0;
+
   padding:4px;
+
+  border:0;
+
   background:transparent;
 }
 
 .sizeBox{
+
   display:flex;
+
   align-items:center;
-  gap:5px;
-  padding:0 8px;
+
+  padding:0 7px;
 }
 
 #sizeRange{
-  width:85px;
+
+  width:90px;
 }
 
 .zoomBox{
+
   display:flex;
+
   gap:4px;
-  padding:0 5px;
 }
 
 .pageBox{
+
   display:flex;
+
   align-items:center;
+
   gap:5px;
-  padding:0 5px;
+
   white-space:nowrap;
+
   font-size:12px;
 }
 
-/* =========================
+
+/* =========================================
    BOARD
-========================= */
+========================================= */
 
 .boardViewport{
-  flex:1;
-  position:relative;
-  overflow:hidden;
-  touch-action:none;
-  background:
-    radial-gradient(
-      circle at 20% 20%,
-      rgba(100,150,255,.06),
-      transparent 25%
-    ),
-    rgba(255,255,255,.08);
-}
 
-.dark .boardViewport{
+  flex:1;
+
+  position:relative;
+
+  overflow:hidden;
+
+  touch-action:none;
+
   background:
     radial-gradient(
-      circle at 20% 20%,
-      rgba(100,130,255,.06),
-      transparent 25%
-    ),
-    rgba(0,0,0,.08);
+      circle at 30% 20%,
+      rgba(90,140,255,.06),
+      transparent 30%
+    );
 }
 
 .boardWorld{
+
   position:absolute;
+
   left:0;
   top:0;
-  width:10000px;
-  height:7000px;
+
+  width:12000px;
+  height:8500px;
+
   transform-origin:0 0;
+
   background:
     linear-gradient(
-      rgba(120,140,180,.08) 1px,
+      rgba(100,130,170,.08) 1px,
       transparent 1px
     ),
     linear-gradient(
       90deg,
-      rgba(120,140,180,.08) 1px,
+      rgba(100,130,170,.08) 1px,
       transparent 1px
     );
-  background-size:50px 50px;
+
+  background-size:
+    50px 50px;
 }
 
 .page{
+
   position:absolute;
+
   left:500px;
   top:350px;
-  width:8500px;
-  height:6000px;
-  background:
-    rgba(255,255,255,.86);
-  border-radius:22px;
-  box-shadow:
-    0 20px 70px rgba(0,0,0,.14),
-    inset 0 0 0 1px rgba(0,0,0,.04);
+
+  width:10000px;
+  height:7000px;
+
   overflow:hidden;
+
+  border-radius:24px;
+
+  background:
+    rgba(255,255,255,.9);
+
+  box-shadow:
+
+    0 25px 80px
+    rgba(0,0,0,.15),
+
+    inset 0 0 0 1px
+    rgba(0,0,0,.04);
 }
 
 .dark .page{
-  background:rgba(25,28,36,.94);
+
+  background:
+    rgba(27,30,38,.95);
+
   box-shadow:
-    0 20px 70px rgba(0,0,0,.4);
+    0 25px 80px
+    rgba(0,0,0,.45);
 }
 
 #drawSvg{
+
   position:absolute;
-  inset:0;
+
+  left:0;
+  top:0;
+
   width:100%;
   height:100%;
+
   overflow:visible;
+
+  pointer-events:none;
 }
 
 .objectLayer{
+
   position:absolute;
-  inset:0;
+
+  left:0;
+  top:0;
+
+  width:100%;
+  height:100%;
+
+  pointer-events:none;
 }
 
-/* =========================
-   NOTE OBJECTS
-========================= */
+
+/* =========================================
+   OBJECT
+========================================= */
 
 .noteObject{
+
   position:absolute;
+
   min-width:80px;
   min-height:40px;
+
+  pointer-events:auto;
+
   user-select:none;
+
   touch-action:none;
 }
 
 .noteText{
-  white-space:pre-wrap;
-  outline:none;
-  cursor:text;
+
   padding:5px;
+
+  white-space:pre-wrap;
+
+  word-break:break-word;
+
+  cursor:text;
 }
 
 .sticky{
+
   padding:18px;
-  border-radius:8px;
+
+  border-radius:9px;
+
   background:
     linear-gradient(
       135deg,
-      rgba(255,244,140,.95),
-      rgba(255,226,90,.84)
+      rgba(255,245,140,.97),
+      rgba(255,225,80,.86)
     );
+
   color:#222;
+
   box-shadow:
-    0 12px 30px rgba(0,0,0,.13),
-    inset 0 1px 0 rgba(255,255,255,.55);
+
+    0 15px 35px
+    rgba(0,0,0,.14),
+
+    inset 0 1px 0
+    rgba(255,255,255,.7);
 }
 
 .resizeHandle{
+
   position:absolute;
-  width:13px;
-  height:13px;
+
   right:-7px;
   bottom:-7px;
+
+  width:14px;
+  height:14px;
+
   border-radius:50%;
+
   background:white;
-  border:2px solid #668cff;
-  box-shadow:0 2px 8px rgba(0,0,0,.18);
+
+  border:
+    2px solid
+    #648dff;
+
+  box-shadow:
+    0 2px 8px
+    rgba(0,0,0,.2);
 }
 
 .selectedObject{
-  outline:2px solid rgba(90,130,255,.65);
+
+  outline:
+    2px solid
+    rgba(90,130,255,.65);
+
   outline-offset:3px;
 }
 
-/* =========================
+
+/* =========================================
    SETTINGS
-========================= */
+========================================= */
 
 .settings{
-  padding:30px;
-  overflow:auto;
+
   width:100%;
   height:100%;
+
+  overflow:auto;
+
+  padding:30px;
 }
 
 .settingCard{
+
   padding:22px;
+
   border-radius:25px;
+
   margin-bottom:15px;
 }
 
 .settingTitle{
-  font-weight:800;
+
   margin-bottom:12px;
+
+  font-weight:800;
 }
 
-/* =========================
+
+/* =========================================
    MOBILE
-========================= */
+========================================= */
 
 .mobileMenu{
+
   display:none;
+
   position:absolute;
-  z-index:100;
+
   left:12px;
   top:12px;
+
+  z-index:100;
+
   width:45px;
   height:45px;
+
   border-radius:16px;
-  background:rgba(255,255,255,.55);
-  backdrop-filter:blur(25px);
-  -webkit-backdrop-filter:blur(25px);
+
+  background:
+    rgba(255,255,255,.58);
+
+  backdrop-filter:
+    blur(25px);
+
+  -webkit-backdrop-filter:
+    blur(25px);
 }
 
 @media(max-width:800px){
@@ -842,90 +1213,120 @@ button{
   }
 
   .sidebar{
+
     position:absolute;
+
     z-index:90;
+
     left:7px;
     top:7px;
     bottom:7px;
+
     height:auto;
-    transform:translateX(-110%);
-    transition:.25s ease;
+
+    transform:
+      translateX(-110%);
+
+    transition:.25s;
   }
 
   .sidebar.show{
-    transform:translateX(0);
+
+    transform:
+      translateX(0);
   }
 
   .mobileMenu{
     display:block;
   }
 
-  .main{
-    border-radius:24px;
-  }
-
   .home,
   .folderView,
   .settings{
-    padding:22px 15px;
+
+    padding:
+      22px 15px;
   }
 
   .hero h1{
+
     font-size:30px;
   }
 
   .noteHeader{
+
     padding-left:58px;
-    min-height:60px;
   }
 
   .noteTitle{
+
     display:none;
   }
 
   .toolBar{
+
     width:100%;
   }
 }
 
-/* =========================
+
+/* =========================================
    TOAST
-========================= */
+========================================= */
 
 .toast{
+
   position:fixed;
+
   left:50%;
   bottom:25px;
+
   transform:
-    translateX(-50%)
-    translateY(20px);
-  padding:12px 18px;
+    translate(-50%,20px);
+
+  padding:
+    12px 18px;
+
   border-radius:18px;
-  opacity:0;
-  pointer-events:none;
-  z-index:9999;
+
   background:
-    rgba(30,35,45,.78);
+    rgba(25,30,40,.78);
+
   color:white;
-  backdrop-filter:blur(25px);
-  -webkit-backdrop-filter:blur(25px);
-  transition:.25s ease;
+
+  opacity:0;
+
+  pointer-events:none;
+
+  z-index:9999;
+
+  backdrop-filter:
+    blur(25px);
+
+  -webkit-backdrop-filter:
+    blur(25px);
+
+  transition:.25s;
 }
 
 .toast.show{
+
   opacity:1;
+
   transform:
-    translateX(-50%)
-    translateY(0);
+    translate(-50%,0);
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- =========================
+
+<!-- =========================================
      LOGIN
-========================= -->
+========================================= -->
 
 <div id="loginScreen">
 
@@ -960,13 +1361,15 @@ button{
       はじめる
     </button>
 
-    <div style="
-      margin-top:14px;
-      text-align:center;
-      font-size:11px;
-      opacity:.45;
-    ">
-      この端末のブラウザにデータを保存します
+    <div
+      style="
+        margin-top:14px;
+        text-align:center;
+        font-size:11px;
+        opacity:.45;
+      "
+    >
+      この端末のブラウザに保存されます
     </div>
 
   </div>
@@ -974,15 +1377,21 @@ button{
 </div>
 
 
-<!-- =========================
+<!-- =========================================
      APP
-========================= -->
+========================================= -->
 
 <div id="app">
 
   <div class="appShell">
 
-    <aside class="sidebar glass" id="sidebar">
+
+    <!-- SIDEBAR -->
+
+    <aside
+      id="sidebar"
+      class="sidebar glass"
+    >
 
       <div class="sidebarTop">
 
@@ -991,23 +1400,26 @@ button{
         </div>
 
         <div>
+
           <div class="sidebarTitle">
             Destination Note
           </div>
 
           <div
-            class="sidebarSub"
             id="userNameDisplay"
-          >
-          </div>
+            class="sidebarSub"
+          ></div>
+
         </div>
 
       </div>
 
+
       <div
-        class="tree"
         id="tree"
+        class="tree"
       ></div>
+
 
       <div class="sidebarBottom">
 
@@ -1037,6 +1449,8 @@ button{
     </aside>
 
 
+    <!-- MAIN -->
+
     <main class="main glass">
 
       <button
@@ -1046,14 +1460,13 @@ button{
         ☰
       </button>
 
-      <!-- HOME -->
+
       <section
         id="homeScreen"
         class="home"
       ></section>
 
 
-      <!-- FOLDER -->
       <section
         id="folderScreen"
         class="folderView"
@@ -1061,7 +1474,6 @@ button{
       ></section>
 
 
-      <!-- NOTE -->
       <section
         id="noteScreen"
         class="noteView"
@@ -1069,7 +1481,6 @@ button{
       ></section>
 
 
-      <!-- SETTINGS -->
       <section
         id="settingsScreen"
         class="settings"
@@ -1082,6 +1493,7 @@ button{
 
 </div>
 
+
 <div
   id="toast"
   class="toast"
@@ -1089,19 +1501,23 @@ button{
 
 
 <script>
-/* =====================================================
-   STORAGE
-===================================================== */
+
+
+/* =========================================
+   DATA
+========================================= */
 
 const STORAGE_KEY =
   "destinationNote_v1";
 
-const WORLD_W = 10000;
-const WORLD_H = 7000;
+const WORLD_W = 12000;
+const WORLD_H = 8500;
 
 let data = {
+
   name:"",
   password:"",
+
   totalSeconds:0,
 
   folders:[
@@ -1119,38 +1535,65 @@ let data = {
   settings:{
     dark:false
   }
+
 };
 
-let selectedFolderId = "root";
-let currentFolderId = "root";
-let currentNoteId = null;
+
+let selectedFolderId =
+  "root";
+
+let currentFolderId =
+  "root";
+
+let currentNoteId =
+  null;
 
 let expandedFolders =
   new Set(["root"]);
 
-let currentTool = "pencil";
-let currentColor = "#222222";
-let currentSize = 5;
 
-let zoom = 1;
+let currentTool =
+  "pencil";
 
-let cameraX = -500;
-let cameraY = -350;
+let currentColor =
+  "#222222";
 
-let drawing = false;
-let currentStroke = null;
-let pointers = new Map();
-
-let renderFrame = null;
-
-let selectedObjectId = null;
-
-let trackingStart = null;
+let currentSize =
+  5;
 
 
-/* =====================================================
-   BASIC
-===================================================== */
+let zoom =
+  1;
+
+let cameraX =
+  -500;
+
+let cameraY =
+  -350;
+
+
+let drawing =
+  false;
+
+let currentStroke =
+  null;
+
+let pointers =
+  new Map();
+
+let renderFrame =
+  null;
+
+let selectedObjectId =
+  null;
+
+let trackingStart =
+  null;
+
+
+/* =========================================
+   UTILITY
+========================================= */
 
 function uid(){
 
@@ -1159,10 +1602,58 @@ function uid(){
     +
     Math.random()
       .toString(36)
-      .slice(2,8)
+      .slice(2,9)
   );
+
 }
 
+
+function escapeHTML(value){
+
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+function showToast(message){
+
+  const toast =
+    document.getElementById(
+      "toast"
+    );
+
+  toast.textContent =
+    message;
+
+  toast.classList.add(
+    "show"
+  );
+
+  clearTimeout(
+    showToast.timer
+  );
+
+  showToast.timer =
+    setTimeout(
+      ()=>{
+        toast.classList.remove(
+          "show"
+        );
+      },
+      2200
+    );
+
+}
+
+
+/* =========================================
+   SAVE / LOAD
+========================================= */
 
 function save(){
 
@@ -1170,6 +1661,7 @@ function save(){
     STORAGE_KEY,
     JSON.stringify(data)
   );
+
 }
 
 
@@ -1180,7 +1672,8 @@ function load(){
       STORAGE_KEY
     );
 
-  if(!raw) return;
+  if(!raw)
+    return;
 
   try{
 
@@ -1192,18 +1685,32 @@ function load(){
       ...saved
     };
 
-    if(!Array.isArray(data.folders)){
-      data.folders = [];
+    if(
+      !Array.isArray(
+        data.folders
+      )
+    ){
+
+      data.folders=[];
+
     }
 
-    if(!Array.isArray(data.notes)){
-      data.notes = [];
+    if(
+      !Array.isArray(
+        data.notes
+      )
+    ){
+
+      data.notes=[];
+
     }
 
     if(!data.settings){
-      data.settings = {
+
+      data.settings={
         dark:false
       };
+
     }
 
     if(
@@ -1213,251 +1720,247 @@ function load(){
     ){
 
       data.folders.unshift({
+
         id:"root",
+
         name:"マイノート",
+
         icon:"📚",
+
         parent:null,
+
         created:Date.now()
+
       });
 
     }
 
     migrateNotes();
 
-  }catch(e){
+  }catch(error){
 
-    console.error(e);
+    console.error(error);
 
   }
+
 }
 
 
+/* =========================================
+   MIGRATION
+========================================= */
+
 function migrateNotes(){
 
-  data.notes.forEach(note=>{
+  data.notes.forEach(
+    (note,index)=>{
 
-    if(!note.pages){
+      /*
+        undefined対策
+      */
 
-      note.pages = [
-        {
-          strokes:
-            note.strokes || [],
+      if(
+        !note.name ||
+        note.name==="undefined" ||
+        note.name==="null"
+      ){
 
-          elements:
-            note.elements || []
+        note.name =
+          note.title ||
+          note.noteName ||
+          `無題のノート${index+1}`;
+
+      }
+
+
+      /*
+        フォルダが無い場合
+      */
+
+      if(!note.folderId){
+
+        note.folderId =
+          "root";
+
+      }
+
+
+      /*
+        存在しないフォルダを
+        指していた場合
+      */
+
+      const folderExists =
+        data.folders.some(
+          f=>f.id===note.folderId
+        );
+
+      if(!folderExists){
+
+        note.folderId =
+          "root";
+
+      }
+
+
+      /*
+        pages
+      */
+
+      if(
+        !Array.isArray(
+          note.pages
+        )
+      ){
+
+        note.pages=[
+          {
+
+            strokes:
+              Array.isArray(
+                note.strokes
+              )
+                ? note.strokes
+                : [],
+
+            elements:
+              Array.isArray(
+                note.elements
+              )
+                ? note.elements
+                : []
+
+          }
+        ];
+
+      }
+
+
+      if(note.pages.length===0){
+
+        note.pages.push({
+
+          strokes:[],
+
+          elements:[]
+
+        });
+
+      }
+
+
+      note.pages.forEach(
+        page=>{
+
+          if(
+            !Array.isArray(
+              page.strokes
+            )
+          ){
+
+            page.strokes=[];
+
+          }
+
+          if(
+            !Array.isArray(
+              page.elements
+            )
+          ){
+
+            page.elements=[];
+
+          }
+
         }
-      ];
+      );
+
+
+      if(
+        typeof note.currentPage !==
+        "number"
+      ){
+
+        note.currentPage=0;
+
+      }
+
+
+      if(
+        note.currentPage<0
+      ){
+
+        note.currentPage=0;
+
+      }
+
+
+      if(
+        note.currentPage >=
+        note.pages.length
+      ){
+
+        note.currentPage =
+          note.pages.length-1;
+
+      }
 
     }
+  );
 
-    if(!Array.isArray(note.pages)){
-      note.pages = [];
+
+  /*
+    壊れた親フォルダを修正
+  */
+
+  data.folders.forEach(
+    folder=>{
+
+      if(folder.id==="root")
+        return;
+
+      const parentExists =
+        data.folders.some(
+          f=>f.id===folder.parent
+        );
+
+      if(!parentExists){
+
+        folder.parent =
+          "root";
+
+      }
+
     }
+  );
 
-    note.pages.forEach(page=>{
-
-      if(!page.strokes)
-        page.strokes = [];
-
-      if(!page.elements)
-        page.elements = [];
-
-    });
-
-    if(!note.folderId)
-      note.folderId = "root";
-
-    if(!note.currentPage)
-      note.currentPage = 0;
-
-  });
 
   save();
 
 }
 
 
-/* =====================================================
-   RANK
-===================================================== */
-
-function getRank(seconds){
-
-  const hours =
-    seconds / 3600;
-
-  if(hours < 10)
-    return {
-      name:"ブロンズ",
-      icon:"🥉"
-    };
-
-  if(hours < 30)
-    return {
-      name:"シルバー",
-      icon:"🥈"
-    };
-
-  if(hours < 60)
-    return {
-      name:"ゴールド",
-      icon:"🥇"
-    };
-
-  if(hours < 100)
-    return {
-      name:"プラチナ",
-      icon:"💎"
-    };
-
-  if(hours < 200)
-    return {
-      name:"ビジネス",
-      icon:"💼"
-    };
-
-  if(hours < 500)
-    return {
-      name:"ファースト",
-      icon:"✈️"
-    };
-
-  return {
-    name:"グランクラス",
-    icon:"🚄"
-  };
-
-}
-
-
-function formatTime(seconds){
-
-  seconds =
-    Math.max(
-      0,
-      Math.floor(seconds)
-    );
-
-  const h =
-    Math.floor(
-      seconds / 3600
-    );
-
-  const m =
-    Math.floor(
-      (seconds % 3600) / 60
-    );
-
-  const s =
-    seconds % 60;
-
-  return (
-    h + "時間 "
-    + m + "分 "
-    + s + "秒"
-  );
-
-}
-
-
-/* =====================================================
-   STUDY TIMER
-===================================================== */
-
-function startTracking(){
-
-  if(trackingStart===null)
-    trackingStart = Date.now();
-
-}
-
-
-function flushStudyTime(){
-
-  if(trackingStart===null)
-    return;
-
-  const now =
-    Date.now();
-
-  const diff =
-    Math.floor(
-      (now - trackingStart) / 1000
-    );
-
-  if(diff > 0){
-
-    data.totalSeconds += diff;
-
-    trackingStart =
-      now;
-
-    save();
-
-  }
-
-  updateStudyDisplay();
-
-}
-
-
-document.addEventListener(
-  "visibilitychange",
-  ()=>{
-
-    if(
-      document.visibilityState ===
-      "visible"
-    ){
-
-      trackingStart =
-        Date.now();
-
-    }else{
-
-      flushStudyTime();
-
-      trackingStart =
-        null;
-
-    }
-
-  }
-);
-
-setInterval(
-  ()=>{
-
-    if(
-      document.visibilityState ===
-      "visible"
-    ){
-
-      flushStudyTime();
-
-    }
-
-  },
-  1000
-);
-
-
-/* =====================================================
+/* =========================================
    LOGIN
-===================================================== */
+========================================= */
 
 function login(){
 
   const name =
     document
-      .getElementById("loginName")
+      .getElementById(
+        "loginName"
+      )
       .value
       .trim();
 
   const password =
     document
-      .getElementById("loginPassword")
+      .getElementById(
+        "loginPassword"
+      )
       .value;
+
 
   if(!name || !password){
 
@@ -1469,6 +1972,7 @@ function login(){
 
   }
 
+
   data.name =
     name;
 
@@ -1477,17 +1981,22 @@ function login(){
 
   save();
 
+
   document
-    .getElementById("loginScreen")
+    .getElementById(
+      "loginScreen"
+    )
     .style.display =
     "none";
 
+
   document
-    .getElementById("app")
+    .getElementById(
+      "app"
+    )
     .style.display =
     "block";
 
-  applyTheme();
 
   document
     .getElementById(
@@ -1495,6 +2004,9 @@ function login(){
     )
     .textContent =
     name;
+
+
+  applyTheme();
 
   renderTree();
 
@@ -1506,7 +2018,9 @@ function login(){
 
 
 document
-  .getElementById("loginButton")
+  .getElementById(
+    "loginButton"
+  )
   .addEventListener(
     "click",
     login
@@ -1514,7 +2028,9 @@ document
 
 
 document
-  .getElementById("loginPassword")
+  .getElementById(
+    "loginPassword"
+  )
   .addEventListener(
     "keydown",
     e=>{
@@ -1526,11 +2042,12 @@ document
   );
 
 
-/* =====================================================
-   INIT
-===================================================== */
+/* =========================================
+   INITIALIZE
+========================================= */
 
 load();
+
 
 if(
   data.name &&
@@ -1545,7 +2062,9 @@ if(
     "none";
 
   document
-    .getElementById("app")
+    .getElementById(
+      "app"
+    )
     .style.display =
     "block";
 
@@ -1567,9 +2086,9 @@ if(
 }
 
 
-/* =====================================================
+/* =========================================
    THEME
-===================================================== */
+========================================= */
 
 function applyTheme(){
 
@@ -1581,9 +2100,202 @@ function applyTheme(){
 }
 
 
-/* =====================================================
-   SCREEN
-===================================================== */
+/* =========================================
+   STUDY TIME
+========================================= */
+
+function startTracking(){
+
+  trackingStart =
+    Date.now();
+
+}
+
+
+function flushStudyTime(){
+
+  if(trackingStart===null)
+    return;
+
+
+  const now =
+    Date.now();
+
+
+  const seconds =
+    Math.floor(
+      (
+        now -
+        trackingStart
+      ) / 1000
+    );
+
+
+  if(seconds>0){
+
+    data.totalSeconds +=
+      seconds;
+
+    trackingStart =
+      now;
+
+    save();
+
+  }
+
+
+  updateStudyDisplay();
+
+}
+
+
+document.addEventListener(
+  "visibilitychange",
+  ()=>{
+
+    if(
+      document.visibilityState===
+      "visible"
+    ){
+
+      trackingStart =
+        Date.now();
+
+    }else{
+
+      flushStudyTime();
+
+      trackingStart =
+        null;
+
+    }
+
+  }
+);
+
+
+setInterval(
+  ()=>{
+
+    if(
+      document.visibilityState===
+      "visible"
+    ){
+
+      flushStudyTime();
+
+    }
+
+  },
+  1000
+);
+
+
+function formatTime(seconds){
+
+  seconds =
+    Math.floor(seconds);
+
+  const h =
+    Math.floor(
+      seconds/3600
+    );
+
+  const m =
+    Math.floor(
+      (seconds%3600)/60
+    );
+
+  const s =
+    seconds%60;
+
+  return (
+    h+"時間 "
+    +m+"分 "
+    +s+"秒"
+  );
+
+}
+
+
+function updateStudyDisplay(){
+
+  const el =
+    document.getElementById(
+      "studyDisplay"
+    );
+
+  if(el){
+
+    el.textContent =
+      formatTime(
+        data.totalSeconds
+      );
+
+  }
+
+}
+
+
+function getRank(seconds){
+
+  const hours =
+    seconds/3600;
+
+
+  if(hours<10)
+    return {
+      name:"ブロンズ",
+      icon:"🥉"
+    };
+
+
+  if(hours<30)
+    return {
+      name:"シルバー",
+      icon:"🥈"
+    };
+
+
+  if(hours<60)
+    return {
+      name:"ゴールド",
+      icon:"🥇"
+    };
+
+
+  if(hours<100)
+    return {
+      name:"プラチナ",
+      icon:"💎"
+    };
+
+
+  if(hours<200)
+    return {
+      name:"ビジネス",
+      icon:"💼"
+    };
+
+
+  if(hours<500)
+    return {
+      name:"ファースト",
+      icon:"✈️"
+    };
+
+
+  return {
+    name:"グランクラス",
+    icon:"🚄"
+  };
+
+}
+
+
+/* =========================================
+   SCREENS
+========================================= */
 
 function hideScreens(){
 
@@ -1592,14 +2304,16 @@ function hideScreens(){
     "folderScreen",
     "noteScreen",
     "settingsScreen"
-  ].forEach(id=>{
+  ].forEach(
+    id=>{
 
-    document
-      .getElementById(id)
-      .style.display =
-      "none";
+      document
+        .getElementById(id)
+        .style.display =
+        "none";
 
-  });
+    }
+  );
 
 }
 
@@ -1636,27 +2350,35 @@ function showSettings(){
 }
 
 
-/* =====================================================
-   TREE
-===================================================== */
+/* =========================================
+   TREE HELPERS
+========================================= */
 
-function childrenOf(id){
+function childrenOf(folderId){
 
   return data.folders.filter(
-    f=>f.parent===id
+    folder=>
+      folder.parent===
+      folderId
   );
 
 }
 
 
-function notesOf(id){
+function notesOf(folderId){
 
   return data.notes.filter(
-    n=>n.folderId===id
+    note=>
+      note.folderId===
+      folderId
   );
 
 }
 
+
+/* =========================================
+   TREE
+========================================= */
 
 function renderTree(){
 
@@ -1665,12 +2387,15 @@ function renderTree(){
       "tree"
     );
 
-  tree.innerHTML = "";
+  tree.innerHTML="";
+
 
   const root =
     data.folders.find(
-      f=>f.id==="root"
+      folder=>
+        folder.id==="root"
     );
+
 
   if(root){
 
@@ -1692,10 +2417,15 @@ function renderFolderTree(
 ){
 
   const children =
-    childrenOf(folder.id);
+    childrenOf(
+      folder.id
+    );
 
   const notes =
-    notesOf(folder.id);
+    notesOf(
+      folder.id
+    );
+
 
   const row =
     document.createElement(
@@ -1703,22 +2433,32 @@ function renderFolderTree(
     );
 
   row.className =
-    "treeRow"
-    +
-    (
-      selectedFolderId===
-      folder.id
-        ? " selected"
-        : ""
+    "treeRow";
+
+
+  if(
+    selectedFolderId===
+    folder.id &&
+    currentNoteId===null
+  ){
+
+    row.classList.add(
+      "selected"
     );
 
+  }
+
+
   row.style.paddingLeft =
-    (7 + depth*18) + "px";
+    (
+      7 +
+      depth*18
+    )+"px";
 
 
-  /* -------------------------
-     Arrow
-  ------------------------- */
+  /*
+    矢印
+  */
 
   const arrow =
     document.createElement(
@@ -1726,17 +2466,22 @@ function renderFolderTree(
     );
 
   arrow.className =
-    "arrow"
-    +
-    (
+    "arrow";
+
+
+  if(children.length){
+
+    if(
       expandedFolders.has(
         folder.id
       )
-        ? " open"
-        : ""
-    );
+    ){
 
-  if(children.length){
+      arrow.classList.add(
+        "open"
+      );
+
+    }
 
     arrow.innerHTML =
       "<span>›</span>";
@@ -1749,9 +2494,9 @@ function renderFolderTree(
   }
 
 
-  /* -------------------------
-     Icon
-  ------------------------- */
+  /*
+    アイコン
+  */
 
   const icon =
     document.createElement(
@@ -1762,12 +2507,13 @@ function renderFolderTree(
     "treeIcon";
 
   icon.textContent =
-    folder.icon || "📁";
+    folder.icon ||
+    "📁";
 
 
-  /* -------------------------
-     Name
-  ------------------------- */
+  /*
+    名前
+  */
 
   const name =
     document.createElement(
@@ -1778,7 +2524,8 @@ function renderFolderTree(
     "treeName";
 
   name.textContent =
-    folder.name;
+    folder.name ||
+    "無題のタブ";
 
 
   row.append(
@@ -1789,16 +2536,11 @@ function renderFolderTree(
 
 
   /*
-    ★ここ重要★
+    ★重要★
 
-    三角だけではなく
+    行全体をクリック
 
-    ・三角
-    ・アイコン
-    ・文字
-    ・行の空いている部分
-
-    全部クリック可能
+    三角だけじゃない
   */
 
   row.addEventListener(
@@ -1807,11 +2549,16 @@ function renderFolderTree(
 
       e.stopPropagation();
 
+
       selectedFolderId =
         folder.id;
 
       currentFolderId =
         folder.id;
+
+      currentNoteId =
+        null;
+
 
       if(children.length){
 
@@ -1834,6 +2581,7 @@ function renderFolderTree(
         }
 
       }
+
 
       renderTree();
 
@@ -1859,8 +2607,14 @@ function renderFolderTree(
   );
 
 
-  parentEl.appendChild(row);
+  parentEl.appendChild(
+    row
+  );
 
+
+  /*
+    中身
+  */
 
   if(
     expandedFolders.has(
@@ -1880,6 +2634,7 @@ function renderFolderTree(
       }
     );
 
+
     notes.forEach(
       note=>{
 
@@ -1897,6 +2652,10 @@ function renderFolderTree(
 }
 
 
+/* =========================================
+   NOTE TREE
+========================================= */
+
 function renderNoteTree(
   note,
   depth,
@@ -1909,17 +2668,26 @@ function renderNoteTree(
     );
 
   row.className =
-    "treeRow"
-    +
-    (
-      currentNoteId===
-      note.id
-        ? " selected"
-        : ""
+    "treeRow";
+
+
+  if(
+    currentNoteId===
+    note.id
+  ){
+
+    row.classList.add(
+      "selected"
     );
 
+  }
+
+
   row.style.paddingLeft =
-    (7 + depth*18) + "px";
+    (
+      7 +
+      depth*18
+    )+"px";
 
 
   const arrow =
@@ -1955,7 +2723,8 @@ function renderNoteTree(
     "treeName";
 
   name.textContent =
-    note.name;
+    note.name ||
+    "無題のノート";
 
 
   row.append(
@@ -1966,8 +2735,7 @@ function renderNoteTree(
 
 
   /*
-    ノートも文字部分を含め
-    行全体をクリック可能
+    ノートも行全体クリック
   */
 
   row.addEventListener(
@@ -1998,60 +2766,85 @@ function renderNoteTree(
   );
 
 
-  parentEl.appendChild(row);
+  parentEl.appendChild(
+    row
+  );
 
 }
 
 
-/* =====================================================
-   FOLDER
-===================================================== */
+/* =========================================
+   CREATE FOLDER
+========================================= */
 
 function createFolder(){
 
-  const parent =
+  /*
+    現在開いているフォルダを優先
+  */
+
+  const parentId =
+    currentFolderId ||
     selectedFolderId ||
     "root";
+
 
   const name =
     prompt(
       "タブ名を入力"
     );
 
+
   if(!name)
     return;
 
-  const folder = {
+
+  const folder={
 
     id:uid(),
 
-    name:name,
+    name:name.trim(),
 
     icon:"📁",
 
-    parent:parent,
+    parent:parentId,
 
     created:Date.now()
 
   };
 
+
   data.folders.push(
     folder
   );
 
+
+  /*
+    親を展開
+  */
+
   expandedFolders.add(
-    parent
+    parentId
   );
 
   expandedFolders.add(
     folder.id
   );
 
+
+  /*
+    作ったタブを選択
+  */
+
   selectedFolderId =
     folder.id;
 
   currentFolderId =
     folder.id;
+
+  currentNoteId =
+    null;
+
 
   save();
 
@@ -2064,6 +2857,115 @@ function createFolder(){
 }
 
 
+/* =========================================
+   CREATE NOTE
+========================================= */
+
+function createNote(){
+
+  /*
+    ★ここが今回の重要修正★
+
+    現在開いている内側フォルダを
+    必ず親にする
+  */
+
+  let folderId =
+    currentFolderId ||
+    selectedFolderId ||
+    "root";
+
+
+  /*
+    親フォルダが存在するか確認
+  */
+
+  const folder =
+    data.folders.find(
+      f=>f.id===folderId
+    );
+
+
+  if(!folder){
+
+    folderId="root";
+
+  }
+
+
+  const name =
+    prompt(
+      "ノート名を入力"
+    );
+
+
+  if(!name)
+    return;
+
+
+  const note={
+
+    id:uid(),
+
+    name:name.trim(),
+
+    folderId:folderId,
+
+    created:Date.now(),
+
+    currentPage:0,
+
+    pages:[
+
+      {
+
+        strokes:[],
+
+        elements:[]
+
+      }
+
+    ]
+
+  };
+
+
+  data.notes.push(
+    note
+  );
+
+
+  /*
+    親フォルダを開いた状態にする
+  */
+
+  expandedFolders.add(
+    folderId
+  );
+
+
+  selectedFolderId =
+    folderId;
+
+  currentFolderId =
+    folderId;
+
+
+  save();
+
+  renderTree();
+
+  openNote(
+    note.id
+  );
+
+}
+
+
+/* =========================================
+   RENAME
+========================================= */
+
 function renameFolder(id){
 
   const folder =
@@ -2074,84 +2976,33 @@ function renameFolder(id){
   if(!folder)
     return;
 
+
   const name =
     prompt(
       "新しい名前",
       folder.name
     );
 
+
   if(!name)
     return;
 
+
   folder.name =
-    name;
+    name.trim();
 
   save();
 
   renderTree();
 
   if(
-    currentFolderId===id
-  )
+    currentFolderId===
+    id
+  ){
+
     openFolder(id);
 
-}
-
-
-/* =====================================================
-   NOTE
-===================================================== */
-
-function createNote(){
-
-  const folderId =
-    selectedFolderId ||
-    "root";
-
-  const name =
-    prompt(
-      "ノート名を入力"
-    );
-
-  if(!name)
-    return;
-
-  const note = {
-
-    id:uid(),
-
-    name:name,
-
-    folderId:folderId,
-
-    created:Date.now(),
-
-    currentPage:0,
-
-    pages:[
-      {
-        strokes:[],
-        elements:[]
-      }
-    ]
-
-  };
-
-  data.notes.push(
-    note
-  );
-
-  expandedFolders.add(
-    folderId
-  );
-
-  save();
-
-  renderTree();
-
-  openNote(
-    note.id
-  );
+  }
 
 }
 
@@ -2166,33 +3017,31 @@ function renameNote(id){
   if(!note)
     return;
 
+
   const name =
     prompt(
       "新しい名前",
       note.name
     );
 
+
   if(!name)
     return;
 
+
   note.name =
-    name;
+    name.trim();
 
   save();
 
   renderTree();
 
-  if(
-    currentNoteId===id
-  )
-    openNote(id);
-
 }
 
 
-/* =====================================================
+/* =========================================
    OPEN FOLDER
-===================================================== */
+========================================= */
 
 function openFolder(id){
 
@@ -2204,6 +3053,7 @@ function openFolder(id){
   if(!folder)
     return;
 
+
   selectedFolderId =
     id;
 
@@ -2213,7 +3063,9 @@ function openFolder(id){
   currentNoteId =
     null;
 
+
   hideScreens();
+
 
   document
     .getElementById(
@@ -2221,6 +3073,7 @@ function openFolder(id){
     )
     .style.display =
     "block";
+
 
   renderFolder(
     folder
@@ -2231,12 +3084,17 @@ function openFolder(id){
 }
 
 
+/* =========================================
+   FOLDER VIEW
+========================================= */
+
 function renderFolder(folder){
 
   const el =
     document.getElementById(
       "folderScreen"
     );
+
 
   const children =
     childrenOf(
@@ -2248,7 +3106,8 @@ function renderFolder(folder){
       folder.id
     );
 
-  el.innerHTML = `
+
+  el.innerHTML=`
 
     <div class="viewHeader">
 
@@ -2260,47 +3119,60 @@ function renderFolder(folder){
       </button>
 
       <div>
+
         <h2>
-          ${escapeHTML(folder.icon || "📁")}
-          ${escapeHTML(folder.name)}
+          ${escapeHTML(
+            folder.icon || "📁"
+          )}
+          ${escapeHTML(
+            folder.name
+          )}
         </h2>
 
-        <div style="
-          opacity:.5;
-          font-size:12px;
-        ">
-          ${children.length} タブ /
-          ${notes.length} ノート
+        <div
+          style="
+            opacity:.5;
+            font-size:12px;
+          "
+        >
+          ${children.length}
+          タブ /
+          ${notes.length}
+          ノート
         </div>
+
       </div>
 
     </div>
+
 
     <div class="sectionTitle">
       タブ
     </div>
 
     <div
-      class="folderGrid"
       id="folderChildren"
+      class="folderGrid"
     ></div>
+
 
     <div class="sectionTitle">
       ノート
     </div>
 
     <div
-      class="folderGrid"
       id="folderNotes"
+      class="folderGrid"
     ></div>
 
   `;
 
 
-  const childEl =
+  const childGrid =
     document.getElementById(
       "folderChildren"
     );
+
 
   children.forEach(
     child=>{
@@ -2313,22 +3185,54 @@ function renderFolder(folder){
       card.className =
         "folderCard glass";
 
-      card.innerHTML = `
+
+      card.innerHTML=`
+
         <div class="folderEmoji">
-          ${escapeHTML(child.icon || "📁")}
+          ${escapeHTML(
+            child.icon || "📁"
+          )}
         </div>
 
         <div class="folderName">
-          ${escapeHTML(child.name)}
+          ${escapeHTML(
+            child.name
+          )}
         </div>
+
+        <div class="folderCount">
+          ${
+            childrenOf(
+              child.id
+            ).length
+          }
+          タブ /
+          ${
+            notesOf(
+              child.id
+            ).length
+          }
+          ノート
+        </div>
+
       `;
 
-      card.onclick =
-        ()=>openFolder(
-          child.id
-        );
 
-      childEl.appendChild(
+      card.onclick =
+        ()=>{
+
+          expandedFolders.add(
+            child.id
+          );
+
+          openFolder(
+            child.id
+          );
+
+        };
+
+
+      childGrid.appendChild(
         card
       );
 
@@ -2336,10 +3240,11 @@ function renderFolder(folder){
   );
 
 
-  const notesEl =
+  const noteGrid =
     document.getElementById(
       "folderNotes"
     );
+
 
   notes.forEach(
     note=>{
@@ -2352,22 +3257,30 @@ function renderFolder(folder){
       card.className =
         "folderCard glass";
 
-      card.innerHTML = `
+
+      card.innerHTML=`
+
         <div class="folderEmoji">
           📝
         </div>
 
         <div class="folderName">
-          ${escapeHTML(note.name)}
+          ${escapeHTML(
+            note.name ||
+            "無題のノート"
+          )}
         </div>
+
       `;
+
 
       card.onclick =
         ()=>openNote(
           note.id
         );
 
-      notesEl.appendChild(
+
+      noteGrid.appendChild(
         card
       );
 
@@ -2377,9 +3290,9 @@ function renderFolder(folder){
 }
 
 
-/* =====================================================
+/* =========================================
    HOME
-===================================================== */
+========================================= */
 
 function renderHome(){
 
@@ -2388,25 +3301,29 @@ function renderHome(){
       "homeScreen"
     );
 
+
   const rank =
     getRank(
       data.totalSeconds
     );
 
-  const root =
-    data.folders.find(
-      f=>f.id==="root"
-    );
 
   const rootChildren =
-    childrenOf("root");
+    childrenOf(
+      "root"
+    );
 
-  home.innerHTML = `
+
+  home.innerHTML=`
 
     <div class="hero glass">
 
       <h1>
-        おかえりなさい、${escapeHTML(data.name)} 👋
+        おかえりなさい、
+        ${escapeHTML(
+          data.name
+        )}
+        👋
       </h1>
 
       <p>
@@ -2429,10 +3346,15 @@ function renderHome(){
         </div>
 
         <div class="studyTime">
+
           累計勉強時間：
+
           <span id="studyDisplay">
-            ${formatTime(data.totalSeconds)}
+            ${formatTime(
+              data.totalSeconds
+            )}
           </span>
+
         </div>
 
       </div>
@@ -2444,9 +3366,10 @@ function renderHome(){
       マイノート
     </div>
 
+
     <div
-      class="folderGrid"
       id="homeFolders"
+      class="folderGrid"
     ></div>
 
   `;
@@ -2469,29 +3392,45 @@ function renderHome(){
       card.className =
         "folderCard glass";
 
-      card.innerHTML = `
+
+      card.innerHTML=`
+
         <div class="folderEmoji">
-          ${escapeHTML(folder.icon || "📁")}
+          ${escapeHTML(
+            folder.icon ||
+            "📁"
+          )}
         </div>
 
         <div class="folderName">
-          ${escapeHTML(folder.name)}
+          ${escapeHTML(
+            folder.name
+          )}
         </div>
 
         <div class="folderCount">
           ${
-            childrenOf(folder.id).length
-          } タブ /
+            childrenOf(
+              folder.id
+            ).length
+          }
+          タブ /
           ${
-            notesOf(folder.id).length
-          } ノート
+            notesOf(
+              folder.id
+            ).length
+          }
+          ノート
         </div>
+
       `;
+
 
       card.onclick =
         ()=>openFolder(
           folder.id
         );
+
 
       grid.appendChild(
         card
@@ -2503,68 +3442,15 @@ function renderHome(){
 }
 
 
-function updateStudyDisplay(){
-
-  const el =
-    document.getElementById(
-      "studyDisplay"
-    );
-
-  if(el){
-
-    el.textContent =
-      formatTime(
-        data.totalSeconds
-      );
-
-  }
-
-}
-
-
-/* =====================================================
-   NOTE EDITOR
-===================================================== */
-
-function openNote(id){
-
-  const note =
-    data.notes.find(
-      n=>n.id===id
-    );
-
-  if(!note)
-    return;
-
-  currentNoteId =
-    id;
-
-  selectedFolderId =
-    note.folderId;
-
-  currentFolderId =
-    note.folderId;
-
-  hideScreens();
-
-  document
-    .getElementById(
-      "noteScreen"
-    )
-    .style.display =
-    "flex";
-
-  renderNoteEditor();
-
-  renderTree();
-
-}
-
+/* =========================================
+   NOTE
+========================================= */
 
 function getCurrentNote(){
 
   return data.notes.find(
-    n=>n.id===currentNoteId
+    n=>n.id===
+    currentNoteId
   );
 
 }
@@ -2578,6 +3464,16 @@ function getCurrentPage(){
   if(!note)
     return null;
 
+
+  if(
+    note.currentPage<0
+  ){
+
+    note.currentPage=0;
+
+  }
+
+
   if(
     note.currentPage >=
     note.pages.length
@@ -2588,12 +3484,66 @@ function getCurrentPage(){
 
   }
 
+
   return note.pages[
     note.currentPage
   ];
 
 }
 
+
+/* =========================================
+   OPEN NOTE
+========================================= */
+
+function openNote(id){
+
+  const note =
+    data.notes.find(
+      n=>n.id===id
+    );
+
+
+  if(!note)
+    return;
+
+
+  currentNoteId =
+    id;
+
+  currentFolderId =
+    note.folderId;
+
+  selectedFolderId =
+    note.folderId;
+
+
+  expandedFolders.add(
+    note.folderId
+  );
+
+
+  hideScreens();
+
+
+  document
+    .getElementById(
+      "noteScreen"
+    )
+    .style.display =
+    "flex";
+
+
+  renderNoteEditor();
+
+  renderTree();
+
+}
+
+
+/* =========================================
+   NOTE EDITOR
+========================================= */
 
 function renderNoteEditor(){
 
@@ -2603,12 +3553,14 @@ function renderNoteEditor(){
   if(!note)
     return;
 
+
   const screen =
     document.getElementById(
       "noteScreen"
     );
 
-  screen.innerHTML = `
+
+  screen.innerHTML=`
 
     <div class="noteHeader glass">
 
@@ -2619,63 +3571,67 @@ function renderNoteEditor(){
         ←
       </button>
 
+
       <div class="noteTitle">
-        ${escapeHTML(note.name)}
+        ${escapeHTML(
+          note.name
+        )}
       </div>
+
 
       <div class="toolBar">
 
         <button
-          class="tool active"
           id="tool-pencil"
+          class="tool active"
           onclick="setTool('pencil')"
         >
           ✏️
         </button>
 
         <button
-          class="tool"
           id="tool-highlighter"
+          class="tool"
           onclick="setTool('highlighter')"
         >
           🖍️
         </button>
 
         <button
-          class="tool"
           id="tool-pixel"
+          class="tool"
           onclick="setTool('pixel')"
         >
           🧽
         </button>
 
         <button
-          class="tool"
           id="tool-object"
+          class="tool"
           onclick="setTool('object')"
         >
           🗑️
         </button>
 
         <button
-          class="tool"
           id="tool-hand"
+          class="tool"
           onclick="setTool('hand')"
         >
           ✋
         </button>
 
         <button
-          class="tool"
           id="tool-text"
+          class="tool"
           onclick="setTool('text')"
         >
           T
         </button>
 
         <button
-          class="tool"
           id="tool-sticky"
+          class="tool"
           onclick="setTool('sticky')"
         >
           📝
@@ -2688,25 +3644,33 @@ function renderNoteEditor(){
           🖼️
         </button>
 
+
         <input
-          class="colorInput"
           id="colorPicker"
+          class="colorInput"
           type="color"
-          value="#222222"
+          value="${currentColor}"
           onchange="changeColor(this.value)"
         >
 
+
         <div class="sizeBox">
-          <span>●</span>
+
+          <span>
+            ●
+          </span>
+
           <input
             id="sizeRange"
             type="range"
             min="1"
             max="60"
-            value="5"
+            value="${currentSize}"
             oninput="changeSize(this.value)"
           >
+
         </div>
+
 
         <div class="zoomBox">
 
@@ -2733,12 +3697,14 @@ function renderNoteEditor(){
 
         </div>
 
+
         <button
           class="tool"
           onclick="addPage()"
         >
           ＋📄
         </button>
+
 
         <div class="pageBox">
 
@@ -2762,6 +3728,7 @@ function renderNoteEditor(){
 
         </div>
 
+
         <button
           class="tool"
           onclick="clearPage()"
@@ -2775,29 +3742,34 @@ function renderNoteEditor(){
 
 
     <div
-      class="boardViewport"
       id="boardViewport"
+      class="boardViewport"
     >
 
       <div
-        class="boardWorld"
         id="boardWorld"
+        class="boardWorld"
       >
 
         <div
-          class="page"
           id="page"
+          class="page"
         >
 
           <svg
             id="drawSvg"
-            viewBox="0 0 ${WORLD_W} ${WORLD_H}"
+            viewBox="
+              0 0
+              ${WORLD_W}
+              ${WORLD_H}
+            "
             preserveAspectRatio="none"
           ></svg>
 
+
           <div
-            class="objectLayer"
             id="objectLayer"
+            class="objectLayer"
           ></div>
 
         </div>
@@ -2818,9 +3790,9 @@ function renderNoteEditor(){
 }
 
 
-/* =====================================================
+/* =========================================
    TOOL
-===================================================== */
+========================================= */
 
 function setTool(tool){
 
@@ -2836,16 +3808,13 @@ function updateToolButtons(){
 
   document
     .querySelectorAll(
-      ".tool[id^='tool-']"
+      "[id^='tool-']"
     )
     .forEach(
-      button=>{
-
+      button=>
         button.classList.remove(
           "active"
-        );
-
-      }
+        )
     );
 
 
@@ -2854,40 +3823,12 @@ function updateToolButtons(){
       "tool-"+currentTool
     );
 
-  if(button)
+
+  if(button){
+
     button.classList.add(
       "active"
     );
-
-
-  const viewport =
-    document.getElementById(
-      "boardViewport"
-    );
-
-  if(!viewport)
-    return;
-
-
-  if(
-    currentTool==="hand"
-  ){
-
-    viewport.style.cursor =
-      "grab";
-
-  }else if(
-    currentTool==="text" ||
-    currentTool==="sticky"
-  ){
-
-    viewport.style.cursor =
-      "text";
-
-  }else{
-
-    viewport.style.cursor =
-      "crosshair";
 
   }
 
@@ -2907,18 +3848,27 @@ function changeSize(size){
   currentSize =
     Number(size);
 
-  if(
-    selectedObjectId
-  ){
+
+  /*
+    選択中の文字サイズも変更
+  */
+
+  if(selectedObjectId){
 
     const page =
       getCurrentPage();
 
+    if(!page)
+      return;
+
+
     const obj =
       page.elements.find(
-        e=>e.id===
-        selectedObjectId
+        e=>
+          e.id===
+          selectedObjectId
       );
+
 
     if(
       obj &&
@@ -2929,7 +3879,7 @@ function changeSize(size){
     ){
 
       obj.fontSize =
-        Number(size) * 3 + 10;
+        currentSize*3+10;
 
       renderPage();
 
@@ -2942,9 +3892,32 @@ function changeSize(size){
 }
 
 
-/* =====================================================
-   ZOOM
-===================================================== */
+/* =========================================
+   CAMERA
+========================================= */
+
+function applyCamera(){
+
+  const world =
+    document.getElementById(
+      "boardWorld"
+    );
+
+  if(!world)
+    return;
+
+
+  world.style.transform =
+    `
+      translate(
+        ${cameraX}px,
+        ${cameraY}px
+      )
+      scale(${zoom})
+    `;
+
+}
+
 
 function changeZoom(amount){
 
@@ -2953,7 +3926,7 @@ function changeZoom(amount){
       3,
       Math.max(
         .25,
-        zoom + amount
+        zoom+amount
       )
     );
 
@@ -2975,25 +3948,65 @@ function resetZoom(){
 }
 
 
-function applyCamera(){
+/* =========================================
+   COORDINATE
+========================================= */
 
-  const world =
+function screenToPage(
+  clientX,
+  clientY
+){
+
+  const viewport =
     document.getElementById(
-      "boardWorld"
+      "boardViewport"
     );
 
-  if(!world)
-    return;
 
-  world.style.transform =
-    `translate(${cameraX}px,${cameraY}px) scale(${zoom})`;
+  const rect =
+    viewport.getBoundingClientRect();
+
+
+  /*
+    画面
+    ↓
+    World
+    ↓
+    Page
+  */
+
+  const worldX =
+    (
+      clientX -
+      rect.left -
+      cameraX
+    ) / zoom;
+
+
+  const worldY =
+    (
+      clientY -
+      rect.top -
+      cameraY
+    ) / zoom;
+
+
+  return {
+
+    x:
+      worldX-500,
+
+    y:
+      worldY-350
+
+  };
 
 }
 
 
-/* =====================================================
-   BOARD SETUP
-===================================================== */
+/* =========================================
+   BOARD
+========================================= */
 
 function setupBoard(){
 
@@ -3026,66 +4039,29 @@ function setupBoard(){
     pointerUp
   );
 
-  viewport.addEventListener(
-    "pointerleave",
-    pointerUp
-  );
-
 
   applyCamera();
 
 }
 
 
-function screenToWorld(
-  clientX,
-  clientY
-){
-
-  const viewport =
-    document.getElementById(
-      "boardViewport"
-    );
-
-  const rect =
-    viewport.getBoundingClientRect();
-
-  const x =
-    (
-      clientX -
-      rect.left -
-      cameraX
-    ) / zoom;
-
-  const y =
-    (
-      clientY -
-      rect.top -
-      cameraY
-    ) / zoom;
-
-  return {
-    x,
-    y
-  };
-
-}
-
-
-/* =====================================================
-   POINTER
-===================================================== */
+/* =========================================
+   POINTER DOWN
+========================================= */
 
 function pointerDown(e){
 
   e.preventDefault();
 
+
   const viewport =
     e.currentTarget;
+
 
   viewport.setPointerCapture(
     e.pointerId
   );
+
 
   pointers.set(
     e.pointerId,
@@ -3095,6 +4071,10 @@ function pointerDown(e){
     }
   );
 
+
+  /*
+    2本指
+  */
 
   if(
     pointers.size>=2
@@ -3108,11 +4088,15 @@ function pointerDown(e){
 
 
   const point =
-    screenToWorld(
+    screenToPage(
       e.clientX,
       e.clientY
     );
 
+
+  /*
+    手
+  */
 
   if(
     currentTool==="hand"
@@ -3121,15 +4105,25 @@ function pointerDown(e){
     drawing=true;
 
     currentStroke={
+
       hand:true,
-      lastX:e.clientX,
-      lastY:e.clientY
+
+      lastX:
+        e.clientX,
+
+      lastY:
+        e.clientY
+
     };
 
     return;
 
   }
 
+
+  /*
+    テキスト
+  */
 
   if(
     currentTool==="text"
@@ -3144,6 +4138,10 @@ function pointerDown(e){
   }
 
 
+  /*
+    付箋
+  */
+
   if(
     currentTool==="sticky"
   ){
@@ -3156,6 +4154,10 @@ function pointerDown(e){
 
   }
 
+
+  /*
+    オブジェクト消しゴム
+  */
 
   if(
     currentTool==="object"
@@ -3170,38 +4172,57 @@ function pointerDown(e){
   }
 
 
+  /*
+    ピクセル消しゴム
+  */
+
   if(
     currentTool==="pixel"
   ){
 
+    drawing=true;
+
     eraseAt(
       point
     );
-
-    drawing=true;
 
     return;
 
   }
 
 
+  /*
+    鉛筆 / 蛍光ペン
+  */
+
   drawing=true;
 
+
   currentStroke={
+
     id:uid(),
-    color:currentColor,
+
+    color:
+      currentColor,
+
     width:
-      currentTool==="highlighter"
+      currentTool===
+      "highlighter"
         ? currentSize*3.5
         : currentSize,
+
     opacity:
-      currentTool==="highlighter"
-        ? .27
+      currentTool===
+      "highlighter"
+        ? .28
         : 1,
+
     points:[
       point
     ]
+
   };
+
 
   getCurrentPage()
     .strokes
@@ -3209,12 +4230,17 @@ function pointerDown(e){
       currentStroke
     );
 
+
   renderStroke(
     currentStroke
   );
 
 }
 
+
+/* =========================================
+   POINTER MOVE
+========================================= */
 
 function pointerMove(e){
 
@@ -3227,6 +4253,10 @@ function pointerMove(e){
   );
 
 
+  /*
+    2本指ズーム
+  */
+
   if(
     pointers.size>=2
   ){
@@ -3234,11 +4264,13 @@ function pointerMove(e){
     const values =
       [...pointers.values()];
 
+
     const a =
       values[0];
 
     const b =
       values[1];
+
 
     const dx =
       a.x-b.x;
@@ -3246,37 +4278,42 @@ function pointerMove(e){
     const dy =
       a.y-b.y;
 
-    const distance =
+
+    const dist =
       Math.sqrt(
-        dx*dx+dy*dy
+        dx*dx+
+        dy*dy
       );
 
-    if(!pointerMove.lastDistance){
 
-      pointerMove.lastDistance =
-        distance;
+    if(
+      pointerMove.lastDistance
+    ){
 
-    }else{
-
-      const diff =
-        distance -
+      const delta =
+        dist -
         pointerMove.lastDistance;
+
 
       zoom =
         Math.min(
           3,
           Math.max(
             .25,
-            zoom + diff*.002
+            zoom+
+            delta*.002
           )
         );
 
-      pointerMove.lastDistance =
-        distance;
 
       applyCamera();
 
     }
+
+
+    pointerMove.lastDistance =
+      dist;
+
 
     return;
 
@@ -3291,6 +4328,10 @@ function pointerMove(e){
     return;
 
 
+  /*
+    手
+  */
+
   if(
     currentTool==="hand"
   ){
@@ -3303,15 +4344,20 @@ function pointerMove(e){
       e.clientY -
       currentStroke.lastY;
 
-    cameraX += dx;
 
-    cameraY += dy;
+    cameraX +=
+      dx;
+
+    cameraY +=
+      dy;
+
 
     currentStroke.lastX =
       e.clientX;
 
     currentStroke.lastY =
       e.clientY;
+
 
     applyCamera();
 
@@ -3321,11 +4367,15 @@ function pointerMove(e){
 
 
   const point =
-    screenToWorld(
+    screenToPage(
       e.clientX,
       e.clientY
     );
 
+
+  /*
+    消しゴム
+  */
 
   if(
     currentTool==="pixel"
@@ -3340,15 +4390,41 @@ function pointerMove(e){
   }
 
 
-  if(
-    !currentStroke
-  )
+  /*
+    描画
+  */
+
+  if(!currentStroke)
     return;
+
+
+  const last =
+    currentStroke.points[
+      currentStroke.points.length-1
+    ];
+
+
+  /*
+    小さすぎる移動は無視
+    → なめらか
+  */
+
+  if(
+    distance(
+      last,
+      point
+    ) < .8
+  ){
+
+    return;
+
+  }
 
 
   currentStroke.points.push(
     point
   );
+
 
   queueRender(
     currentStroke
@@ -3356,6 +4432,10 @@ function pointerMove(e){
 
 }
 
+
+/* =========================================
+   POINTER UP
+========================================= */
 
 function pointerUp(e){
 
@@ -3366,8 +4446,8 @@ function pointerUp(e){
   pointerMove.lastDistance =
     null;
 
+
   if(
-    e.pointerType==="touch" &&
     pointers.size>0
   )
     return;
@@ -3382,14 +4462,15 @@ function pointerUp(e){
 }
 
 
-/* =====================================================
-   SMOOTH DRAWING
-===================================================== */
+/* =========================================
+   DRAWING
+========================================= */
 
 function queueRender(stroke){
 
   if(renderFrame)
     return;
+
 
   renderFrame =
     requestAnimationFrame(
@@ -3412,20 +4493,31 @@ function pointsToPath(points){
   if(!points.length)
     return "";
 
+
   if(points.length===1){
 
     const p =
       points[0];
 
     return `
-      M ${p.x} ${p.y}
-      L ${p.x+.1} ${p.y+.1}
+      M ${p.x}
+      ${p.y}
+
+      L ${p.x+.1}
+      ${p.y+.1}
     `;
 
   }
 
+
   let path =
     `M ${points[0].x} ${points[0].y}`;
+
+
+  /*
+    Quadratic curveで
+    なめらかにする
+  */
 
   for(
     let i=1;
@@ -3433,30 +4525,52 @@ function pointsToPath(points){
     i++
   ){
 
-    const p =
-      points[i];
-
     const prev =
       points[i-1];
 
+    const current =
+      points[i];
+
+
     const midX =
-      (prev.x+p.x)/2;
+      (
+        prev.x+
+        current.x
+      )/2;
+
 
     const midY =
-      (prev.y+p.y)/2;
+      (
+        prev.y+
+        current.y
+      )/2;
+
 
     path +=
-      ` Q ${prev.x} ${prev.y} ${midX} ${midY}`;
+      `
+      Q
+      ${prev.x}
+      ${prev.y}
+      ${midX}
+      ${midY}
+      `;
 
   }
+
 
   const last =
     points[
       points.length-1
     ];
 
+
   path +=
-    ` L ${last.x} ${last.y}`;
+    `
+    L
+    ${last.x}
+    ${last.y}
+    `;
+
 
   return path;
 
@@ -3469,6 +4583,7 @@ function renderStroke(stroke){
     document.getElementById(
       "drawSvg"
     );
+
 
   if(!svg)
     return;
@@ -3488,8 +4603,10 @@ function renderStroke(stroke){
         "path"
       );
 
+
     path.dataset.strokeId =
       stroke.id;
+
 
     svg.appendChild(
       path
@@ -3505,47 +4622,51 @@ function renderStroke(stroke){
     )
   );
 
+
   path.setAttribute(
     "fill",
     "none"
   );
+
 
   path.setAttribute(
     "stroke",
     stroke.color
   );
 
+
   path.setAttribute(
     "stroke-width",
     stroke.width
   );
+
 
   path.setAttribute(
     "stroke-linecap",
     "round"
   );
 
+
   path.setAttribute(
     "stroke-linejoin",
     "round"
   );
 
+
   path.setAttribute(
     "opacity",
-    stroke.opacity ?? 1
+    stroke.opacity ??
+    1
   );
 
 }
 
 
-/* =====================================================
-   PIXEL ERASER
-===================================================== */
+/* =========================================
+   DISTANCE
+========================================= */
 
-function distance(
-  a,
-  b
-){
+function distance(a,b){
 
   const dx =
     a.x-b.x;
@@ -3554,11 +4675,16 @@ function distance(
     a.y-b.y;
 
   return Math.sqrt(
-    dx*dx+dy*dy
+    dx*dx+
+    dy*dy
   );
 
 }
 
+
+/* =========================================
+   PIXEL ERASER
+========================================= */
 
 function eraseAt(point){
 
@@ -3568,11 +4694,13 @@ function eraseAt(point){
   if(!page)
     return;
 
+
   const radius =
     Math.max(
       8,
-      currentSize*2.2
+      currentSize*2
     );
+
 
   const result=[];
 
@@ -3582,50 +4710,47 @@ function eraseAt(point){
 
       let segment=[];
 
-      for(
-        let i=0;
-        i<stroke.points.length;
-        i++
-      ){
 
-        const p =
-          stroke.points[i];
-
-        if(
-          distance(
-            p,
-            point
-          ) <= radius
-        ){
+      stroke.points.forEach(
+        p=>{
 
           if(
-            segment.length>=2
+            distance(
+              p,
+              point
+            )<=radius
           ){
 
-            result.push({
+            if(
+              segment.length>=2
+            ){
 
-              ...stroke,
+              result.push({
 
-              id:uid(),
+                ...stroke,
 
-              points:
-                segment
+                id:uid(),
 
-            });
+                points:
+                  segment
+
+              });
+
+            }
+
+
+            segment=[];
+
+          }else{
+
+            segment.push(
+              p
+            );
 
           }
 
-          segment=[];
-
-        }else{
-
-          segment.push(
-            p
-          );
-
         }
-
-      }
+      );
 
 
       if(
@@ -3652,14 +4777,15 @@ function eraseAt(point){
   page.strokes =
     result;
 
+
   renderPage();
 
 }
 
 
-/* =====================================================
+/* =========================================
    OBJECT ERASER
-===================================================== */
+========================================= */
 
 function eraseObjectAt(point){
 
@@ -3670,12 +4796,9 @@ function eraseObjectAt(point){
     return;
 
 
-  let hit =
-    null;
-
-
   for(
-    let i=page.elements.length-1;
+    let i=
+      page.elements.length-1;
     i>=0;
     i--
   ){
@@ -3683,47 +4806,43 @@ function eraseObjectAt(point){
     const obj =
       page.elements[i];
 
+
     if(
-      point.x >= obj.x &&
-      point.x <=
+      point.x>=obj.x &&
+      point.x<=
         obj.x+obj.width &&
-      point.y >= obj.y &&
-      point.y <=
+
+      point.y>=obj.y &&
+      point.y<=
         obj.y+obj.height
     ){
 
-      hit =
-        obj;
-
-      break;
-
-    }
-
-  }
-
-
-  if(hit){
-
-    page.elements =
-      page.elements.filter(
-        e=>e.id!==hit.id
+      page.elements.splice(
+        i,
+        1
       );
 
-    selectedObjectId =
-      null;
 
-    renderPage();
+      selectedObjectId =
+        null;
 
-    save();
+
+      renderPage();
+
+      save();
+
+      return;
+
+    }
 
   }
 
 }
 
 
-/* =====================================================
+/* =========================================
    TEXT
-===================================================== */
+========================================= */
 
 function createTextAt(point){
 
@@ -3732,12 +4851,14 @@ function createTextAt(point){
       "文字を入力"
     );
 
+
   if(!text)
     return;
 
 
   const page =
     getCurrentPage();
+
 
   const obj={
 
@@ -3749,13 +4870,14 @@ function createTextAt(point){
 
     y:point.y,
 
-    width:400,
+    width:500,
 
-    height:100,
+    height:130,
 
     text:text,
 
-    color:currentColor,
+    color:
+      currentColor,
 
     fontSize:
       currentSize*3+10
@@ -3767,8 +4889,10 @@ function createTextAt(point){
     obj
   );
 
+
   selectedObjectId =
     obj.id;
+
 
   renderPage();
 
@@ -3777,9 +4901,9 @@ function createTextAt(point){
 }
 
 
-/* =====================================================
+/* =========================================
    STICKY
-===================================================== */
+========================================= */
 
 function createStickyAt(point){
 
@@ -3788,12 +4912,14 @@ function createStickyAt(point){
       "付箋の内容"
     );
 
+
   if(!text)
     return;
 
 
   const page =
     getCurrentPage();
+
 
   const obj={
 
@@ -3805,9 +4931,9 @@ function createStickyAt(point){
 
     y:point.y,
 
-    width:330,
+    width:400,
 
-    height:220,
+    height:250,
 
     text:text,
 
@@ -3823,8 +4949,10 @@ function createStickyAt(point){
     obj
   );
 
+
   selectedObjectId =
     obj.id;
+
 
   renderPage();
 
@@ -3833,9 +4961,9 @@ function createStickyAt(point){
 }
 
 
-/* =====================================================
+/* =========================================
    IMAGE
-===================================================== */
+========================================= */
 
 function addImage(){
 
@@ -3843,6 +4971,7 @@ function addImage(){
     document.createElement(
       "input"
     );
+
 
   input.type="file";
 
@@ -3870,19 +4999,20 @@ function addImage(){
           const page =
             getCurrentPage();
 
+
           const obj={
 
             id:uid(),
 
             type:"image",
 
-            x:800,
+            x:1000,
 
-            y:600,
+            y:800,
 
-            width:500,
+            width:600,
 
-            height:400,
+            height:450,
 
             src:
               reader.result
@@ -3893,6 +5023,7 @@ function addImage(){
           page.elements.push(
             obj
           );
+
 
           renderPage();
 
@@ -3913,14 +5044,15 @@ function addImage(){
 }
 
 
-/* =====================================================
+/* =========================================
    RENDER PAGE
-===================================================== */
+========================================= */
 
 function renderPage(){
 
   const page =
     getCurrentPage();
+
 
   if(!page)
     return;
@@ -3949,25 +5081,23 @@ function renderPage(){
 
 
   page.strokes.forEach(
-    stroke=>{
-
+    stroke=>
       renderStroke(
         stroke
-      );
-
-    }
+      )
   );
 
 
   page.elements.forEach(
-    obj=>{
-
+    obj=>
       renderObject(
         obj
-      );
-
-    }
+      )
   );
+
+
+  const note =
+    getCurrentNote();
 
 
   const pageNumber =
@@ -3975,29 +5105,32 @@ function renderPage(){
       "pageNumber"
     );
 
-  if(pageNumber){
+
+  if(
+    pageNumber &&
+    note
+  ){
 
     pageNumber.textContent =
       (
-        getCurrentNote()
-          .currentPage+1
+        note.currentPage+1
       )
       +
       " / "
       +
-      getCurrentNote()
-        .pages.length;
+      note.pages.length;
 
   }
+
 
   applyCamera();
 
 }
 
 
-/* =====================================================
+/* =========================================
    OBJECT RENDER
-===================================================== */
+========================================= */
 
 function renderObject(obj){
 
@@ -4005,6 +5138,7 @@ function renderObject(obj){
     document.getElementById(
       "objectLayer"
     );
+
 
   if(!layer)
     return;
@@ -4014,6 +5148,7 @@ function renderObject(obj){
     document.createElement(
       "div"
     );
+
 
   el.className =
     "noteObject";
@@ -4044,6 +5179,10 @@ function renderObject(obj){
     obj.height+"px";
 
 
+  /*
+    TEXT
+  */
+
   if(
     obj.type==="text"
   ){
@@ -4053,17 +5192,22 @@ function renderObject(obj){
         "div"
       );
 
+
     text.className =
       "noteText";
+
 
     text.textContent =
       obj.text;
 
+
     text.style.color =
       obj.color;
 
+
     text.style.fontSize =
       obj.fontSize+"px";
+
 
     el.appendChild(
       text
@@ -4071,6 +5215,10 @@ function renderObject(obj){
 
   }
 
+
+  /*
+    STICKY
+  */
 
   if(
     obj.type==="sticky"
@@ -4080,8 +5228,10 @@ function renderObject(obj){
       "sticky"
     );
 
+
     el.style.fontSize =
       obj.fontSize+"px";
+
 
     el.textContent =
       obj.text;
@@ -4089,33 +5239,44 @@ function renderObject(obj){
   }
 
 
+  /*
+    IMAGE
+  */
+
   if(
     obj.type==="image"
   ){
 
-    const image =
+    const img =
       document.createElement(
         "img"
       );
 
-    image.src =
+
+    img.src =
       obj.src;
 
-    image.style.width =
+
+    img.style.width =
       "100%";
 
-    image.style.height =
+    img.style.height =
       "100%";
 
-    image.style.objectFit =
+    img.style.objectFit =
       "contain";
 
+
     el.appendChild(
-      image
+      img
     );
 
   }
 
+
+  /*
+    選択
+  */
 
   el.addEventListener(
     "pointerdown",
@@ -4125,6 +5286,7 @@ function renderObject(obj){
 
       selectedObjectId =
         obj.id;
+
 
       if(
         currentTool==="object"
@@ -4139,16 +5301,22 @@ function renderObject(obj){
 
       }
 
+
       renderPage();
 
     }
   );
 
 
+  /*
+    リサイズ
+  */
+
   const handle =
     document.createElement(
       "div"
     );
+
 
   handle.className =
     "resizeHandle";
@@ -4162,11 +5330,13 @@ function renderObject(obj){
 
       e.preventDefault();
 
+
       const startX =
         e.clientX;
 
       const startY =
         e.clientY;
+
 
       const startW =
         obj.width;
@@ -4175,56 +5345,58 @@ function renderObject(obj){
         obj.height;
 
 
-      const move =
-        ev=>{
+      function move(ev){
 
-          obj.width =
-            Math.max(
-              80,
-              startW +
-              (
-                ev.clientX -
-                startX
-              ) / zoom
-            );
-
-          obj.height =
-            Math.max(
-              40,
-              startH +
-              (
-                ev.clientY -
-                startY
-              ) / zoom
-            );
-
-          renderPage();
-
-        };
-
-
-      const up =
-        ()=>{
-
-          window.removeEventListener(
-            "pointermove",
-            move
+        obj.width =
+          Math.max(
+            80,
+            startW+
+            (
+              ev.clientX-
+              startX
+            )/zoom
           );
 
-          window.removeEventListener(
-            "pointerup",
-            up
+
+        obj.height =
+          Math.max(
+            40,
+            startH+
+            (
+              ev.clientY-
+              startY
+            )/zoom
           );
 
-          save();
 
-        };
+        renderPage();
+
+      }
+
+
+      function up(){
+
+        window.removeEventListener(
+          "pointermove",
+          move
+        );
+
+        window.removeEventListener(
+          "pointerup",
+          up
+        );
+
+
+        save();
+
+      }
 
 
       window.addEventListener(
         "pointermove",
         move
       );
+
 
       window.addEventListener(
         "pointerup",
@@ -4253,15 +5425,22 @@ function renderObject(obj){
 }
 
 
+/* =========================================
+   DRAG OBJECT
+========================================= */
+
 function makeObjectDraggable(
   el,
   obj
 ){
 
   let startX=0;
+
   let startY=0;
-  let ox=0;
-  let oy=0;
+
+  let originalX=0;
+
+  let originalY=0;
 
 
   el.addEventListener(
@@ -4273,6 +5452,7 @@ function makeObjectDraggable(
       )
         return;
 
+
       if(
         e.target.classList.contains(
           "resizeHandle"
@@ -4283,61 +5463,67 @@ function makeObjectDraggable(
 
       e.stopPropagation();
 
+
       startX =
         e.clientX;
 
       startY =
         e.clientY;
 
-      ox =
+
+      originalX =
         obj.x;
 
-      oy =
+      originalY =
         obj.y;
 
 
-      const move =
-        ev=>{
+      function move(ev){
 
-          obj.x =
-            ox +
-            (
-              ev.clientX-startX
-            )/zoom;
-
-          obj.y =
-            oy +
-            (
-              ev.clientY-startY
-            )/zoom;
-
-          renderPage();
-
-        };
+        obj.x =
+          originalX+
+          (
+            ev.clientX-
+            startX
+          )/zoom;
 
 
-      const up =
-        ()=>{
+        obj.y =
+          originalY+
+          (
+            ev.clientY-
+            startY
+          )/zoom;
 
-          window.removeEventListener(
-            "pointermove",
-            move
-          );
 
-          window.removeEventListener(
-            "pointerup",
-            up
-          );
+        renderPage();
 
-          save();
+      }
 
-        };
+
+      function up(){
+
+        window.removeEventListener(
+          "pointermove",
+          move
+        );
+
+        window.removeEventListener(
+          "pointerup",
+          up
+        );
+
+
+        save();
+
+      }
 
 
       window.addEventListener(
         "pointermove",
         move
       );
+
 
       window.addEventListener(
         "pointerup",
@@ -4350,14 +5536,15 @@ function makeObjectDraggable(
 }
 
 
-/* =====================================================
-   PAGES
-===================================================== */
+/* =========================================
+   PAGE
+========================================= */
 
 function addPage(){
 
   const note =
     getCurrentNote();
+
 
   note.pages.push({
 
@@ -4367,8 +5554,14 @@ function addPage(){
 
   });
 
+
   note.currentPage =
     note.pages.length-1;
+
+
+  selectedObjectId =
+    null;
+
 
   save();
 
@@ -4381,6 +5574,7 @@ function changePage(delta){
 
   const note =
     getCurrentNote();
+
 
   const next =
     note.currentPage+
@@ -4397,8 +5591,10 @@ function changePage(delta){
   note.currentPage =
     next;
 
+
   selectedObjectId =
     null;
+
 
   renderPage();
 
@@ -4420,12 +5616,15 @@ function clearPage(){
   const page =
     getCurrentPage();
 
+
   page.strokes=[];
 
   page.elements=[];
 
+
   selectedObjectId =
     null;
+
 
   renderPage();
 
@@ -4434,9 +5633,9 @@ function clearPage(){
 }
 
 
-/* =====================================================
+/* =========================================
    SETTINGS
-===================================================== */
+========================================= */
 
 function renderSettings(){
 
@@ -4445,7 +5644,8 @@ function renderSettings(){
       "settingsScreen"
     );
 
-  el.innerHTML = `
+
+  el.innerHTML=`
 
     <div class="viewHeader">
 
@@ -4473,11 +5673,13 @@ function renderSettings(){
         class="primary"
         onclick="toggleDarkMode()"
       >
+
         ${
           data.settings.dark
             ? "☀️ ライトモード"
             : "🌙 ダークモード"
         }
+
       </button>
 
     </div>
@@ -4521,26 +5723,6 @@ function renderSettings(){
 
     </div>
 
-
-    <div class="settingCard glass">
-
-      <div class="settingTitle">
-        注意
-      </div>
-
-      <div style="
-        opacity:.55;
-        font-size:13px;
-        line-height:1.7;
-      ">
-        データはこの端末のブラウザに
-        保存されています。
-        ブラウザのデータを削除すると
-        ノートも消える可能性があります。
-      </div>
-
-    </div>
-
   `;
 
 }
@@ -4560,44 +5742,14 @@ function toggleDarkMode(){
 }
 
 
-function logout(){
-
-  flushStudyTime();
-
-  if(
-    !confirm(
-      "ログアウトしますか？"
-    )
-  )
-    return;
-
-  document
-    .getElementById(
-      "app"
-    )
-    .style.display =
-    "none";
-
-  document
-    .getElementById(
-      "loginScreen"
-    )
-    .style.display =
-    "flex";
-
-  trackingStart =
-    null;
-
-}
-
-
-/* =====================================================
+/* =========================================
    EXPORT
-===================================================== */
+========================================= */
 
 function exportData(){
 
   flushStudyTime();
+
 
   const blob =
     new Blob(
@@ -4620,10 +5772,12 @@ function exportData(){
       blob
     );
 
+
   const a =
     document.createElement(
       "a"
     );
+
 
   a.href =
     url;
@@ -4631,7 +5785,9 @@ function exportData(){
   a.download =
     "destination-note-backup.json";
 
+
   a.click();
+
 
   URL.revokeObjectURL(
     url
@@ -4640,12 +5796,17 @@ function exportData(){
 }
 
 
+/* =========================================
+   IMPORT
+========================================= */
+
 function importData(){
 
   const input =
     document.createElement(
       "input"
     );
+
 
   input.type =
     "file";
@@ -4659,6 +5820,7 @@ function importData(){
 
       const file =
         input.files[0];
+
 
       if(!file)
         return;
@@ -4678,6 +5840,7 @@ function importData(){
                 reader.result
               );
 
+
             if(
               !imported ||
               !Array.isArray(
@@ -4688,15 +5851,14 @@ function importData(){
               )
             ){
 
-              throw new Error(
-                "invalid"
-              );
+              throw new Error();
 
             }
 
 
             data =
               imported;
+
 
             migrateNotes();
 
@@ -4706,9 +5868,11 @@ function importData(){
 
             showHome();
 
+
             showToast(
               "データを読み込みました"
             );
+
 
           }catch{
 
@@ -4733,9 +5897,48 @@ function importData(){
 }
 
 
-/* =====================================================
-   MOBILE SIDEBAR
-===================================================== */
+/* =========================================
+   LOGOUT
+========================================= */
+
+function logout(){
+
+  flushStudyTime();
+
+
+  if(
+    !confirm(
+      "ログアウトしますか？"
+    )
+  )
+    return;
+
+
+  document
+    .getElementById(
+      "app"
+    )
+    .style.display =
+    "none";
+
+
+  document
+    .getElementById(
+      "loginScreen"
+    )
+    .style.display =
+    "flex";
+
+
+  trackingStart =
+    null;
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
 
 function toggleSidebar(){
 
@@ -4750,76 +5953,19 @@ function toggleSidebar(){
 }
 
 
-/* =====================================================
-   UTILITY
-===================================================== */
-
-function escapeHTML(str){
-
-  return String(str)
-    .replace(
-      /&/g,
-      "&amp;"
-    )
-    .replace(
-      /</g,
-      "&lt;"
-    )
-    .replace(
-      />/g,
-      "&gt;"
-    )
-    .replace(
-      /"/g,
-      "&quot;"
-    )
-    .replace(
-      /'/g,
-      "&#039;"
-    );
-
-}
-
-
-function showToast(message){
-
-  const toast =
-    document.getElementById(
-      "toast"
-    );
-
-  toast.textContent =
-    message;
-
-  toast.classList.add(
-    "show"
-  );
-
-  clearTimeout(
-    showToast.timer
-  );
-
-  showToast.timer =
-    setTimeout(
-      ()=>{
-        toast.classList.remove(
-          "show"
-        );
-      },
-      2200
-    );
-
-}
-
-
-/* =====================================================
+/* =========================================
    AUTOSAVE
-===================================================== */
+========================================= */
 
 setInterval(
   ()=>{
-    if(data.name)
+
+    if(data.name){
+
       save();
+
+    }
+
   },
   5000
 );
