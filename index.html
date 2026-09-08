@@ -2,42 +2,47 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#f5f5f7">
 <title>Destination Note</title>
 
 <style>
-* {
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
 }
 
-:root {
-  --bg: #f5f5f7;
-  --card: rgba(255,255,255,.72);
-  --card2: rgba(255,255,255,.52);
-  --text: #171717;
-  --sub: #777;
-  --border: rgba(0,0,0,.08);
-  --blue: #007aff;
-  --green: #34c759;
-  --red: #ff3b30;
-  --shadow: 0 12px 35px rgba(0,0,0,.08);
+:root{
+  --bg:#f5f5f7;
+  --card:rgba(255,255,255,.72);
+  --card2:rgba(255,255,255,.55);
+  --text:#171717;
+  --sub:#777;
+  --border:rgba(0,0,0,.08);
+  --blue:#007aff;
+  --red:#ff3b30;
+  --green:#34c759;
+  --shadow:0 15px 40px rgba(0,0,0,.08);
 }
 
-body.dark {
-  --bg: #101114;
-  --card: rgba(35,36,42,.75);
-  --card2: rgba(35,36,42,.55);
-  --text: #fff;
-  --sub: #aaa;
-  --border: rgba(255,255,255,.09);
-  --shadow: 0 12px 35px rgba(0,0,0,.25);
+body.dark{
+  --bg:#101114;
+  --card:rgba(35,36,42,.78);
+  --card2:rgba(35,36,42,.55);
+  --text:#fff;
+  --sub:#aaa;
+  --border:rgba(255,255,255,.1);
+  --shadow:0 15px 40px rgba(0,0,0,.25);
 }
 
-body {
-  margin: 0;
+body{
+  margin:0;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 10% 0%,rgba(0,122,255,.12),transparent 35%),
+    radial-gradient(circle at 100% 20%,rgba(175,82,222,.10),transparent 35%),
+    var(--bg);
+  color:var(--text);
   font-family:
     -apple-system,
     BlinkMacSystemFont,
@@ -45,585 +50,679 @@ body {
     "Helvetica Neue",
     Arial,
     sans-serif;
-  background:
-    radial-gradient(circle at 20% 0%, rgba(0,122,255,.10), transparent 35%),
-    radial-gradient(circle at 100% 30%, rgba(175,82,222,.10), transparent 35%),
-    var(--bg);
-  color: var(--text);
-  min-height: 100vh;
 }
 
-button,
-input,
-textarea {
-  font: inherit;
+button,input,textarea,select{
+  font:inherit;
 }
 
-button {
-  cursor: pointer;
+button{
+  cursor:pointer;
 }
 
-.hidden {
-  display: none !important;
+.hidden{
+  display:none!important;
 }
 
-/* =========================
-   LOGIN
-========================= */
+/* ==============================
+LOGIN
+============================== */
 
-#loginScreen {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
+#loginScreen{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
 }
 
-.loginBox {
-  width: min(430px, 100%);
-  padding: 35px 25px;
-  border: 1px solid var(--border);
-  background: var(--card);
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
-  border-radius: 30px;
-  box-shadow: var(--shadow);
-  text-align: center;
+.loginBox{
+  width:min(430px,100%);
+  padding:35px 25px;
+  border:1px solid var(--border);
+  background:var(--card);
+  backdrop-filter:blur(30px);
+  -webkit-backdrop-filter:blur(30px);
+  border-radius:30px;
+  box-shadow:var(--shadow);
+  text-align:center;
 }
 
-.logo {
-  width: 75px;
-  height: 75px;
-  margin: auto;
-  border-radius: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 36px;
-  background: linear-gradient(135deg,#007aff,#5856d6);
-  color: white;
-  box-shadow: 0 12px 30px rgba(0,122,255,.25);
+.logo{
+  width:78px;
+  height:78px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:23px;
+  background:linear-gradient(135deg,#007aff,#5856d6);
+  color:#fff;
+  font-size:37px;
+  box-shadow:0 12px 30px rgba(0,122,255,.25);
 }
 
-.loginBox h1 {
-  margin: 20px 0 5px;
-  font-size: 30px;
+.loginBox h1{
+  margin:20px 0 5px;
+  font-size:30px;
 }
 
-.loginBox p {
-  color: var(--sub);
-  margin-bottom: 28px;
+.loginBox p{
+  color:var(--sub);
+  margin-bottom:28px;
 }
 
-.input {
-  width: 100%;
-  padding: 15px 17px;
-  margin-bottom: 12px;
-  border-radius: 16px;
-  border: 1px solid var(--border);
-  outline: none;
-  background: var(--card2);
-  color: var(--text);
+.input{
+  width:100%;
+  padding:15px 17px;
+  margin-bottom:12px;
+  border-radius:16px;
+  border:1px solid var(--border);
+  outline:none;
+  background:var(--card2);
+  color:var(--text);
 }
 
-.input:focus {
-  border-color: var(--blue);
+.input:focus{
+  border-color:var(--blue);
 }
 
-.primary {
-  width: 100%;
-  padding: 15px;
-  border: none;
-  border-radius: 16px;
-  background: var(--blue);
-  color: white;
-  font-weight: 700;
-  margin-top: 8px;
+.primary{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:16px;
+  background:var(--blue);
+  color:white;
+  font-weight:700;
 }
 
-.loginInfo {
-  margin-top: 18px;
-  font-size: 12px;
-  color: var(--sub);
+.loginInfo{
+  color:var(--sub);
+  font-size:12px;
+  margin-top:18px;
 }
 
-/* =========================
-   APP
-========================= */
+/* ==============================
+HEADER
+============================== */
 
-#app {
-  min-height: 100vh;
-  padding-bottom: 100px;
+#app{
+  min-height:100vh;
+  padding-bottom:100px;
 }
 
-header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
   padding:
-    max(14px, env(safe-area-inset-top))
-    18px 14px;
-  background: rgba(245,245,247,.72);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-  border-bottom: 1px solid var(--border);
+    max(12px,env(safe-area-inset-top))
+    18px 12px;
+  background:rgba(245,245,247,.72);
+  backdrop-filter:blur(25px);
+  -webkit-backdrop-filter:blur(25px);
+  border-bottom:1px solid var(--border);
 }
 
-body.dark header {
-  background: rgba(16,17,20,.72);
+body.dark header{
+  background:rgba(16,17,20,.72);
 }
 
-.headerInner {
-  max-width: 1100px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
+.headerInner{
+  max-width:1100px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
 
-.brand {
-  font-size: 21px;
-  font-weight: 800;
+.brand{
+  font-size:21px;
+  font-weight:800;
 }
 
-.headerButtons {
-  display: flex;
-  gap: 8px;
+.headerButtons{
+  display:flex;
+  gap:8px;
 }
 
-.iconBtn {
-  width: 42px;
-  height: 42px;
-  border: 1px solid var(--border);
-  background: var(--card);
-  color: var(--text);
-  border-radius: 14px;
-  font-size: 19px;
+.iconBtn{
+  width:42px;
+  height:42px;
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--text);
+  border-radius:14px;
 }
 
-main {
-  max-width: 1100px;
-  margin: auto;
-  padding: 25px 18px;
+/* ==============================
+MAIN
+============================== */
+
+main{
+  max-width:1100px;
+  margin:auto;
+  padding:24px 18px;
 }
 
-/* =========================
-   HERO
-========================= */
-
-.hero {
-  padding: 25px;
-  border-radius: 28px;
+.hero{
+  padding:25px;
+  border-radius:28px;
   background:
-    linear-gradient(135deg,
-      rgba(0,122,255,.16),
-      rgba(88,86,214,.10)),
+    linear-gradient(135deg,rgba(0,122,255,.15),rgba(88,86,214,.10)),
     var(--card);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-  margin-bottom: 18px;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  margin-bottom:18px;
 }
 
-.hero h2 {
-  margin: 0 0 5px;
-  font-size: 27px;
+.hero h2{
+  margin:0 0 5px;
+  font-size:27px;
 }
 
-.hero p {
-  margin: 0;
-  color: var(--sub);
+.hero p{
+  margin:0;
+  color:var(--sub);
 }
 
-.rankCard {
-  margin-top: 20px;
+.sectionTitle{
+  font-size:20px;
+  font-weight:800;
+  margin:28px 3px 12px;
 }
 
-.rankTop {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+  gap:14px;
 }
 
-.rankName {
-  font-size: 22px;
-  font-weight: 800;
+.card{
+  border:1px solid var(--border);
+  background:var(--card);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-radius:23px;
+  padding:20px;
+  box-shadow:var(--shadow);
 }
 
-.rankHours {
-  color: var(--sub);
+.folderCard{
+  cursor:pointer;
+  transition:.15s;
 }
 
-.progress {
-  height: 10px;
-  border-radius: 20px;
-  background: rgba(127,127,127,.15);
-  overflow: hidden;
-  margin-top: 12px;
+.folderCard:active{
+  transform:scale(.98);
 }
 
-.progressBar {
-  height: 100%;
-  border-radius: 20px;
-  background: linear-gradient(90deg,#007aff,#5856d6);
-  transition: width .5s ease;
+.folderIcon{
+  font-size:38px;
+  margin-bottom:10px;
 }
 
-.nextRank {
-  margin-top: 9px;
-  font-size: 13px;
-  color: var(--sub);
+.folderName{
+  font-size:18px;
+  font-weight:750;
 }
 
-/* =========================
-   CARDS
-========================= */
-
-.sectionTitle {
-  margin: 28px 3px 12px;
-  font-size: 20px;
-  font-weight: 800;
+.cardSub{
+  color:var(--sub);
+  font-size:13px;
+  margin-top:5px;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(230px,1fr));
-  gap: 14px;
+.addArea{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:20px;
 }
 
-.card {
-  border: 1px solid var(--border);
-  background: var(--card);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: 23px;
-  padding: 20px;
-  box-shadow: var(--shadow);
+.addBtn{
+  border:none;
+  padding:13px 17px;
+  border-radius:16px;
+  font-weight:700;
+  background:var(--blue);
+  color:#fff;
 }
 
-.folderCard {
-  cursor: pointer;
-  transition: transform .15s;
+.addBtn.secondary{
+  background:var(--card);
+  color:var(--text);
+  border:1px solid var(--border);
 }
 
-.folderCard:active {
-  transform: scale(.98);
+.danger{
+  border:none;
+  padding:13px 17px;
+  border-radius:16px;
+  background:var(--red);
+  color:white;
+  font-weight:700;
 }
 
-.folderIcon {
-  font-size: 38px;
-  margin-bottom: 10px;
+/* ==============================
+BREADCRUMB
+============================== */
+
+.breadcrumb{
+  display:flex;
+  gap:6px;
+  align-items:center;
+  overflow-x:auto;
+  white-space:nowrap;
+  padding-bottom:8px;
 }
 
-.folderName {
-  font-size: 18px;
-  font-weight: 750;
+.crumb{
+  border:none;
+  background:none;
+  color:var(--blue);
+  font-weight:700;
 }
 
-.cardSub {
-  margin-top: 5px;
-  color: var(--sub);
-  font-size: 13px;
+.separator{
+  color:var(--sub);
 }
 
-/* =========================
-   BOTTOM NAV
-========================= */
+/* ==============================
+RANK
+============================== */
 
-.bottomNav {
-  position: fixed;
-  z-index: 100;
-  bottom: max(12px, env(safe-area-inset-bottom));
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(500px, calc(100% - 25px));
-  display: flex;
-  justify-content: space-around;
-  padding: 8px;
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  background: var(--card);
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
-  box-shadow: 0 15px 40px rgba(0,0,0,.15);
+.rankTop{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-.navBtn {
-  border: none;
-  background: transparent;
-  color: var(--sub);
-  padding: 10px 20px;
-  border-radius: 17px;
-  font-size: 12px;
+.rankName{
+  font-size:22px;
+  font-weight:800;
 }
 
-.navBtn span {
-  display: block;
-  font-size: 20px;
-  margin-bottom: 2px;
+.rankHours{
+  color:var(--sub);
 }
 
-.navBtn.active {
-  color: var(--blue);
+.progress{
+  height:10px;
+  border-radius:20px;
+  overflow:hidden;
+  background:rgba(127,127,127,.15);
+  margin-top:12px;
 }
 
-/* =========================
-   BREADCRUMB
-========================= */
-
-.breadcrumb {
-  display: flex;
-  gap: 6px;
-  align-items: center;
-  overflow-x: auto;
-  padding-bottom: 5px;
-  margin-bottom: 15px;
-  white-space: nowrap;
+.progressBar{
+  height:100%;
+  border-radius:20px;
+  background:linear-gradient(90deg,#007aff,#5856d6);
+  transition:.5s;
 }
 
-.crumb {
-  border: none;
-  background: transparent;
-  color: var(--blue);
-  font-weight: 650;
+.nextRank{
+  color:var(--sub);
+  font-size:13px;
+  margin-top:9px;
 }
 
-.separator {
-  color: var(--sub);
+/* ==============================
+NOTE LIST
+============================== */
+
+.noteCard{
+  cursor:pointer;
 }
 
-/* =========================
-   ADD
-========================= */
-
-.addArea {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
+.noteTitle{
+  font-size:18px;
+  font-weight:750;
 }
 
-.addBtn {
-  border: none;
-  padding: 13px 17px;
-  border-radius: 16px;
-  font-weight: 700;
-  background: var(--blue);
-  color: white;
+.noteDate{
+  color:var(--sub);
+  font-size:12px;
+  margin-top:7px;
 }
 
-.addBtn.secondary {
-  background: var(--card);
-  color: var(--text);
-  border: 1px solid var(--border);
+.notePreview{
+  color:var(--sub);
+  margin-top:12px;
+  line-height:1.5;
+  max-height:45px;
+  overflow:hidden;
 }
 
-/* =========================
-   NOTE
-========================= */
+/* ==============================
+BOTTOM NAV
+============================== */
 
-.noteCard {
-  cursor: pointer;
+.bottomNav{
+  position:fixed;
+  z-index:150;
+  bottom:max(12px,env(safe-area-inset-bottom));
+  left:50%;
+  transform:translateX(-50%);
+  width:min(520px,calc(100% - 24px));
+  display:flex;
+  justify-content:space-around;
+  padding:8px;
+  border:1px solid var(--border);
+  border-radius:24px;
+  background:var(--card);
+  backdrop-filter:blur(30px);
+  -webkit-backdrop-filter:blur(30px);
+  box-shadow:0 15px 40px rgba(0,0,0,.15);
 }
 
-.noteTitle {
-  font-size: 18px;
-  font-weight: 750;
+.navBtn{
+  border:none;
+  background:none;
+  color:var(--sub);
+  padding:8px 18px;
+  border-radius:17px;
+  font-size:11px;
 }
 
-.noteDate {
-  font-size: 12px;
-  color: var(--sub);
-  margin-top: 7px;
+.navBtn span{
+  display:block;
+  font-size:20px;
 }
 
-.notePreview {
-  color: var(--sub);
-  margin-top: 12px;
-  line-height: 1.5;
-  max-height: 45px;
-  overflow: hidden;
+.navBtn.active{
+  color:var(--blue);
 }
 
-/* =========================
-   MODAL
-========================= */
+/* ==============================
+MODAL
+============================== */
 
-.modal {
-  position: fixed;
-  inset: 0;
-  z-index: 200;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  background: rgba(0,0,0,.35);
-  backdrop-filter: blur(8px);
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:300;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  background:rgba(0,0,0,.35);
+  backdrop-filter:blur(8px);
 }
 
-.modalBox {
-  width: min(520px,100%);
-  max-height: 90vh;
-  overflow: auto;
-  padding: 24px;
-  border-radius: 27px;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  box-shadow: 0 25px 70px rgba(0,0,0,.25);
+.modalBox{
+  width:min(540px,100%);
+  max-height:90vh;
+  overflow:auto;
+  padding:24px;
+  border-radius:27px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  box-shadow:0 25px 70px rgba(0,0,0,.25);
 }
 
-.modalBox h2 {
-  margin-top: 0;
+.modalButtons{
+  display:flex;
+  gap:10px;
+  margin-top:15px;
 }
 
-.modalButtons {
-  display: flex;
-  gap: 10px;
-  margin-top: 15px;
+.modalButtons>*{
+  flex:1;
 }
 
-.modalButtons button {
-  flex: 1;
+/* ==============================
+TIMER
+============================== */
+
+.timer{
+  text-align:center;
 }
 
-.danger {
-  background: var(--red);
-  color: white;
-  border: none;
-  border-radius: 15px;
-  padding: 13px;
+.timerCircle{
+  width:220px;
+  height:220px;
+  margin:25px auto;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:38px;
+  font-weight:800;
+  border:12px solid rgba(0,122,255,.14);
 }
 
-/* =========================
-   NOTE EDITOR
-========================= */
-
-.noteEditor textarea {
-  width: 100%;
-  min-height: 400px;
-  resize: vertical;
-  padding: 18px;
-  border-radius: 18px;
-  border: 1px solid var(--border);
-  background: var(--card);
-  color: var(--text);
-  outline: none;
-  line-height: 1.7;
+.timerButtons{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
 }
 
-.saveNote {
-  margin-top: 12px;
+.timerButtons button{
+  border:none;
+  padding:13px 20px;
+  border-radius:15px;
+  background:var(--blue);
+  color:white;
+  font-weight:700;
 }
 
-/* =========================
-   TIMER
-========================= */
+/* ==============================
+SETTINGS
+============================== */
 
-.timer {
-  text-align: center;
-  padding: 25px;
+.settingRow{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:17px 0;
+  border-bottom:1px solid var(--border);
 }
 
-.timerCircle {
-  width: 220px;
-  height: 220px;
-  margin: 20px auto;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 42px;
-  font-weight: 800;
-  border: 12px solid rgba(0,122,255,.15);
-  box-shadow: inset 0 0 30px rgba(0,122,255,.08);
+/* ==============================
+NOTE EDITOR
+============================== */
+
+.notePage{
+  min-height:calc(100vh - 90px);
 }
 
-.timerButtons {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  flex-wrap: wrap;
+.noteHeader{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:15px;
 }
 
-.timerButtons button {
-  border: none;
-  border-radius: 15px;
-  padding: 13px 20px;
-  background: var(--blue);
-  color: white;
-  font-weight: 700;
+.backBtn{
+  border:none;
+  background:var(--card);
+  border:1px solid var(--border);
+  color:var(--text);
+  border-radius:14px;
+  padding:10px 14px;
 }
 
-/* =========================
-   SETTINGS
-========================= */
-
-.settingRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 17px 0;
-  border-bottom: 1px solid var(--border);
+.noteHeaderTitle{
+  font-size:22px;
+  font-weight:800;
 }
 
-.settingRow:last-child {
-  border-bottom: none;
+.noteTools{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:14px;
 }
 
-.logout {
-  background: var(--red);
-  color: white;
-  border: none;
-  border-radius: 15px;
-  padding: 13px 18px;
+.toolBtn{
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--text);
+  padding:11px 14px;
+  border-radius:14px;
+  font-weight:700;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+.toolBtn.active{
+  background:var(--blue);
+  color:white;
+}
 
-@media(max-width:600px) {
-  main {
-    padding: 18px 13px 110px;
+.noteCanvasWrap{
+  position:relative;
+  width:100%;
+  min-height:600px;
+  overflow:hidden;
+  border-radius:25px;
+  border:1px solid var(--border);
+  background:
+    linear-gradient(rgba(127,127,127,.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(127,127,127,.06) 1px,transparent 1px),
+    var(--card);
+  background-size:25px 25px;
+  box-shadow:var(--shadow);
+}
+
+#drawCanvas{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  touch-action:none;
+  z-index:3;
+}
+
+.textElement,
+.stickyElement{
+  position:absolute;
+  z-index:5;
+  user-select:none;
+  touch-action:none;
+}
+
+.textElement{
+  min-width:150px;
+  max-width:80%;
+  padding:10px;
+  white-space:pre-wrap;
+  color:var(--text);
+  font-size:18px;
+  line-height:1.5;
+  border:1px dashed transparent;
+}
+
+.textElement.selected{
+  border-color:var(--blue);
+}
+
+.stickyElement{
+  width:190px;
+  min-height:130px;
+  padding:15px;
+  background:#fff59d;
+  color:#333;
+  border-radius:6px;
+  box-shadow:0 8px 20px rgba(0,0,0,.15);
+  font-size:16px;
+  white-space:pre-wrap;
+}
+
+.stickyElement.selected{
+  outline:3px solid var(--blue);
+}
+
+.elementDelete{
+  position:absolute;
+  right:-10px;
+  top:-10px;
+  width:27px;
+  height:27px;
+  border:none;
+  border-radius:50%;
+  background:var(--red);
+  color:white;
+  z-index:10;
+}
+
+.textEdit{
+  width:100%;
+  min-height:100px;
+  border:none;
+  outline:none;
+  resize:none;
+  background:transparent;
+  color:inherit;
+}
+
+.stickyEdit{
+  width:100%;
+  min-height:100px;
+  border:none;
+  outline:none;
+  resize:none;
+  background:transparent;
+  color:#333;
+}
+
+.noteBottom{
+  display:flex;
+  gap:10px;
+  margin-top:14px;
+  flex-wrap:wrap;
+}
+
+/* ==============================
+RESPONSIVE
+============================== */
+
+@media(max-width:600px){
+
+  main{
+    padding:18px 13px 110px;
   }
 
-  .hero {
-    padding: 20px;
+  .grid{
+    grid-template-columns:1fr 1fr;
   }
 
-  .grid {
-    grid-template-columns: 1fr 1fr;
+  .card{
+    padding:16px;
   }
 
-  .card {
-    padding: 16px;
+  .noteCanvasWrap{
+    min-height:650px;
   }
 
-  .folderIcon {
-    font-size: 30px;
-  }
 }
 
-@media(max-width:390px) {
-  .grid {
-    grid-template-columns: 1fr;
+@media(max-width:390px){
+
+  .grid{
+    grid-template-columns:1fr;
   }
+
 }
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     LOGIN
-========================= -->
+<!-- ==========================
+LOGIN
+========================== -->
 
 <section id="loginScreen">
+
   <div class="loginBox">
 
     <div class="logo">📚</div>
 
     <h1>Destination Note</h1>
+
     <p>学びの目的地へ。</p>
 
     <input
@@ -639,7 +738,9 @@ main {
       placeholder="パスワード"
       autocomplete="current-password">
 
-    <button class="primary" onclick="login()">
+    <button
+      class="primary"
+      onclick="login()">
       はじめる
     </button>
 
@@ -648,16 +749,18 @@ main {
     </div>
 
   </div>
+
 </section>
 
 
-<!-- =========================
-     APP
-========================= -->
+<!-- ==========================
+APP
+========================== -->
 
 <section id="app" class="hidden">
 
 <header>
+
   <div class="headerInner">
 
     <div class="brand">
@@ -665,16 +768,23 @@ main {
     </div>
 
     <div class="headerButtons">
-      <button class="iconBtn" onclick="toggleDark()">
+
+      <button
+        class="iconBtn"
+        onclick="toggleDark()">
         ◐
       </button>
 
-      <button class="iconBtn" onclick="showSettings()">
+      <button
+        class="iconBtn"
+        onclick="showSettings()">
         ⚙️
       </button>
+
     </div>
 
   </div>
+
 </header>
 
 
@@ -683,24 +793,40 @@ main {
 
 <nav class="bottomNav">
 
-  <button class="navBtn active" onclick="showHome()">
+  <button
+    class="navBtn active"
+    onclick="showHome()">
+
     <span>🏠</span>
     ホーム
+
   </button>
 
-  <button class="navBtn" onclick="showFolders()">
+  <button
+    class="navBtn"
+    onclick="showFolders()">
+
     <span>📁</span>
     ノート
+
   </button>
 
-  <button class="navBtn" onclick="showTimer()">
+  <button
+    class="navBtn"
+    onclick="showTimer()">
+
     <span>⏱️</span>
     勉強
+
   </button>
 
-  <button class="navBtn" onclick="showSettings()">
+  <button
+    class="navBtn"
+    onclick="showSettings()">
+
     <span>⚙️</span>
     設定
+
   </button>
 
 </nav>
@@ -708,148 +834,206 @@ main {
 </section>
 
 
-<!-- =========================
-     MODAL
-========================= -->
+<!-- ==========================
+MODAL
+========================== -->
 
-<div id="modal" class="modal hidden">
-  <div class="modalBox" id="modalContent"></div>
+<div
+  id="modal"
+  class="modal hidden">
+
+  <div
+    id="modalContent"
+    class="modalBox">
+  </div>
+
 </div>
 
 
 <script>
 
-/* =====================================================
-   DATA
-===================================================== */
+/* ======================================================
+DATA
+====================================================== */
 
 const STORAGE_KEY = "destinationNote_v1";
 
 let data = {
-  name: "",
-  password: "",
-  totalSeconds: 0,
+  name:"",
+  password:"",
+  totalSeconds:0,
 
-  folders: [
+  folders:[
     {
-      id: "root",
-      name: "マイノート",
-      icon: "📚",
-      parent: null,
-      created: Date.now()
+      id:"root",
+      name:"マイノート",
+      icon:"📚",
+      parent:null,
+      created:Date.now()
     }
   ],
 
-  notes: [],
+  notes:[],
 
-  settings: {
-    dark: false
+  settings:{
+    dark:false
   }
 };
 
-let currentFolder = "root";
-let timerInterval = null;
-let timerSeconds = 0;
-let timerRunning = false;
-let timerFolder = "root";
+let currentFolder="root";
+
+let timerInterval=null;
+let timerSeconds=0;
+let timerRunning=false;
+
+let currentNoteId=null;
+let currentNoteFolder="root";
+
+let drawing=false;
+let currentStroke=null;
+
+let selectedElement=null;
 
 
-/* =====================================================
-   STORAGE
-===================================================== */
+/* ======================================================
+LOAD / SAVE
+====================================================== */
 
-function saveData() {
+function saveData(){
+
   localStorage.setItem(
     STORAGE_KEY,
     JSON.stringify(data)
   );
+
 }
 
-function loadData() {
+function loadData(){
 
-  const saved = localStorage.getItem(STORAGE_KEY);
+  const saved=
+    localStorage.getItem(STORAGE_KEY);
 
-  if (!saved) return false;
+  if(!saved) return false;
 
-  try {
-    data = JSON.parse(saved);
+  try{
 
-    if (!data.folders) data.folders = [];
-    if (!data.notes) data.notes = [];
-    if (!data.settings) data.settings = {};
+    data=JSON.parse(saved);
+
+    if(!data.folders){
+      data.folders=[];
+    }
+
+    if(!data.notes){
+      data.notes=[];
+    }
+
+    if(!data.settings){
+      data.settings={};
+    }
+
+    /*
+      古いノートとの互換性
+    */
+
+    data.notes.forEach(note=>{
+
+      if(!note.elements){
+
+        note.elements=[];
+
+      }
+
+      if(!note.strokes){
+
+        note.strokes=[];
+
+      }
+
+    });
 
     return true;
 
-  } catch(e) {
+  }catch(e){
 
     return false;
 
   }
+
 }
 
 
-/* =====================================================
-   LOGIN
-===================================================== */
+/* ======================================================
+LOGIN
+====================================================== */
 
-function login() {
+function login(){
 
-  const name =
-    document.getElementById("loginName").value.trim();
+  const name=
+    document
+      .getElementById("loginName")
+      .value
+      .trim();
 
-  const password =
-    document.getElementById("loginPassword").value;
+  const password=
+    document
+      .getElementById("loginPassword")
+      .value;
 
-  if (!name || !password) {
+  if(!name||!password){
 
     alert("名前とパスワードを入力してね。");
+
     return;
 
   }
 
-  const saved = localStorage.getItem(STORAGE_KEY);
+  const saved=
+    localStorage.getItem(STORAGE_KEY);
 
-  if (saved) {
+  if(saved){
 
-    try {
+    try{
 
-      const oldData = JSON.parse(saved);
+      const oldData=
+        JSON.parse(saved);
 
-      if (
-        oldData.name !== name ||
-        oldData.password !== password
-      ) {
+      if(
+        oldData.name!==name||
+        oldData.password!==password
+      ){
 
         alert(
-          "この端末には別のアカウントがあります。\n\n" +
+          "この端末には別のアカウントがあります。\n\n"+
           "名前またはパスワードが違います。"
         );
 
         return;
+
       }
 
-      data = oldData;
+      data=oldData;
 
-    } catch(e) {}
+    }catch(e){}
 
-  } else {
+  }else{
 
-    data.name = name;
-    data.password = password;
+    data.name=name;
+    data.password=password;
 
     saveData();
 
   }
 
   startApp();
+
 }
 
 
-/* =====================================================
-   START
-===================================================== */
+/* ======================================================
+START
+====================================================== */
 
-function startApp() {
+function startApp(){
 
   document
     .getElementById("loginScreen")
@@ -859,158 +1043,170 @@ function startApp() {
     .getElementById("app")
     .classList.remove("hidden");
 
-  if (data.settings.dark) {
+  if(data.settings.dark){
+
     document.body.classList.add("dark");
+
   }
 
   showHome();
+
 }
 
 
-/* =====================================================
-   RANK
-===================================================== */
+/* ======================================================
+RANK
+====================================================== */
 
-const ranks = [
+const ranks=[
 
   {
-    name: "BRONZE",
-    jp: "ブロンズ",
-    min: 0,
-    max: 10 * 3600,
-    icon: "🥉"
+    name:"BRONZE",
+    jp:"ブロンズ",
+    min:0,
+    max:10*3600,
+    icon:"🥉"
   },
 
   {
-    name: "SILVER",
-    jp: "シルバー",
-    min: 10 * 3600,
-    max: 30 * 3600,
-    icon: "🥈"
+    name:"SILVER",
+    jp:"シルバー",
+    min:10*3600,
+    max:30*3600,
+    icon:"🥈"
   },
 
   {
-    name: "GOLD",
-    jp: "ゴールド",
-    min: 30 * 3600,
-    max: 60 * 3600,
-    icon: "🥇"
+    name:"GOLD",
+    jp:"ゴールド",
+    min:30*3600,
+    max:60*3600,
+    icon:"🥇"
   },
 
   {
-    name: "PLATINUM",
-    jp: "プラチナ",
-    min: 60 * 3600,
-    max: 100 * 3600,
-    icon: "💎"
+    name:"PLATINUM",
+    jp:"プラチナ",
+    min:60*3600,
+    max:100*3600,
+    icon:"💎"
   },
 
   {
-    name: "BUSINESS",
-    jp: "ビジネス",
-    min: 100 * 3600,
-    max: 200 * 3600,
-    icon: "💼"
+    name:"BUSINESS",
+    jp:"ビジネス",
+    min:100*3600,
+    max:200*3600,
+    icon:"💼"
   },
 
   {
-    name: "FIRST",
-    jp: "ファースト",
-    min: 200 * 3600,
-    max: 500 * 3600,
-    icon: "✈️"
+    name:"FIRST",
+    jp:"ファースト",
+    min:200*3600,
+    max:500*3600,
+    icon:"✈️"
   },
 
   {
-    name: "GRAN CLASS",
-    jp: "グランクラス",
-    min: 500 * 3600,
-    max: Infinity,
-    icon: "👑"
+    name:"GRAN CLASS",
+    jp:"グランクラス",
+    min:500*3600,
+    max:Infinity,
+    icon:"👑"
   }
 
 ];
 
 
-function getRank() {
+function getRank(){
 
   return ranks.find(
-    r =>
-      data.totalSeconds >= r.min &&
-      data.totalSeconds < r.max
-  ) || ranks[ranks.length - 1];
+    r=>
+      data.totalSeconds>=r.min&&
+      data.totalSeconds<r.max
+  )||ranks[ranks.length-1];
 
 }
 
 
-function formatTime(seconds) {
+function formatTime(seconds){
 
-  const h = Math.floor(seconds / 3600);
+  const h=
+    Math.floor(seconds/3600);
 
-  const m = Math.floor(
-    (seconds % 3600) / 60
-  );
+  const m=
+    Math.floor(
+      (seconds%3600)/60
+    );
 
-  const s = seconds % 60;
+  const s=
+    seconds%60;
 
-  if (h > 0) {
+  if(h>0){
 
     return `${h}時間 ${m}分`;
 
   }
 
   return `${m}分 ${s}秒`;
+
 }
 
 
-function rankProgress() {
+function rankProgress(){
 
-  const rank = getRank();
+  const rank=getRank();
 
-  if (rank.max === Infinity) return 100;
+  if(rank.max===Infinity){
 
-  const range =
-    rank.max - rank.min;
+    return 100;
 
-  const current =
-    data.totalSeconds - rank.min;
+  }
 
   return Math.max(
     0,
     Math.min(
       100,
-      current / range * 100
+      (
+        data.totalSeconds-rank.min
+      )/
+      (
+        rank.max-rank.min
+      )*100
     )
   );
+
 }
 
 
-/* =====================================================
-   HOME
-===================================================== */
+/* ======================================================
+HOME
+====================================================== */
 
-function showHome() {
+function showHome(){
 
-  const rank = getRank();
+  const rank=getRank();
 
-  const next =
-    ranks[ranks.indexOf(rank) + 1];
+  const next=
+    ranks[
+      ranks.indexOf(rank)+1
+    ];
 
-  const progress = rankProgress();
-
-  const folders =
+  const folders=
     data.folders.filter(
-      f => f.parent === "root"
+      f=>f.parent==="root"
     );
 
-  let folderHTML = "";
+  let html="";
 
-  folders.forEach(folder => {
+  folders.forEach(folder=>{
 
-    const count =
+    const count=
       countFolderItems(folder.id);
 
-    folderHTML += `
+    html+=`
+
       <div
         class="card folderCard"
         onclick="openFolder('${folder.id}')">
@@ -1028,24 +1224,26 @@ function showHome() {
         </div>
 
       </div>
+
     `;
 
   });
 
 
-  document.getElementById("main").innerHTML = `
+  document.getElementById("main").innerHTML=`
 
     <section class="hero">
 
       <h2>
-        こんにちは、${escapeHTML(data.name)}さん 👋
+        こんにちは、
+        ${escapeHTML(data.name)}さん 👋
       </h2>
 
       <p>
         今日も学びの目的地へ進もう。
       </p>
 
-      <div class="rankCard">
+      <div style="margin-top:20px">
 
         <div class="rankTop">
 
@@ -1068,18 +1266,23 @@ function showHome() {
         </div>
 
         <div class="progress">
+
           <div
             class="progressBar"
-            style="width:${progress}%">
+            style="width:${rankProgress()}%">
           </div>
+
         </div>
 
         <div class="nextRank">
 
           ${
             next
-            ? `次のランク：${next.icon} ${next.name}`
-            : "🏆 最高ランク到達！"
+            ?
+            `次のランク：
+             ${next.icon} ${next.name}`
+            :
+            "🏆 最高ランク到達！"
           }
 
         </div>
@@ -1098,25 +1301,36 @@ function showHome() {
       <button
         class="addBtn"
         onclick="createFolder('root')">
+
         ＋ 新しいタブ
+
       </button>
 
       <button
         class="addBtn secondary"
         onclick="showTimer()">
+
         ⏱️ 勉強を開始
+
       </button>
 
     </div>
 
+
     <div class="grid">
 
       ${
-        folderHTML ||
+        html ||
         `
         <div class="card">
-          まだタブがありません。<br>
-          「＋ 新しいタブ」から作ってみよう！
+
+          まだタブがありません。
+
+          <br><br>
+
+          「＋ 新しいタブ」から
+          作ってみよう！
+
         </div>
         `
       }
@@ -1126,72 +1340,79 @@ function showHome() {
   `;
 
   setActiveNav(0);
+
 }
 
 
-/* =====================================================
-   FOLDER
-===================================================== */
+/* ======================================================
+FOLDER
+====================================================== */
 
-function openFolder(id) {
+function openFolder(id){
 
-  currentFolder = id;
+  currentFolder=id;
 
   renderFolder(id);
 
 }
 
 
-function renderFolder(id) {
+function renderFolder(id){
 
-  const folder =
-    data.folders.find(f => f.id === id);
+  const folder=
+    data.folders.find(
+      f=>f.id===id
+    );
 
-  if (!folder) return;
+  if(!folder) return;
 
-  const children =
+  const children=
     data.folders.filter(
-      f => f.parent === id
+      f=>f.parent===id
     );
 
-  const notes =
+  const notes=
     data.notes.filter(
-      n => n.folder === id
+      n=>n.folder===id
     );
 
 
-  let parents = [];
+  let parents=[];
 
-  let current = folder;
+  let current=folder;
 
-  while (current) {
+  while(current){
 
     parents.unshift(current);
 
-    current =
+    current=
       data.folders.find(
-        f => f.id === current.parent
+        f=>f.id===current.parent
       );
 
   }
 
 
-  let breadcrumb = "";
+  let breadcrumb="";
 
-  parents.forEach((p,i) => {
+  parents.forEach((p,i)=>{
 
-    breadcrumb += `
+    breadcrumb+=`
 
       ${
-        i > 0
-        ? `<span class="separator">›</span>`
-        : ""
+        i>0
+        ?
+        `<span class="separator">›</span>`
+        :
+        ""
       }
 
       <button
         class="crumb"
         onclick="openFolder('${p.id}')">
+
         ${escapeHTML(p.name)}
+
       </button>
 
     `;
@@ -1199,14 +1420,14 @@ function renderFolder(id) {
   });
 
 
-  let folderHTML = "";
+  let folderHTML="";
 
-  children.forEach(child => {
+  children.forEach(child=>{
 
-    const count =
+    const count=
       countFolderItems(child.id);
 
-    folderHTML += `
+    folderHTML+=`
 
       <div
         class="card folderCard"
@@ -1231,26 +1452,29 @@ function renderFolder(id) {
   });
 
 
-  let noteHTML = "";
+  let noteHTML="";
 
-  notes.forEach(note => {
+  notes.forEach(note=>{
 
-    noteHTML += `
+    noteHTML+=`
 
       <div
         class="card noteCard"
-        onclick="editNote('${note.id}')">
+        onclick="openNote('${note.id}')">
 
         <div class="noteTitle">
           📄 ${escapeHTML(note.title)}
         </div>
 
         <div class="noteDate">
+          最終更新：
           ${new Date(note.updated).toLocaleString("ja-JP")}
         </div>
 
         <div class="notePreview">
-          ${escapeHTML(note.content || "内容なし")}
+          ${escapeHTML(
+            note.content||"ノートを開く"
+          )}
         </div>
 
       </div>
@@ -1260,7 +1484,7 @@ function renderFolder(id) {
   });
 
 
-  document.getElementById("main").innerHTML = `
+  document.getElementById("main").innerHTML=`
 
     <div class="breadcrumb">
       ${breadcrumb}
@@ -1274,7 +1498,7 @@ function renderFolder(id) {
       </h2>
 
       <p>
-        このタブの中にさらにタブやノートを作れます。
+        タブの中にさらにタブやノートを作れます。
       </p>
 
     </section>
@@ -1285,31 +1509,41 @@ function renderFolder(id) {
       <button
         class="addBtn"
         onclick="createFolder('${id}')">
+
         📁 新しいタブ
+
       </button>
 
       <button
         class="addBtn secondary"
         onclick="createNote('${id}')">
+
         📄 新しいノート
+
       </button>
 
       ${
-        id !== "root"
-        ? `
+        id!=="root"
+        ?
+        `
         <button
           class="addBtn secondary"
           onclick="renameFolder('${id}')">
+
           ✏️ 名前変更
+
         </button>
 
         <button
           class="danger"
           onclick="deleteFolder('${id}')">
+
           🗑️ 削除
+
         </button>
         `
-        : ""
+        :
+        ""
       }
 
     </div>
@@ -1317,56 +1551,73 @@ function renderFolder(id) {
 
     ${
       children.length
-      ? `
-        <div class="sectionTitle">
-          📁 タブ
-        </div>
-
-        <div class="grid">
-          ${folderHTML}
-        </div>
+      ?
       `
-      : ""
+
+      <div class="sectionTitle">
+        📁 タブ
+      </div>
+
+      <div class="grid">
+        ${folderHTML}
+      </div>
+
+      `
+      :
+      ""
     }
 
 
     ${
       notes.length
-      ? `
-        <div class="sectionTitle">
-          📄 ノート
-        </div>
-
-        <div class="grid">
-          ${noteHTML}
-        </div>
+      ?
       `
-      : ""
+
+      <div class="sectionTitle">
+        📄 ノート
+      </div>
+
+      <div class="grid">
+        ${noteHTML}
+      </div>
+
+      `
+      :
+      ""
     }
 
 
     ${
-      !children.length && !notes.length
-      ? `
-        <div class="card">
-          ここにはまだ何もありません。<br><br>
-          📁 タブ または 📄 ノートを作ってみよう！
-        </div>
+      !children.length&&!notes.length
+      ?
       `
-      : ""
+      <div class="card">
+
+        ここにはまだ何もありません。
+
+        <br><br>
+
+        📁 タブ または
+        📄 ノートを作ってみよう！
+
+      </div>
+      `
+      :
+      ""
     }
 
   `;
 
   setActiveNav(1);
+
 }
 
 
-/* =====================================================
-   CREATE FOLDER
-===================================================== */
+/* ======================================================
+CREATE FOLDER
+====================================================== */
 
-function createFolder(parent) {
+function createFolder(parent){
 
   showModal(`
 
@@ -1380,21 +1631,25 @@ function createFolder(parent) {
     <input
       id="newFolderIcon"
       class="input"
-      placeholder="アイコン（例：➗）"
-      value="📁">
+      value="📁"
+      placeholder="アイコン">
 
     <div class="modalButtons">
 
       <button
         class="addBtn secondary"
         onclick="closeModal()">
+
         キャンセル
+
       </button>
 
       <button
         class="addBtn"
         onclick="saveNewFolder('${parent}')">
+
         作成
+
       </button>
 
     </div>
@@ -1404,21 +1659,21 @@ function createFolder(parent) {
 }
 
 
-function saveNewFolder(parent) {
+function saveNewFolder(parent){
 
-  const name =
+  const name=
     document
       .getElementById("newFolderName")
       .value
       .trim();
 
-  const icon =
+  const icon=
     document
       .getElementById("newFolderIcon")
       .value
-      .trim() || "📁";
+      .trim()||"📁";
 
-  if (!name) {
+  if(!name){
 
     alert("タブ名を入力してね。");
     return;
@@ -1428,9 +1683,9 @@ function saveNewFolder(parent) {
   data.folders.push({
 
     id:
-      "folder_" +
-      Date.now() +
-      "_" +
+      "folder_"+
+      Date.now()+
+      "_"+
       Math.random()
         .toString(36)
         .slice(2),
@@ -1438,32 +1693,38 @@ function saveNewFolder(parent) {
     name,
     icon,
     parent,
-    created: Date.now()
+    created:Date.now()
 
   });
 
   saveData();
   closeModal();
 
-  if (parent === "root") {
+  if(parent==="root"){
+
     showHome();
-  } else {
+
+  }else{
+
     renderFolder(parent);
+
   }
 
 }
 
 
-/* =====================================================
-   RENAME FOLDER
-===================================================== */
+/* ======================================================
+RENAME
+====================================================== */
 
-function renameFolder(id) {
+function renameFolder(id){
 
-  const folder =
-    data.folders.find(f => f.id === id);
+  const folder=
+    data.folders.find(
+      f=>f.id===id
+    );
 
-  if (!folder) return;
+  if(!folder)return;
 
   showModal(`
 
@@ -1479,13 +1740,17 @@ function renameFolder(id) {
       <button
         class="addBtn secondary"
         onclick="closeModal()">
+
         キャンセル
+
       </button>
 
       <button
         class="addBtn"
         onclick="saveRename('${id}')">
+
         保存
+
       </button>
 
     </div>
@@ -1495,87 +1760,95 @@ function renameFolder(id) {
 }
 
 
-function saveRename(id) {
+function saveRename(id){
 
-  const input =
-    document.getElementById("renameInput");
+  const name=
+    document
+      .getElementById("renameInput")
+      .value
+      .trim();
 
-  const name = input.value.trim();
+  if(!name)return;
 
-  if (!name) return;
+  const folder=
+    data.folders.find(
+      f=>f.id===id
+    );
 
-  const folder =
-    data.folders.find(f => f.id === id);
+  if(folder){
 
-  if (folder) {
-    folder.name = name;
+    folder.name=name;
+
   }
 
   saveData();
   closeModal();
+
   renderFolder(id);
 
 }
 
 
-/* =====================================================
-   DELETE FOLDER
-===================================================== */
+/* ======================================================
+DELETE FOLDER
+====================================================== */
 
-function deleteFolder(id) {
+function deleteFolder(id){
 
-  if (id === "root") return;
-
-  const folder =
-    data.folders.find(f => f.id === id);
-
-  if (!folder) return;
-
-  const ok =
-    confirm(
-      `「${folder.name}」を削除しますか？\n\n` +
-      "中にあるタブとノートもすべて削除されます。"
+  const folder=
+    data.folders.find(
+      f=>f.id===id
     );
 
-  if (!ok) return;
+  if(!folder)return;
 
-  const ids = getAllChildFolderIds(id);
+  if(
+    !confirm(
+      `「${folder.name}」を削除しますか？\n\n`+
+      "中のタブ・ノートも削除されます。"
+    )
+  ){
+
+    return;
+
+  }
+
+  const ids=
+    getAllChildFolderIds(id);
 
   ids.push(id);
 
-  data.folders =
+  data.folders=
     data.folders.filter(
-      f => !ids.includes(f.id)
+      f=>!ids.includes(f.id)
     );
 
-  data.notes =
+  data.notes=
     data.notes.filter(
-      n => !ids.includes(n.folder)
+      n=>!ids.includes(n.folder)
     );
 
   saveData();
 
-  const parent = folder.parent || "root";
-
-  renderFolder(parent);
+  renderFolder(folder.parent||"root");
 
 }
 
 
-function getAllChildFolderIds(id) {
+function getAllChildFolderIds(id){
 
-  let result = [];
+  let result=[];
 
-  const children =
+  const children=
     data.folders.filter(
-      f => f.parent === id
+      f=>f.parent===id
     );
 
-  children.forEach(child => {
+  children.forEach(child=>{
 
     result.push(child.id);
 
-    result =
+    result=
       result.concat(
         getAllChildFolderIds(child.id)
       );
@@ -1587,161 +1860,930 @@ function getAllChildFolderIds(id) {
 }
 
 
-/* =====================================================
-   NOTES
-===================================================== */
+/* ======================================================
+CREATE NOTE
+====================================================== */
 
-function createNote(folderId) {
+function createNote(folderId){
 
-  const id =
-    "note_" +
-    Date.now() +
-    "_" +
+  const id=
+    "note_"+
+    Date.now()+
+    "_"+
     Math.random()
       .toString(36)
       .slice(2);
 
-  data.notes.push({
+  const note={
 
     id,
-    folder: folderId,
-    title: "新しいノート",
-    content: "",
-    created: Date.now(),
-    updated: Date.now()
+    folder:folderId,
+    title:"新しいノート",
+    content:"",
+    created:Date.now(),
+    updated:Date.now(),
 
-  });
+    elements:[],
+    strokes:[]
+
+  };
+
+  data.notes.push(note);
 
   saveData();
 
-  editNote(id);
+  openNote(id);
 
 }
 
 
-function editNote(id) {
+/* ======================================================
+OPEN NOTE
+====================================================== */
 
-  const note =
-    data.notes.find(n => n.id === id);
+function openNote(id){
 
-  if (!note) return;
+  const note=
+    data.notes.find(
+      n=>n.id===id
+    );
 
-  showModal(`
+  if(!note)return;
 
-    <div class="noteEditor">
+  currentNoteId=id;
+  currentNoteFolder=note.folder;
 
-      <h2>📄 ノート</h2>
+  if(!note.elements){
+    note.elements=[];
+  }
 
-      <input
-        id="noteTitle"
-        class="input"
-        value="${escapeAttribute(note.title)}"
-        placeholder="ノートタイトル">
+  if(!note.strokes){
+    note.strokes=[];
+  }
 
-      <textarea
-        id="noteContent"
-        placeholder="ここに勉強内容を書こう！">${escapeHTML(note.content)}</textarea>
+  document.getElementById("main").innerHTML=`
 
-      <div class="modalButtons">
+    <div class="notePage">
+
+      <div class="noteHeader">
 
         <button
-          class="danger"
-          onclick="deleteNote('${id}')">
-          🗑️ 削除
+          class="backBtn"
+          onclick="renderFolder('${note.folder}')">
+
+          ← 戻る
+
+        </button>
+
+        <div class="noteHeaderTitle">
+
+          ${escapeHTML(note.title)}
+
+        </div>
+
+      </div>
+
+
+      <input
+        id="noteTitleInput"
+        class="input"
+        value="${escapeAttribute(note.title)}"
+        placeholder="ノートタイトル"
+        onchange="updateNoteTitle()">
+
+
+      <div class="noteTools">
+
+        <button
+          class="toolBtn"
+          onclick="addTextElement()">
+
+          📝 テキスト
+
         </button>
 
         <button
+          class="toolBtn"
+          onclick="addStickyElement()">
+
+          📌 付箋
+
+        </button>
+
+        <button
+          id="drawTool"
+          class="toolBtn"
+          onclick="toggleDrawing()">
+
+          ✍️ 手書き
+
+        </button>
+
+        <button
+          class="toolBtn"
+          onclick="clearDrawing()">
+
+          🧹 手書き消去
+
+        </button>
+
+      </div>
+
+
+      <div
+        id="noteCanvasWrap"
+        class="noteCanvasWrap">
+
+        <canvas id="drawCanvas"></canvas>
+
+      </div>
+
+
+      <div class="noteBottom">
+
+        <button
           class="addBtn"
-          onclick="saveNote('${id}')">
-          保存
+          onclick="saveCurrentNote()">
+
+          💾 保存
+
+        </button>
+
+        <button
+          class="danger"
+          onclick="deleteCurrentNote()">
+
+          🗑️ ノート削除
+
         </button>
 
       </div>
 
     </div>
 
-  `);
+  `;
+
+  setupCanvas();
+
+  renderNoteElements();
+
+  redrawStrokes();
+
+  setActiveNav(1);
 
 }
 
 
-function saveNote(id) {
+/* ======================================================
+NOTE TITLE
+====================================================== */
 
-  const note =
-    data.notes.find(n => n.id === id);
+function updateNoteTitle(){
 
-  if (!note) return;
+  const note=
+    getCurrentNote();
 
-  note.title =
-    document
-      .getElementById("noteTitle")
-      .value
-      .trim() || "無題のノート";
+  if(!note)return;
 
-  note.content =
-    document
-      .getElementById("noteContent")
-      .value;
+  const input=
+    document.getElementById("noteTitleInput");
 
-  note.updated = Date.now();
+  if(!input)return;
+
+  note.title=
+    input.value.trim()||
+    "無題のノート";
+
+  note.updated=Date.now();
 
   saveData();
 
-  closeModal();
+  const title=
+    document.querySelector(
+      ".noteHeaderTitle"
+    );
 
-  renderFolder(note.folder);
+  if(title){
+
+    title.textContent=
+      note.title;
+
+  }
 
 }
 
 
-function deleteNote(id) {
+/* ======================================================
+CURRENT NOTE
+====================================================== */
 
-  const note =
-    data.notes.find(n => n.id === id);
+function getCurrentNote(){
 
-  if (!note) return;
+  return data.notes.find(
+    n=>n.id===currentNoteId
+  );
 
-  if (!confirm("このノートを削除しますか？")) {
-    return;
+}
+
+
+/* ======================================================
+CANVAS
+====================================================== */
+
+let canvas=null;
+let ctx=null;
+
+function setupCanvas(){
+
+  canvas=
+    document.getElementById("drawCanvas");
+
+  if(!canvas)return;
+
+  const wrap=
+    document.getElementById(
+      "noteCanvasWrap"
+    );
+
+  const rect=
+    wrap.getBoundingClientRect();
+
+  const ratio=
+    window.devicePixelRatio||1;
+
+  canvas.width=
+    rect.width*ratio;
+
+  canvas.height=
+    rect.height*ratio;
+
+  canvas.style.width=
+    rect.width+"px";
+
+  canvas.style.height=
+    rect.height+"px";
+
+  ctx=
+    canvas.getContext("2d");
+
+  ctx.scale(ratio,ratio);
+
+  ctx.lineCap="round";
+  ctx.lineJoin="round";
+  ctx.lineWidth=3;
+
+  canvas.addEventListener(
+    "pointerdown",
+    startDraw
+  );
+
+  canvas.addEventListener(
+    "pointermove",
+    drawMove
+  );
+
+  canvas.addEventListener(
+    "pointerup",
+    endDraw
+  );
+
+  canvas.addEventListener(
+    "pointercancel",
+    endDraw
+  );
+
+}
+
+
+/* ======================================================
+DRAWING
+====================================================== */
+
+let drawingEnabled=false;
+
+function toggleDrawing(){
+
+  drawingEnabled=
+    !drawingEnabled;
+
+  const btn=
+    document.getElementById(
+      "drawTool"
+    );
+
+  if(btn){
+
+    btn.classList.toggle(
+      "active",
+      drawingEnabled
+    );
+
   }
 
-  const folder = note.folder;
+}
 
-  data.notes =
-    data.notes.filter(
-      n => n.id !== id
+
+function getPointerPosition(e){
+
+  const rect=
+    canvas.getBoundingClientRect();
+
+  return {
+
+    x:e.clientX-rect.left,
+    y:e.clientY-rect.top
+
+  };
+
+}
+
+
+function startDraw(e){
+
+  if(!drawingEnabled)return;
+
+  e.preventDefault();
+
+  canvas.setPointerCapture(
+    e.pointerId
+  );
+
+  drawing=true;
+
+  const p=
+    getPointerPosition(e);
+
+  currentStroke={
+    points:[p],
+    width:3
+  };
+
+  ctx.beginPath();
+
+  ctx.moveTo(
+    p.x,
+    p.y
+  );
+
+}
+
+
+function drawMove(e){
+
+  if(!drawing||!drawingEnabled)return;
+
+  e.preventDefault();
+
+  const p=
+    getPointerPosition(e);
+
+  currentStroke.points.push(p);
+
+  ctx.lineTo(
+    p.x,
+    p.y
+  );
+
+  ctx.stroke();
+
+}
+
+
+function endDraw(e){
+
+  if(!drawing)return;
+
+  drawing=false;
+
+  const note=
+    getCurrentNote();
+
+  if(note&&currentStroke){
+
+    note.strokes.push(
+      currentStroke
+    );
+
+    note.updated=Date.now();
+
+    saveData();
+
+  }
+
+  currentStroke=null;
+
+}
+
+
+/* ======================================================
+REDRAW
+====================================================== */
+
+function redrawStrokes(){
+
+  const note=
+    getCurrentNote();
+
+  if(!note||!ctx)return;
+
+  ctx.clearRect(
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
+
+  note.strokes.forEach(stroke=>{
+
+    if(!stroke.points.length)return;
+
+    ctx.beginPath();
+
+    ctx.lineWidth=
+      stroke.width||3;
+
+    ctx.strokeStyle=
+      getComputedStyle(document.body)
+        .getPropertyValue("--text");
+
+    ctx.moveTo(
+      stroke.points[0].x,
+      stroke.points[0].y
+    );
+
+    for(
+      let i=1;
+      i<stroke.points.length;
+      i++
+    ){
+
+      ctx.lineTo(
+        stroke.points[i].x,
+        stroke.points[i].y
+      );
+
+    }
+
+    ctx.stroke();
+
+  });
+
+}
+
+
+/* ======================================================
+CLEAR DRAWING
+====================================================== */
+
+function clearDrawing(){
+
+  const note=
+    getCurrentNote();
+
+  if(!note)return;
+
+  if(
+    !confirm(
+      "手書きをすべて消しますか？"
+    )
+  ){
+
+    return;
+
+  }
+
+  note.strokes=[];
+
+  saveData();
+
+  redrawStrokes();
+
+}
+
+
+/* ======================================================
+TEXT ELEMENT
+====================================================== */
+
+function addTextElement(){
+
+  const note=
+    getCurrentNote();
+
+  if(!note)return;
+
+  const id=
+    "element_"+
+    Date.now();
+
+  note.elements.push({
+
+    id,
+    type:"text",
+    x:30,
+    y:40,
+    text:"ここに入力"
+
+  });
+
+  note.updated=Date.now();
+
+  saveData();
+
+  renderNoteElements();
+
+}
+
+
+/* ======================================================
+STICKY
+====================================================== */
+
+function addStickyElement(){
+
+  const note=
+    getCurrentNote();
+
+  if(!note)return;
+
+  const id=
+    "element_"+
+    Date.now();
+
+  note.elements.push({
+
+    id,
+    type:"sticky",
+    x:60,
+    y:150,
+    text:"重要！"
+
+  });
+
+  note.updated=Date.now();
+
+  saveData();
+
+  renderNoteElements();
+
+}
+
+
+/* ======================================================
+RENDER ELEMENTS
+====================================================== */
+
+function renderNoteElements(){
+
+  const wrap=
+    document.getElementById(
+      "noteCanvasWrap"
+    );
+
+  if(!wrap)return;
+
+  wrap
+    .querySelectorAll(
+      ".textElement,.stickyElement"
+    )
+    .forEach(
+      el=>el.remove()
+    );
+
+  const note=
+    getCurrentNote();
+
+  if(!note)return;
+
+  note.elements.forEach(element=>{
+
+    let el;
+
+    if(element.type==="sticky"){
+
+      el=
+        document.createElement(
+          "div"
+        );
+
+      el.className=
+        "stickyElement";
+
+      el.innerHTML=`
+
+        <button
+          class="elementDelete"
+          onclick="deleteElement(event,'${element.id}')">
+
+          ×
+
+        </button>
+
+        <textarea
+          class="stickyEdit"
+          oninput="elementTextChanged('${element.id}',this.value)"
+        >${escapeHTML(element.text)}</textarea>
+
+      `;
+
+    }else{
+
+      el=
+        document.createElement(
+          "div"
+        );
+
+      el.className=
+        "textElement";
+
+      el.innerHTML=`
+
+        <button
+          class="elementDelete"
+          onclick="deleteElement(event,'${element.id}')">
+
+          ×
+
+        </button>
+
+        <textarea
+          class="textEdit"
+          oninput="elementTextChanged('${element.id}',this.value)"
+        >${escapeHTML(element.text)}</textarea>
+
+      `;
+
+    }
+
+    el.dataset.id=
+      element.id;
+
+    el.style.left=
+      element.x+"px";
+
+    el.style.top=
+      element.y+"px";
+
+
+    makeDraggable(
+      el,
+      element
+    );
+
+
+    wrap.appendChild(el);
+
+  });
+
+}
+
+
+/* ======================================================
+ELEMENT TEXT
+====================================================== */
+
+function elementTextChanged(id,text){
+
+  const note=
+    getCurrentNote();
+
+  if(!note)return;
+
+  const element=
+    note.elements.find(
+      e=>e.id===id
+    );
+
+  if(!element)return;
+
+  element.text=text;
+
+  note.updated=Date.now();
+
+  saveData();
+
+}
+
+
+/* ======================================================
+DELETE ELEMENT
+====================================================== */
+
+function deleteElement(event,id){
+
+  event.stopPropagation();
+
+  const note=
+    getCurrentNote();
+
+  if(!note)return;
+
+  note.elements=
+    note.elements.filter(
+      e=>e.id!==id
     );
 
   saveData();
 
-  closeModal();
+  renderNoteElements();
+
+}
+
+
+/* ======================================================
+DRAG ELEMENT
+====================================================== */
+
+function makeDraggable(el,element){
+
+  let startX=0;
+  let startY=0;
+  let originX=0;
+  let originY=0;
+
+  function down(e){
+
+    if(
+      e.target.tagName==="TEXTAREA"||
+      e.target.classList.contains(
+        "elementDelete"
+      )
+    ){
+
+      return;
+
+    }
+
+    e.preventDefault();
+
+    startX=e.clientX;
+    startY=e.clientY;
+
+    originX=element.x;
+    originY=element.y;
+
+    el.setPointerCapture(
+      e.pointerId
+    );
+
+    selectedElement=element;
+
+  }
+
+
+  function move(e){
+
+    if(selectedElement!==element)return;
+
+    e.preventDefault();
+
+    element.x=
+      originX+
+      e.clientX-startX;
+
+    element.y=
+      originY+
+      e.clientY-startY;
+
+    el.style.left=
+      element.x+"px";
+
+    el.style.top=
+      element.y+"px";
+
+  }
+
+
+  function up(){
+
+    if(selectedElement!==element)return;
+
+    selectedElement=null;
+
+    const note=
+      getCurrentNote();
+
+    if(note){
+
+      note.updated=Date.now();
+
+      saveData();
+
+    }
+
+  }
+
+
+  el.addEventListener(
+    "pointerdown",
+    down
+  );
+
+  el.addEventListener(
+    "pointermove",
+    move
+  );
+
+  el.addEventListener(
+    "pointerup",
+    up
+  );
+
+}
+
+
+/* ======================================================
+SAVE NOTE
+====================================================== */
+
+function saveCurrentNote(){
+
+  const note=
+    getCurrentNote();
+
+  if(!note)return;
+
+  const input=
+    document.getElementById(
+      "noteTitleInput"
+    );
+
+  if(input){
+
+    note.title=
+      input.value.trim()||
+      "無題のノート";
+
+  }
+
+  note.updated=Date.now();
+
+  saveData();
+
+  alert("ノートを保存しました！📚");
+
+}
+
+
+/* ======================================================
+DELETE NOTE
+====================================================== */
+
+function deleteCurrentNote(){
+
+  const note=
+    getCurrentNote();
+
+  if(!note)return;
+
+  if(
+    !confirm(
+      `「${note.title}」を削除しますか？`
+    )
+  ){
+
+    return;
+
+  }
+
+  const folder=
+    note.folder;
+
+  data.notes=
+    data.notes.filter(
+      n=>n.id!==note.id
+    );
+
+  saveData();
+
+  currentNoteId=null;
 
   renderFolder(folder);
 
 }
 
 
-/* =====================================================
-   COUNT
-===================================================== */
+/* ======================================================
+COUNT
+====================================================== */
 
-function countFolderItems(id) {
+function countFolderItems(id){
 
-  const folderIds =
+  const ids=
     getAllChildFolderIds(id);
 
-  folderIds.push(id);
+  ids.push(id);
 
-  return {
+  return{
 
     folders:
       data.folders.filter(
-        f => folderIds.includes(f.id)
+        f=>ids.includes(f.id)
       ).length,
 
     notes:
       data.notes.filter(
-        n => folderIds.includes(n.folder)
+        n=>ids.includes(n.folder)
       ).length
 
   };
@@ -1749,13 +2791,13 @@ function countFolderItems(id) {
 }
 
 
-/* =====================================================
-   TIMER
-===================================================== */
+/* ======================================================
+TIMER
+====================================================== */
 
-function showTimer() {
+function showTimer(){
 
-  document.getElementById("main").innerHTML = `
+  document.getElementById("main").innerHTML=`
 
     <section class="card timer">
 
@@ -1766,8 +2808,12 @@ function showTimer() {
         総勉強時間に追加されます。
       </p>
 
-      <div class="timerCircle" id="timerDisplay">
+      <div
+        class="timerCircle"
+        id="timerDisplay">
+
         00:00:00
+
       </div>
 
       <div class="timerButtons">
@@ -1790,8 +2836,7 @@ function showTimer() {
 
       <select
         id="timerFolder"
-        class="input"
-        onchange="timerFolder=this.value">
+        class="input">
 
         ${buildFolderOptions()}
 
@@ -1808,31 +2853,39 @@ function showTimer() {
 }
 
 
-function buildFolderOptions() {
+function buildFolderOptions(){
 
-  return data.folders.map(folder => `
+  return data.folders.map(
+    folder=>`
 
-    <option
-      value="${folder.id}"
-      ${folder.id === currentFolder ? "selected" : ""}>
+      <option
+        value="${folder.id}"
+        ${
+          folder.id===currentFolder
+          ?
+          "selected"
+          :
+          ""
+        }>
 
-      ${escapeHTML(folder.name)}
+        ${escapeHTML(folder.name)}
 
-    </option>
+      </option>
 
-  `).join("");
+    `
+  ).join("");
 
 }
 
 
-function startTimer() {
+function startTimer(){
 
-  if (timerRunning) return;
+  if(timerRunning)return;
 
-  timerRunning = true;
+  timerRunning=true;
 
-  timerInterval =
-    setInterval(() => {
+  timerInterval=
+    setInterval(()=>{
 
       timerSeconds++;
 
@@ -1843,29 +2896,30 @@ function startTimer() {
 }
 
 
-function pauseTimer() {
+function pauseTimer(){
 
-  timerRunning = false;
+  timerRunning=false;
 
   clearInterval(timerInterval);
 
 }
 
 
-function finishTimer() {
+function finishTimer(){
 
   pauseTimer();
 
-  if (timerSeconds <= 0) {
+  if(timerSeconds<=0){
 
     alert("まだ勉強時間がありません。");
+
     return;
 
   }
 
-  data.totalSeconds += timerSeconds;
+  data.totalSeconds+=timerSeconds;
 
-  timerSeconds = 0;
+  timerSeconds=0;
 
   saveData();
 
@@ -1876,39 +2930,43 @@ function finishTimer() {
 }
 
 
-function updateTimerDisplay() {
+function updateTimerDisplay(){
 
-  const el =
-    document.getElementById("timerDisplay");
-
-  if (!el) return;
-
-  const h =
-    Math.floor(timerSeconds / 3600);
-
-  const m =
-    Math.floor(
-      (timerSeconds % 3600) / 60
+  const el=
+    document.getElementById(
+      "timerDisplay"
     );
 
-  const s =
-    timerSeconds % 60;
+  if(!el)return;
 
-  el.textContent =
-    `${String(h).padStart(2,"0")}:` +
-    `${String(m).padStart(2,"0")}:` +
+  const h=
+    Math.floor(
+      timerSeconds/3600
+    );
+
+  const m=
+    Math.floor(
+      (timerSeconds%3600)/60
+    );
+
+  const s=
+    timerSeconds%60;
+
+  el.textContent=
+    `${String(h).padStart(2,"0")}:`+
+    `${String(m).padStart(2,"0")}:`+
     `${String(s).padStart(2,"0")}`;
 
 }
 
 
-/* =====================================================
-   SETTINGS
-===================================================== */
+/* ======================================================
+SETTINGS
+====================================================== */
 
-function showSettings() {
+function showSettings(){
 
-  document.getElementById("main").innerHTML = `
+  document.getElementById("main").innerHTML=`
 
     <div class="sectionTitle">
       ⚙️ 設定
@@ -1919,10 +2977,15 @@ function showSettings() {
       <div class="settingRow">
 
         <div>
-          <b>ユーザー</b><br>
+
+          <b>ユーザー</b>
+
+          <br>
+
           <span class="cardSub">
             ${escapeHTML(data.name)}
           </span>
+
         </div>
 
       </div>
@@ -1931,10 +2994,15 @@ function showSettings() {
       <div class="settingRow">
 
         <div>
-          <b>総勉強時間</b><br>
+
+          <b>総勉強時間</b>
+
+          <br>
+
           <span class="cardSub">
             ${formatTime(data.totalSeconds)}
           </span>
+
         </div>
 
       </div>
@@ -1949,7 +3017,9 @@ function showSettings() {
         <button
           class="iconBtn"
           onclick="toggleDark()">
+
           ◐
+
         </button>
 
       </div>
@@ -1958,16 +3028,23 @@ function showSettings() {
       <div class="settingRow">
 
         <div>
-          <b>データ</b><br>
+
+          <b>データバックアップ</b>
+
+          <br>
+
           <span class="cardSub">
-            この端末に保存されています
+            JSONファイルとして保存
           </span>
+
         </div>
 
         <button
-          class="danger"
+          class="addBtn"
           onclick="exportData()">
-          📦 バックアップ
+
+          📦 保存
+
         </button>
 
       </div>
@@ -1976,9 +3053,11 @@ function showSettings() {
       <div class="settingRow">
 
         <button
-          class="logout"
+          class="danger"
           onclick="logout()">
+
           ログアウト
+
         </button>
 
       </div>
@@ -1992,43 +3071,55 @@ function showSettings() {
 }
 
 
-/* =====================================================
-   DARK
-===================================================== */
+/* ======================================================
+DARK
+====================================================== */
 
-function toggleDark() {
+function toggleDark(){
 
-  document.body.classList.toggle("dark");
+  document.body.classList.toggle(
+    "dark"
+  );
 
-  data.settings.dark =
-    document.body.classList.contains("dark");
+  data.settings.dark=
+    document.body.classList.contains(
+      "dark"
+    );
 
   saveData();
 
 }
 
 
-/* =====================================================
-   EXPORT
-===================================================== */
+/* ======================================================
+EXPORT
+====================================================== */
 
-function exportData() {
+function exportData(){
 
-  const blob =
+  const blob=
     new Blob(
-      [JSON.stringify(data,null,2)],
-      {type:"application/json"}
+      [
+        JSON.stringify(
+          data,
+          null,
+          2
+        )
+      ],
+      {
+        type:"application/json"
+      }
     );
 
-  const url =
+  const url=
     URL.createObjectURL(blob);
 
-  const a =
+  const a=
     document.createElement("a");
 
-  a.href = url;
+  a.href=url;
 
-  a.download =
+  a.download=
     "destination-note-backup.json";
 
   a.click();
@@ -2038,19 +3129,21 @@ function exportData() {
 }
 
 
-/* =====================================================
-   LOGOUT
-===================================================== */
+/* ======================================================
+LOGOUT
+====================================================== */
 
-function logout() {
+function logout(){
 
-  if (
+  if(
     !confirm(
-      "ログアウトしますか？\n\n" +
+      "ログアウトしますか？\n\n"+
       "データはこの端末に残ります。"
     )
-  ) {
+  ){
+
     return;
+
   }
 
   location.reload();
@@ -2058,15 +3151,15 @@ function logout() {
 }
 
 
-/* =====================================================
-   MODAL
-===================================================== */
+/* ======================================================
+MODAL
+====================================================== */
 
-function showModal(html) {
+function showModal(html){
 
   document
     .getElementById("modalContent")
-    .innerHTML = html;
+    .innerHTML=html;
 
   document
     .getElementById("modal")
@@ -2075,7 +3168,7 @@ function showModal(html) {
 }
 
 
-function closeModal() {
+function closeModal(){
 
   document
     .getElementById("modal")
@@ -2086,46 +3179,54 @@ function closeModal() {
 
 document
   .getElementById("modal")
-  .addEventListener("click", e => {
+  .addEventListener(
+    "click",
+    e=>{
 
-    if (e.target.id === "modal") {
-      closeModal();
+      if(e.target.id==="modal"){
+
+        closeModal();
+
+      }
+
     }
+  );
 
-  });
 
+/* ======================================================
+NAV
+====================================================== */
 
-/* =====================================================
-   NAVIGATION
-===================================================== */
-
-function showFolders() {
+function showFolders(){
 
   renderFolder(currentFolder);
 
 }
 
 
-function setActiveNav(index) {
+function setActiveNav(index){
 
   document
     .querySelectorAll(".navBtn")
     .forEach(
-      (btn,i) =>
+      (btn,i)=>{
+
         btn.classList.toggle(
           "active",
-          i === index
-        )
+          i===index
+        );
+
+      }
     );
 
 }
 
 
-/* =====================================================
-   SECURITY / HTML
-===================================================== */
+/* ======================================================
+ESCAPE
+====================================================== */
 
-function escapeHTML(str) {
+function escapeHTML(str){
 
   return String(str)
     .replaceAll("&","&amp;")
@@ -2137,37 +3238,63 @@ function escapeHTML(str) {
 }
 
 
-function escapeAttribute(str) {
+function escapeAttribute(str){
 
   return escapeHTML(str);
 
 }
 
 
-/* =====================================================
-   AUTO LOGIN
-===================================================== */
+/* ======================================================
+RESIZE CANVAS
+====================================================== */
 
-window.addEventListener("load", () => {
+window.addEventListener(
+  "resize",
+  ()=>{
 
-  const saved =
-    localStorage.getItem(STORAGE_KEY);
+    if(
+      currentNoteId&&
+      document.getElementById(
+        "drawCanvas"
+      )
+    ){
 
-  if (!saved) return;
+      const oldStrokes=
+        getCurrentNote()?.strokes||[];
 
-  try {
+      setupCanvas();
 
-    const savedData =
-      JSON.parse(saved);
+      const note=
+        getCurrentNote();
 
-    /*
-      自動ログインはしない。
-      名前とパスワードを入力して開く。
-    */
+      if(note){
 
-  } catch(e) {}
+        note.strokes=
+          oldStrokes;
 
-});
+      }
+
+      redrawStrokes();
+
+    }
+
+  }
+);
+
+
+/* ======================================================
+AUTO LOAD
+====================================================== */
+
+window.addEventListener(
+  "load",
+  ()=>{
+
+    loadData();
+
+  }
+);
 
 </script>
 
