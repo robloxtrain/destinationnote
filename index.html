@@ -3,11 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport"
-      content="width=device-width,
-               initial-scale=1,
-               maximum-scale=1,
-               user-scalable=no,
-               viewport-fit=cover">
+      content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
 
 <title>Destination Note</title>
 
@@ -17,68 +14,138 @@
   -webkit-tap-highlight-color:transparent;
 }
 
-html,
-body{
-  margin:0;
+html,body{
   width:100%;
   height:100%;
+  margin:0;
   overflow:hidden;
   font-family:
     -apple-system,
     BlinkMacSystemFont,
     "SF Pro Display",
+    "SF Pro Text",
     "Helvetica Neue",
     Arial,
     sans-serif;
   color:#111;
+}
+
+body{
   background:
-    radial-gradient(circle at 10% 10%,rgba(130,190,255,.45),transparent 35%),
-    radial-gradient(circle at 90% 10%,rgba(255,170,245,.40),transparent 35%),
-    radial-gradient(circle at 50% 100%,rgba(170,220,255,.35),transparent 40%),
-    #edf2f8;
+    radial-gradient(
+      circle at 15% 5%,
+      rgba(255,255,255,.95),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 100% 20%,
+      rgba(205,225,255,.7),
+      transparent 38%
+    ),
+    linear-gradient(
+      135deg,
+      #edf4fc,
+      #e5ebf5
+    );
 }
 
 button,
 input,
+select,
 textarea{
   font:inherit;
 }
 
 button{
-  border:0;
   cursor:pointer;
 }
 
+.hidden{
+  display:none!important;
+}
+
 /* =========================
-   LIQUID GLASS
+   GLASS
 ========================= */
 
 .glass{
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,.72),
-      rgba(255,255,255,.42)
-    );
-  border:1px solid rgba(255,255,255,.78);
+  background:rgba(255,255,255,.54);
+  border:1px solid rgba(255,255,255,.75);
   box-shadow:
-    0 20px 60px rgba(50,70,100,.14),
-    inset 0 1px 0 rgba(255,255,255,.95),
-    inset 0 -1px 0 rgba(255,255,255,.28);
-  backdrop-filter:blur(30px) saturate(180%);
-  -webkit-backdrop-filter:blur(30px) saturate(180%);
+    0 18px 50px rgba(30,55,90,.12),
+    inset 0 1px 0 rgba(255,255,255,.85);
+  backdrop-filter:blur(28px) saturate(180%);
+  -webkit-backdrop-filter:blur(28px) saturate(180%);
 }
 
-.app{
+/* =========================
+   LOGIN
+========================= */
+
+#loginScreen{
   width:100%;
   height:100%;
   display:flex;
-  padding:
-    calc(12px + env(safe-area-inset-top))
-    12px
-    calc(12px + env(safe-area-inset-bottom))
-    12px;
-  gap:12px;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.login-card{
+  width:min(430px,100%);
+  padding:34px;
+  border-radius:32px;
+}
+
+.login-logo{
+  font-size:38px;
+  font-weight:900;
+  letter-spacing:-2px;
+}
+
+.login-sub{
+  color:#707986;
+  margin-top:5px;
+  margin-bottom:25px;
+}
+
+.login-input{
+  width:100%;
+  padding:15px 17px;
+  margin:6px 0;
+  border-radius:17px;
+  border:1px solid rgba(255,255,255,.8);
+  background:rgba(255,255,255,.7);
+  outline:none;
+}
+
+.login-input:focus{
+  box-shadow:0 0 0 4px rgba(60,120,255,.12);
+}
+
+.login-button{
+  width:100%;
+  padding:15px;
+  margin-top:12px;
+  border:0;
+  border-radius:17px;
+  color:white;
+  font-weight:800;
+  background:linear-gradient(135deg,#111,#3b3b3b);
+}
+
+/* =========================
+   APP
+========================= */
+
+#app{
+  width:100%;
+  height:100%;
+  display:none;
+}
+
+#app.show{
+  display:flex;
 }
 
 /* =========================
@@ -86,153 +153,132 @@ button{
 ========================= */
 
 .sidebar{
-  width:300px;
-  min-width:300px;
+  width:290px;
+  height:100%;
+  padding:14px;
+  flex:none;
+  z-index:50;
+}
+
+.sidebar-inner{
   height:100%;
   border-radius:28px;
+  overflow:hidden;
   display:flex;
   flex-direction:column;
-  overflow:hidden;
-  position:relative;
-  z-index:20;
+}
+
+.home-button{
+  margin:12px;
+  padding:14px;
+  border-radius:23px;
+  cursor:pointer;
+  transition:.18s;
+}
+
+.home-button:hover{
+  background:rgba(255,255,255,.4);
+}
+
+.home-button:active{
+  transform:scale(.97);
 }
 
 .brand{
-  padding:24px 20px 15px;
-  display:flex;
-  align-items:center;
-  gap:13px;
+  font-size:23px;
+  font-weight:900;
+  letter-spacing:-1px;
 }
 
-.brandIcon{
-  width:46px;
-  height:46px;
-  border-radius:15px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:25px;
-  background:rgba(255,255,255,.62);
-  box-shadow:
-    0 8px 20px rgba(0,0,0,.08),
-    inset 0 1px 0 rgba(255,255,255,.9);
-}
-
-.brandTitle{
-  font-size:19px;
-  font-weight:750;
-}
-
-.brandUser{
-  font-size:12px;
-  color:#777;
+.brand-user{
+  color:#737d89;
+  font-size:13px;
   margin-top:3px;
+}
+
+.side-actions{
+  display:flex;
+  gap:7px;
+  padding:0 12px 10px;
+}
+
+.side-action{
+  flex:1;
+  border:0;
+  padding:10px 5px;
+  border-radius:14px;
+  background:rgba(255,255,255,.55);
 }
 
 .tree{
   flex:1;
   overflow:auto;
-  padding:5px 10px 100px;
-  overscroll-behavior:contain;
+  padding:5px 9px;
 }
 
-.tree::-webkit-scrollbar{
-  width:5px;
-}
-
-.tree::-webkit-scrollbar-thumb{
-  background:rgba(0,0,0,.12);
-  border-radius:20px;
-}
-
-.treeRow{
-  width:100%;
-  min-height:43px;
-  border-radius:15px;
+.tree-row{
   display:flex;
   align-items:center;
-  gap:5px;
-  padding:5px 8px;
+  min-height:40px;
   margin:2px 0;
-  text-align:left;
-  color:#111;
-  background:transparent;
-  transition:.18s;
+  padding:5px 7px;
+  border-radius:13px;
+  cursor:pointer;
+  user-select:none;
 }
 
-.treeRow:hover{
-  background:rgba(255,255,255,.45);
+.tree-row:hover{
+  background:rgba(255,255,255,.5);
 }
 
-.treeRow.selected{
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,.80),
-      rgba(255,255,255,.42)
-    );
+.tree-row.selected{
+  background:rgba(255,255,255,.78);
   box-shadow:
-    0 8px 25px rgba(60,80,120,.12),
-    inset 0 1px 0 rgba(255,255,255,.9);
+    inset 0 1px 0 rgba(255,255,255,.9),
+    0 5px 15px rgba(0,0,0,.04);
 }
 
-.treeArrow{
-  width:22px;
-  min-width:22px;
-  height:30px;
+.tree-arrow{
+  width:23px;
+  height:28px;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:11px;
-  color:#777;
+  color:#777f89;
 }
 
-.treeIcon{
+.tree-icon{
   width:27px;
-  min-width:27px;
   text-align:center;
-  font-size:19px;
 }
 
-.treeName{
+.tree-name{
   flex:1;
-  min-width:0;
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
   font-size:14px;
-  font-weight:560;
 }
 
-.treeNote{
-  color:#444;
+.side-bottom{
+  padding:12px;
 }
 
-.sidebarBottom{
-  position:absolute;
-  left:12px;
-  right:12px;
-  bottom:
-    calc(12px + env(safe-area-inset-bottom));
-  display:grid;
-  grid-template-columns:1fr 1fr 48px;
-  gap:8px;
+.study-mini{
+  padding:14px;
+  border-radius:18px;
+  background:rgba(255,255,255,.42);
 }
 
-.bottomButton{
-  height:48px;
-  border-radius:17px;
-  color:#111;
-  background:
-    rgba(255,255,255,.66);
-  border:1px solid rgba(255,255,255,.75);
-  box-shadow:
-    0 10px 25px rgba(40,60,90,.10),
-    inset 0 1px 0 rgba(255,255,255,.9);
+.study-mini-label{
+  font-size:11px;
+  color:#747e89;
 }
 
-.bottomButton:active{
-  transform:scale(.96);
+.study-mini-time{
+  font-size:20px;
+  font-weight:900;
+  margin-top:3px;
 }
 
 /* =========================
@@ -240,524 +286,698 @@ button{
 ========================= */
 
 .main{
-  flex:1;
   min-width:0;
-  min-height:0;
-  border-radius:30px;
-  overflow:hidden;
-  position:relative;
+  flex:1;
+  height:100%;
+  display:flex;
+  flex-direction:column;
 }
 
-.page{
+.topbar{
+  height:72px;
+  padding:12px 15px;
+}
+
+.topbar-inner{
   width:100%;
   height:100%;
-  overflow:auto;
-  position:relative;
+  border-radius:23px;
+  display:flex;
+  align-items:center;
+  padding:7px 10px;
 }
 
-.page::-webkit-scrollbar{
+.menu-button{
+  display:none;
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:14px;
+  background:rgba(255,255,255,.65);
+}
+
+.page-title{
+  flex:1;
+  font-size:20px;
+  font-weight:850;
+  padding-left:8px;
+}
+
+.top-button{
+  border:0;
+  padding:10px 14px;
+  border-radius:14px;
+  background:rgba(255,255,255,.58);
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.content{
+  flex:1;
+  overflow:auto;
+  padding:0 16px 25px;
+}
+
+.content::-webkit-scrollbar{
   width:6px;
 }
 
-.page::-webkit-scrollbar-thumb{
-  background:rgba(0,0,0,.10);
-  border-radius:20px;
+.content::-webkit-scrollbar-thumb{
+  background:rgba(0,0,0,.12);
+  border-radius:99px;
 }
 
-.pageInner{
-  min-height:100%;
-  padding:32px;
+/* =========================
+   HOME
+========================= */
+
+.home{
+  max-width:1250px;
+  margin:auto;
 }
 
-.header{
+.home-header{
+  padding:16px 5px;
+}
+
+.home-title{
+  font-size:35px;
+  font-weight:900;
+  letter-spacing:-1.8px;
+}
+
+.home-date{
+  color:#737d89;
+  margin-top:4px;
+}
+
+.stats{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.stat{
+  min-height:100px;
+  padding:18px 20px;
+  border-radius:25px;
+  position:relative;
+  overflow:hidden;
+}
+
+.stat-top{
   display:flex;
   align-items:center;
-  gap:16px;
-  margin-bottom:28px;
 }
 
-.backButton{
-  width:48px;
-  height:48px;
-  border-radius:17px;
-  background:rgba(255,255,255,.68);
-  box-shadow:
-    0 10px 30px rgba(40,60,100,.10),
-    inset 0 1px 0 rgba(255,255,255,.9);
-  font-size:23px;
-}
-
-.headerIcon{
-  font-size:31px;
-}
-
-.headerTitle{
-  font-size:31px;
-  font-weight:780;
-}
-
-.headerSub{
-  color:#888;
+.stat-label{
+  flex:1;
+  color:#6d7682;
   font-size:13px;
+}
+
+.stat-value{
+  font-size:22px;
+  font-weight:900;
+}
+
+.progress{
+  height:11px;
+  margin-top:13px;
+  border-radius:99px;
+  overflow:hidden;
+  background:rgba(0,0,0,.07);
+}
+
+.progress-bar{
+  height:100%;
+  width:0%;
+  border-radius:99px;
+  background:
+    linear-gradient(
+      90deg,
+      #4e80ff,
+      #75c7ff
+    );
+  transition:width .5s ease;
+}
+
+.stat-small{
+  margin-top:6px;
+  color:#7b8490;
+  font-size:11px;
+}
+
+.rank-card{
+  margin-top:15px;
+  padding:20px;
+  border-radius:25px;
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.rank-icon{
+  width:56px;
+  height:56px;
+  border-radius:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,.65);
+  font-size:28px;
+}
+
+.rank-name{
+  font-size:24px;
+  font-weight:900;
+}
+
+.rank-sub{
+  color:#747d89;
+  font-size:12px;
+  margin-top:3px;
+}
+
+/* =========================
+   NEXT EVENT
+========================= */
+
+.next-event{
+  margin-top:15px;
+  padding:21px;
+  border-radius:27px;
+}
+
+.next-label{
+  color:#747d89;
+  font-size:12px;
+}
+
+.next-name{
+  font-size:26px;
+  font-weight:900;
+  margin-top:5px;
+}
+
+.next-days{
+  font-size:45px;
+  font-weight:950;
+  letter-spacing:-2px;
   margin-top:2px;
 }
 
-.sectionTitle{
-  font-size:20px;
-  font-weight:750;
-  margin:25px 0 14px;
+.next-days span{
+  font-size:17px;
+  letter-spacing:0;
 }
 
-.cardGrid{
+.next-date{
+  color:#747d89;
+  font-size:13px;
+}
+
+/* =========================
+   CALENDAR
+========================= */
+
+.calendar-card{
+  margin-top:15px;
+  padding:20px;
+  border-radius:27px;
+}
+
+.calendar-header{
+  display:flex;
+  align-items:center;
+  margin-bottom:15px;
+}
+
+.calendar-title{
+  flex:1;
+  font-size:21px;
+  font-weight:900;
+}
+
+.month-button{
+  width:38px;
+  height:38px;
+  border:0;
+  border-radius:13px;
+  background:rgba(255,255,255,.6);
+}
+
+.calendar-grid{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:5px;
+}
+
+.weekday{
+  text-align:center;
+  color:#7c8590;
+  font-size:11px;
+  padding:4px;
+}
+
+.day{
+  min-height:72px;
+  padding:7px;
+  border-radius:14px;
+  background:rgba(255,255,255,.25);
+  cursor:pointer;
+  overflow:hidden;
+}
+
+.day:hover{
+  background:rgba(255,255,255,.58);
+}
+
+.day.other{
+  opacity:.3;
+}
+
+.day.today{
+  box-shadow:
+    inset 0 0 0 2px
+    rgba(65,120,255,.55);
+}
+
+.day-number{
+  font-size:12px;
+  font-weight:800;
+}
+
+.day-study{
+  font-size:9px;
+  color:#5375ac;
+  margin-top:4px;
+}
+
+.event{
+  margin-top:4px;
+  padding:2px 5px;
+  border-radius:6px;
+  background:rgba(70,120,255,.14);
+  color:#4168a9;
+  font-size:9px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.add-event-button{
+  width:100%;
+  margin-top:15px;
+  padding:13px;
+  border:0;
+  border-radius:16px;
+  background:rgba(255,255,255,.6);
+  font-weight:800;
+}
+
+/* =========================
+   FOLDER
+========================= */
+
+.folder-view{
+  max-width:1200px;
+  margin:auto;
+}
+
+.folder-header{
+  display:flex;
+  align-items:center;
+  gap:13px;
+  padding:16px 4px;
+}
+
+.folder-icon{
+  width:57px;
+  height:57px;
+  border-radius:18px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:rgba(255,255,255,.6);
+  font-size:28px;
+}
+
+.folder-title{
+  font-size:29px;
+  font-weight:900;
+}
+
+.folder-actions{
+  margin-left:auto;
+  display:flex;
+  gap:7px;
+}
+
+.action{
+  border:0;
+  padding:11px 14px;
+  border-radius:14px;
+  background:rgba(255,255,255,.6);
+}
+
+.item-grid{
   display:grid;
   grid-template-columns:
-    repeat(auto-fill,minmax(230px,1fr));
-  gap:16px;
+    repeat(auto-fill,minmax(180px,1fr));
+  gap:14px;
 }
 
-.card{
+.item{
   min-height:135px;
-  border-radius:26px;
-  padding:25px;
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,.82),
-      rgba(255,255,255,.47)
-    );
-  border:1px solid rgba(255,255,255,.78);
-  box-shadow:
-    0 16px 38px rgba(45,65,100,.11),
-    inset 0 1px 0 rgba(255,255,255,.95);
-  backdrop-filter:blur(25px) saturate(170%);
-  -webkit-backdrop-filter:blur(25px) saturate(170%);
+  padding:18px;
+  border-radius:23px;
+  cursor:pointer;
   transition:.18s;
-  text-align:left;
 }
 
-.card:active{
-  transform:scale(.98);
+.item:hover{
+  transform:translateY(-2px);
 }
 
-.cardIcon{
-  font-size:30px;
-  margin-bottom:22px;
+.item-icon{
+  font-size:32px;
 }
 
-.cardTitle{
-  font-weight:750;
-  font-size:17px;
-}
-
-.cardSub{
-  color:#888;
-  font-size:12px;
-  margin-top:7px;
+.item-name{
+  margin-top:12px;
+  font-weight:800;
 }
 
 /* =========================
    NOTE EDITOR
 ========================= */
 
-.notePage{
-  width:100%;
-  height:100%;
+.note-screen{
+  position:fixed;
+  inset:0;
+  z-index:100;
   display:flex;
   flex-direction:column;
-  overflow:hidden;
+  background:#f4f6f9;
 }
 
-.noteTopbar{
-  height:72px;
-  min-height:72px;
-  padding:10px 14px;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  z-index:50;
-}
-
-.noteTitleBox{
-  flex:1;
-  min-width:0;
-}
-
-.noteTitle{
-  font-size:18px;
-  font-weight:760;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-
-.notePageInfo{
-  color:#888;
-  font-size:11px;
-  margin-top:2px;
-}
-
-.toolBar{
+.note-toolbar{
+  min-height:64px;
   display:flex;
   align-items:center;
   gap:6px;
-  padding:7px;
-  border-radius:20px;
-  background:
-    rgba(255,255,255,.58);
-  border:1px solid rgba(255,255,255,.78);
-  box-shadow:
-    0 8px 30px rgba(40,60,90,.10),
-    inset 0 1px 0 rgba(255,255,255,.9);
+  padding:8px;
+  overflow-x:auto;
+  background:rgba(255,255,255,.78);
+  border-bottom:1px solid rgba(0,0,0,.08);
   backdrop-filter:blur(25px);
   -webkit-backdrop-filter:blur(25px);
 }
 
-.tool{
-  width:40px;
-  height:40px;
-  border-radius:13px;
-  background:rgba(255,255,255,.40);
-  font-size:18px;
-  transition:.15s;
-}
-
-.tool.active{
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,.95),
-      rgba(210,225,255,.70)
-    );
-  box-shadow:
-    0 5px 18px rgba(50,80,150,.18),
-    inset 0 1px 0 white;
-}
-
-.tool:active{
-  transform:scale(.91);
-}
-
-.colorInput{
-  width:38px;
-  height:38px;
+.note-tool{
+  flex:none;
+  min-width:42px;
+  height:42px;
+  padding:0 11px;
   border:0;
-  padding:0;
-  border-radius:12px;
-  overflow:hidden;
-  background:none;
+  border-radius:13px;
+  background:#e9edf2;
 }
 
-.sizeBox{
-  display:flex;
-  align-items:center;
-  gap:5px;
-  padding:0 6px;
+.note-tool.active{
+  background:#111;
+  color:white;
 }
 
-.sizeBox input{
-  width:70px;
+.note-separator{
+  width:1px;
+  height:30px;
+  background:rgba(0,0,0,.1);
 }
 
-.editor{
+.color-input{
+  width:42px;
+  height:42px;
+  border:0;
+  padding:3px;
+  border-radius:13px;
+  background:#e9edf2;
+}
+
+.size-input{
+  width:110px;
+}
+
+.note-board-wrap{
   flex:1;
-  min-height:0;
   position:relative;
   overflow:hidden;
-
-  /* iPad入力をブラウザに奪わせない */
   touch-action:none;
-  -webkit-user-select:none;
-  user-select:none;
-
   background:
     radial-gradient(
-      circle at 50% 50%,
-      rgba(255,255,255,.92),
-      rgba(246,248,252,.92)
+      circle,
+      rgba(0,0,0,.07) 1px,
+      transparent 1px
     );
+  background-size:25px 25px;
 }
 
-/*
-  キャンバスは画面全体。
-  カメラ位置・ズームはJSで変える。
-*/
+.note-board{
+  position:absolute;
+  left:0;
+  top:0;
+  width:5000px;
+  height:3500px;
+  background:white;
+  transform-origin:0 0;
+  box-shadow:0 20px 60px rgba(0,0,0,.08);
+}
+
 #drawCanvas{
   position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-
-  touch-action:none;
-  -ms-touch-action:none;
-
-  cursor:crosshair;
-}
-
-.objectLayer{
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-}
-
-.noteObject{
-  position:absolute;
-  pointer-events:auto;
-  transform-origin:top left;
+  left:0;
+  top:0;
+  width:5000px;
+  height:3500px;
   touch-action:none;
 }
 
-.textObject{
-  min-width:80px;
-  min-height:35px;
-  padding:6px 9px;
-  font-weight:600;
-  white-space:pre-wrap;
-  outline:none;
-  background:transparent;
-}
-
-.stickyObject{
-  min-width:160px;
-  min-height:110px;
-  padding:18px;
-  border-radius:7px;
-  background:#fff39a;
-  box-shadow:
-    0 10px 25px rgba(50,50,0,.18);
-  white-space:pre-wrap;
-  outline:none;
-}
-
-.imageObject{
-  border-radius:12px;
-  overflow:hidden;
-  box-shadow:0 10px 30px rgba(0,0,0,.18);
-}
-
-.imageObject img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  display:block;
-}
-
-.objectSelected{
-  outline:2px solid #4b8cff;
-}
-
-.resizeHandle{
+.note-object{
   position:absolute;
-  width:18px;
-  height:18px;
-  right:-9px;
-  bottom:-9px;
-  border-radius:50%;
-  background:#fff;
-  border:2px solid #4b8cff;
+  user-select:none;
+  touch-action:none;
 }
 
-/* ページ操作 */
-.pageBar{
-  position:absolute;
-  left:50%;
-  bottom:16px;
-  transform:translateX(-50%);
-  z-index:60;
-  display:flex;
-  align-items:center;
-  gap:7px;
-  padding:7px;
-  border-radius:18px;
-  background:rgba(255,255,255,.66);
-  border:1px solid rgba(255,255,255,.82);
-  box-shadow:
-    0 10px 30px rgba(40,60,90,.13),
-    inset 0 1px 0 rgba(255,255,255,.95);
-  backdrop-filter:blur(25px);
-  -webkit-backdrop-filter:blur(25px);
-}
-
-.pageBtn{
-  width:38px;
-  height:38px;
-  border-radius:12px;
-  background:rgba(255,255,255,.55);
-}
-
-.pageNumber{
+.text-object{
   min-width:70px;
-  text-align:center;
-  font-size:12px;
-  color:#666;
-}
-
-.zoomBox{
-  position:absolute;
-  right:16px;
-  bottom:16px;
-  z-index:60;
-  display:flex;
-  gap:5px;
+  min-height:35px;
   padding:6px;
-  border-radius:16px;
-  background:rgba(255,255,255,.65);
-  border:1px solid rgba(255,255,255,.8);
-  backdrop-filter:blur(20px);
+  white-space:pre-wrap;
 }
 
-.zoomBtn{
-  width:38px;
-  height:38px;
-  border-radius:12px;
-  background:rgba(255,255,255,.55);
+.sticky-object{
+  min-width:150px;
+  min-height:110px;
+  padding:14px;
+  background:#fff3a6;
+  border-radius:8px;
+  box-shadow:0 7px 18px rgba(0,0,0,.15);
+  white-space:pre-wrap;
+}
+
+.note-object.selected{
+  outline:2px solid #4d84ff;
+}
+
+.note-resize{
+  position:absolute;
+  right:-7px;
+  bottom:-7px;
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:#4d84ff;
 }
 
 /* =========================
-   LOGIN
+   MODAL
 ========================= */
 
-.login{
+.modal-bg{
   position:fixed;
   inset:0;
-  z-index:999;
+  z-index:500;
   display:flex;
   align-items:center;
   justify-content:center;
   padding:20px;
-  background:
-    radial-gradient(circle at 20% 20%,#b9ddff,transparent 40%),
-    radial-gradient(circle at 80% 20%,#f3c8ff,transparent 40%),
-    radial-gradient(circle at 50% 100%,#d5eaff,transparent 45%),
-    #edf2f8;
+  background:rgba(20,25,35,.22);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
 }
 
-.loginCard{
-  width:min(430px,100%);
-  padding:35px;
-  border-radius:32px;
-  text-align:center;
+.modal{
+  width:min(470px,100%);
+  max-height:90vh;
+  overflow:auto;
+  padding:24px;
+  border-radius:27px;
 }
 
-.loginIcon{
-  font-size:55px;
-  margin-bottom:12px;
+.modal-title{
+  font-size:24px;
+  font-weight:900;
+  margin-bottom:17px;
 }
 
-.loginTitle{
-  font-size:30px;
-  font-weight:800;
+.modal-label{
+  display:block;
+  color:#6e7783;
+  font-size:12px;
+  margin:10px 0 5px;
 }
 
-.loginSub{
-  color:#888;
-  font-size:13px;
-  margin:8px 0 25px;
-}
-
-.loginInput{
+.modal-input,
+.modal-select{
   width:100%;
-  height:50px;
-  margin:6px 0;
-  border-radius:16px;
-  border:1px solid rgba(255,255,255,.85);
+  padding:13px;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:14px;
+  background:rgba(255,255,255,.72);
   outline:none;
-  padding:0 16px;
-  background:rgba(255,255,255,.62);
 }
 
-.loginButton{
-  width:100%;
-  height:52px;
-  margin-top:10px;
-  border-radius:17px;
+.modal-buttons{
+  display:flex;
+  gap:8px;
+  margin-top:18px;
+}
+
+.modal-button{
+  flex:1;
+  padding:13px;
+  border:0;
+  border-radius:15px;
+  background:rgba(255,255,255,.7);
+}
+
+.modal-button.primary{
+  background:#111;
   color:white;
-  font-weight:700;
-  background:
-    linear-gradient(
-      135deg,
-      #3d86ff,
-      #7568ff
-    );
-  box-shadow:
-    0 12px 30px rgba(70,100,230,.28);
+}
+
+.event-list{
+  margin-top:20px;
+}
+
+.event-list-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:11px;
+  border-radius:13px;
+  background:rgba(255,255,255,.45);
+  margin-top:6px;
+}
+
+.event-list-name{
+  flex:1;
+}
+
+.delete-event{
+  border:0;
+  border-radius:10px;
+  padding:6px 9px;
+  background:rgba(255,80,80,.12);
+  color:#c33;
+}
+
+/* =========================
+   SETTINGS
+========================= */
+
+.settings{
+  max-width:900px;
+  margin:auto;
+}
+
+.settings-title{
+  font-size:34px;
+  font-weight:900;
+  padding:20px 5px;
+}
+
+.settings-card{
+  padding:20px;
+  border-radius:25px;
+  margin-bottom:14px;
+}
+
+.settings-card h3{
+  margin:0 0 6px;
+}
+
+.settings-card p{
+  color:#737d89;
+  font-size:13px;
+}
+
+.settings-button{
+  border:0;
+  padding:12px 15px;
+  border-radius:14px;
+  background:rgba(255,255,255,.65);
+  margin-right:6px;
 }
 
 /* =========================
    MOBILE
 ========================= */
 
-.mobileMenu{
-  display:none;
-}
-
 @media(max-width:800px){
-
-  .app{
-    padding:8px;
-  }
 
   .sidebar{
     position:fixed;
-    left:8px;
-    top:8px;
-    bottom:8px;
-    height:auto;
-    transform:translateX(-110%);
-    transition:.25s;
-    box-shadow:0 20px 70px rgba(20,40,70,.25);
+    left:-320px;
+    top:0;
+    bottom:0;
+    transition:.25s ease;
   }
 
   .sidebar.open{
-    transform:translateX(0);
+    left:0;
   }
 
-  .mobileMenu{
-    display:flex;
-    position:absolute;
-    left:14px;
-    top:14px;
-    z-index:100;
-    width:46px;
-    height:46px;
-    border-radius:15px;
-    background:rgba(255,255,255,.72);
-    box-shadow:0 8px 25px rgba(0,0,0,.10);
+  .menu-button{
+    display:block;
   }
 
-  .pageInner{
-    padding:25px 20px;
+  .topbar{
+    height:67px;
   }
 
-  .noteTopbar{
-    padding-left:62px;
+  .content{
+    padding-left:11px;
+    padding-right:11px;
   }
 
-  .toolBar{
-    max-width:55vw;
-    overflow:auto;
+  .home-title{
+    font-size:30px;
   }
 
-  .tool{
-    min-width:40px;
+  .day{
+    min-height:60px;
   }
 
-  .sizeBox{
+  .calendar-card{
+    padding:12px;
+  }
+
+  .folder-actions{
     display:none;
-  }
-
-  .cardGrid{
-    grid-template-columns:1fr 1fr;
-  }
-}
-
-@media(max-width:520px){
-
-  .cardGrid{
-    grid-template-columns:1fr;
-  }
-
-  .headerTitle{
-    font-size:24px;
   }
 }
 </style>
@@ -769,39 +989,42 @@ button{
      LOGIN
 ========================= -->
 
-<div id="loginScreen" class="login">
-  <div class="loginCard glass">
+<div id="loginScreen">
 
-    <div class="loginIcon">📚</div>
+  <div class="login-card glass">
 
-    <div class="loginTitle">
-      Destination Note
+    <div class="login-logo">
+      📚 Destination Note
     </div>
 
-    <div class="loginSub">
+    <div class="login-sub">
       自分だけの勉強ノート
     </div>
 
     <input
       id="loginName"
-      class="loginInput"
+      class="login-input"
       placeholder="名前"
-      autocomplete="username">
+      autocomplete="username"
+    >
 
     <input
       id="loginPassword"
-      class="loginInput"
+      class="login-input"
       type="password"
       placeholder="パスワード"
-      autocomplete="current-password">
+      autocomplete="current-password"
+    >
 
     <button
       id="loginButton"
-      class="loginButton">
-      はじめる
+      class="login-button"
+    >
+      ログイン / はじめる
     </button>
 
   </div>
+
 </div>
 
 
@@ -809,51 +1032,77 @@ button{
      APP
 ========================= -->
 
-<div id="app" class="app" style="display:none">
+<div id="app">
 
   <!-- SIDEBAR -->
 
-  <aside id="sidebar" class="sidebar glass">
+  <aside class="sidebar">
 
-    <div class="brand">
-      <div class="brandIcon">📚</div>
+    <div class="sidebar-inner glass">
 
-      <div>
-        <div class="brandTitle">
-          Destination Note
+      <!-- ★ここ全体がホームボタン★ -->
+      <div
+        id="homeButton"
+        class="home-button"
+      >
+
+        <div class="brand">
+          📚 Destination Note
         </div>
 
         <div
           id="brandUser"
-          class="brandUser">
+          class="brand-user"
+        >
+          大神
         </div>
+
       </div>
-    </div>
 
-    <div
-      id="tree"
-      class="tree">
-    </div>
 
-    <div class="sidebarBottom">
+      <div class="side-actions">
 
-      <button
-        id="addFolderButton"
-        class="bottomButton">
-        ＋ タブ
-      </button>
+        <button
+          id="newFolderButton"
+          class="side-action"
+        >
+          📁 フォルダ
+        </button>
 
-      <button
-        id="addNoteButton"
-        class="bottomButton">
-        ＋ ノート
-      </button>
+        <button
+          id="newNoteButton"
+          class="side-action"
+        >
+          📝 ノート
+        </button>
 
-      <button
-        id="settingsButton"
-        class="bottomButton">
-        ⚙️
-      </button>
+      </div>
+
+
+      <div
+        id="tree"
+        class="tree"
+      ></div>
+
+
+      <div class="side-bottom">
+
+        <div class="study-mini">
+
+          <div class="study-mini-label">
+            今日の勉強時間
+          </div>
+
+          <div
+            id="miniStudy"
+            class="study-mini-time"
+          >
+            0時間 0分
+          </div>
+
+        </div>
+
+      </div>
 
     </div>
 
@@ -862,27 +1111,213 @@ button{
 
   <!-- MAIN -->
 
-  <main
-    id="main"
-    class="main glass">
+  <main class="main">
+
+    <div class="topbar">
+
+      <div class="topbar-inner glass">
+
+        <button
+          id="menuButton"
+          class="menu-button"
+        >
+          ☰
+        </button>
+
+        <div
+          id="pageTitle"
+          class="page-title"
+        >
+          ホーム
+        </div>
+
+        <button
+          id="settingsButton"
+          class="top-button"
+        >
+          ⚙️
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div
+      id="content"
+      class="content"
+    ></div>
+
   </main>
 
 </div>
 
 
+<!-- =========================
+     MODAL
+========================= -->
+
+<div
+  id="modalBg"
+  class="modal-bg hidden"
+>
+  <div
+    id="modal"
+    class="modal glass"
+  ></div>
+</div>
+
+
+<!-- =========================
+     NOTE SCREEN
+========================= -->
+
+<div
+  id="noteScreen"
+  class="note-screen hidden"
+>
+
+  <div class="note-toolbar">
+
+    <button
+      id="noteBack"
+      class="note-tool"
+    >
+      ←
+    </button>
+
+    <button
+      class="note-tool active"
+      data-tool="pen"
+    >
+      ✏️
+    </button>
+
+    <button
+      class="note-tool"
+      data-tool="highlighter"
+    >
+      🖍️
+    </button>
+
+    <button
+      class="note-tool"
+      data-tool="eraser"
+    >
+      🧽
+    </button>
+
+    <button
+      class="note-tool"
+      data-tool="hand"
+    >
+      ✋
+    </button>
+
+    <button
+      class="note-tool"
+      data-tool="text"
+    >
+      T
+    </button>
+
+    <button
+      class="note-tool"
+      data-tool="sticky"
+    >
+      🟨
+    </button>
+
+    <div class="note-separator"></div>
+
+    <input
+      id="noteColor"
+      class="color-input"
+      type="color"
+      value="#111111"
+    >
+
+    <input
+      id="noteSize"
+      class="size-input"
+      type="range"
+      min="1"
+      max="50"
+      value="5"
+    >
+
+    <button
+      id="zoomOut"
+      class="note-tool"
+    >
+      −
+    </button>
+
+    <button
+      id="zoomReset"
+      class="note-tool"
+    >
+      100%
+    </button>
+
+    <button
+      id="zoomIn"
+      class="note-tool"
+    >
+      ＋
+    </button>
+
+    <button
+      id="clearPage"
+      class="note-tool"
+    >
+      🗑️
+    </button>
+
+  </div>
+
+
+  <div
+    id="noteBoardWrap"
+    class="note-board-wrap"
+  >
+
+    <div
+      id="noteBoard"
+      class="note-board"
+    >
+
+      <canvas
+        id="drawCanvas"
+        width="5000"
+        height="3500"
+      ></canvas>
+
+      <div id="objectLayer"></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
 <script>
-"use strict";
 
 /* =========================================================
-   STORAGE
+   DATA
 ========================================================= */
 
 const STORAGE_KEY = "destinationNote_v1";
 
-let data = {
+const defaultData = {
+
   name:"",
   password:"",
+
   totalSeconds:0,
+
+  studyLog:{},
 
   folders:[
     {
@@ -896,500 +1331,1193 @@ let data = {
 
   notes:[],
 
+  events:[],
+
   settings:{
     dark:false
   }
+
 };
+
+
+let data = loadData();
+
+let currentView = "home";
 
 let selectedFolderId = "root";
+
 let currentFolderId = "root";
-let selectedNoteId = null;
 
-let expandedFolders =
-  new Set(["root"]);
+let currentNoteId = null;
 
-let currentPage = 0;
+let currentCalendar = new Date();
 
-let currentTool = "pen";
-
-let currentColor = "#111111";
-
-let currentSize = 3;
-
-let camera = {
-  x:0,
-  y:0,
-  zoom:1
-};
-
-let pointers = new Map();
-
-let drawing = false;
-let moving = false;
-
-let activePointerId = null;
-
-let lastWorldPoint = null;
-
-let panStart = null;
-
-let pinchStart = null;
-
-let selectedObjectId = null;
-
-let animationFrame = null;
-
-let studyStart = null;
+let expandedFolders = new Set(["root"]);
 
 
 /* =========================================================
-   SAVE / LOAD
+   LOAD / SAVE
 ========================================================= */
 
-function uid(prefix="id"){
-  return prefix + "_" +
-    Date.now().toString(36) +
-    "_" +
-    Math.random().toString(36).slice(2,8);
-}
-
-function safeText(value,fallback=""){
-  if(
-    value === undefined ||
-    value === null ||
-    value === "undefined" ||
-    value === "null"
-  ){
-    return fallback;
-  }
-
-  return String(value);
-}
-
-function normalizeData(){
-
-  if(!data || typeof data !== "object"){
-    data = {};
-  }
-
-  if(!Array.isArray(data.folders)){
-    data.folders = [];
-  }
-
-  if(!Array.isArray(data.notes)){
-    data.notes = [];
-  }
-
-  if(!data.settings){
-    data.settings = {};
-  }
-
-  if(!data.totalSeconds){
-    data.totalSeconds = 0;
-  }
-
-  /*
-    フォルダを修正
-  */
-
-  data.folders =
-    data.folders.map((folder,index)=>{
-
-      return {
-        id:safeText(
-          folder.id,
-          uid("folder")
-        ),
-
-        name:safeText(
-          folder.name,
-          index === 0
-            ? "マイノート"
-            : "新しいタブ"
-        ),
-
-        icon:safeText(
-          folder.icon,
-          "📁"
-        ),
-
-        parent:
-          folder.parent === undefined
-            ? (index === 0 ? null : "root")
-            : folder.parent,
-
-        created:
-          folder.created || Date.now()
-      };
-
-    });
-
-  /*
-    rootがなければ作る
-  */
-
-  if(
-    !data.folders.some(
-      f=>f.id==="root"
-    )
-  ){
-
-    data.folders.unshift({
-      id:"root",
-      name:"マイノート",
-      icon:"📚",
-      parent:null,
-      created:Date.now()
-    });
-
-  }
-
-  /*
-    ノートを修正
-  */
-
-  data.notes =
-    data.notes.map((note,index)=>{
-
-      let folderId =
-        note.folderId ||
-        note.parent ||
-        "root";
-
-      if(
-        !data.folders.some(
-          f=>f.id===folderId
-        )
-      ){
-        folderId = "root";
-      }
-
-      let pages =
-        Array.isArray(note.pages)
-          ? note.pages
-          : [];
-
-      if(pages.length===0){
-
-        pages = [{
-          strokes:[],
-          elements:[]
-        }];
-
-      }
-
-      pages =
-        pages.map(page=>({
-
-          strokes:
-            Array.isArray(page.strokes)
-              ? page.strokes
-              : [],
-
-          elements:
-            Array.isArray(page.elements)
-              ? page.elements
-              : []
-
-        }));
-
-      return {
-
-        id:safeText(
-          note.id,
-          uid("note")
-        ),
-
-        name:safeText(
-          note.name ||
-          note.title,
-          "新しいノート"
-        ),
-
-        folderId,
-
-        created:
-          note.created || Date.now(),
-
-        pages
-
-      };
-
-    });
-
-}
-
-function save(){
-
-  try{
-
-    localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify(data)
-    );
-
-  }catch(error){
-
-    console.error(
-      "保存エラー",
-      error
-    );
-
-    alert(
-      "保存できませんでした。\n"+
-      "写真を大量に入れている場合は容量不足の可能性があります。"
-    );
-
-  }
-
-}
-
-function load(){
+function loadData(){
 
   try{
 
     const raw =
-      localStorage.getItem(
-        STORAGE_KEY
-      );
+      localStorage.getItem(STORAGE_KEY);
 
-    if(raw){
+    if(!raw){
+      return structuredClone(defaultData);
+    }
 
-      const parsed =
-        JSON.parse(raw);
+    const d = JSON.parse(raw);
 
-      if(parsed){
+    if(!d.folders){
+      d.folders =
+        structuredClone(defaultData.folders);
+    }
 
-        data = parsed;
+    if(!d.notes){
+      d.notes=[];
+    }
 
+    if(!d.events){
+      d.events=[];
+    }
+
+    if(!d.studyLog){
+      d.studyLog={};
+    }
+
+    if(typeof d.totalSeconds !== "number"){
+      d.totalSeconds=0;
+    }
+
+    for(const note of d.notes){
+
+      if(!note.id){
+        note.id =
+          "note_" +
+          Date.now() +
+          Math.random();
+      }
+
+      if(!note.folderId){
+        note.folderId="root";
+      }
+
+      if(!note.title){
+        note.title =
+          note.name ||
+          "無題のノート";
+      }
+
+      if(!note.pages){
+        note.pages=[
+          {
+            strokes:[],
+            elements:[]
+          }
+        ];
+      }
+
+      if(!note.pageIndex){
+        note.pageIndex=0;
       }
 
     }
 
-  }catch(error){
+    return d;
 
-    console.error(
-      "読み込みエラー",
-      error
-    );
+  }catch(e){
+
+    console.error(e);
+
+    return structuredClone(defaultData);
 
   }
 
-  normalizeData();
+}
 
-  save();
+
+function saveData(){
+
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(data)
+  );
 
 }
 
 
 /* =========================================================
-   LOGIN
+   HELPERS
 ========================================================= */
 
-function login(){
+function uid(prefix="id"){
 
-  const name =
-    document
-      .getElementById("loginName")
-      .value
-      .trim();
-
-  const password =
-    document
-      .getElementById("loginPassword")
-      .value;
-
-  if(!name){
-
-    alert("名前を入力してね");
-
-    return;
-
-  }
-
-  /*
-    初回
-  */
-
-  if(!data.name){
-
-    data.name = name;
-    data.password = password;
-
-    save();
-
-  }else{
-
-    if(
-      data.name !== name ||
-      data.password !== password
-    ){
-
-      alert(
-        "名前またはパスワードが違います"
-      );
-
-      return;
-
-    }
-
-  }
-
-  document
-    .getElementById("loginScreen")
-    .style.display="none";
-
-  document
-    .getElementById("app")
-    .style.display="flex";
-
-  document
-    .getElementById("brandUser")
-    .textContent=data.name;
-
-  startStudyTimer();
-
-  renderTree();
-
-  openFolder(
-    selectedFolderId
-  );
+  return prefix +
+    "_" +
+    Date.now() +
+    "_" +
+    Math.random()
+      .toString(36)
+      .slice(2);
 
 }
 
-document
-  .getElementById("loginButton")
-  .addEventListener(
-    "click",
-    login
+
+function todayKey(){
+
+  const d=new Date();
+
+  return [
+    d.getFullYear(),
+    String(d.getMonth()+1).padStart(2,"0"),
+    String(d.getDate()).padStart(2,"0")
+  ].join("-");
+
+}
+
+
+function formatTime(sec){
+
+  sec=Math.max(0,Math.floor(sec));
+
+  const h=Math.floor(sec/3600);
+
+  const m=Math.floor(
+    (sec%3600)/60
   );
+
+  return `${h}時間 ${m}分`;
+
+}
+
+
+function monthKey(date){
+
+  return [
+    date.getFullYear(),
+    String(date.getMonth()+1)
+      .padStart(2,"0")
+  ].join("-");
+
+}
+
+
+function formatDateJP(date){
+
+  return `${date.getFullYear()}年${date.getMonth()+1}月${date.getDate()}日`;
+
+}
 
 
 /* =========================================================
-   STUDY TIME
+   STUDY TIMER
 ========================================================= */
 
-function startStudyTimer(){
+let trackingStart =
+  document.hidden ? null : Date.now();
 
-  studyStart = Date.now();
-
-  document.addEventListener(
-    "visibilitychange",
-    ()=>{
-
-      if(document.hidden){
-
-        flushStudyTime();
-
-      }else{
-
-        studyStart = Date.now();
-
-      }
-
-    }
-  );
-
-  setInterval(
-    updateStudyDisplay,
-    1000
-  );
-
-}
 
 function flushStudyTime(){
 
-  if(!studyStart){
+  if(trackingStart===null){
     return;
   }
 
-  const elapsed =
-    Math.floor(
-      (Date.now()-studyStart)/1000
-    );
+  const now=Date.now();
 
-  if(elapsed>0){
+  const diff=Math.floor(
+    (now-trackingStart)/1000
+  );
 
-    data.totalSeconds += elapsed;
-
-    studyStart = Date.now();
-
-    save();
-
-  }
-
-}
-
-function updateStudyDisplay(){
-
-  if(
-    document.hidden ||
-    !studyStart
-  ){
+  if(diff<=0){
     return;
   }
 
-  const live =
-    Math.floor(
-      (Date.now()-studyStart)/1000
-    );
+  data.totalSeconds += diff;
 
-  const total =
-    data.totalSeconds + live;
+  const key=todayKey();
 
-  const el =
-    document.getElementById(
-      "studyTime"
-    );
+  data.studyLog[key] =
+    (data.studyLog[key] || 0) +
+    diff;
 
-  if(el){
+  trackingStart=now;
 
-    el.textContent =
-      formatTime(total);
+  saveData();
+
+  updateMiniStudy();
+
+}
+
+
+document.addEventListener(
+  "visibilitychange",
+  ()=>{
+
+    if(document.hidden){
+
+      flushStudyTime();
+
+      trackingStart=null;
+
+    }else{
+
+      trackingStart=Date.now();
+
+    }
+
+  }
+);
+
+
+setInterval(()=>{
+
+  if(!document.hidden){
+
+    flushStudyTime();
 
   }
 
-}
+},15000);
 
-function formatTime(seconds){
 
-  const hours =
-    Math.floor(seconds/3600);
-
-  const minutes =
-    Math.floor(
-      (seconds%3600)/60
-    );
-
-  return hours+"時間 "+
-         minutes+"分";
-
-}
+/* =========================================================
+   RANK
+========================================================= */
 
 function getRank(seconds){
 
-  const h =
-    seconds/3600;
+  const h=seconds/3600;
 
   if(h<10)
-    return ["ブロンズ","🥉"];
+    return ["🥉","ブロンズ"];
 
   if(h<30)
-    return ["シルバー","🥈"];
+    return ["🥈","シルバー"];
 
   if(h<60)
-    return ["ゴールド","🥇"];
+    return ["🥇","ゴールド"];
 
   if(h<100)
-    return ["プラチナ","💎"];
+    return ["🏆","プラチナ"];
 
   if(h<200)
-    return ["ビジネス","💼"];
+    return ["💼","ビジネス"];
 
   if(h<500)
-    return ["ファースト","🚄"];
+    return ["⭐","ファースト"];
 
-  return ["グランクラス","🚅"];
+  return ["🚄","グランクラス"];
+
+}
+
+
+/* =========================================================
+   HOME
+========================================================= */
+
+function showHome(){
+
+  flushStudyTime();
+
+  currentView="home";
+
+  currentNoteId=null;
+
+  document
+    .getElementById("noteScreen")
+    .classList.add("hidden");
+
+  document
+    .getElementById("pageTitle")
+    .textContent="ホーム";
+
+  renderHome();
+
+  renderTree();
+
+  closeSidebarMobile();
+
+}
+
+
+function renderHome(){
+
+  const content =
+    document.getElementById("content");
+
+  const now=new Date();
+
+  const todaySeconds =
+    data.studyLog[todayKey()] || 0;
+
+  let monthSeconds=0;
+
+  const mk=monthKey(now);
+
+  for(const [key,seconds]
+      of Object.entries(data.studyLog)){
+
+    if(key.startsWith(mk)){
+      monthSeconds+=seconds;
+    }
+
+  }
+
+  const rank=getRank(
+    data.totalSeconds
+  );
+
+  const nearest=getNearestEvent();
+
+  content.innerHTML=`
+
+    <div class="home">
+
+      <div class="home-header">
+
+        <div class="home-title">
+          おかえりなさい、${escapeHtml(data.name || "さん")}
+        </div>
+
+        <div class="home-date">
+          ${formatDateJP(now)}
+        </div>
+
+      </div>
+
+
+      <div class="stats">
+
+        <div class="stat glass">
+
+          <div class="stat-top">
+
+            <div class="stat-label">
+              ⏱ 今日の勉強時間
+            </div>
+
+            <div class="stat-value">
+              ${formatTime(todaySeconds)}
+            </div>
+
+          </div>
+
+          <div class="progress">
+            <div
+              id="todayProgress"
+              class="progress-bar"
+            ></div>
+          </div>
+
+          <div class="stat-small">
+            今日の目標：1時間
+          </div>
+
+        </div>
+
+
+        <div class="stat glass">
+
+          <div class="stat-top">
+
+            <div class="stat-label">
+              📅 今月の勉強時間
+            </div>
+
+            <div class="stat-value">
+              ${formatTime(monthSeconds)}
+            </div>
+
+          </div>
+
+          <div class="progress">
+            <div
+              id="monthProgress"
+              class="progress-bar"
+            ></div>
+          </div>
+
+          <div class="stat-small">
+            今月の目標：20時間
+          </div>
+
+        </div>
+
+
+        <div class="stat glass">
+
+          <div class="stat-top">
+
+            <div class="stat-label">
+              📚 累計勉強時間
+            </div>
+
+            <div class="stat-value">
+              ${formatTime(data.totalSeconds)}
+            </div>
+
+          </div>
+
+          <div class="progress">
+            <div
+              id="totalProgress"
+              class="progress-bar"
+            ></div>
+          </div>
+
+          <div class="stat-small">
+            ランクアップを目指そう！
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="rank-card glass">
+
+        <div class="rank-icon">
+          ${rank[0]}
+        </div>
+
+        <div>
+
+          <div class="rank-name">
+            ${rank[1]}
+          </div>
+
+          <div class="rank-sub">
+            現在の勉強ランク
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="next-event glass">
+
+        ${
+          nearest
+          ?
+          `
+          <div class="next-label">
+            一番近い予定
+          </div>
+
+          <div class="next-name">
+            ${escapeHtml(nearest.title)}
+          </div>
+
+          <div class="next-days">
+            ${nearest.days}
+            <span>日</span>
+          </div>
+
+          <div class="next-date">
+            ${nearest.date}
+            ・${nearest.type}
+          </div>
+          `
+          :
+          `
+          <div class="next-label">
+            一番近い予定
+          </div>
+
+          <div class="next-name">
+            予定はありません
+          </div>
+
+          <div class="next-date">
+            カレンダーから予定を追加できます
+          </div>
+          `
+        }
+
+      </div>
+
+
+      <div class="calendar-card glass">
+
+        <div class="calendar-header">
+
+          <button
+            class="month-button"
+            id="prevMonth"
+          >
+            ‹
+          </button>
+
+          <div
+            class="calendar-title"
+            id="calendarTitle"
+          ></div>
+
+          <button
+            class="month-button"
+            id="nextMonth"
+          >
+            ›
+          </button>
+
+        </div>
+
+
+        <div
+          id="calendar"
+          class="calendar-grid"
+        ></div>
+
+
+        <button
+          id="addEventButton"
+          class="add-event-button"
+        >
+          ＋ 予定を追加
+        </button>
+
+      </div>
+
+    </div>
+  `;
+
+
+  const todayPercent =
+    Math.min(
+      100,
+      todaySeconds/3600*100
+    );
+
+  const monthPercent =
+    Math.min(
+      100,
+      monthSeconds/(20*3600)*100
+    );
+
+  const totalPercent =
+    Math.min(
+      100,
+      (data.totalSeconds/
+        (500*3600))*100
+    );
+
+
+  setTimeout(()=>{
+
+    const a=
+      document.getElementById(
+        "todayProgress"
+      );
+
+    const b=
+      document.getElementById(
+        "monthProgress"
+      );
+
+    const c=
+      document.getElementById(
+        "totalProgress"
+      );
+
+    if(a)a.style.width=
+      todayPercent+"%";
+
+    if(b)b.style.width=
+      monthPercent+"%";
+
+    if(c)c.style.width=
+      totalPercent+"%";
+
+  },30);
+
+
+  document
+    .getElementById("prevMonth")
+    .onclick=()=>{
+
+      currentCalendar.setMonth(
+        currentCalendar.getMonth()-1
+      );
+
+      renderCalendar();
+
+    };
+
+
+  document
+    .getElementById("nextMonth")
+    .onclick=()=>{
+
+      currentCalendar.setMonth(
+        currentCalendar.getMonth()+1
+      );
+
+      renderCalendar();
+
+    };
+
+
+  document
+    .getElementById("addEventButton")
+    .onclick=()=>{
+
+      openEventModal();
+
+    };
+
+
+  renderCalendar();
+
+}
+
+
+/* =========================================================
+   CALENDAR
+========================================================= */
+
+function renderCalendar(){
+
+  const grid=
+    document.getElementById("calendar");
+
+  if(!grid)return;
+
+  const title=
+    document.getElementById("calendarTitle");
+
+  const y=
+    currentCalendar.getFullYear();
+
+  const m=
+    currentCalendar.getMonth();
+
+  title.textContent=
+    `${y}年${m+1}月`;
+
+  grid.innerHTML="";
+
+
+  const weekdays=[
+    "日","月","火","水","木","金","土"
+  ];
+
+  for(const w of weekdays){
+
+    const el=
+      document.createElement("div");
+
+    el.className="weekday";
+
+    el.textContent=w;
+
+    grid.appendChild(el);
+
+  }
+
+
+  const first=
+    new Date(y,m,1);
+
+  const last=
+    new Date(y,m+1,0);
+
+  const start=first.getDay();
+
+  const total=last.getDate();
+
+  const prevLast=
+    new Date(y,m,0).getDate();
+
+
+  const cells=
+    Math.ceil(
+      (start+total)/7
+    )*7;
+
+
+  for(let i=0;i<cells;i++){
+
+    const cell=
+      document.createElement("div");
+
+    cell.className="day";
+
+
+    let day;
+    let date;
+
+
+    if(i<start){
+
+      day=
+        prevLast-start+i+1;
+
+      date=
+        new Date(y,m-1,day);
+
+      cell.classList.add("other");
+
+    }else if(i>=start+total){
+
+      day=
+        i-start-total+1;
+
+      date=
+        new Date(y,m+1,day);
+
+      cell.classList.add("other");
+
+    }else{
+
+      day=
+        i-start+1;
+
+      date=
+        new Date(y,m,day);
+
+    }
+
+
+    const key=
+      dateKey(date);
+
+
+    if(key===todayKey()){
+
+      cell.classList.add("today");
+
+    }
+
+
+    cell.innerHTML=`
+
+      <div class="day-number">
+        ${day}
+      </div>
+
+      <div class="day-study">
+        ${
+          data.studyLog[key]
+          ?
+          formatShortTime(
+            data.studyLog[key]
+          )
+          :
+          ""
+        }
+      </div>
+
+    `;
+
+
+    const events=
+      data.events.filter(
+        e=>e.date===key
+      );
+
+
+    for(const event of events.slice(0,2)){
+
+      const ev=
+        document.createElement("div");
+
+      ev.className="event";
+
+      ev.textContent=
+        event.title;
+
+      cell.appendChild(ev);
+
+    }
+
+
+    if(events.length>2){
+
+      const more=
+        document.createElement("div");
+
+      more.className="event";
+
+      more.textContent=
+        `＋${events.length-2}件`;
+
+      cell.appendChild(more);
+
+    }
+
+
+    cell.onclick=()=>{
+
+      openDayModal(key);
+
+    };
+
+
+    grid.appendChild(cell);
+
+  }
+
+}
+
+
+function dateKey(date){
+
+  return [
+    date.getFullYear(),
+    String(date.getMonth()+1).padStart(2,"0"),
+    String(date.getDate()).padStart(2,"0")
+  ].join("-");
+
+}
+
+
+function formatShortTime(seconds){
+
+  const h=Math.floor(seconds/3600);
+
+  const m=Math.floor(
+    (seconds%3600)/60
+  );
+
+  if(h>0){
+
+    return `${h}h ${m}m`;
+
+  }
+
+  return `${m}分`;
+
+}
+
+
+/* =========================================================
+   EVENTS
+========================================================= */
+
+const EVENT_TYPES=[
+  "🎓 高校受験",
+  "📝 模試",
+  "📚 期末テスト",
+  "📖 中間テスト",
+  "🏫 学校行事",
+  "✏️ その他"
+];
+
+
+function openEventModal(defaultDate=todayKey()){
+
+  const modal=
+    document.getElementById("modal");
+
+  const bg=
+    document.getElementById("modalBg");
+
+  modal.innerHTML=`
+
+    <div class="modal-title">
+      📅 予定を追加
+    </div>
+
+    <label class="modal-label">
+      予定
+    </label>
+
+    <input
+      id="eventTitle"
+      class="modal-input"
+      placeholder="例：数学 模試"
+    >
+
+    <label class="modal-label">
+      日付
+    </label>
+
+    <input
+      id="eventDate"
+      class="modal-input"
+      type="date"
+      value="${defaultDate}"
+    >
+
+    <label class="modal-label">
+      種類
+    </label>
+
+    <select
+      id="eventType"
+      class="modal-select"
+    >
+
+      ${EVENT_TYPES.map(
+        x=>`<option>${x}</option>`
+      ).join("")}
+
+    </select>
+
+
+    <div class="modal-buttons">
+
+      <button
+        id="eventCancel"
+        class="modal-button"
+      >
+        キャンセル
+      </button>
+
+      <button
+        id="eventSave"
+        class="modal-button primary"
+      >
+        追加
+      </button>
+
+    </div>
+
+  `;
+
+
+  bg.classList.remove("hidden");
+
+
+  document
+    .getElementById("eventCancel")
+    .onclick=closeModal;
+
+
+  document
+    .getElementById("eventSave")
+    .onclick=()=>{
+
+      const title=
+        document.getElementById(
+          "eventTitle"
+        ).value.trim();
+
+      const date=
+        document.getElementById(
+          "eventDate"
+        ).value;
+
+      const type=
+        document.getElementById(
+          "eventType"
+        ).value;
+
+
+      if(!title || !date){
+
+        alert("予定名と日付を入力してね");
+
+        return;
+
+      }
+
+
+      data.events.push({
+
+        id:uid("event"),
+
+        title,
+
+        date,
+
+        type
+
+      });
+
+
+      saveData();
+
+      closeModal();
+
+      renderHome();
+
+    };
+
+}
+
+
+function openDayModal(key){
+
+  const events=
+    data.events.filter(
+      e=>e.date===key
+    );
+
+
+  const modal=
+    document.getElementById("modal");
+
+  const bg=
+    document.getElementById("modalBg");
+
+
+  const date=
+    new Date(key+"T00:00:00");
+
+
+  modal.innerHTML=`
+
+    <div class="modal-title">
+      ${formatDateJP(date)}
+    </div>
+
+    ${
+      events.length
+      ?
+      `
+      <div class="event-list">
+
+        ${events.map(e=>`
+
+          <div class="event-list-item">
+
+            <div class="event-list-name">
+
+              <b>
+                ${escapeHtml(e.title)}
+              </b>
+
+              <div style="
+                font-size:11px;
+                color:#747d89;
+                margin-top:3px;
+              ">
+                ${escapeHtml(e.type)}
+              </div>
+
+            </div>
+
+            <button
+              class="delete-event"
+              data-id="${e.id}"
+            >
+              削除
+            </button>
+
+          </div>
+
+        `).join("")}
+
+      </div>
+      `
+      :
+      `
+      <p style="color:#747d89">
+        この日の予定はありません。
+      </p>
+      `
+    }
+
+
+    <div class="modal-buttons">
+
+      <button
+        id="dayAdd"
+        class="modal-button"
+      >
+        ＋ 予定を追加
+      </button>
+
+      <button
+        id="dayClose"
+        class="modal-button primary"
+      >
+        閉じる
+      </button>
+
+    </div>
+
+  `;
+
+
+  bg.classList.remove("hidden");
+
+
+  modal
+    .querySelectorAll(".delete-event")
+    .forEach(btn=>{
+
+      btn.onclick=()=>{
+
+        data.events=
+          data.events.filter(
+            e=>e.id!==btn.dataset.id
+          );
+
+        saveData();
+
+        openDayModal(key);
+
+      };
+
+    });
+
+
+  document
+    .getElementById("dayClose")
+    .onclick=closeModal;
+
+
+  document
+    .getElementById("dayAdd")
+    .onclick=()=>{
+
+      openEventModal(key);
+
+    };
+
+}
+
+
+function getNearestEvent(){
+
+  const today=
+    new Date(
+      todayKey()+"T00:00:00"
+    );
+
+  const future=
+    data.events
+      .map(e=>{
+
+        const d=
+          new Date(
+            e.date+"T00:00:00"
+          );
+
+        return {
+
+          ...e,
+
+          dateObj:d,
+
+          days:Math.ceil(
+            (d-today)/86400000
+          ),
+
+          date:
+            `${d.getFullYear()}年`+
+            `${d.getMonth()+1}月`+
+            `${d.getDate()}日`
+
+        };
+
+      })
+      .filter(e=>e.days>=0)
+      .sort(
+        (a,b)=>
+          a.dateObj-b.dateObj
+      );
+
+
+  return future[0] || null;
 
 }
 
@@ -1398,60 +2526,30 @@ function getRank(seconds){
    SIDEBAR TREE
 ========================================================= */
 
-function getFolder(id){
-
-  return data.folders.find(
-    f=>f.id===id
-  );
-
-}
-
-function getNote(id){
-
-  return data.notes.find(
-    n=>n.id===id
-  );
-
-}
-
-function getChildren(parentId){
-
-  return data.folders.filter(
-    f=>
-      (f.parent || null) === parentId
-  );
-
-}
-
-function getFolderNotes(folderId){
-
-  return data.notes.filter(
-    n=>n.folderId===folderId
-  );
-
-}
-
 function renderTree(){
 
-  const tree =
+  const tree=
     document.getElementById("tree");
 
   tree.innerHTML="";
 
-  const root =
-    getFolder("root");
+  const root=
+    data.folders.find(
+      f=>f.id==="root"
+    );
 
-  if(!root){
-    return;
+  if(root){
+
+    renderFolderTree(
+      root,
+      0,
+      tree
+    );
+
   }
 
-  renderFolderTree(
-    root,
-    0,
-    tree
-  );
-
 }
+
 
 function renderFolderTree(
   folder,
@@ -1459,198 +2557,157 @@ function renderFolderTree(
   parentEl
 ){
 
-  const children =
-    getChildren(folder.id);
-
-  const notes =
-    getFolderNotes(folder.id);
-
-  const row =
-    document.createElement("div");
-
-  row.className="treeRow";
-
-  if(
-    selectedFolderId===folder.id
-  ){
-
-    row.classList.add(
-      "selected"
+  const children=
+    data.folders.filter(
+      f=>f.parent===folder.id
     );
 
-  }
 
-  row.style.paddingLeft =
-    (8 + depth*18)+"px";
-
-  /*
-    三角
-  */
-
-  const arrow =
-    document.createElement("div");
-
-  arrow.className="treeArrow";
-
-  if(
-    children.length ||
-    notes.length
-  ){
-
-    arrow.textContent =
-      expandedFolders.has(folder.id)
-        ? "⌄"
-        : "›";
-
-  }
-
-  /*
-    アイコン
-  */
-
-  const icon =
-    document.createElement("div");
-
-  icon.className="treeIcon";
-
-  icon.textContent =
-    folder.icon || "📁";
-
-  /*
-    名前
-  */
-
-  const name =
-    document.createElement("div");
-
-  name.className="treeName";
-
-  name.textContent =
-    safeText(
-      folder.name,
-      "新しいタブ"
+  const notes=
+    data.notes.filter(
+      n=>n.folderId===folder.id
     );
 
+
+  const hasChildren=
+    children.length>0 ||
+    notes.length>0;
+
+
+  const row=
+    document.createElement("div");
+
+  row.className=
+    "tree-row" +
+    (
+      selectedFolderId===folder.id
+      ?
+      " selected"
+      :
+      ""
+    );
+
+  row.style.paddingLeft=
+    (7+depth*17)+"px";
+
+
+  row.innerHTML=`
+
+    <div class="tree-arrow">
+      ${
+        hasChildren
+        ?
+        (
+          expandedFolders.has(folder.id)
+          ?
+          "⌄"
+          :
+          "›"
+        )
+        :
+        ""
+      }
+    </div>
+
+    <div class="tree-icon">
+      ${folder.icon || "📁"}
+    </div>
+
+    <div class="tree-name">
+      ${escapeHtml(folder.name)}
+    </div>
+
+  `;
+
+
   /*
-    ★ここ重要
-    行全体をクリック可能にする
+    ★重要
+    三角だけではなく、
+    アイコン・文字・行全体をクリック可能
   */
 
-  row.append(
-    arrow,
-    icon,
-    name
-  );
+  row.onclick=(e)=>{
 
-  row.addEventListener(
-    "click",
-    event=>{
+    e.stopPropagation();
 
-      event.stopPropagation();
+    selectedFolderId=
+      folder.id;
 
-      selectedFolderId =
-        folder.id;
+    currentFolderId=
+      folder.id;
 
-      currentFolderId =
-        folder.id;
 
-      selectedNoteId = null;
-
-      /*
-        文字・アイコン・三角
-        どこを押しても開く
-      */
+    if(hasChildren){
 
       if(
-        children.length ||
-        notes.length
+        expandedFolders.has(
+          folder.id
+        )
       ){
 
-        if(
-          expandedFolders.has(
-            folder.id
-          )
-        ){
+        expandedFolders.delete(
+          folder.id
+        );
 
-          expandedFolders.delete(
-            folder.id
-          );
+      }else{
 
-        }else{
-
-          expandedFolders.add(
-            folder.id
-          );
-
-        }
+        expandedFolders.add(
+          folder.id
+        );
 
       }
 
-      renderTree();
-
-      openFolder(
-        folder.id
-      );
-
     }
-  );
 
-  /*
-    長押し / 右クリックで名前変更
-  */
 
-  row.addEventListener(
-    "contextmenu",
-    event=>{
+    renderTree();
 
-      event.preventDefault();
+    openFolder(folder.id);
 
-      renameFolder(
-        folder.id
-      );
+  };
 
-    }
-  );
+
+  row.oncontextmenu=(e)=>{
+
+    e.preventDefault();
+
+    renameFolder(folder.id);
+
+  };
+
 
   parentEl.appendChild(row);
 
-  /*
-    子階層
-  */
 
   if(
-    expandedFolders.has(
-      folder.id
-    )
+    expandedFolders.has(folder.id)
   ){
 
-    children.forEach(
-      child=>{
+    for(const child of children){
 
-        renderFolderTree(
-          child,
-          depth+1,
-          parentEl
-        );
+      renderFolderTree(
+        child,
+        depth+1,
+        parentEl
+      );
 
-      }
-    );
+    }
 
-    notes.forEach(
-      note=>{
 
-        renderNoteTree(
-          note,
-          depth+1,
-          parentEl
-        );
+    for(const note of notes){
 
-      }
-    );
+      renderNoteTree(
+        note,
+        depth+1,
+        parentEl
+      );
+
+    }
 
   }
 
 }
+
 
 function renderNoteTree(
   note,
@@ -1658,94 +2715,238 @@ function renderNoteTree(
   parentEl
 ){
 
-  const row =
+  const row=
     document.createElement("div");
 
-  row.className =
-    "treeRow treeNote";
+  row.className="tree-row";
 
-  row.style.paddingLeft =
-    (8 + depth*18)+"px";
+  row.style.paddingLeft=
+    (7+depth*17)+"px";
 
-  if(
-    selectedNoteId===note.id
-  ){
 
-    row.classList.add(
-      "selected"
+  row.innerHTML=`
+
+    <div class="tree-arrow"></div>
+
+    <div class="tree-icon">
+      📝
+    </div>
+
+    <div class="tree-name">
+      ${escapeHtml(
+        note.title ||
+        note.name ||
+        "無題のノート"
+      )}
+    </div>
+
+  `;
+
+
+  row.onclick=(e)=>{
+
+    e.stopPropagation();
+
+    openNote(note.id);
+
+  };
+
+
+  row.oncontextmenu=(e)=>{
+
+    e.preventDefault();
+
+    renameNote(note.id);
+
+  };
+
+
+  parentEl.appendChild(row);
+
+}
+
+
+/* =========================================================
+   FOLDERS
+========================================================= */
+
+function createFolder(){
+
+  const name=
+    prompt(
+      "フォルダ名を入力してね",
+      "新しいフォルダ"
     );
+
+
+  if(!name)return;
+
+
+  const parent=
+    currentFolderId ||
+    selectedFolderId ||
+    "root";
+
+
+  const folder={
+
+    id:uid("folder"),
+
+    name:name.trim(),
+
+    icon:"📁",
+
+    parent,
+
+    created:Date.now()
+
+  };
+
+
+  data.folders.push(folder);
+
+  expandedFolders.add(parent);
+
+  expandedFolders.add(folder.id);
+
+  saveData();
+
+  renderTree();
+
+  openFolder(folder.id);
+
+}
+
+
+function renameFolder(id){
+
+  const folder=
+    data.folders.find(
+      f=>f.id===id
+    );
+
+  if(!folder)return;
+
+  if(id==="root"){
+
+    alert("マイノートは名前変更できません");
+
+    return;
 
   }
 
-  const arrow =
-    document.createElement("div");
 
-  arrow.className="treeArrow";
+  const name=
+    prompt(
+      "新しい名前",
+      folder.name
+    );
 
-  const icon =
-    document.createElement("div");
 
-  icon.className="treeIcon";
+  if(!name)return;
 
-  icon.textContent="📝";
+  folder.name=name.trim();
 
-  const name =
-    document.createElement("div");
+  saveData();
 
-  name.className="treeName";
+  renderTree();
 
-  name.textContent =
-    safeText(
-      note.name,
+  if(currentFolderId===id){
+
+    openFolder(id);
+
+  }
+
+}
+
+
+function createNote(){
+
+  const folderId=
+    currentFolderId ||
+    selectedFolderId ||
+    "root";
+
+
+  const title=
+    prompt(
+      "ノート名を入力してね",
       "新しいノート"
     );
 
-  row.append(
-    arrow,
-    icon,
-    name
-  );
 
-  /*
-    ノートは文字部分も含めて
-    行全体をクリック
-  */
+  if(!title)return;
 
-  row.addEventListener(
-    "click",
-    event=>{
 
-      event.stopPropagation();
+  const note={
 
-      selectedNoteId =
-        note.id;
+    id:uid("note"),
 
-      selectedFolderId =
-        note.folderId;
+    title:title.trim(),
 
-      renderTree();
+    folderId,
 
-      openNote(
-        note.id
-      );
+    created:Date.now(),
 
-    }
-  );
+    pages:[
 
-  row.addEventListener(
-    "contextmenu",
-    event=>{
+      {
+        strokes:[],
+        elements:[]
+      }
 
-      event.preventDefault();
+    ],
 
-      renameNote(
-        note.id
-      );
+    pageIndex:0
 
-    }
-  );
+  };
 
-  parentEl.appendChild(row);
+
+  data.notes.push(note);
+
+  expandedFolders.add(folderId);
+
+  saveData();
+
+  renderTree();
+
+  openNote(note.id);
+
+}
+
+
+function renameNote(id){
+
+  const note=
+    data.notes.find(
+      n=>n.id===id
+    );
+
+  if(!note)return;
+
+
+  const name=
+    prompt(
+      "新しいノート名",
+      note.title || "無題のノート"
+    );
+
+
+  if(!name)return;
+
+  note.title=name.trim();
+
+  saveData();
+
+  renderTree();
+
+  if(currentNoteId===id){
+
+    document
+      .getElementById("pageTitle")
+      .textContent=note.title;
+
+  }
 
 }
 
@@ -1756,541 +2957,310 @@ function renderNoteTree(
 
 function openFolder(id){
 
-  const folder =
-    getFolder(id);
+  const folder=
+    data.folders.find(
+      f=>f.id===id
+    );
 
-  if(!folder){
-    return;
-  }
+  if(!folder)return;
+
 
   currentFolderId=id;
+
   selectedFolderId=id;
-  selectedNoteId=null;
 
-  const children =
-    getChildren(id);
+  currentView="folder";
 
-  const notes =
-    getFolderNotes(id);
 
-  const main =
-    document.getElementById("main");
+  document
+    .getElementById("pageTitle")
+    .textContent=
+      folder.name;
 
-  main.innerHTML="";
 
-  const page =
-    document.createElement("div");
+  const content=
+    document.getElementById("content");
 
-  page.className="page";
 
-  const inner =
-    document.createElement("div");
+  const children=
+    data.folders.filter(
+      f=>f.parent===id
+    );
 
-  inner.className="pageInner";
 
-  const header =
-    document.createElement("div");
+  const notes=
+    data.notes.filter(
+      n=>n.folderId===id
+    );
 
-  header.className="header";
 
-  /*
-    root以外なら戻る
-  */
+  content.innerHTML=`
 
-  if(folder.parent){
+    <div class="folder-view">
 
-    const back =
-      document.createElement("button");
+      <div class="folder-header">
 
-    back.className="backButton";
+        <div class="folder-icon">
+          ${folder.icon || "📁"}
+        </div>
 
-    back.textContent="←";
+        <div class="folder-title">
+          ${escapeHtml(folder.name)}
+        </div>
 
-    back.addEventListener(
-      "click",
-      ()=>{
+        <div class="folder-actions">
+
+          <button
+            id="folderNewFolder"
+            class="action"
+          >
+            📁 フォルダ
+          </button>
+
+          <button
+            id="folderNewNote"
+            class="action"
+          >
+            📝 ノート
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="item-grid">
+
+        ${
+          children.map(f=>`
+
+            <div
+              class="item glass"
+              data-folder="${f.id}"
+            >
+
+              <div class="item-icon">
+                ${f.icon || "📁"}
+              </div>
+
+              <div class="item-name">
+                ${escapeHtml(f.name)}
+              </div>
+
+            </div>
+
+          `).join("")
+        }
+
+
+        ${
+          notes.map(n=>`
+
+            <div
+              class="item glass"
+              data-note="${n.id}"
+            >
+
+              <div class="item-icon">
+                📝
+              </div>
+
+              <div class="item-name">
+                ${escapeHtml(
+                  n.title ||
+                  n.name ||
+                  "無題のノート"
+                )}
+              </div>
+
+            </div>
+
+          `).join("")
+        }
+
+      </div>
+
+    </div>
+
+  `;
+
+
+  document
+    .querySelectorAll("[data-folder]")
+    .forEach(el=>{
+
+      el.onclick=()=>{
+
         openFolder(
-          folder.parent
-        );
-      }
-    );
-
-    header.appendChild(back);
-
-  }
-
-  const icon =
-    document.createElement("div");
-
-  icon.className="headerIcon";
-
-  icon.textContent =
-    folder.icon || "📁";
-
-  const titleWrap =
-    document.createElement("div");
-
-  const title =
-    document.createElement("div");
-
-  title.className="headerTitle";
-
-  title.textContent =
-    safeText(
-      folder.name,
-      "新しいタブ"
-    );
-
-  const sub =
-    document.createElement("div");
-
-  sub.className="headerSub";
-
-  sub.textContent =
-    children.length+
-    " タブ / "+
-    notes.length+
-    " ノート";
-
-  titleWrap.append(
-    title,
-    sub
-  );
-
-  header.append(
-    icon,
-    titleWrap
-  );
-
-  inner.appendChild(header);
-
-
-  /* タブ */
-
-  if(children.length){
-
-    const section =
-      document.createElement("div");
-
-    section.className="sectionTitle";
-
-    section.textContent="タブ";
-
-    inner.appendChild(section);
-
-    const grid =
-      document.createElement("div");
-
-    grid.className="cardGrid";
-
-    children.forEach(
-      child=>{
-
-        const card =
-          document.createElement("button");
-
-        card.className="card";
-
-        const count =
-          getFolderNotes(
-            child.id
-          ).length;
-
-        const childCount =
-          getChildren(
-            child.id
-          ).length;
-
-        card.innerHTML =
-          `
-          <div class="cardIcon">
-            ${child.icon || "📁"}
-          </div>
-
-          <div class="cardTitle">
-            ${escapeHtml(
-              safeText(
-                child.name,
-                "新しいタブ"
-              )
-            )}
-          </div>
-
-          <div class="cardSub">
-            ${childCount} タブ /
-            ${count} ノート
-          </div>
-          `;
-
-        card.addEventListener(
-          "click",
-          ()=>{
-            selectedFolderId=
-              child.id;
-
-            expandedFolders.add(
-              child.id
-            );
-
-            renderTree();
-
-            openFolder(
-              child.id
-            );
-
-          }
+          el.dataset.folder
         );
 
-        grid.appendChild(card);
+      };
 
-      }
-    );
-
-    inner.appendChild(grid);
-
-  }
+    });
 
 
-  /* ノート */
+  document
+    .querySelectorAll("[data-note]")
+    .forEach(el=>{
 
-  const noteSection =
-    document.createElement("div");
+      el.onclick=()=>{
 
-  noteSection.className="sectionTitle";
-
-  noteSection.textContent="ノート";
-
-  inner.appendChild(
-    noteSection
-  );
-
-  if(notes.length){
-
-    const grid =
-      document.createElement("div");
-
-    grid.className="cardGrid";
-
-    notes.forEach(
-      note=>{
-
-        const card =
-          document.createElement("button");
-
-        card.className="card";
-
-        const pages =
-          Array.isArray(note.pages)
-            ? note.pages.length
-            : 1;
-
-        card.innerHTML =
-          `
-          <div class="cardIcon">
-            📝
-          </div>
-
-          <div class="cardTitle">
-            ${escapeHtml(
-              safeText(
-                note.name,
-                "新しいノート"
-              )
-            )}
-          </div>
-
-          <div class="cardSub">
-            ${pages} ページ
-          </div>
-          `;
-
-        card.addEventListener(
-          "click",
-          ()=>{
-            openNote(
-              note.id
-            );
-          }
+        openNote(
+          el.dataset.note
         );
 
-        grid.appendChild(card);
+      };
 
-      }
-    );
+    });
 
-    inner.appendChild(grid);
 
-  }else{
+  document
+    .getElementById("folderNewFolder")
+    .onclick=createFolder;
 
-    const empty =
-      document.createElement("div");
 
-    empty.style.color="#888";
-    empty.style.padding="20px 0";
+  document
+    .getElementById("folderNewNote")
+    .onclick=createNote;
 
-    empty.textContent =
-      "このタブにはまだノートがありません。";
 
-    inner.appendChild(
-      empty
-    );
-
-  }
-
-  page.appendChild(inner);
-
-  main.appendChild(page);
+  renderTree();
 
 }
 
 
 /* =========================================================
-   CREATE FOLDER / NOTE
+   NOTE
 ========================================================= */
 
-function createFolder(){
+const canvas=
+  document.getElementById(
+    "drawCanvas"
+  );
 
-  const parent =
-    selectedFolderId ||
-    currentFolderId ||
-    "root";
+const ctx=
+  canvas.getContext("2d");
 
-  let name =
-    prompt(
-      "タブの名前を入力"
+
+const board=
+  document.getElementById(
+    "noteBoard"
+  );
+
+const boardWrap=
+  document.getElementById(
+    "noteBoardWrap"
+  );
+
+const objectLayer=
+  document.getElementById(
+    "objectLayer"
+  );
+
+
+let noteTool="pen";
+
+let noteColor="#111111";
+
+let noteSize=5;
+
+let zoom=1;
+
+let cameraX=0;
+
+let cameraY=0;
+
+let drawing=false;
+
+let currentStroke=null;
+
+let activePointerId=null;
+
+let lastPoint=null;
+
+let panStart=null;
+
+
+/* =========================
+   NOTE OPEN
+========================= */
+
+function openNote(id){
+
+  const note=
+    data.notes.find(
+      n=>n.id===id
     );
 
-  if(name===null){
-    return;
-  }
+  if(!note)return;
 
-  name =
-    name.trim();
 
-  if(!name){
-    name="新しいタブ";
-  }
+  currentNoteId=id;
 
-  const folder = {
+  currentView="note";
 
-    id:uid("folder"),
 
-    name,
+  if(!note.pages){
 
-    icon:"📁",
-
-    parent,
-
-    created:Date.now()
-
-  };
-
-  data.folders.push(
-    folder
-  );
-
-  expandedFolders.add(
-    parent
-  );
-
-  expandedFolders.add(
-    folder.id
-  );
-
-  selectedFolderId =
-    folder.id;
-
-  currentFolderId =
-    folder.id;
-
-  save();
-
-  renderTree();
-
-  openFolder(
-    folder.id
-  );
-
-}
-
-function createNote(){
-
-  /*
-    ★重要
-    現在選択しているフォルダに作る。
-    内側のフォルダでもOK。
-  */
-
-  const folderId =
-    selectedFolderId ||
-    currentFolderId ||
-    "root";
-
-  if(
-    !data.folders.some(
-      f=>f.id===folderId
-    )
-  ){
-
-    selectedFolderId="root";
-
-  }
-
-  let name =
-    prompt(
-      "ノートの名前を入力"
-    );
-
-  if(name===null){
-    return;
-  }
-
-  name =
-    name.trim();
-
-  if(!name){
-    name="新しいノート";
-  }
-
-  const note = {
-
-    id:uid("note"),
-
-    name,
-
-    folderId,
-
-    created:Date.now(),
-
-    pages:[
+    note.pages=[
       {
         strokes:[],
         elements:[]
       }
-    ]
+    ];
 
-  };
+  }
 
-  data.notes.push(
-    note
-  );
 
-  selectedNoteId =
-    note.id;
+  if(
+    typeof note.pageIndex!=="number"
+  ){
 
-  selectedFolderId =
-    folderId;
+    note.pageIndex=0;
 
-  currentFolderId =
-    folderId;
+  }
 
-  expandedFolders.add(
-    folderId
-  );
 
-  save();
+  document
+    .getElementById("pageTitle")
+    .textContent=
+      note.title ||
+      "無題のノート";
 
-  renderTree();
 
-  openNote(
-    note.id
-  );
+  document
+    .getElementById("noteScreen")
+    .classList.remove("hidden");
+
+
+  zoom=1;
+
+  cameraX=0;
+
+  cameraY=0;
+
+  drawNote();
+
+  renderObjects();
+
+  updateCamera();
+
+  closeSidebarMobile();
 
 }
 
 
-/* =========================================================
-   RENAME
-========================================================= */
+function getCurrentPage(){
 
-function renameFolder(id){
-
-  const folder =
-    getFolder(id);
-
-  if(!folder){
-    return;
-  }
-
-  const name =
-    prompt(
-      "タブ名を変更",
-      folder.name
+  const note=
+    data.notes.find(
+      n=>n.id===currentNoteId
     );
 
-  if(name===null){
-    return;
-  }
+  if(!note)return null;
 
-  folder.name =
-    name.trim() ||
-    "新しいタブ";
-
-  save();
-
-  renderTree();
-
-  openFolder(id);
-
-}
-
-function renameNote(id){
-
-  const note =
-    getNote(id);
-
-  if(!note){
-    return;
-  }
-
-  const name =
-    prompt(
-      "ノート名を変更",
-      note.name
-    );
-
-  if(name===null){
-    return;
-  }
-
-  note.name =
-    name.trim() ||
-    "新しいノート";
-
-  save();
-
-  renderTree();
-
-  openNote(id);
-
-}
-
-
-/* =========================================================
-   NOTE EDITOR
-========================================================= */
-
-function openNote(id){
-
-  const note =
-    getNote(id);
-
-  if(!note){
-    return;
-  }
-
-  selectedNoteId=id;
-  selectedFolderId=
-    note.folderId;
-
-  currentFolderId=
-    note.folderId;
-
-  if(!Array.isArray(note.pages)){
-    note.pages=[];
-  }
-
-  if(note.pages.length===0){
+  if(!note.pages.length){
 
     note.pages.push({
       strokes:[],
@@ -2299,743 +3269,81 @@ function openNote(id){
 
   }
 
-  currentPage =
-    Math.min(
-      currentPage,
-      note.pages.length-1
-    );
 
-  save();
-
-  renderTree();
-
-  renderNoteEditor();
-
-}
-
-function getCurrentPage(){
-
-  const note =
-    getNote(selectedNoteId);
-
-  if(!note){
-    return null;
-  }
-
-  if(!note.pages[currentPage]){
-
-    note.pages[currentPage]={
-      strokes:[],
-      elements:[]
-    };
-
-  }
-
-  return note.pages[currentPage];
-
-}
-
-function renderNoteEditor(){
-
-  const note =
-    getNote(selectedNoteId);
-
-  if(!note){
-    return;
-  }
-
-  const main =
-    document.getElementById("main");
-
-  main.innerHTML="";
-
-  const page =
-    document.createElement("div");
-
-  page.className="notePage";
-
-  /* ======================
-     TOPBAR
-  ====================== */
-
-  const top =
-    document.createElement("div");
-
-  top.className="noteTopbar glass";
-
-  const back =
-    document.createElement("button");
-
-  back.className="backButton";
-
-  back.textContent="←";
-
-  back.addEventListener(
-    "click",
-    ()=>{
-      openFolder(
-        note.folderId
-      );
-    }
-  );
-
-  top.appendChild(back);
-
-
-  const titleBox =
-    document.createElement("div");
-
-  titleBox.className="noteTitleBox";
-
-  const title =
-    document.createElement("div");
-
-  title.className="noteTitle";
-
-  title.textContent =
-    safeText(
-      note.name,
-      "新しいノート"
-    );
-
-  const pageInfo =
-    document.createElement("div");
-
-  pageInfo.className="notePageInfo";
-
-  pageInfo.textContent =
-    "ページ "+
-    (currentPage+1)+
-    " / "+
-    note.pages.length;
-
-  titleBox.append(
-    title,
-    pageInfo
-  );
-
-  top.appendChild(
-    titleBox
-  );
-
-
-  /* ======================
-     TOOLS
-  ====================== */
-
-  const toolbar =
-    document.createElement("div");
-
-  toolbar.className="toolBar";
-
-
-  const tools = [
-
-    ["pen","✏️","ペン"],
-
-    ["highlighter","🖍️","蛍光ペン"],
-
-    ["pixel","🧽","ピクセル消しゴム"],
-
-    ["object","🗑️","オブジェクト消しゴム"],
-
-    ["hand","✋","移動"],
-
-    ["text","T","テキスト"],
-
-    ["sticky","📌","付箋"],
-
-    ["image","🖼️","写真"]
-
+  return note.pages[
+    note.pageIndex || 0
   ];
 
-
-  tools.forEach(
-    item=>{
-
-      const button =
-        document.createElement("button");
-
-      button.className="tool";
-
-      button.dataset.tool=
-        item[0];
-
-      button.textContent=
-        item[1];
-
-      button.title=
-        item[2];
-
-      if(
-        currentTool===item[0]
-      ){
-
-        button.classList.add(
-          "active"
-        );
-
-      }
-
-      button.addEventListener(
-        "click",
-        ()=>{
-          setTool(
-            item[0]
-          );
-        }
-      );
-
-      toolbar.appendChild(
-        button
-      );
-
-    }
-  );
-
-
-  /* 色 */
-
-  const color =
-    document.createElement("input");
-
-  color.type="color";
-
-  color.className="colorInput";
-
-  color.value=
-    currentColor;
-
-  color.addEventListener(
-    "input",
-    ()=>{
-      currentColor=
-        color.value;
-
-      if(selectedObjectId){
-        updateSelectedObjectStyle();
-      }
-    }
-  );
-
-  toolbar.appendChild(
-    color
-  );
-
-
-  /* 太さ */
-
-  const sizeBox =
-    document.createElement("div");
-
-  sizeBox.className="sizeBox";
-
-  const size =
-    document.createElement("input");
-
-  size.type="range";
-
-  size.min="1";
-
-  size.max="40";
-
-  size.value=
-    currentSize;
-
-  size.addEventListener(
-    "input",
-    ()=>{
-      currentSize=
-        Number(size.value);
-
-      updateSelectedObjectStyle();
-    }
-  );
-
-  sizeBox.appendChild(size);
-
-  toolbar.appendChild(
-    sizeBox
-  );
-
-
-  /* 消去 */
-
-  const clear =
-    document.createElement("button");
-
-  clear.className="tool";
-
-  clear.textContent="🗑";
-
-  clear.title="ページを全部消す";
-
-  clear.addEventListener(
-    "click",
-    ()=>{
-      if(
-        confirm(
-          "このページを全部消しますか？"
-        )
-      ){
-
-        const p =
-          getCurrentPage();
-
-        p.strokes=[];
-        p.elements=[];
-
-        save();
-
-        renderCanvas();
-
-      }
-    }
-  );
-
-  toolbar.appendChild(clear);
-
-  top.appendChild(toolbar);
-
-  page.appendChild(top);
-
-
-  /* ======================
-     EDITOR
-  ====================== */
-
-  const editor =
-    document.createElement("div");
-
-  editor.className="editor";
-
-  editor.id="editor";
-
-
-  const canvas =
-    document.createElement("canvas");
-
-  canvas.id="drawCanvas";
-
-  editor.appendChild(
-    canvas
-  );
-
-
-  const objectLayer =
-    document.createElement("div");
-
-  objectLayer.className=
-    "objectLayer";
-
-  objectLayer.id=
-    "objectLayer";
-
-  editor.appendChild(
-    objectLayer
-  );
-
-
-  /* ページバー */
-
-  const pageBar =
-    document.createElement("div");
-
-  pageBar.className="pageBar";
-
-
-  const prev =
-    document.createElement("button");
-
-  prev.className="pageBtn";
-
-  prev.textContent="‹";
-
-  prev.addEventListener(
-    "click",
-    previousPage
-  );
-
-
-  const pageNumber =
-    document.createElement("div");
-
-  pageNumber.className=
-    "pageNumber";
-
-  pageNumber.textContent=
-    `${currentPage+1} / ${note.pages.length}`;
-
-
-  const next =
-    document.createElement("button");
-
-  next.className="pageBtn";
-
-  next.textContent="›";
-
-  next.addEventListener(
-    "click",
-    nextPage
-  );
-
-
-  const addPage =
-    document.createElement("button");
-
-  addPage.className="pageBtn";
-
-  addPage.textContent="+";
-
-  addPage.addEventListener(
-    "click",
-    addNewPage
-  );
-
-
-  pageBar.append(
-    prev,
-    pageNumber,
-    next,
-    addPage
-  );
-
-  editor.appendChild(
-    pageBar
-  );
-
-
-  /* ズーム */
-
-  const zoomBox =
-    document.createElement("div");
-
-  zoomBox.className="zoomBox";
-
-  const zoomOut =
-    document.createElement("button");
-
-  zoomOut.className="zoomBtn";
-
-  zoomOut.textContent="−";
-
-  zoomOut.addEventListener(
-    "click",
-    ()=>{
-      zoomAt(
-        editor.clientWidth/2,
-        editor.clientHeight/2,
-        .85
-      );
-    }
-  );
-
-
-  const zoomIn =
-    document.createElement("button");
-
-  zoomIn.className="zoomBtn";
-
-  zoomIn.textContent="+";
-
-  zoomIn.addEventListener(
-    "click",
-    ()=>{
-      zoomAt(
-        editor.clientWidth/2,
-        editor.clientHeight/2,
-        1.18
-      );
-    }
-  );
-
-
-  zoomBox.append(
-    zoomOut,
-    zoomIn
-  );
-
-  editor.appendChild(
-    zoomBox
-  );
-
-
-  page.appendChild(
-    editor
-  );
-
-  main.appendChild(
-    page
-  );
-
-
-  /*
-    canvasサイズを設定
-  */
-
-  resizeCanvas();
-
-  /*
-    イベントを登録
-  */
-
-  setupCanvasEvents();
-
-  renderCanvas();
-
-  renderObjects();
-
 }
 
 
-/* =========================================================
-   TOOL
-========================================================= */
+function drawNote(){
 
-function setTool(tool){
-
-  currentTool=tool;
-
-  selectedObjectId=null;
-
-  document
-    .querySelectorAll(
-      ".tool"
-    )
-    .forEach(
-      button=>{
-
-        button.classList.toggle(
-          "active",
-          button.dataset.tool===tool
-        );
-
-      }
-    );
-
-  const canvas =
-    document.getElementById(
-      "drawCanvas"
-    );
-
-  if(canvas){
-
-    if(tool==="pen" ||
-       tool==="highlighter" ||
-       tool==="pixel" ||
-       tool==="object"){
-
-      canvas.style.cursor=
-        "crosshair";
-
-    }else if(tool==="hand"){
-
-      canvas.style.cursor=
-        "grab";
-
-    }else{
-
-      canvas.style.cursor=
-        "default";
-
-    }
-
-  }
-
-}
-
-
-/* =========================================================
-   CANVAS
-========================================================= */
-
-function resizeCanvas(){
-
-  const canvas =
-    document.getElementById(
-      "drawCanvas"
-    );
-
-  const editor =
-    document.getElementById(
-      "editor"
-    );
-
-  if(!canvas || !editor){
-    return;
-  }
-
-  const rect =
-    editor.getBoundingClientRect();
-
-  const dpr =
-    Math.min(
-      window.devicePixelRatio || 1,
-      2
-    );
-
-  canvas.width =
-    Math.floor(
-      rect.width*dpr
-    );
-
-  canvas.height =
-    Math.floor(
-      rect.height*dpr
-    );
-
-  canvas.style.width =
-    rect.width+"px";
-
-  canvas.style.height =
-    rect.height+"px";
-
-  renderCanvas();
-
-}
-
-window.addEventListener(
-  "resize",
-  ()=>{
-    if(
-      document.getElementById(
-        "drawCanvas"
-      )
-    ){
-      resizeCanvas();
-    }
-  }
-);
-
-
-/* =========================================================
-   WORLD / CAMERA
-========================================================= */
-
-function screenToWorld(x,y){
-
-  return {
-
-    x:
-      (x-camera.x)/
-      camera.zoom,
-
-    y:
-      (y-camera.y)/
-      camera.zoom
-
-  };
-
-}
-
-function worldToScreen(x,y){
-
-  return {
-
-    x:
-      x*camera.zoom+
-      camera.x,
-
-    y:
-      y*camera.zoom+
-      camera.y
-
-  };
-
-}
-
-function distance(a,b){
-
-  return Math.hypot(
-    a.x-b.x,
-    a.y-b.y
-  );
-
-}
-
-
-/* =========================================================
-   DRAW
-========================================================= */
-
-function drawBackground(ctx,w,h){
-
-  ctx.fillStyle="#ffffff";
-
-  ctx.fillRect(
+  ctx.clearRect(
     0,
     0,
-    w,
-    h
+    canvas.width,
+    canvas.height
   );
 
-  /*
-    薄いノートの方眼
-  */
 
-  const grid =
-    40*camera.zoom;
+  const page=
+    getCurrentPage();
 
-  if(grid>10){
+  if(!page)return;
+
+
+  for(const stroke of page.strokes){
+
+    if(!stroke.points ||
+       stroke.points.length<2){
+
+      continue;
+
+    }
+
 
     ctx.save();
 
+    ctx.beginPath();
+
+    ctx.moveTo(
+      stroke.points[0].x,
+      stroke.points[0].y
+    );
+
+
+    for(
+      let i=1;
+      i<stroke.points.length;
+      i++
+    ){
+
+      ctx.lineTo(
+        stroke.points[i].x,
+        stroke.points[i].y
+      );
+
+    }
+
+
+    ctx.lineCap="round";
+
+    ctx.lineJoin="round";
+
     ctx.strokeStyle=
-      "rgba(100,130,170,.075)";
+      stroke.color ||
+      "#111111";
 
-    ctx.lineWidth=1;
+    ctx.lineWidth=
+      stroke.width ||
+      5;
 
-    const ox =
-      camera.x %
-      grid;
+    ctx.globalAlpha=
+      stroke.opacity ?? 1;
 
-    const oy =
-      camera.y %
-      grid;
 
-    for(
-      let x=ox;
-      x<w;
-      x+=grid
-    ){
-
-      ctx.beginPath();
-
-      ctx.moveTo(
-        x,
-        0
-      );
-
-      ctx.lineTo(
-        x,
-        h
-      );
-
-      ctx.stroke();
-
-    }
-
-    for(
-      let y=oy;
-      y<h;
-      y+=grid
-    ){
-
-      ctx.beginPath();
-
-      ctx.moveTo(
-        0,
-        y
-      );
-
-      ctx.lineTo(
-        w,
-        y
-      );
-
-      ctx.stroke();
-
-    }
+    ctx.stroke();
 
     ctx.restore();
 
@@ -3043,169 +3351,224 @@ function drawBackground(ctx,w,h){
 
 }
 
-function drawStroke(
-  ctx,
-  stroke,
-  current=false
-){
 
-  if(
-    !stroke ||
-    !Array.isArray(
-      stroke.points
-    ) ||
-    stroke.points.length<1
-  ){
-    return;
-  }
+function renderObjects(){
 
-  const pts =
-    stroke.points;
+  objectLayer.innerHTML="";
 
-  ctx.save();
+  const page=
+    getCurrentPage();
 
-  ctx.lineCap="round";
-  ctx.lineJoin="round";
+  if(!page)return;
 
-  if(stroke.tool==="highlighter"){
 
-    ctx.globalAlpha=.28;
+  for(const obj of page.elements){
 
-    ctx.strokeStyle=
-      stroke.color;
+    const el=
+      document.createElement("div");
 
-    ctx.lineWidth=
-      stroke.size*4;
-
-  }else{
-
-    ctx.globalAlpha=1;
-
-    ctx.strokeStyle=
-      stroke.color;
-
-    ctx.lineWidth=
-      stroke.size;
-
-  }
-
-  ctx.beginPath();
-
-  const first =
-    worldToScreen(
-      pts[0].x,
-      pts[0].y
-    );
-
-  ctx.moveTo(
-    first.x,
-    first.y
-  );
-
-  if(pts.length===1){
-
-    ctx.lineTo(
-      first.x+.01,
-      first.y+.01
-    );
-
-  }else{
-
-    for(
-      let i=1;
-      i<pts.length;
-      i++
-    ){
-
-      const p =
-        worldToScreen(
-          pts[i].x,
-          pts[i].y
-        );
-
-      /*
-        指に追従するように
-        毎ポイント描画
-      */
-
-      ctx.lineTo(
-        p.x,
-        p.y
+    el.className=
+      "note-object " +
+      (
+        obj.type==="sticky"
+        ?
+        "sticky-object"
+        :
+        "text-object"
       );
+
+
+    el.dataset.id=obj.id;
+
+
+    el.style.left=
+      (obj.x || 100)+"px";
+
+    el.style.top=
+      (obj.y || 100)+"px";
+
+
+    el.style.width=
+      (obj.width || 220)+"px";
+
+    el.style.height=
+      (obj.height || (
+        obj.type==="sticky"
+        ? 120
+        : 50
+      ))+"px";
+
+
+    if(obj.type==="sticky"){
+
+      el.textContent=
+        obj.text || "";
+
+    }else{
+
+      el.textContent=
+        obj.text || "";
+
+      el.style.color=
+        obj.color || "#111";
+
+      el.style.fontSize=
+        (obj.fontSize || 24)+"px";
 
     }
 
+
+    el.onpointerdown=
+      e=>{
+
+        if(noteTool!=="hand"){
+
+          e.stopPropagation();
+
+        }
+
+        selectObject(el);
+
+      };
+
+
+    makeObjectDraggable(
+      el,
+      obj
+    );
+
+
+    objectLayer.appendChild(el);
+
   }
-
-  ctx.stroke();
-
-  ctx.restore();
 
 }
 
-function renderCanvas(){
 
-  const canvas =
-    document.getElementById(
-      "drawCanvas"
+function selectObject(el){
+
+  document
+    .querySelectorAll(".note-object")
+    .forEach(
+      x=>x.classList.remove("selected")
     );
 
-  if(!canvas){
-    return;
-  }
+  el.classList.add("selected");
 
-  const ctx =
-    canvas.getContext(
-      "2d"
-    );
+}
 
-  const dpr =
-    Math.min(
-      window.devicePixelRatio || 1,
-      2
-    );
 
-  const w =
-    canvas.width/dpr;
+/* =========================================================
+   OBJECT DRAG
+========================================================= */
 
-  const h =
-    canvas.height/dpr;
+function makeObjectDraggable(
+  el,
+  obj
+){
 
-  ctx.setTransform(
-    dpr,
-    0,
-    0,
-    dpr,
-    0,
-    0
-  );
+  let dragging=false;
 
-  ctx.clearRect(
-    0,
-    0,
-    w,
-    h
-  );
+  let startX=0;
 
-  drawBackground(
-    ctx,
-    w,
-    h
-  );
+  let startY=0;
 
-  const page =
-    getCurrentPage();
+  let originalX=0;
 
-  if(!page){
-    return;
-  }
+  let originalY=0;
 
-  page.strokes.forEach(
-    stroke=>{
-      drawStroke(
-        ctx,
-        stroke
+
+  el.addEventListener(
+    "pointerdown",
+    e=>{
+
+      if(
+        noteTool!=="hand" &&
+        noteTool!=="pen" &&
+        noteTool!=="text" &&
+        noteTool!=="sticky"
+      ){
+        return;
+      }
+
+
+      if(
+        noteTool!=="hand"
+      ){
+        return;
+      }
+
+
+      e.stopPropagation();
+
+      dragging=true;
+
+      el.setPointerCapture(
+        e.pointerId
       );
+
+
+      const p=
+        screenToWorld(
+          e.clientX,
+          e.clientY
+        );
+
+
+      startX=p.x;
+
+      startY=p.y;
+
+      originalX=obj.x;
+
+      originalY=obj.y;
+
+    }
+  );
+
+
+  el.addEventListener(
+    "pointermove",
+    e=>{
+
+      if(!dragging)return;
+
+
+      const p=
+        screenToWorld(
+          e.clientX,
+          e.clientY
+        );
+
+
+      obj.x=
+        originalX+
+        p.x-startX;
+
+      obj.y=
+        originalY+
+        p.y-startY;
+
+
+      el.style.left=
+        obj.x+"px";
+
+      el.style.top=
+        obj.y+"px";
+
+
+      saveData();
+
+    }
+  );
+
+
+  el.addEventListener(
+    "pointerup",
+    ()=>{
+
+      dragging=false;
+
     }
   );
 
@@ -3213,1708 +3576,745 @@ function renderCanvas(){
 
 
 /* =========================================================
-   iPAD POINTER EVENTS
+   DRAWING
 ========================================================= */
 
-function setupCanvasEvents(){
+function screenToWorld(
+  clientX,
+  clientY
+){
 
-  const canvas =
-    document.getElementById(
-      "drawCanvas"
-    );
+  const rect=
+    boardWrap.getBoundingClientRect();
 
-  const editor =
-    document.getElementById(
-      "editor"
-    );
 
-  if(!canvas || !editor){
-    return;
-  }
+  return {
 
-  /*
-    念のためイベントを直接キャンバスに付ける
-  */
+    x:
+      (
+        clientX-
+        rect.left-
+        cameraX
+      )/zoom,
 
-  canvas.addEventListener(
-    "contextmenu",
-    e=>e.preventDefault()
-  );
+    y:
+      (
+        clientY-
+        rect.top-
+        cameraY
+      )/zoom
 
-  canvas.addEventListener(
-    "pointerdown",
-    pointerDown,
-    {
-      passive:false
-    }
-  );
-
-  canvas.addEventListener(
-    "pointermove",
-    pointerMove,
-    {
-      passive:false
-    }
-  );
-
-  canvas.addEventListener(
-    "pointerup",
-    pointerUp,
-    {
-      passive:false
-    }
-  );
-
-  canvas.addEventListener(
-    "pointercancel",
-    pointerUp,
-    {
-      passive:false
-    }
-  );
-
-  canvas.addEventListener(
-    "pointerleave",
-    e=>{
-      /*
-        描画中はleaveしても
-        pointermoveを止めない
-      */
-    }
-  );
+  };
 
 }
 
-function pointerDown(e){
 
-  e.preventDefault();
-  e.stopPropagation();
+function startDrawing(e){
 
-  const canvas=e.currentTarget;
-
-  pointers.set(
-    e.pointerId,
-    {
-      x:e.clientX,
-      y:e.clientY
-    }
-  );
-
-  /*
-    2本指になったら
-    ピンチ・パンモード
-  */
-
-  if(pointers.size===2){
-
-    drawing=false;
-
-    activePointerId=null;
-
-    const arr=[
-      ...pointers.values()
-    ];
-
-    const center={
-      x:(arr[0].x+arr[1].x)/2,
-      y:(arr[0].y+arr[1].y)/2
-    };
-
-    const dist=
-      Math.hypot(
-        arr[0].x-arr[1].x,
-        arr[0].y-arr[1].y
-      );
-
-    pinchStart={
-      center,
-      distance:dist,
-      zoom:camera.zoom,
-      x:camera.x,
-      y:camera.y
-    };
-
-    return;
-  }
-
-  /*
-    2本指中
-  */
-
-  if(pointers.size>1){
-    return;
-  }
-
-  /*
-    テキスト・付箋・写真
-  */
-
-  if(
-    currentTool==="text" ||
-    currentTool==="sticky" ||
-    currentTool==="image"
-  ){
-
-    const rect =
-      canvas.getBoundingClientRect();
-
-    const world =
-      screenToWorld(
-        e.clientX-rect.left,
-        e.clientY-rect.top
-      );
-
-    if(
-      currentTool==="text"
-    ){
-
-      createTextObject(
-        world.x,
-        world.y
-      );
-
-    }else if(
-      currentTool==="sticky"
-    ){
-
-      createStickyObject(
-        world.x,
-        world.y
-      );
-
-    }else{
-
-      chooseImage(
-        world.x,
-        world.y
-      );
-
-    }
-
-    return;
-
-  }
-
-  /*
-    手のひら
-  */
-
-  if(currentTool==="hand"){
-
-    moving=true;
-
-    activePointerId=
-      e.pointerId;
+  if(noteTool==="hand"){
 
     panStart={
       x:e.clientX,
       y:e.clientY,
-      cameraX:camera.x,
-      cameraY:camera.y
+      cameraX,
+      cameraY
     };
-
-    try{
-      canvas.setPointerCapture(
-        e.pointerId
-      );
-    }catch(_){}
 
     return;
 
   }
 
-  /*
-    描画
-  */
 
   if(
-    currentTool==="pen" ||
-    currentTool==="highlighter"
+    noteTool==="text" ||
+    noteTool==="sticky"
   ){
 
-    drawing=true;
-
-    activePointerId=
-      e.pointerId;
-
-    const rect =
-      canvas.getBoundingClientRect();
-
-    const world =
+    const p=
       screenToWorld(
-        e.clientX-rect.left,
-        e.clientY-rect.top
+        e.clientX,
+        e.clientY
       );
 
-    lastWorldPoint=world;
+    createObject(
+      noteTool,
+      p
+    );
 
-    const page =
-      getCurrentPage();
+    return;
 
-    page.strokes.push({
+  }
 
-      id:uid("stroke"),
 
-      tool:currentTool,
+  if(
+    noteTool!=="pen" &&
+    noteTool!=="highlighter" &&
+    noteTool!=="eraser"
+  ){
 
-      color:currentColor,
+    return;
 
-      size:currentSize,
+  }
 
-      points:[
-        world
-      ]
+
+  const p=
+    screenToWorld(
+      e.clientX,
+      e.clientY
+    );
+
+
+  drawing=true;
+
+  activePointerId=
+    e.pointerId;
+
+  lastPoint=p;
+
+
+  if(noteTool==="eraser"){
+
+    eraseAt(p);
+
+    return;
+
+  }
+
+
+  const page=
+    getCurrentPage();
+
+  if(!page)return;
+
+
+  currentStroke={
+
+    id:uid("stroke"),
+
+    color:noteColor,
+
+    width:
+      noteTool==="highlighter"
+      ?
+      noteSize*4
+      :
+      noteSize,
+
+    opacity:
+      noteTool==="highlighter"
+      ?
+      .27
+      :
+      1,
+
+    points:[p]
+
+  };
+
+
+  page.strokes.push(
+    currentStroke
+  );
+
+
+  drawNote();
+
+}
+
+
+function moveDrawing(e){
+
+  if(noteTool==="hand"){
+
+    if(!panStart)return;
+
+
+    cameraX=
+      panStart.cameraX+
+      e.clientX-
+      panStart.x;
+
+    cameraY=
+      panStart.cameraY+
+      e.clientY-
+      panStart.y;
+
+
+    updateCamera();
+
+    return;
+
+  }
+
+
+  if(!drawing)return;
+
+
+  const p=
+    screenToWorld(
+      e.clientX,
+      e.clientY
+    );
+
+
+  if(noteTool==="eraser"){
+
+    eraseAt(p);
+
+    return;
+
+  }
+
+
+  if(!currentStroke)return;
+
+
+  const distance=
+    Math.hypot(
+      p.x-lastPoint.x,
+      p.y-lastPoint.y
+    );
+
+
+  if(distance<1.5)return;
+
+
+  currentStroke.points.push(p);
+
+  lastPoint=p;
+
+  drawNote();
+
+}
+
+
+function endDrawing(){
+
+  drawing=false;
+
+  currentStroke=null;
+
+  activePointerId=null;
+
+  panStart=null;
+
+  saveData();
+
+}
+
+
+function eraseAt(point){
+
+  const page=
+    getCurrentPage();
+
+  if(!page)return;
+
+
+  const radius=
+    Math.max(
+      12,
+      noteSize*2.5
+    );
+
+
+  page.strokes=
+    page.strokes.filter(
+      stroke=>{
+
+        for(const p of stroke.points){
+
+          if(
+            Math.hypot(
+              p.x-point.x,
+              p.y-point.y
+            )<=radius
+          ){
+
+            return false;
+
+          }
+
+        }
+
+        return true;
+
+      }
+    );
+
+
+  drawNote();
+
+  saveData();
+
+}
+
+
+/* =========================================================
+   OBJECT CREATION
+========================================================= */
+
+function createObject(
+  type,
+  point
+){
+
+  const page=
+    getCurrentPage();
+
+  if(!page)return;
+
+
+  if(type==="text"){
+
+    const text=
+      prompt(
+        "入力する文字",
+        "テキスト"
+      );
+
+
+    if(!text)return;
+
+
+    page.elements.push({
+
+      id:uid("obj"),
+
+      type:"text",
+
+      x:point.x,
+
+      y:point.y,
+
+      width:250,
+
+      height:60,
+
+      text,
+
+      color:noteColor,
+
+      fontSize:Math.max(
+        12,
+        noteSize*4
+      )
 
     });
 
-    /*
-      iPadで指を離さなくても
-      このキャンバスが追跡する
-    */
+  }
 
-    try{
-      canvas.setPointerCapture(
-        e.pointerId
+
+  if(type==="sticky"){
+
+    const text=
+      prompt(
+        "付箋に書く内容",
+        ""
       );
-    }catch(_){}
 
-    renderCanvas();
 
-    return;
+    if(text===null)return;
 
-  }
 
-  /*
-    ピクセル消しゴム
-  */
+    page.elements.push({
 
-  if(currentTool==="pixel"){
+      id:uid("obj"),
 
-    activePointerId=
-      e.pointerId;
+      type:"sticky",
 
-    try{
-      canvas.setPointerCapture(
-        e.pointerId
-      );
-    }catch(_){}
+      x:point.x,
 
-    erasePixelAt(
-      e
-    );
+      y:point.y,
 
-    return;
+      width:220,
+
+      height:130,
+
+      text
+
+    });
 
   }
 
-  /*
-    オブジェクト消しゴム
-  */
 
-  if(currentTool==="object"){
+  saveData();
 
-    eraseObjectAt(
-      e
-    );
-
-  }
+  renderObjects();
 
 }
 
-function pointerMove(e){
 
-  e.preventDefault();
-  e.stopPropagation();
+/* =========================================================
+   CAMERA / ZOOM
+========================================================= */
 
-  if(
-    pointers.has(
-      e.pointerId
-    )
-  ){
+function updateCamera(){
 
-    pointers.set(
-      e.pointerId,
-      {
-        x:e.clientX,
-        y:e.clientY
-      }
+  board.style.transform=
+    `translate(${cameraX}px,${cameraY}px) scale(${zoom})`;
+
+}
+
+
+document
+  .getElementById("zoomIn")
+  .onclick=()=>{
+
+    zoom=Math.min(
+      4,
+      zoom*1.15
     );
 
+    updateCamera();
+
+  };
+
+
+document
+  .getElementById("zoomOut")
+  .onclick=()=>{
+
+    zoom=Math.max(
+      .25,
+      zoom/1.15
+    );
+
+    updateCamera();
+
+  };
+
+
+document
+  .getElementById("zoomReset")
+  .onclick=()=>{
+
+    zoom=1;
+
+    cameraX=0;
+
+    cameraY=0;
+
+    updateCamera();
+
+  };
+
+
+/* =========================================================
+   NOTE POINTER EVENTS
+========================================================= */
+
+boardWrap.addEventListener(
+  "pointerdown",
+  e=>{
+
+    e.preventDefault();
+
+    boardWrap.setPointerCapture(
+      e.pointerId
+    );
+
+    startDrawing(e);
+
+  },
+  {passive:false}
+);
+
+
+boardWrap.addEventListener(
+  "pointermove",
+  e=>{
+
+    e.preventDefault();
+
+    moveDrawing(e);
+
+  },
+  {passive:false}
+);
+
+
+boardWrap.addEventListener(
+  "pointerup",
+  e=>{
+
+    e.preventDefault();
+
+    endDrawing();
+
+  },
+  {passive:false}
+);
+
+
+boardWrap.addEventListener(
+  "pointercancel",
+  e=>{
+
+    endDrawing();
+
   }
+);
 
-  /*
-    2本指
-  */
 
-  if(
-    pointers.size===2 &&
-    pinchStart
-  ){
+/* =========================================================
+   NOTE TOOLBAR
+========================================================= */
 
-    const arr=[
-      ...pointers.values()
-    ];
+document
+  .querySelectorAll(
+    ".note-tool[data-tool]"
+  )
+  .forEach(btn=>{
 
-    const center={
-      x:(arr[0].x+arr[1].x)/2,
-      y:(arr[0].y+arr[1].y)/2
-    };
+    btn.onclick=()=>{
 
-    const dist=
-      Math.hypot(
-        arr[0].x-arr[1].x,
-        arr[0].y-arr[1].y
-      );
+      noteTool=
+        btn.dataset.tool;
 
-    let newZoom=
-      pinchStart.zoom *
-      (
-        dist/
-        pinchStart.distance
-      );
 
-    newZoom=
-      Math.max(
-        .35,
-        Math.min(
-          4,
-          newZoom
+      document
+        .querySelectorAll(
+          ".note-tool[data-tool]"
         )
-      );
+        .forEach(
+          x=>x.classList.remove("active")
+        );
 
-    /*
-      指の中心を固定してズーム
-    */
 
-    const editor =
-      document.getElementById(
-        "editor"
-      );
-
-    const rect =
-      editor.getBoundingClientRect();
-
-    const cx =
-      center.x-rect.left;
-
-    const cy =
-      center.y-rect.top;
-
-    const worldBefore =
-      screenToWorld(
-        cx,
-        cy
-      );
-
-    camera.zoom=newZoom;
-
-    camera.x =
-      cx -
-      worldBefore.x*camera.zoom;
-
-    camera.y =
-      cy -
-      worldBefore.y*camera.zoom;
-
-    /*
-      2本指移動
-    */
-
-    const dx =
-      center.x -
-      pinchStart.center.x;
-
-    const dy =
-      center.y -
-      pinchStart.center.y;
-
-    camera.x =
-      pinchStart.x +
-      dx;
-
-    camera.y =
-      pinchStart.y +
-      dy;
-
-    renderCanvas();
-
-    renderObjects();
-
-    return;
-
-  }
-
-  /*
-    手のひら
-  */
-
-  if(
-    moving &&
-    activePointerId===
-      e.pointerId
-  ){
-
-    camera.x =
-      panStart.cameraX +
-      (
-        e.clientX-
-        panStart.x
-      );
-
-    camera.y =
-      panStart.cameraY +
-      (
-        e.clientY-
-        panStart.y
-      );
-
-    renderCanvas();
-
-    renderObjects();
-
-    return;
-
-  }
-
-  /*
-    ペン
-  */
-
-  if(
-    drawing &&
-    activePointerId===
-      e.pointerId
-  ){
-
-    const canvas =
-      e.currentTarget;
-
-    const rect =
-      canvas.getBoundingClientRect();
-
-    const world =
-      screenToWorld(
-        e.clientX-rect.left,
-        e.clientY-rect.top
-      );
-
-    const page =
-      getCurrentPage();
-
-    const stroke =
-      page.strokes[
-        page.strokes.length-1
-      ];
-
-    if(!stroke){
-      return;
-    }
-
-    /*
-      かなり細かい間隔で
-      ポイントを追加
-    */
-
-    const last =
-      stroke.points[
-        stroke.points.length-1
-      ];
-
-    const d =
-      distance(
-        last,
-        world
-      );
-
-    /*
-      ズームしても
-      指の軌跡が滑らかになる
-    */
-
-    if(
-      d >=
-      Math.max(
-        .5,
-        1.2/currentToolZoom()
-      )
-    ){
-
-      stroke.points.push(
-        world
-      );
-
-    }
-
-    renderCanvas();
-
-    return;
-
-  }
-
-  /*
-    ピクセル消しゴム
-  */
-
-  if(
-    currentTool==="pixel" &&
-    activePointerId===
-      e.pointerId
-  ){
-
-    erasePixelAt(
-      e
-    );
-
-  }
-
-}
-
-function pointerUp(e){
-
-  e.preventDefault();
-  e.stopPropagation();
-
-  pointers.delete(
-    e.pointerId
-  );
-
-  if(
-    pointers.size<2
-  ){
-
-    pinchStart=null;
-
-  }
-
-  if(
-    activePointerId===
-      e.pointerId
-  ){
-
-    drawing=false;
-
-    moving=false;
-
-    activePointerId=null;
-
-    lastWorldPoint=null;
-
-    save();
-
-  }
-
-}
-
-function currentToolZoom(){
-
-  return Math.max(
-    .5,
-    camera.zoom
-  );
-
-}
-
-
-/* =========================================================
-   PIXEL ERASER
-========================================================= */
-
-function erasePixelAt(e){
-
-  const canvas =
-    document.getElementById(
-      "drawCanvas"
-    );
-
-  const rect =
-    canvas.getBoundingClientRect();
-
-  const world =
-    screenToWorld(
-      e.clientX-rect.left,
-      e.clientY-rect.top
-    );
-
-  const page =
-    getCurrentPage();
-
-  const radius =
-    Math.max(
-      8,
-      currentSize*3
-    );
-
-  const newStrokes=[];
-
-  page.strokes.forEach(
-    stroke=>{
-
-      if(
-        !stroke.points ||
-        stroke.points.length===0
-      ){
-        return;
-      }
-
-      let segment=[];
-
-      stroke.points.forEach(
-        p=>{
-
-          const hit =
-            Math.hypot(
-              p.x-world.x,
-              p.y-world.y
-            ) <= radius;
-
-          if(hit){
-
-            if(
-              segment.length>1
-            ){
-
-              newStrokes.push({
-
-                ...stroke,
-
-                id:uid("stroke"),
-
-                points:
-                  segment
-
-              });
-
-            }
-
-            segment=[];
-
-          }else{
-
-            segment.push(p);
-
-          }
-
-        }
-      );
-
-      if(
-        segment.length>1
-      ){
-
-        newStrokes.push({
-
-          ...stroke,
-
-          id:uid("stroke"),
-
-          points:
-            segment
-
-        });
-
-      }
-
-    }
-  );
-
-  page.strokes=
-    newStrokes;
-
-  renderCanvas();
-
-}
-
-
-/* =========================================================
-   OBJECT ERASER
-========================================================= */
-
-function eraseObjectAt(e){
-
-  const canvas =
-    document.getElementById(
-      "drawCanvas"
-    );
-
-  const rect =
-    canvas.getBoundingClientRect();
-
-  const world =
-    screenToWorld(
-      e.clientX-rect.left,
-      e.clientY-rect.top
-    );
-
-  const page =
-    getCurrentPage();
-
-  let hitIndex=-1;
-
-  for(
-    let i=page.elements.length-1;
-    i>=0;
-    i--
-  ){
-
-    const obj =
-      page.elements[i];
-
-    if(
-      world.x>=obj.x &&
-      world.x<=obj.x+obj.width &&
-      world.y>=obj.y &&
-      world.y<=obj.y+obj.height
-    ){
-
-      hitIndex=i;
-
-      break;
-
-    }
-
-  }
-
-  if(hitIndex>=0){
-
-    page.elements.splice(
-      hitIndex,
-      1
-    );
-
-    selectedObjectId=null;
-
-    save();
-
-    renderObjects();
-
-  }
-
-}
-
-
-/* =========================================================
-   ZOOM
-========================================================= */
-
-function zoomAt(
-  screenX,
-  screenY,
-  factor
-){
-
-  const before =
-    screenToWorld(
-      screenX,
-      screenY
-    );
-
-  camera.zoom *= factor;
-
-  camera.zoom =
-    Math.max(
-      .35,
-      Math.min(
-        4,
-        camera.zoom
-      )
-    );
-
-  camera.x =
-    screenX -
-    before.x*camera.zoom;
-
-  camera.y =
-    screenY -
-    before.y*camera.zoom;
-
-  renderCanvas();
-
-  renderObjects();
-
-}
-
-
-/* =========================================================
-   OBJECTS
-========================================================= */
-
-function createTextObject(
-  x,
-  y
-){
-
-  const text =
-    prompt(
-      "入力するテキスト"
-    );
-
-  if(
-    text===null ||
-    !text.trim()
-  ){
-    return;
-  }
-
-  const page =
-    getCurrentPage();
-
-  const obj={
-
-    id:uid("text"),
-
-    type:"text",
-
-    x,
-
-    y,
-
-    width:240,
-
-    height:70,
-
-    text:text.trim(),
-
-    color:currentColor,
-
-    fontSize:
-      Math.max(
-        14,
-        currentSize*5
-      )
-
-  };
-
-  page.elements.push(
-    obj
-  );
-
-  save();
-
-  renderObjects();
-
-  selectedObjectId=
-    obj.id;
-
-}
-
-function createStickyObject(
-  x,
-  y
-){
-
-  const text =
-    prompt(
-      "付箋の内容"
-    );
-
-  if(
-    text===null
-  ){
-    return;
-  }
-
-  const page =
-    getCurrentPage();
-
-  const obj={
-
-    id:uid("sticky"),
-
-    type:"sticky",
-
-    x,
-
-    y,
-
-    width:220,
-
-    height:150,
-
-    text:text,
-
-    color:currentColor,
-
-    fontSize:20
-
-  };
-
-  page.elements.push(
-    obj
-  );
-
-  save();
-
-  renderObjects();
-
-  selectedObjectId=
-    obj.id;
-
-}
-
-function chooseImage(
-  x,
-  y
-){
-
-  const input =
-    document.createElement(
-      "input"
-    );
-
-  input.type="file";
-
-  input.accept=
-    "image/*";
-
-  input.onchange =
-    event=>{
-
-      const file =
-        event.target.files[0];
-
-      if(!file){
-        return;
-      }
-
-      const reader =
-        new FileReader();
-
-      reader.onload =
-        ()=>{
-          const page =
-            getCurrentPage();
-
-          const obj={
-
-            id:uid("image"),
-
-            type:"image",
-
-            x:x,
-
-            y:y,
-
-            width:420,
-
-            height:300,
-
-            src:reader.result
-
-          };
-
-          page.elements.push(
-            obj
-          );
-
-          save();
-
-          renderObjects();
-
-        };
-
-      reader.readAsDataURL(
-        file
-      );
+      btn.classList.add("active");
 
     };
-
-  input.click();
-
-}
-
-
-/* =========================================================
-   OBJECT RENDER
-========================================================= */
-
-function renderObjects(){
-
-  const layer =
-    document.getElementById(
-      "objectLayer"
-    );
-
-  if(!layer){
-    return;
-  }
-
-  layer.innerHTML="";
-
-  const page =
-    getCurrentPage();
-
-  if(!page){
-    return;
-  }
-
-  page.elements.forEach(
-    obj=>{
-
-      const el =
-        document.createElement(
-          "div"
-        );
-
-      el.className=
-        "noteObject";
-
-      el.dataset.id=
-        obj.id;
-
-      el.style.left=
-        (
-          obj.x*camera.zoom+
-          camera.x
-        )+"px";
-
-      el.style.top=
-        (
-          obj.y*camera.zoom+
-          camera.y
-        )+"px";
-
-      el.style.width=
-        (
-          obj.width*camera.zoom
-        )+"px";
-
-      el.style.height=
-        (
-          obj.height*camera.zoom
-        )+"px";
-
-
-      if(
-        selectedObjectId===
-        obj.id
-      ){
-
-        el.classList.add(
-          "objectSelected"
-        );
-
-      }
-
-
-      if(
-        obj.type==="text"
-      ){
-
-        el.classList.add(
-          "textObject"
-        );
-
-        el.textContent =
-          safeText(
-            obj.text,
-            ""
-          );
-
-        el.style.fontSize =
-          (
-            obj.fontSize*
-            camera.zoom
-          )+"px";
-
-        el.style.color =
-          obj.color ||
-          "#111";
-
-      }
-
-
-      if(
-        obj.type==="sticky"
-      ){
-
-        el.classList.add(
-          "stickyObject"
-        );
-
-        el.textContent =
-          safeText(
-            obj.text,
-            ""
-          );
-
-        el.style.fontSize =
-          (
-            obj.fontSize*
-            camera.zoom
-          )+"px";
-
-      }
-
-
-      if(
-        obj.type==="image"
-      ){
-
-        el.classList.add(
-          "imageObject"
-        );
-
-        const img =
-          document.createElement(
-            "img"
-          );
-
-        img.src=obj.src;
-
-        el.appendChild(
-          img
-        );
-
-      }
-
-
-      /*
-        オブジェクト選択
-      */
-
-      el.addEventListener(
-        "pointerdown",
-        event=>{
-
-          event.stopPropagation();
-
-          if(
-            currentTool==="object"
-          ){
-
-            const page =
-              getCurrentPage();
-
-            const index =
-              page.elements.findIndex(
-                x=>x.id===obj.id
-              );
-
-            if(index>=0){
-
-              page.elements.splice(
-                index,
-                1
-              );
-
-              selectedObjectId=null;
-
-              save();
-
-              renderObjects();
-
-            }
-
-            return;
-
-          }
-
-          if(
-            currentTool==="hand" ||
-            currentTool==="pen" ||
-            currentTool==="highlighter"
-          ){
-
-            selectedObjectId=
-              obj.id;
-
-            renderObjects();
-
-          }
-
-        },
-        {
-          passive:false
-        }
-      );
-
-
-      /*
-        ダブルタップで編集
-      */
-
-      el.addEventListener(
-        "dblclick",
-        event=>{
-
-          event.stopPropagation();
-
-          if(
-            obj.type==="text" ||
-            obj.type==="sticky"
-          ){
-
-            const value =
-              prompt(
-                "テキストを編集",
-                obj.text
-              );
-
-            if(value!==null){
-
-              obj.text=value;
-
-              save();
-
-              renderObjects();
-
-            }
-
-          }
-
-        }
-      );
-
-
-      /*
-        リサイズ
-      */
-
-      if(
-        obj.type!=="image" ||
-        true
-      ){
-
-        const handle =
-          document.createElement(
-            "div"
-          );
-
-        handle.className=
-          "resizeHandle";
-
-        handle.addEventListener(
-          "pointerdown",
-          event=>{
-
-            event.preventDefault();
-            event.stopPropagation();
-
-            const startX=
-              event.clientX;
-
-            const startY=
-              event.clientY;
-
-            const startW=
-              obj.width;
-
-            const startH=
-              obj.height;
-
-            function move(ev){
-
-              obj.width =
-                Math.max(
-                  60,
-                  startW+
-                  (
-                    ev.clientX-
-                    startX
-                  )/camera.zoom
-                );
-
-              obj.height =
-                Math.max(
-                  40,
-                  startH+
-                  (
-                    ev.clientY-
-                    startY
-                  )/camera.zoom
-                );
-
-              renderObjects();
-
-            }
-
-            function up(){
-
-              window.removeEventListener(
-                "pointermove",
-                move
-              );
-
-              window.removeEventListener(
-                "pointerup",
-                up
-              );
-
-              save();
-
-            }
-
-            window.addEventListener(
-              "pointermove",
-              move
-            );
-
-            window.addEventListener(
-              "pointerup",
-              up
-            );
-
-          },
-          {
-            passive:false
-          }
-        );
-
-        el.appendChild(
-          handle
-        );
-
-      }
-
-      layer.appendChild(
-        el
-      );
-
-    }
-  );
-
-}
-
-
-/* =========================================================
-   OBJECT FONT / COLOR
-========================================================= */
-
-function updateSelectedObjectStyle(){
-
-  if(!selectedObjectId){
-    return;
-  }
-
-  const page =
-    getCurrentPage();
-
-  const obj =
-    page.elements.find(
-      x=>x.id===
-        selectedObjectId
-    );
-
-  if(!obj){
-    return;
-  }
-
-  if(
-    obj.type==="text" ||
-    obj.type==="sticky"
-  ){
-
-    obj.fontSize =
-      Math.max(
-        10,
-        currentSize*5
-      );
-
-    obj.color=
-      currentColor;
-
-  }
-
-  save();
-
-  renderObjects();
-
-}
-
-
-/* =========================================================
-   PAGES
-========================================================= */
-
-function addNewPage(){
-
-  const note =
-    getNote(selectedNoteId);
-
-  if(!note){
-    return;
-  }
-
-  note.pages.push({
-
-    strokes:[],
-
-    elements:[]
 
   });
 
-  currentPage=
-    note.pages.length-1;
 
-  save();
+document
+  .getElementById("noteColor")
+  .oninput=e=>{
 
-  renderNoteEditor();
+    noteColor=e.target.value;
 
-}
+  };
 
-function previousPage(){
 
-  if(currentPage<=0){
-    return;
-  }
+document
+  .getElementById("noteSize")
+  .oninput=e=>{
 
-  currentPage--;
+    noteSize=
+      Number(e.target.value);
 
-  save();
+  };
 
-  renderNoteEditor();
 
-}
+document
+  .getElementById("clearPage")
+  .onclick=()=>{
 
-function nextPage(){
+    if(
+      !confirm(
+        "このページを全部消しますか？"
+      )
+    ){
 
-  const note =
-    getNote(selectedNoteId);
+      return;
 
-  if(!note){
-    return;
-  }
+    }
 
-  if(
-    currentPage<
-    note.pages.length-1
-  ){
 
-    currentPage++;
+    const page=
+      getCurrentPage();
 
-  }else{
+    if(!page)return;
 
-    note.pages.push({
 
-      strokes:[],
+    page.strokes=[];
 
-      elements:[]
+    page.elements=[];
 
-    });
+    saveData();
 
-    currentPage=
-      note.pages.length-1;
+    drawNote();
 
-  }
+    renderObjects();
 
-  save();
+  };
 
-  renderNoteEditor();
 
-}
+document
+  .getElementById("noteBack")
+  .onclick=()=>{
+
+    showHome();
+
+  };
 
 
 /* =========================================================
    SETTINGS
 ========================================================= */
 
-function openSettings(){
+function showSettings(){
 
-  const main =
-    document.getElementById(
-      "main"
-    );
+  currentView="settings";
 
-  main.innerHTML="";
+  document
+    .getElementById("pageTitle")
+    .textContent="設定";
 
-  const page =
-    document.createElement("div");
 
-  page.className="page";
+  document
+    .getElementById("noteScreen")
+    .classList.add("hidden");
 
-  const inner =
-    document.createElement("div");
 
-  inner.className="pageInner";
+  document
+    .getElementById("content")
+    .innerHTML=`
 
-  const rank =
-    getRank(
-      data.totalSeconds
-    );
+    <div class="settings">
 
-  inner.innerHTML=
-    `
-    <div class="header">
-
-      <div class="headerIcon">
-        ⚙️
+      <div class="settings-title">
+        ⚙️ 設定
       </div>
 
-      <div>
-        <div class="headerTitle">
-          設定
-        </div>
 
-        <div class="headerSub">
-          Destination Note
-        </div>
-      </div>
+      <div class="settings-card glass">
 
-    </div>
+        <h3>
+          ⏱ 勉強時間
+        </h3>
 
-    <div class="cardGrid">
+        <p>
+          累計：${formatTime(data.totalSeconds)}
+        </p>
 
-      <div class="card">
-
-        <div class="cardIcon">
-          ⏱️
-        </div>
-
-        <div class="cardTitle">
-          勉強時間
-        </div>
-
-        <div
-          id="studyTime"
-          class="cardSub">
-          ${formatTime(
-            data.totalSeconds
-          )}
-        </div>
+        <p>
+          現在のランク：
+          ${getRank(data.totalSeconds)[1]}
+        </p>
 
       </div>
 
 
-      <div class="card">
+      <div class="settings-card glass">
 
-        <div class="cardIcon">
-          ${rank[1]}
-        </div>
+        <h3>
+          💾 データ
+        </h3>
 
-        <div class="cardTitle">
-          ${rank[0]}
-        </div>
+        <p>
+          この端末のブラウザに保存されています。
+        </p>
 
-        <div class="cardSub">
-          現在のランク
-        </div>
+        <button
+          id="exportButton"
+          class="settings-button"
+        >
+          📤 バックアップ
+        </button>
+
+        <button
+          id="importButton"
+          class="settings-button"
+        >
+          📥 復元
+        </button>
+
+        <input
+          id="importFile"
+          type="file"
+          accept=".json"
+          hidden
+        >
 
       </div>
 
 
-      <button
-        id="exportButton"
-        class="card">
+      <div class="settings-card glass">
 
-        <div class="cardIcon">
-          💾
-        </div>
+        <h3>
+          🚪 ログアウト
+        </h3>
 
-        <div class="cardTitle">
-          バックアップ
-        </div>
+        <p>
+          この端末のログイン画面に戻ります。
+        </p>
 
-        <div class="cardSub">
-          データを書き出す
-        </div>
-
-      </button>
-
-
-      <button
-        id="importButton"
-        class="card">
-
-        <div class="cardIcon">
-          📥
-        </div>
-
-        <div class="cardTitle">
-          復元
-        </div>
-
-        <div class="cardSub">
-          バックアップを読み込む
-        </div>
-
-      </button>
-
-
-      <button
-        id="logoutButton"
-        class="card">
-
-        <div class="cardIcon">
-          🚪
-        </div>
-
-        <div class="cardTitle">
+        <button
+          id="logoutButton"
+          class="settings-button"
+        >
           ログアウト
-        </div>
+        </button>
 
-        <div class="cardSub">
-          この端末のログイン画面へ
-        </div>
+      </div>
 
-      </button>
+
+      <div class="settings-card glass">
+
+        <h3>
+          ⚠️ データを初期化
+        </h3>
+
+        <p>
+          ノート・勉強時間・予定がすべて消えます。
+        </p>
+
+        <button
+          id="resetButton"
+          class="settings-button"
+        >
+          初期化
+        </button>
+
+      </div>
 
     </div>
-    `;
 
-  page.appendChild(
-    inner
-  );
-
-  main.appendChild(
-    page
-  );
+  `;
 
 
   document
-    .getElementById(
-      "exportButton"
-    )
-    .addEventListener(
-      "click",
-      exportData
-    );
+    .getElementById("exportButton")
+    .onclick=exportData;
 
 
   document
-    .getElementById(
-      "importButton"
-    )
-    .addEventListener(
-      "click",
-      importData
-    );
+    .getElementById("importButton")
+    .onclick=()=>{
+
+      document
+        .getElementById("importFile")
+        .click();
+
+    };
 
 
   document
-    .getElementById(
-      "logoutButton"
-    )
-    .addEventListener(
-      "click",
-      ()=>{
-        flushStudyTime();
+    .getElementById("importFile")
+    .onchange=
+      importData;
 
-        document
-          .getElementById(
-            "app"
-          )
-          .style.display="none";
 
-        document
-          .getElementById(
-            "loginScreen"
-          )
-          .style.display="flex";
-      }
-    );
+  document
+    .getElementById("logoutButton")
+    .onclick=logout;
+
+
+  document
+    .getElementById("resetButton")
+    .onclick=resetData;
 
 }
 
-
-/* =========================================================
-   EXPORT / IMPORT
-========================================================= */
 
 function exportData(){
 
   flushStudyTime();
 
-  const blob =
+  const blob=
     new Blob(
       [
         JSON.stringify(
@@ -4924,20 +4324,16 @@ function exportData(){
         )
       ],
       {
-        type:
-          "application/json"
+        type:"application/json"
       }
     );
 
-  const url =
-    URL.createObjectURL(
-      blob
-    );
 
-  const a =
-    document.createElement(
-      "a"
-    );
+  const url=
+    URL.createObjectURL(blob);
+
+  const a=
+    document.createElement("a");
 
   a.href=url;
 
@@ -4950,111 +4346,330 @@ function exportData(){
 
 }
 
-function importData(){
 
-  const input =
-    document.createElement(
-      "input"
-    );
+function importData(e){
 
-  input.type="file";
+  const file=
+    e.target.files[0];
 
-  input.accept=
-    ".json,application/json";
+  if(!file)return;
 
-  input.onchange =
-    event=>{
 
-      const file =
-        event.target.files[0];
+  const reader=
+    new FileReader();
 
-      if(!file){
-        return;
+
+  reader.onload=()=>{
+
+    try{
+
+      const imported=
+        JSON.parse(
+          reader.result
+        );
+
+
+      if(
+        !imported.folders ||
+        !imported.notes
+      ){
+
+        throw new Error();
+
       }
 
-      const reader =
-        new FileReader();
 
-      reader.onload =
-        ()=>{
-          try{
+      data=imported;
 
-            const imported =
-              JSON.parse(
-                reader.result
-              );
+      if(!data.studyLog)
+        data.studyLog={};
 
-            if(
-              !imported ||
-              !Array.isArray(
-                imported.folders
-              ) ||
-              !Array.isArray(
-                imported.notes
-              )
-            ){
+      if(!data.events)
+        data.events=[];
 
-              throw new Error(
-                "invalid"
-              );
+      saveData();
 
-            }
-
-            data=imported;
-
-            normalizeData();
-
-            save();
-
-            selectedFolderId=
-              "root";
-
-            currentFolderId=
-              "root";
-
-            selectedNoteId=null;
-
-            expandedFolders=
-              new Set(["root"]);
-
-            renderTree();
-
-            openFolder(
-              "root"
-            );
-
-            alert(
-              "復元しました！"
-            );
-
-          }catch(error){
-
-            alert(
-              "バックアップを読み込めませんでした。"
-            );
-
-          }
-
-        };
-
-      reader.readAsText(
-        file
+      alert(
+        "復元しました！"
       );
 
-    };
+      showHome();
 
-  input.click();
+    }catch{
+
+      alert(
+        "バックアップファイルを読み込めませんでした。"
+      );
+
+    }
+
+  };
+
+
+  reader.readAsText(file);
+
+}
+
+
+function logout(){
+
+  flushStudyTime();
+
+  document
+    .getElementById("app")
+    .classList.remove("show");
+
+  document
+    .getElementById("loginScreen")
+    .classList.remove("hidden");
+
+}
+
+
+function resetData(){
+
+  if(
+    !confirm(
+      "本当に全部のデータを消しますか？"
+    )
+  ){
+
+    return;
+
+  }
+
+
+  localStorage.removeItem(
+    STORAGE_KEY
+  );
+
+  location.reload();
 
 }
 
 
 /* =========================================================
-   UTIL
+   MINI STUDY
 ========================================================= */
 
-function escapeHtml(value){
+function updateMiniStudy(){
 
-  return String(value)
+  const el=
+    document.getElementById(
+      "miniStudy"
+    );
+
+  if(!el)return;
+
+
+  el.textContent=
+    formatTime(
+      data.studyLog[
+        todayKey()
+      ] || 0
+    );
+
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+function login(){
+
+  const name=
+    document
+      .getElementById("loginName")
+      .value.trim();
+
+
+  const password=
+    document
+      .getElementById("loginPassword")
+      .value;
+
+
+  if(!name || !password){
+
+    alert(
+      "名前とパスワードを入力してね"
+    );
+
+    return;
+
+  }
+
+
+  if(
+    data.name &&
+    (
+      data.name!==name ||
+      data.password!==password
+    )
+  ){
+
+    alert(
+      "名前またはパスワードが違います。"
+    );
+
+    return;
+
+  }
+
+
+  if(!data.name){
+
+    data.name=name;
+
+    data.password=password;
+
+    saveData();
+
+  }
+
+
+  document
+    .getElementById("loginScreen")
+    .classList.add("hidden");
+
+
+  document
+    .getElementById("app")
+    .classList.add("show");
+
+
+  document
+    .getElementById("brandUser")
+    .textContent=
+      data.name;
+
+
+  /*
+    ★ログインしたら必ずホーム
+  */
+
+  showHome();
+
+}
+
+
+document
+  .getElementById("loginButton")
+  .onclick=login;
+
+
+document
+  .getElementById("loginPassword")
+  .addEventListener(
+    "keydown",
+    e=>{
+
+      if(e.key==="Enter"){
+        login();
+      }
+
+    }
+  );
+
+
+/* =========================================================
+   HOME BUTTON
+========================================================= */
+
+document
+  .getElementById("homeButton")
+  .onclick=()=>{
+
+    /*
+      ★
+      Destination Note
+      大神
+      の部分全体を押したらホーム
+    */
+
+    showHome();
+
+  };
+
+
+/* =========================================================
+   OTHER BUTTONS
+========================================================= */
+
+document
+  .getElementById("newFolderButton")
+  .onclick=createFolder;
+
+
+document
+  .getElementById("newNoteButton")
+  .onclick=createNote;
+
+
+document
+  .getElementById("settingsButton")
+  .onclick=showSettings;
+
+
+document
+  .getElementById("menuButton")
+  .onclick=()=>{
+
+    document
+      .querySelector(".sidebar")
+      .classList.toggle("open");
+
+  };
+
+
+function closeSidebarMobile(){
+
+  document
+    .querySelector(".sidebar")
+    ?.classList.remove("open");
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+function closeModal(){
+
+  document
+    .getElementById("modalBg")
+    .classList.add("hidden");
+
+}
+
+
+document
+  .getElementById("modalBg")
+  .addEventListener(
+    "click",
+    e=>{
+
+      if(
+        e.target.id==="modalBg"
+      ){
+
+        closeModal();
+
+      }
+
+    }
+  );
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHtml(str){
+
+  return String(str)
     .replaceAll("&","&amp;")
     .replaceAll("<","&lt;")
     .replaceAll(">","&gt;")
@@ -5065,103 +4680,50 @@ function escapeHtml(value){
 
 
 /* =========================================================
-   BUTTONS
+   STARTUP
 ========================================================= */
 
 document
-  .getElementById(
-    "addFolderButton"
-  )
-  .addEventListener(
-    "click",
-    createFolder
-  );
-
-document
-  .getElementById(
-    "addNoteButton"
-  )
-  .addEventListener(
-    "click",
-    createNote
-  );
-
-document
-  .getElementById(
-    "settingsButton"
-  )
-  .addEventListener(
-    "click",
-    openSettings
-  );
+  .getElementById("brandUser")
+  .textContent=
+    data.name || "大神";
 
 
-/* =========================================================
-   MOBILE SIDEBAR
-========================================================= */
+if(data.name){
 
-const mobileButton =
-  document.createElement(
-    "button"
-  );
-
-mobileButton.className=
-  "mobileMenu";
-
-mobileButton.textContent=
-  "☰";
-
-mobileButton.addEventListener(
-  "click",
-  ()=>{
-    document
-      .getElementById(
-        "sidebar"
-      )
-      .classList.toggle(
-        "open"
-      );
-  }
-);
-
-document
-  .getElementById(
-    "main"
-  )
-  .appendChild(
-    mobileButton
-  );
-
-
-/* =========================================================
-   START
-========================================================= */
-
-load();
-
-if(
-  data.name &&
-  data.password
-){
+  document
+    .getElementById("loginName")
+    .value=data.name;
 
   /*
-    すでにログイン情報が
-    この端末にある場合
+    ★サイトを開いたらログイン済みなら
+      必ずホーム
   */
 
   document
-    .getElementById(
-      "loginName"
-    )
-    .value=data.name;
+    .getElementById("loginScreen")
+    .classList.add("hidden");
 
   document
-    .getElementById(
-      "loginPassword"
-    )
-    .value=data.password;
+    .getElementById("app")
+    .classList.add("show");
+
+  showHome();
+
+}else{
+
+  document
+    .getElementById("app")
+    .classList.remove("show");
+
+  document
+    .getElementById("loginScreen")
+    .classList.remove("hidden");
 
 }
+
+
+updateMiniStudy();
 
 </script>
 
